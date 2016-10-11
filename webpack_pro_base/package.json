@@ -1,0 +1,43 @@
+{
+  "name": "webpack-base",
+  "version": "1.0.0",
+  "private": true,
+  "description": "webpack pro base",
+  "author": {
+    "name": "EnzoLynn",
+    "email": "6710582@qq.com"
+  },
+  "dependencies": {
+    "babel-core": "^6.17.0",
+    "babel-loader": "^6.2.5",
+    "babel-preset-es2015": "^6.16.0",
+    "babel-preset-react": "^6.16.0", 
+    "css-loader": "^0.25.0",
+    "exports-loader": "^0.6.3",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "file-loader": "^0.9.0",
+    "imports-loader": "^0.6.5",
+    "jquery": "^2.1.4",
+    "less": "^2.7.1",
+    "less-loader": "^2.2.3",
+    "node-sass": "^3.10.1",
+    "react": "^15.3.2",
+    "react-dom": "^15.3.2",
+    "resolve-url-loader": "^1.6.0",
+    "sass-loader": "^4.0.2",
+    "style-loader": "^0.13.1",
+    "url-loader": "^0.5.7",
+    "webpack": "^1.13.2",
+    "bootstrap":"^3.3.0"
+  },
+  "devDependencies": {
+    "exports-loader": "^0.6.3",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "file-loader": "^0.9.0",
+    "imports-loader": "^0.6.5",
+    "jquery": "^2.1.4",
+    "less": "^2.7.1",
+    "less-loader": "^2.2.3",
+    "url-loader": "^0.5.7"
+  }
+}
