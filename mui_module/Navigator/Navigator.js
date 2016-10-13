@@ -1,9 +1,12 @@
- const React = require('react');
- const ReactDOM = require('react-dom');
+ import React, {
+ 	Component,
+ 	PropTypes
+ } from 'react'
+ import ReactDOM from 'react-dom';
 
- var Navigator = React.createClass({
+ class Navigator extends Component{
 
- 	componentDidMount: function() {
+ 	componentDidMount() {
  		var me = this;
 
 
@@ -51,9 +54,9 @@
 
 
 
- 	},
+ 	}
 
- 	render: function() {
+ 	render() {
  		var me = this;
  		var navItems = [];
  		this.props.subpages.forEach(function(item, index) {
@@ -86,6 +89,6 @@
 			</nav>
  		);
  	}
- });
+ };
 
- module.exports = Navigator;
+export default Navigator;
