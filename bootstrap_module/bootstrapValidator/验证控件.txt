@@ -1,0 +1,92 @@
+componentDidMount: function() {
+			var me = this;
+			$('.customer_editPasswordForm').bootstrapValidator({
+				message: common.regex.fail_text,
+				feedbackIcons: {
+					valid: common.feedbackIcons.valid,
+					invalid: common.feedbackIcons.invalid,
+					validating: common.feedbackIcons.validating
+				}
+			});
+			var form = $('.customer_editPasswordForm').data('bootstrapValidator');
+			//form.validate();
+			$('.submit').click(function() {
+				//$(this).attr('disabled','disabled');
+				form.validate();
+				if (form.isValid()) { 
+					var arr = form.$form.serializeArray();
+					$.ajax({
+						type: 'POST',
+						url: common.createUrl($('.htmlbody').attr('data-ajax-submit')),
+						data: arr,
+						beforeSend: function() {
+							$('.customer_editPassword').loadingOverlay();
+						},
+						success: function(data) {
+							$('.customer_editPassword').loadingOverlay('remove');
+							 
+							if (data.suc) {
+								 me.setState({
+									title: '消息',
+									message: '修改成功'
+								});
+								me.showAlert();
+								form.resetForm(true);
+							} else {
+								 me.setState({
+									title: '消息',
+									message: data.msg
+								});
+								me.showAlert();
+							}
+						},
+						error: function(XMLHttpRequest, textStatus) {
+							$('.customer_editPassword').loadingOverlay('remove');
+							me.setState({
+								title: textStatus,
+								message: JSON.stringify(XMLHttpRequest)
+							});
+							me.showAlert();
+						},
+						dataType: "json"
+					});
+
+				}
+
+			});
+		},
+
+
+
+
+ <div className="form-group"> 
+						        	<label>旧密码</label>
+						             <input type="password" className="form-control"		
+						              data-bv-notempty="true"  data-bv-notempty-message={common.regex.empty_text}  
+						            data-bv-regexp="true"
+					                 data-bv-regexp-regexp={common.regex.password_partten}
+					                 data-bv-regexp-message={common.regex.password_text}				           
+						            	name="oldpassword" placeholder={common.regex.password_text}/>
+						        </div>		
+						        <div className="form-group"> 
+						        	<label>新密码</label>
+						             <input type="password" className="form-control" 
+						            data-bv-identical="true"  data-bv-identical-field="confirm" 
+						            data-bv-identical-message={common.regex.identical_text}
+						            data-bv-notempty="true"  data-bv-notempty-message={common.regex.empty_text}  
+						            data-bv-regexp="true"
+					                 data-bv-regexp-regexp={common.regex.password_partten}
+					                 data-bv-regexp-message={common.regex.password_text}
+						            name="password" placeholder={common.regex.password_text}/>
+						        </div>					         
+						        <div className="form-group"> 
+						        	<label>确认密码</label>
+						            <input type="password" className="form-control" 
+						             data-bv-identical="true"  data-bv-identical-field="password" 
+						             data-bv-identical-message={common.regex.identical_text}
+						              data-bv-notempty="true"  data-bv-notempty-message={common.regex.empty_text}  
+						            data-bv-regexp="true"
+					                 data-bv-regexp-regexp={common.regex.password_partten}
+					                 data-bv-regexp-message={common.regex.password_text}
+						              name="confirm" placeholder={common.regex.repassword_text}/>
+						        </div>

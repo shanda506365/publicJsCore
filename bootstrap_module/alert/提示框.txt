@@ -1,0 +1,17 @@
+showAlert: function() {
+			console.log($(this.refs.myModal));
+			$(this.refs.myModal).modal();
+		},getInitialState: function() {
+			let customer = JSON.parse($('.htmlbody').attr('data-customer'));
+			return {
+				title: 'ÏûÏ¢',
+				message: '...',
+				headPicFile:customer.picture,
+				business_licence_image:customer.business_licence_image,
+				organization_code_image:customer.organization_code_image
+			}
+		},
+
+<div className="modal fade" ref='myModal'   tabIndex="-1" role="dialog">
+						<Alert title={this.state.title} message={this.state.message} />
+					</div>

@@ -1,0 +1,19 @@
+ let H5FIleUpload = require('./H5FIleUploadNew'); 
+
+ <H5FIleUpload  data-inputText='ÉÏ´«Í·Ïñ'
+					 					 data-size='2000000'  data-acceptFileTypes='images'
+					 					 data-count='1' data-files={headPicFile}
+					 					 data-url={$('.htmlbody').attr('data-upload-headPic')}
+					 					 data-sucFun={function(files){  
+					 					 		me.refs.headPic.src = decodeURI(files[0].link);
+					 					 		me.setState({
+					 					 			headPic:files
+					 					 		});
+					 					 }}
+					 					 data-nofilesdom='true'
+					 					 data-errorFun={function(msg){me.setState({
+													title: '´íÎó',
+													message: msg
+												});
+												me.showAlert();}}
+										/> 
