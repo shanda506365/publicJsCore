@@ -1,3 +1,111 @@
+
+define(function(require, exports, module) {
+
+
+    //return function(window) {
+    var common = {
+        getNagavVersion: function() {
+
+            //Google Chrome 20 +
+            //Apple Safari 4.0+
+            //Mozilla Firefox 5.0+
+            //Opera 11.0+
+            //Microsoft Internet Explorer 9.0+
+            //Edge
+
+            var Sys = {};
+            var ua = navigator.userAgent.toLowerCase();
+            var s;
+            (s = ua.match(/msie ([\d.]+)/)) ? Sys.isIE = s[1]:
+                (s = ua.match(/firefox\/([\d.]+)/)) ? Sys.isGecko = s[1] :
+                (s = ua.match(/chrome\/([\d.]+)/)) ? Sys.isWebkit = s[1] :
+                (s = ua.match(/opera.([\d.]+)/)) ? Sys.IsOpera = s[1] :
+                (s = ua.match(/version\/([\d.]+).*safari/)) ? Sys.isSafari = s[1] :
+                (s = ua.match(/rv:([\d.]+)/)) ? Sys.isEdge = s[1] : 0;
+
+            return Sys;
+        },
+        createUrl: function(url) {
+            var d = (new Date()).getTime();
+            var keyword = 'randomD';
+            // if (url.indexOf(keyword) != -1)
+            //var re = /(\w+)=(\w+)/ig;
+            var re = new RegExp("(" + keyword + ")+=(\\w+)", "gi");
+            var mc = url.match(re);
+
+            if (mc && mc.length > 0) url = url.replace(re, '');
+
+            if (url.indexOf('?') == -1) {
+                return url + "?" + keyword + "=" + d;
+            } else {
+                return url + "&" + keyword + "=" + d;
+            }
+
+
+        },
+        regex: {
+            fail_text: '验证失败',
+            empty_text: '不能为空',
+            telephone: /^\d{11}$/, //^(\d{11})$|^(\+\d{13})$/,
+            telephone_partten: '^\\d{11}$', //'^(\\d{11})$|^(\\+\\d{13})$',
+            telephone_text: '请输入正确的手机号码',
+            random: /^[0-9]{4}$/,
+            random_partten: '^[0-9]{4}$',
+            random_text: '请输入正确的授权码',
+            password: /^[0-9a-zA-Z]{6,15}$/,
+            password_partten: '^[0-9a-zA-Z]{6,15}$',
+            password_text: '请输入6到15位密码',
+            identical_text: '两次密码不一致',
+            repassword_text: '确认密码',
+            email_text:'邮箱格式不正确',
+            nickname: /^([\w\W]){4,8}$/,
+            nickname_partten: '^([\\w\\W]){4,8}$',
+            nickname_text:'请输入4到8个字符',
+            nickname_ph:'4到8个字符，建议使用真实姓名，以方便朋友查找',
+            company: /^([\w\W]){4,30}$/,
+            company_partten: '^([\\w\\W]){4,30}$',
+            company_text:'请输入4到30个字符',
+            company_ph:'4到30个字符'
+        },
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        isValidField: function(form, filedName) {
+            var validators = form.options.fields[filedName].validators; 
+            var flag = true;
+            for (var v in validators) { 
+                var temp = form.getFieldElements(filedName).data('bv.result.' + v); 
+                if (temp == 'INVALID') { 
+                    return false;
+                }
+            }
+            return flag;
+        } 
+    };
+    module.exports = common;
+    // 	(function(w) {
+    // 		w.getNagavVersion = function() {
+    // 			var Sys = {};
+    // 			var ua = navigator.userAgent.toLowerCase();
+    // 			var s;
+    // 			(s = ua.match(/msie ([\d.]+)/)) ? Sys.isIE = s[1]:
+    // 				(s = ua.match(/firefox\/([\d.]+)/)) ? Sys.isGecko = s[1] :
+    // 				(s = ua.match(/chrome\/([\d.]+)/)) ? Sys.isWebkit = s[1] :
+    // 				(s = ua.match(/opera.([\d.]+)/)) ? Sys.IsOpera = s[1] :
+    // 				(s = ua.match(/version\/([\d.]+).*safari/)) ? Sys.isSafari = s[1] :
+    // 				(s = ua.match(/rv:([\d.]+)/)) ? Sys.isEdge = s[1] : 0;
+
+    // 			return Sys;
+    // 		}
+    // 	})(window);
+
+    // }
+
+});
+
+
 componentDidMount: function() {
 			var me = this;
 			$('.customer_editPasswordForm').bootstrapValidator({
