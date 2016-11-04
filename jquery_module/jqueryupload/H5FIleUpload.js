@@ -5,7 +5,7 @@
 
   import ReactDOM from 'react-dom';
 
-  import h5fileuploadLess from "!style!css!less!../less1/h5fileupload.less";
+  import h5fileuploadLess from "!style!css!less!../less/h5fileupload.less";
 
   import $ from './jquery-vendor.js';
 
@@ -20,37 +20,66 @@
     constructor(props) {
       super(props);
       this.deleteFile = this.deleteFile.bind(this);
-
-      this.state = {
-        files: this.props['data-files']
-      };
-    }
-    componentDidMount() {
-      let me = this;
-
-      let url = me.props["data-url"];
-      let types = me.props["data-acceptFileTypes"];
+      this.progressDis = this.progressDis.bind(this);
+      let types = this.props["data-acceptFileTypes"];
+      let fileAccept = this.props['fileAccept'];
       let typesMsg = '*';
       if (types) {
         if (types == 'images') {
           types = /(\.|\/)(gif|jpe?g|png)$/i;
           typesMsg = 'gif|jpg|png';
-        };
+          fileAccept = '.gif,.jpeg,.jpg,.png';
+        } else if (types == 'csv') {
+          types = /(\.|\/)(csv)$/i;
+          typesMsg = 'csv';
+          fileAccept = '.csv';
+        }
       }
+
+      this.state = {
+        files: this.props['data-files'],
+        fileAccept: fileAccept,
+        typesMsg: typesMsg,
+        types: types
+      };
+    }
+    progressDis(e, data) {
+      var me = this;
+      $(me.refs.progress_bar).css(
+        'width',
+        '1%'
+      ).text('');
+
+      let progress = parseInt(data.loaded / data.total * 100, 10); 
+      setTimeout(function() {
+
+        $(me.refs.progress_bar).css(
+          'width',
+          progress + '%'
+        ).text(progress + '%');
+      }, 1000)
+    }
+    componentDidMount() {
+      let me = this;
+
+      let url = me.props["data-url"];
+
+
       //    else {
       // 	types = /(\.|\/)(\w*)$/i;
       // }
       let dataErrorFun = me.props["data-errorFun"];
       let dataSucFun = me.props["data-sucFun"];
-      let maxNumberOfFiles = me.props['data-count'];
+      let maxNumberOfFiles = parseInt(me.props['data-count']);
+       
       let options = {
         url: url,
         dataType: 'json',
-        acceptFileTypes: types, ///(\.|\/)(gif|jpe?g|png)$/i,
-        typesMsg: typesMsg,
+        acceptFileTypes: me.state.types, ///(\.|\/)(gif|jpe?g|png)$/i,
+        typesMsg: me.state.typesMsg,
         maxFileSize: me.props["data-size"],
-        maxNumberOfFiles: maxNumberOfFiles ? parseInt(maxNumberOfFiles) : 100,
-        singleFileUploads: maxNumberOfFiles ? false : true //,
+        maxNumberOfFiles:maxNumberOfFiles,
+        singleFileUploads: maxNumberOfFiles<=1 ? true : false //,
           // getNumberOfFiles:function(ddd){
           // 	var count = 100;
           // 	if (maxNumberOfFiles) {
@@ -59,24 +88,14 @@
           // 	console.log(ddd);
           // 	return count;
           // } 
-      };
-      $(me.refs.h5fileupload_input).fileupload(options).on('fileuploadprogress', function(e, data) {}).on('fileuploadprogressall', function(e, data) {
-          $(me.refs.progress_bar).css(
-            'width',
-            '1%'
-          );
-          var progress = parseInt(data.loaded / data.total * 100, 10);
-
-
-          setTimeout(function() {
-
-            $(me.refs.progress_bar).css(
-              'width',
-              progress + '%'
-            );
-          }, 1000)
-
-
+      }; 
+      $(me.refs.h5fileupload_input).fileupload(options)
+        .on('fileuploadadd', function(e, data) {})
+        .on('fileuploadprogress', function(e, data) {
+ 
+        })
+        .on('fileuploadprogressall', function(e, data) { 
+            me.progressDis(e, data); 
         }).on('fileuploaddone', function(e, data) {
           // console.log(e);
           // console.log(data.result);
@@ -113,7 +132,11 @@
             };
           }
 
-        }).prop('disabled', !$.support.fileInput)
+        })
+        .on('fileuploadchunksend', function(e, data) {
+          console.log(111);
+        })
+        .prop('disabled', !$.support.fileInput)
         .parent().addClass($.support.fileInput ? undefined : 'disabled');
 
     }
@@ -182,15 +205,16 @@
       let mSize = (me.props["data-size"] / 1000 / 1000).toFixed(2);
       return (
         <div className="h5fileupload">  
-					<span  className="btn btn-success fileinput-button">
+					<span  className="btn btn-primary fileinput-button">
 						<i className="glyphicon glyphicon-plus"></i>
 						<span style={{marginLeft:'5px'}}>{text}</span>
-						<input ref='h5fileupload_input' className="h5fileupload_input" type="file" name="files[]" multiple />
+						<input ref='h5fileupload_input' className="h5fileupload_input" type="file" name="files[]" accept={me.state.fileAccept} multiple />
 					</span>
 					{dataFileUploadExDom} 
 					<div className='sizeTip'>每个上传文件限制{mSize}M</div>  
 					<div ref="progress" className="progress">
-						<div ref='progress_bar' className="progress-bar progress-bar-success"></div>
+						<div ref='progress_bar' className="progress-bar progress-bar-success"> 
+            </div>
 					</div>
 					<div ref="files" className="files">
 						{filesDom}
@@ -205,13 +229,21 @@
     'data-inputText': '上传', //按钮text
     'data-nofilesdom': true, //上传的文件是否添加删除展示
     'data-files': [], //已经上传的文件arr
-    'data-url': '/upload1/server/php/', //上传service 
+    'data-url': '/upload/server/php/', //上传service 
     'data-size': '10000000', //上传大小限制 默认10m
     'data-count': 100, //多选最大选择数目,默认100
     'data-acceptFileTypes': /(\.|\/)(\w*)$/i, //允许上传的类型,默认所有
-    'data-errorFun': function() {return false},//上传错误回调
-    'data-sucFun': function() {return true},//上传成功回调
-    'dataFileUploadExDom': [] //上传拓展显示的dom
+    'data-errorFun': function() {
+      return false
+    }, //上传错误回调
+    'data-sucFun': function() {
+      return true
+    }, //上传成功回调
+    'dataFileUploadExDom': [], //上传拓展显示的dom
+    fileuploadaddFun: function() {
+      return true;
+    }, //上传添加完成后回调 
+    fileAccept: '*', //默认选择类型
   };
   H5FIleUpload.propTypes = {
     'data-inputText': PropTypes.string.isRequired,
