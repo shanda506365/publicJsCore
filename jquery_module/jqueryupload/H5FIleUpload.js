@@ -91,6 +91,11 @@
       }; 
       $(me.refs.h5fileupload_input).fileupload(options)
         .on('fileuploadadd', function(e, data) {})
+        .on('fileuploadfail', function(e, data) {  
+            if (dataErrorFun) {
+              dataErrorFun('上传失败');
+            }; 
+        })
         .on('fileuploadprogress', function(e, data) {
  
         })

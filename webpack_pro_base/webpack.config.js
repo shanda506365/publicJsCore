@@ -34,6 +34,9 @@ module.exports = {
         }),
 
         new uglifyJsPlugin({
+            output: {
+                comments: false, // remove all comments
+            },
             compress: {
                 warnings: false
             }
