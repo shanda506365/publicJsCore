@@ -5,7 +5,7 @@
 
   import ReactDOM from 'react-dom';
 
-  import h5fileuploadLess from "!style!css!less!../less/h5fileupload.less";
+  import "!style!css!less!../less/h5fileupload.less";
 
   import $ from './jquery-vendor.js';
 
@@ -33,6 +33,10 @@
           types = /(\.|\/)(csv)$/i;
           typesMsg = 'csv';
           fileAccept = '.csv';
+        }else if (types == 'xlsx') {
+          types = /(\.|\/)(xlsx)$/i;
+          typesMsg = 'xlsx';
+          fileAccept = '.xlsx';
         }
       }
 
@@ -66,7 +70,7 @@
 
 
       //    else {
-      // 	types = /(\.|\/)(\w*)$/i;
+      //  types = /(\.|\/)(\w*)$/i;
       // }
       let dataErrorFun = me.props["data-errorFun"];
       let dataSucFun = me.props["data-sucFun"];
@@ -79,23 +83,18 @@
         typesMsg: me.state.typesMsg,
         maxFileSize: me.props["data-size"],
         maxNumberOfFiles:maxNumberOfFiles,
-        singleFileUploads: maxNumberOfFiles<=1 ? true : false //,
+        singleFileUploads: true //,
           // getNumberOfFiles:function(ddd){
-          // 	var count = 100;
-          // 	if (maxNumberOfFiles) {
-          // 		count=parseInt(maxNumberOfFiles)
-          // 	}
-          // 	console.log(ddd);
-          // 	return count;
+          //  var count = 100;
+          //  if (maxNumberOfFiles) {
+          //    count=parseInt(maxNumberOfFiles)
+          //  }
+          //  console.log(ddd);
+          //  return count;
           // } 
       }; 
       $(me.refs.h5fileupload_input).fileupload(options)
         .on('fileuploadadd', function(e, data) {})
-        .on('fileuploadfail', function(e, data) {  
-            if (dataErrorFun) {
-              dataErrorFun('上传失败');
-            }; 
-        })
         .on('fileuploadprogress', function(e, data) {
  
         })
@@ -106,7 +105,7 @@
           // console.log(data.result);
 
           // $.each(data.result.files, function(index, file) {
-          // 	$('<div />').text(file.name).appendTo(me.refs.files);
+          //  $('<div />').text(file.name).appendTo(me.refs.files);
           // });
           if (data.result.files) {
 
@@ -139,7 +138,7 @@
 
         })
         .on('fileuploadchunksend', function(e, data) {
-          console.log(111);
+          //console.log(111);
         })
         .prop('disabled', !$.support.fileInput)
         .parent().addClass($.support.fileInput ? undefined : 'disabled');
@@ -202,30 +201,37 @@
       } else {
         $.each(me.state.files, function(index, file) {
           filesDom.push(<div key={index}><a href={file.link} target='_blank'><span className="glyphicon glyphicon-paperclip"></span>  {file.file_name} </a> ({file.size})<a style={{marginLeft:'10px'}} href="###" onClick={function(){
-						me.deleteFile(file.delete_url,file.file_id);
-					}}>删除</a></div>);
+            me.deleteFile(file.delete_url,file.file_id);
+          }}>删除</a></div>);
         });
       }
 
       let mSize = (me.props["data-size"] / 1000 / 1000).toFixed(2);
+      let maxNumberOfFiles = parseInt(me.props['data-count']);
+      let inputDom = []
+      if (maxNumberOfFiles<=1) {
+          inputDom.push(<input ref='h5fileupload_input' className="h5fileupload_input" type="file" name="files" accept={me.state.fileAccept} />)
+      }else{
+          inputDom.push(<input ref='h5fileupload_input' className="h5fileupload_input" type="file" name="files" accept={me.state.fileAccept}  multiple />)
+      }
       return (
         <div className="h5fileupload">  
-					<span  className="btn btn-primary fileinput-button">
-						<i className="glyphicon glyphicon-plus"></i>
-						<span style={{marginLeft:'5px'}}>{text}</span>
-						<input ref='h5fileupload_input' className="h5fileupload_input" type="file" name="files[]" accept={me.state.fileAccept} multiple />
-					</span>
-					{dataFileUploadExDom} 
-					<div className='sizeTip'>每个上传文件限制{mSize}M</div>  
-					<div ref="progress" className="progress">
-						<div ref='progress_bar' className="progress-bar progress-bar-success"> 
+          <span  className="btn btn-success fileinput-button">
+            <i className="glyphicon glyphicon-plus"></i>
+            <span style={{marginLeft:'5px'}}>{text}</span>
+            {inputDom}
+          </span>
+          {dataFileUploadExDom} 
+          <div className='sizeTip'>每个上传文件限制{mSize}M</div>  
+          <div ref="progress" className="progress">
+            <div ref='progress_bar' className="progress-bar progress-bar-success"> 
             </div>
-					</div>
-					<div ref="files" className="files">
-						{filesDom}
-					</div>
-					<br/>
-		 		</div>
+          </div>
+          <div ref="files" className="files">
+            {filesDom}
+          </div>
+          <br/>
+        </div>
       );
     }
   };
