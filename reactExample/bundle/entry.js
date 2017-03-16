@@ -60,6 +60,12 @@
 
 	var _reactRouter = __webpack_require__(219);
 
+	var _Reducer = __webpack_require__(278);
+
+	var _Action = __webpack_require__(279);
+
+	var _Action2 = _interopRequireDefault(_Action);
+
 	var _Main = __webpack_require__(275);
 
 	var _Main2 = _interopRequireDefault(_Main);
@@ -74,43 +80,8 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	// Action
-	var Action = {
-	  increaseAction: {
-	    type: 'increase'
-	  },
-	  increaseTestAction: {
-	    type: 'increaseTest'
-	  }
-	};
-
-	// Reducer
-	function counter() {
-	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {
-	    count: 0,
-	    title: '消息'
-	  };
-	  var action = arguments[1];
-
-	  var count = state.count;
-	  switch (action.type) {
-	    case 'increase':
-	      return {
-	        count: count + 1,
-	        title: '消息' + count
-	      };
-	    case 'increaseTest':
-	      return {
-	        count: count + 1,
-	        title: '消息' + count
-	      };
-	    default:
-	      return state;
-	  }
-	}
-
 	// Store
-	var store = (0, _redux.createStore)(counter);
+	var store = (0, _redux.createStore)(_Reducer.counterReducer);
 
 	// Map Redux state to component props
 	function mapStateToProps(state) {
@@ -119,15 +90,14 @@
 	    title: state.title
 	  };
 	}
-
 	// Map Redux actions to component props
 	function mapDispatchToProps(dispatch) {
 	  return {
 	    onIncreaseClick: function onIncreaseClick() {
-	      return dispatch(Action.increaseAction);
+	      return dispatch(_Action2.default.increaseAction);
 	    },
 	    onIncreaseTestClick: function onIncreaseTestClick() {
-	      return dispatch(Action.increaseTestAction);
+	      return dispatch(_Action2.default.increaseTestAction);
 	    }
 	  };
 	}
@@ -28412,6 +28382,98 @@
 	});
 
 	exports.default = Counter;
+
+/***/ },
+/* 278 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.counterReducer = undefined;
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactDom = __webpack_require__(28);
+
+	var _reactDom2 = _interopRequireDefault(_reactDom);
+
+	var _redux = __webpack_require__(171);
+
+	var _reactRedux = __webpack_require__(192);
+
+	var _reactRouter = __webpack_require__(219);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	// Reducer
+	function counterReducer() {
+	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {
+	    count: 0,
+	    title: '消息'
+	  };
+	  var action = arguments[1];
+
+	  var count = state.count;
+	  switch (action.type) {
+	    case 'increase':
+	      return {
+	        count: count + 1,
+	        title: '消息' + count
+	      };
+	    case 'increaseTest':
+	      return {
+	        count: count + 1,
+	        title: '消息' + count
+	      };
+	    default:
+	      return state;
+	  }
+	}
+
+	exports.counterReducer = counterReducer;
+
+/***/ },
+/* 279 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactDom = __webpack_require__(28);
+
+	var _reactDom2 = _interopRequireDefault(_reactDom);
+
+	var _redux = __webpack_require__(171);
+
+	var _reactRedux = __webpack_require__(192);
+
+	var _reactRouter = __webpack_require__(219);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	// Action
+	var Action = {
+	  increaseAction: {
+	    type: 'increase'
+	  },
+	  increaseTestAction: {
+	    type: 'increaseTest'
+	  }
+	};
+
+	exports.default = Action;
 
 /***/ }
 /******/ ]);

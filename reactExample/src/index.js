@@ -18,50 +18,14 @@ import {
   IndexRoute,
   IndexLink
 } from 'react-router'
+import {counterReducer} from './Reducer'
+import Action from './Action'
 import Main from './Main'
 import Counter from  './Counter'
-import Test from './Test'
-
-
-
-
-
-// Action
-const Action = {
-  increaseAction: {
-    type: 'increase'
-  },
-  increaseTestAction :{
-    type: 'increaseTest'
-  }
-}
-
-
-
-// Reducer
-function counter(state = {
-  count: 0,
-  title: '消息'
-}, action) {
-  const count = state.count
-  switch (action.type) {
-    case 'increase':
-      return {
-        count: count + 1,
-        title:'消息' + count
-      }
-    case 'increaseTest':
-      return {
-        count: count + 1,
-        title: '消息' + count
-      }
-    default:
-      return state
-  }
-}
-
+import Test from './Test'  
+ 
 // Store
-const store = createStore(counter)
+const store = createStore(counterReducer)
 
 // Map Redux state to component props
 function mapStateToProps(state) {
@@ -69,8 +33,7 @@ function mapStateToProps(state) {
     count: state.count,
     title: state.title
   }
-}
-
+} 
 // Map Redux actions to component props
 function mapDispatchToProps(dispatch) {
   return {
