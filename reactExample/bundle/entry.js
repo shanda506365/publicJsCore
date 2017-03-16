@@ -60,7 +60,7 @@
 
 	var _reactRouter = __webpack_require__(219);
 
-	var _Reducer = __webpack_require__(278);
+	var _Store = __webpack_require__(282);
 
 	var _Action = __webpack_require__(279);
 
@@ -79,9 +79,6 @@
 	var _Test2 = _interopRequireDefault(_Test);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	// Store
-	var store = (0, _redux.createStore)(_Reducer.counterReducer);
 
 	// Map Redux state to component props
 	function mapStateToProps(state) {
@@ -109,7 +106,7 @@
 
 	_reactDom2.default.render(_react2.default.createElement(
 	  _reactRedux.Provider,
-	  { store: store },
+	  { store: _Store.GlobalStore },
 	  _react2.default.createElement(
 	    _reactRouter.Router,
 	    { history: _reactRouter.hashHistory },
@@ -28430,7 +28427,7 @@
 	        title: '消息' + count
 	      };
 	    case 'increaseTest':
-	      (0, _jqueryVendor2.default)('button').text('Do it');
+	      (0, _jqueryVendor2.default)('button').text('Do it' + count);
 	      return {
 	        count: count + 1,
 	        title: '消息' + count
@@ -38319,6 +38316,40 @@
 	return jQuery;
 	}));
 
+
+/***/ },
+/* 282 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.GlobalStore = undefined;
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactDom = __webpack_require__(28);
+
+	var _reactDom2 = _interopRequireDefault(_reactDom);
+
+	var _redux = __webpack_require__(171);
+
+	var _reactRedux = __webpack_require__(192);
+
+	var _reactRouter = __webpack_require__(219);
+
+	var _Reducer = __webpack_require__(278);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	// Store
+	var store = (0, _redux.createStore)(_Reducer.counterReducer);
+
+	exports.GlobalStore = store;
 
 /***/ }
 /******/ ]);

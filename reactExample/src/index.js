@@ -18,14 +18,13 @@ import {
   IndexRoute,
   IndexLink
 } from 'react-router'
-import {counterReducer} from './Reducer'
+import {GlobalStore} from './Store'
 import Action from './Action'
 import Main from './Main'
 import Counter from  './Counter'
 import Test from './Test'  
  
-// Store
-const store = createStore(counterReducer)
+ 
 
 // Map Redux state to component props
 function mapStateToProps(state) {
@@ -58,7 +57,7 @@ const App1 = connect(
 
 
 ReactDOM.render(
-  <Provider store={store}>
+  <Provider store={GlobalStore}>
     <Router history={hashHistory}>
       <Route path="/" component={App} > 
         <IndexRoute component={App1}/>
