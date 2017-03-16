@@ -35,7 +35,7 @@ function counterReducer(state = {
         title: '消息' + count
       }
     case 'increaseTest':
-      $('button').text('Do it'+count)
+      $('button').text('Do it hahahaha'+count)
       console.log(action.filter)
       return {
         count: count + 1,

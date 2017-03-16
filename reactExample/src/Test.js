@@ -33,8 +33,8 @@ const Test = React.createClass({
 		console.log('Test',this.props)
 		return (
 			<div>TEST {count}  {title}
-				<button onClick={onIncreaseTestClick}>IncreaseTest</button>
-			 	<Link to="/">Counter</Link>
+				<button onClick={onIncreaseTestClick}>消息计数</button>
+			 	<Link to="/">计数</Link>
 			</div>
 		);
 	}

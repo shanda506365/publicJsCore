@@ -34,8 +34,8 @@ const Counter = React.createClass({
     return ( 
       <div> 
        <span>{count}</span>
-        <button onClick={onIncreaseClick}>Increase</button> 
-        <Link to="/Test">Test</Link>
+        <button onClick={onIncreaseClick}>计数</button> 
+        <Link to="/Test">消息计数</Link>
       </div>
     )
   }

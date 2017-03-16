@@ -28281,12 +28281,12 @@
 				_react2.default.createElement(
 					'button',
 					{ onClick: onIncreaseTestClick },
-					'IncreaseTest'
+					'\u6D88\u606F\u8BA1\u6570'
 				),
 				_react2.default.createElement(
 					_reactRouter.Link,
 					{ to: '/' },
-					'Counter'
+					'\u8BA1\u6570'
 				)
 			);
 		}
@@ -28348,12 +28348,12 @@
 	      _react2.default.createElement(
 	        'button',
 	        { onClick: onIncreaseClick },
-	        'Increase'
+	        '\u8BA1\u6570'
 	      ),
 	      _react2.default.createElement(
 	        _reactRouter.Link,
 	        { to: '/Test' },
-	        'Test'
+	        '\u6D88\u606F\u8BA1\u6570'
 	      )
 	    );
 	  }
@@ -38354,7 +38354,7 @@
 	        title: '消息' + count
 	      };
 	    case 'increaseTest':
-	      (0, _jqueryVendor2.default)('button').text('Do it' + count);
+	      (0, _jqueryVendor2.default)('button').text('Do it hahahaha' + count);
 	      console.log(action.filter);
 	      return {
 	        count: count + 1,
