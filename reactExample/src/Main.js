@@ -26,10 +26,7 @@ const Main = React.createClass({
     router: React.PropTypes.object
   },
   render() {
-    const {
-      value,
-      onIncreaseClick
-    } = this.props
+    
     console.log('Main', this.context, this.props)
     return ( 
       <div> 

@@ -66,8 +66,8 @@ const store = createStore(counter)
 // Map Redux state to component props
 function mapStateToProps(state) {
   return {
-    value: state.count,
-    nextVal: state.title
+    count: state.count,
+    title: state.title
   }
 }
 

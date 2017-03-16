@@ -115,8 +115,8 @@
 	// Map Redux state to component props
 	function mapStateToProps(state) {
 	  return {
-	    value: state.count,
-	    nextVal: state.title
+	    count: state.count,
+	    title: state.title
 	  };
 	}
 
@@ -28271,9 +28271,6 @@
 	    router: _react2.default.PropTypes.object
 	  },
 	  render: function render() {
-	    var _props = this.props,
-	        value = _props.value,
-	        onIncreaseClick = _props.onIncreaseClick;
 
 	    console.log('Main', this.context, this.props);
 	    return _react2.default.createElement(
@@ -28321,7 +28318,8 @@
 
 		render: function render() {
 			var _props = this.props,
-			    nextVal = _props.nextVal,
+			    count = _props.count,
+			    title = _props.title,
 			    onIncreaseTestClick = _props.onIncreaseTestClick;
 
 			console.log('Test', this.props);
@@ -28329,9 +28327,9 @@
 				'div',
 				null,
 				'TEST ',
-				Val,
+				count,
 				'  ',
-				nextVal,
+				title,
 				_react2.default.createElement(
 					'button',
 					{ onClick: onIncreaseTestClick },
@@ -28387,7 +28385,7 @@
 	  },
 	  render: function render() {
 	    var _props = this.props,
-	        value = _props.value,
+	        count = _props.count,
 	        onIncreaseClick = _props.onIncreaseClick;
 
 	    console.log('Counter', this.context, this.props);
@@ -28397,7 +28395,7 @@
 	      _react2.default.createElement(
 	        'span',
 	        null,
-	        value
+	        count
 	      ),
 	      _react2.default.createElement(
 	        'button',

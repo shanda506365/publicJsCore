@@ -26,12 +26,13 @@ const Test = React.createClass({
 	 
 	render() {
 		 const {
-		      nextVal,
+		 		count,
+		      title,
 		      onIncreaseTestClick
 		    } = this.props
 		console.log('Test',this.props)
 		return (
-			<div>TEST {Val}  {nextVal}
+			<div>TEST {count}  {title}
 				<button onClick={onIncreaseTestClick}>Increase</button>
 			 	<Link to="/">Counter</Link>
 			</div>

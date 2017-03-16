@@ -27,13 +27,13 @@ const Counter = React.createClass({
   },
   render() {
     const {
-      value,
+      count,
       onIncreaseClick
     } = this.props
     console.log('Counter', this.context, this.props)
     return ( 
       <div> 
-       <span>{value}</span>
+       <span>{count}</span>
         <button onClick={onIncreaseClick}>Increase</button> 
         <Link to="/Test">Test</Link>
       </div>
