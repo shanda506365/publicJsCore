@@ -81,20 +81,24 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	// Map Redux state to component props
-	function mapStateToProps(state) {
+	function mapStateToProps(state, ownProps) {
+	  console.log('mapStateToProps', ownProps);
 	  return {
 	    count: state.count,
 	    title: state.title
 	  };
 	}
-	// Map Redux actions to component props
-	function mapDispatchToProps(dispatch) {
+	// Map Redux actions to component props  
+	function mapDispatchToProps(dispatch, ownProps) {
 	  return {
 	    onIncreaseClick: function onIncreaseClick() {
 	      return dispatch(_Action2.default.increaseAction);
 	    },
 	    onIncreaseTestClick: function onIncreaseTestClick() {
-	      return dispatch(_Action2.default.increaseTestAction);
+	      return dispatch({
+	        type: 'increaseTest',
+	        filter: ownProps
+	      });
 	    }
 	  };
 	}
@@ -28428,6 +28432,7 @@
 	      };
 	    case 'increaseTest':
 	      (0, _jqueryVendor2.default)('button').text('Do it' + count);
+	      console.log(action.filter);
 	      return {
 	        count: count + 1,
 	        title: '消息' + count

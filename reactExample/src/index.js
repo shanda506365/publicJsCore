@@ -27,17 +27,21 @@ import Test from './Test'
  
 
 // Map Redux state to component props
-function mapStateToProps(state) {
+function mapStateToProps(state, ownProps) {
+  console.log('mapStateToProps',ownProps)
   return {
     count: state.count,
     title: state.title
   }
 } 
-// Map Redux actions to component props
-function mapDispatchToProps(dispatch) {
+// Map Redux actions to component props  
+function mapDispatchToProps(dispatch,ownProps) {
   return {
     onIncreaseClick: () => dispatch(Action.increaseAction),
-    onIncreaseTestClick: () => dispatch(Action.increaseTestAction)
+    onIncreaseTestClick: () => dispatch({
+       type:'increaseTest',
+       filter:ownProps
+    })
   }
 }
 
