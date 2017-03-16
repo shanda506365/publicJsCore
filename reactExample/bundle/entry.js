@@ -97,7 +97,7 @@
 	    case 'increase':
 	      return {
 	        count: count + 1,
-	        title: state.title
+	        title: '消息' + count
 	      };
 	    case 'increaseTest':
 	      return {
