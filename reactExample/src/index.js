@@ -18,42 +18,42 @@ import {
   IndexRoute,
   IndexLink
 } from 'react-router'
+import Main from './Main'
+import Counter from  './Counter'
+import Test from './Test'
 
-// React component
-class Counter extends Component {
-  render() {
-    const {
-      value,
-      onIncreaseClick
-    } = this.props
-    return (
-      <div>
-        <span>{value}</span>
-        <button onClick={onIncreaseClick}>Increase</button>
-      </div>
-    )
+
+
+
+
+// Action
+const Action = {
+  increaseAction: {
+    type: 'increase'
+  },
+  increaseTestAction :{
+    type: 'increaseTest'
   }
 }
 
-Counter.propTypes = {
-  value: PropTypes.number.isRequired,
-  onIncreaseClick: PropTypes.func.isRequired
-}
 
-// Action
-const increaseAction = {
-  type: 'increase'
-}
 
 // Reducer
 function counter(state = {
-  count: 0
+  count: 0,
+  title: '消息'
 }, action) {
   const count = state.count
   switch (action.type) {
     case 'increase':
       return {
-        count: count + 1
+        count: count + 1,
+        title:state.title
+      }
+    case 'increaseTest':
+      return {
+        count: count + 1,
+        title: '消息' + count
       }
     default:
       return state
@@ -66,14 +66,16 @@ const store = createStore(counter)
 // Map Redux state to component props
 function mapStateToProps(state) {
   return {
-    value: state.count
+    value: state.count,
+    nextVal: state.title
   }
 }
 
 // Map Redux actions to component props
 function mapDispatchToProps(dispatch) {
   return {
-    onIncreaseClick: () => dispatch(increaseAction)
+    onIncreaseClick: () => dispatch(Action.increaseAction),
+    onIncreaseTestClick: () => dispatch(Action.increaseTestAction)
   }
 }
 
@@ -81,14 +83,25 @@ function mapDispatchToProps(dispatch) {
 const App = connect(
   mapStateToProps,
   mapDispatchToProps
+)(Main)
+const App1 = connect(
+  mapStateToProps,
+  mapDispatchToProps
 )(Counter)
+ const App2 = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Test)
+
 
 ReactDOM.render(
   <Provider store={store}>
     <Router history={hashHistory}>
       <Route path="/" component={App} > 
-        <IndexRoute component={App}/>
+        <IndexRoute component={App1}/>
+        <Route path='/Test' component={App2} />
       </Route>
+
     </Router> 
   </Provider>,
   document.getElementById('root')

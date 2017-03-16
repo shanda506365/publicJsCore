@@ -46,8 +46,6 @@
 
 	'use strict';
 
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
 	var _react = __webpack_require__(1);
 
 	var _react2 = _interopRequireDefault(_react);
@@ -62,65 +60,35 @@
 
 	var _reactRouter = __webpack_require__(219);
 
+	var _Main = __webpack_require__(275);
+
+	var _Main2 = _interopRequireDefault(_Main);
+
+	var _Counter = __webpack_require__(277);
+
+	var _Counter2 = _interopRequireDefault(_Counter);
+
+	var _Test = __webpack_require__(276);
+
+	var _Test2 = _interopRequireDefault(_Test);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	// React component
-	var Counter = function (_Component) {
-	  _inherits(Counter, _Component);
-
-	  function Counter() {
-	    _classCallCheck(this, Counter);
-
-	    return _possibleConstructorReturn(this, (Counter.__proto__ || Object.getPrototypeOf(Counter)).apply(this, arguments));
-	  }
-
-	  _createClass(Counter, [{
-	    key: 'render',
-	    value: function render() {
-	      var _props = this.props,
-	          value = _props.value,
-	          onIncreaseClick = _props.onIncreaseClick;
-
-	      return _react2.default.createElement(
-	        'div',
-	        null,
-	        _react2.default.createElement(
-	          'span',
-	          null,
-	          value
-	        ),
-	        _react2.default.createElement(
-	          'button',
-	          { onClick: onIncreaseClick },
-	          'Increase'
-	        )
-	      );
-	    }
-	  }]);
-
-	  return Counter;
-	}(_react.Component);
-
-	Counter.propTypes = {
-	  value: _react.PropTypes.number.isRequired,
-	  onIncreaseClick: _react.PropTypes.func.isRequired
-	};
-
 	// Action
-	var increaseAction = {
-	  type: 'increase'
+	var Action = {
+	  increaseAction: {
+	    type: 'increase'
+	  },
+	  increaseTestAction: {
+	    type: 'increaseTest'
+	  }
 	};
 
 	// Reducer
 	function counter() {
 	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {
-	    count: 0
+	    count: 0,
+	    title: '消息'
 	  };
 	  var action = arguments[1];
 
@@ -128,7 +96,13 @@
 	  switch (action.type) {
 	    case 'increase':
 	      return {
-	        count: count + 1
+	        count: count + 1,
+	        title: state.title
+	      };
+	    case 'increaseTest':
+	      return {
+	        count: count + 1,
+	        title: '消息' + count
 	      };
 	    default:
 	      return state;
@@ -141,7 +115,8 @@
 	// Map Redux state to component props
 	function mapStateToProps(state) {
 	  return {
-	    value: state.count
+	    value: state.count,
+	    nextVal: state.title
 	  };
 	}
 
@@ -149,13 +124,18 @@
 	function mapDispatchToProps(dispatch) {
 	  return {
 	    onIncreaseClick: function onIncreaseClick() {
-	      return dispatch(increaseAction);
+	      return dispatch(Action.increaseAction);
+	    },
+	    onIncreaseTestClick: function onIncreaseTestClick() {
+	      return dispatch(Action.increaseTestAction);
 	    }
 	  };
 	}
 
 	// Connected Component
-	var App = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Counter);
+	var App = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_Main2.default);
+	var App1 = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_Counter2.default);
+	var App2 = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_Test2.default);
 
 	_reactDom2.default.render(_react2.default.createElement(
 	  _reactRedux.Provider,
@@ -166,7 +146,8 @@
 	    _react2.default.createElement(
 	      _reactRouter.Route,
 	      { path: '/', component: App },
-	      _react2.default.createElement(_reactRouter.IndexRoute, { component: App })
+	      _react2.default.createElement(_reactRouter.IndexRoute, { component: App1 }),
+	      _react2.default.createElement(_reactRouter.Route, { path: '/Test', component: App2 })
 	    )
 	  )
 	), document.getElementById('root'));
@@ -28251,6 +28232,188 @@
 	    if (getHashPath() !== path) replaceHashPath(path);
 	  });
 	};
+
+/***/ },
+/* 275 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactDom = __webpack_require__(28);
+
+	var _reactDom2 = _interopRequireDefault(_reactDom);
+
+	var _redux = __webpack_require__(171);
+
+	var _reactRedux = __webpack_require__(192);
+
+	var _reactRouter = __webpack_require__(219);
+
+	var _Test = __webpack_require__(276);
+
+	var _Test2 = _interopRequireDefault(_Test);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	// React component
+	var Main = _react2.default.createClass({
+	  displayName: 'Main',
+
+	  contextTypes: {
+	    router: _react2.default.PropTypes.object
+	  },
+	  render: function render() {
+	    var _props = this.props,
+	        value = _props.value,
+	        onIncreaseClick = _props.onIncreaseClick;
+
+	    console.log('Main', this.context, this.props);
+	    return _react2.default.createElement(
+	      'div',
+	      null,
+	      this.props.children
+	    );
+	  }
+	});
+
+	exports.default = Main;
+
+/***/ },
+/* 276 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactDom = __webpack_require__(28);
+
+	var _reactDom2 = _interopRequireDefault(_reactDom);
+
+	var _redux = __webpack_require__(171);
+
+	var _reactRedux = __webpack_require__(192);
+
+	var _reactRouter = __webpack_require__(219);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var Test = _react2.default.createClass({
+		displayName: 'Test',
+
+		contextTypes: {
+			router: _react2.default.PropTypes.object
+		},
+
+		render: function render() {
+			var _props = this.props,
+			    nextVal = _props.nextVal,
+			    onIncreaseTestClick = _props.onIncreaseTestClick;
+
+			console.log('Test', this.props);
+			return _react2.default.createElement(
+				'div',
+				null,
+				'TEST ',
+				Val,
+				'  ',
+				nextVal,
+				_react2.default.createElement(
+					'button',
+					{ onClick: onIncreaseTestClick },
+					'Increase'
+				),
+				_react2.default.createElement(
+					_reactRouter.Link,
+					{ to: '/' },
+					'Counter'
+				)
+			);
+		}
+	});
+
+	exports.default = Test;
+
+/***/ },
+/* 277 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactDom = __webpack_require__(28);
+
+	var _reactDom2 = _interopRequireDefault(_reactDom);
+
+	var _redux = __webpack_require__(171);
+
+	var _reactRedux = __webpack_require__(192);
+
+	var _reactRouter = __webpack_require__(219);
+
+	var _Test = __webpack_require__(276);
+
+	var _Test2 = _interopRequireDefault(_Test);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	// React component
+	var Counter = _react2.default.createClass({
+	  displayName: 'Counter',
+
+	  contextTypes: {
+	    router: _react2.default.PropTypes.object
+	  },
+	  render: function render() {
+	    var _props = this.props,
+	        value = _props.value,
+	        onIncreaseClick = _props.onIncreaseClick;
+
+	    console.log('Counter', this.context, this.props);
+	    return _react2.default.createElement(
+	      'div',
+	      null,
+	      _react2.default.createElement(
+	        'span',
+	        null,
+	        value
+	      ),
+	      _react2.default.createElement(
+	        'button',
+	        { onClick: onIncreaseClick },
+	        'Increase'
+	      ),
+	      _react2.default.createElement(
+	        _reactRouter.Link,
+	        { to: '/Test' },
+	        'Test'
+	      )
+	    );
+	  }
+	});
+
+	exports.default = Counter;
 
 /***/ }
 /******/ ]);
