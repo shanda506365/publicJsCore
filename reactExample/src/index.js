@@ -18,43 +18,34 @@ import {
   IndexRoute,
   IndexLink
 } from 'react-router'
-import {GlobalStore} from './Store'
-import Action from './Action'
+import {
+  GlobalStore
+} from './Store'
+
+
+import {mapStateToProps} from './MapStateToProps'
+import {mapDispatchToProps} from './MapDispatchToProps'
+
+
 import Main from './Main'
-import Counter from  './Counter'
-import Test from './Test'  
- 
+import Counter from './Counter'
+import Test from './Test'
+
+
+
  
 
-// Map Redux state to component props
-function mapStateToProps(state, ownProps) {
-  console.log('mapStateToProps',ownProps)
-  return {
-    count: state.count,
-    title: state.title
-  }
-} 
-// Map Redux actions to component props  
-function mapDispatchToProps(dispatch,ownProps) {
-  return {
-    onIncreaseClick: () => dispatch(Action.increaseAction),
-    onIncreaseTestClick: () => dispatch({
-       type:'increaseTest',
-       filter:ownProps
-    })
-  }
-}
 
 // Connected Component
-const App = connect(
+const con_Main = connect(
   mapStateToProps,
   mapDispatchToProps
 )(Main)
-const App1 = connect(
+const con_Counter = connect(
   mapStateToProps,
   mapDispatchToProps
 )(Counter)
- const App2 = connect(
+const con_Test = connect(
   mapStateToProps,
   mapDispatchToProps
 )(Test)
@@ -63,9 +54,9 @@ const App1 = connect(
 ReactDOM.render(
   <Provider store={GlobalStore}>
     <Router history={hashHistory}>
-      <Route path="/" component={App} > 
-        <IndexRoute component={App1}/>
-        <Route path='/Test' component={App2} />
+      <Route path="/" component={con_Main} > 
+        <IndexRoute component={con_Counter}/>
+        <Route path='/Test' component={con_Test} />
       </Route>
 
     </Router> 

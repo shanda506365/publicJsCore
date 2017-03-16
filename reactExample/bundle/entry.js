@@ -62,9 +62,9 @@
 
 	var _Store = __webpack_require__(282);
 
-	var _Action = __webpack_require__(279);
+	var _MapStateToProps = __webpack_require__(283);
 
-	var _Action2 = _interopRequireDefault(_Action);
+	var _MapDispatchToProps = __webpack_require__(284);
 
 	var _Main = __webpack_require__(275);
 
@@ -80,33 +80,10 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	// Map Redux state to component props
-	function mapStateToProps(state, ownProps) {
-	  console.log('mapStateToProps', ownProps);
-	  return {
-	    count: state.count,
-	    title: state.title
-	  };
-	}
-	// Map Redux actions to component props  
-	function mapDispatchToProps(dispatch, ownProps) {
-	  return {
-	    onIncreaseClick: function onIncreaseClick() {
-	      return dispatch(_Action2.default.increaseAction);
-	    },
-	    onIncreaseTestClick: function onIncreaseTestClick() {
-	      return dispatch({
-	        type: 'increaseTest',
-	        filter: ownProps
-	      });
-	    }
-	  };
-	}
-
 	// Connected Component
-	var App = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_Main2.default);
-	var App1 = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_Counter2.default);
-	var App2 = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_Test2.default);
+	var con_Main = (0, _reactRedux.connect)(_MapStateToProps.mapStateToProps, _MapDispatchToProps.mapDispatchToProps)(_Main2.default);
+	var con_Counter = (0, _reactRedux.connect)(_MapStateToProps.mapStateToProps, _MapDispatchToProps.mapDispatchToProps)(_Counter2.default);
+	var con_Test = (0, _reactRedux.connect)(_MapStateToProps.mapStateToProps, _MapDispatchToProps.mapDispatchToProps)(_Test2.default);
 
 	_reactDom2.default.render(_react2.default.createElement(
 	  _reactRedux.Provider,
@@ -116,9 +93,9 @@
 	    { history: _reactRouter.hashHistory },
 	    _react2.default.createElement(
 	      _reactRouter.Route,
-	      { path: '/', component: App },
-	      _react2.default.createElement(_reactRouter.IndexRoute, { component: App1 }),
-	      _react2.default.createElement(_reactRouter.Route, { path: '/Test', component: App2 })
+	      { path: '/', component: con_Main },
+	      _react2.default.createElement(_reactRouter.IndexRoute, { component: con_Counter }),
+	      _react2.default.createElement(_reactRouter.Route, { path: '/Test', component: con_Test })
 	    )
 	  )
 	), document.getElementById('root'));
@@ -38355,6 +38332,92 @@
 	var store = (0, _redux.createStore)(_Reducer.counterReducer);
 
 	exports.GlobalStore = store;
+
+/***/ },
+/* 283 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.mapStateToProps = mapStateToProps;
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactDom = __webpack_require__(28);
+
+	var _reactDom2 = _interopRequireDefault(_reactDom);
+
+	var _redux = __webpack_require__(171);
+
+	var _reactRedux = __webpack_require__(192);
+
+	var _reactRouter = __webpack_require__(219);
+
+	var _Action = __webpack_require__(279);
+
+	var _Action2 = _interopRequireDefault(_Action);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	// Map Redux state to component props
+	function mapStateToProps(state, ownProps) {
+	  console.log('mapStateToProps', ownProps);
+	  return {
+	    count: state.count,
+	    title: state.title
+	  };
+	}
+
+/***/ },
+/* 284 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.mapDispatchToProps = mapDispatchToProps;
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactDom = __webpack_require__(28);
+
+	var _reactDom2 = _interopRequireDefault(_reactDom);
+
+	var _redux = __webpack_require__(171);
+
+	var _reactRedux = __webpack_require__(192);
+
+	var _reactRouter = __webpack_require__(219);
+
+	var _Action = __webpack_require__(279);
+
+	var _Action2 = _interopRequireDefault(_Action);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	// Map Redux actions to component props  
+	function mapDispatchToProps(dispatch, ownProps) {
+	  return {
+	    onIncreaseClick: function onIncreaseClick() {
+	      return dispatch(_Action2.default.increaseAction);
+	    },
+	    onIncreaseTestClick: function onIncreaseTestClick() {
+	      return dispatch({
+	        type: 'increaseTest',
+	        filter: ownProps
+	      });
+	    }
+	  };
+	}
 
 /***/ }
 /******/ ]);
