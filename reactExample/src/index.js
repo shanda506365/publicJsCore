@@ -57,8 +57,7 @@ ReactDOM.render(
       <Route path="/" component={con_Main} > 
         <IndexRoute component={con_Counter}/>
         <Route path='/Test' component={con_Test} />
-      </Route>
-
+      </Route> 
     </Router> 
   </Provider>,
   document.getElementById('root')
