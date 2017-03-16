@@ -18,15 +18,9 @@ import {
   IndexRoute,
   IndexLink
 } from 'react-router'
+import {counterReducer} from './Reducer'
+// Store
+const store = createStore(counterReducer)
 
-import Action from './Action'
 
-
-// Map Redux state to component props
-export function mapStateToProps(state, ownProps) {
-  console.log('mapStateToProps', ownProps)
-  return {
-    count: state.count,
-    title: state.title
-  }
-}
+export {store as GlobalStore}

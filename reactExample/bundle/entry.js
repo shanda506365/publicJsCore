@@ -60,11 +60,11 @@
 
 	var _reactRouter = __webpack_require__(219);
 
-	var _Store = __webpack_require__(282);
+	var _Store = __webpack_require__(285);
 
-	var _MapStateToProps = __webpack_require__(283);
+	var _MapStateToProps = __webpack_require__(286);
 
-	var _MapDispatchToProps = __webpack_require__(284);
+	var _MapDispatchToProps = __webpack_require__(287);
 
 	var _Main = __webpack_require__(275);
 
@@ -28362,124 +28362,9 @@
 	exports.default = Counter;
 
 /***/ },
-/* 278 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.counterReducer = undefined;
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _reactDom = __webpack_require__(28);
-
-	var _reactDom2 = _interopRequireDefault(_reactDom);
-
-	var _redux = __webpack_require__(171);
-
-	var _reactRedux = __webpack_require__(192);
-
-	var _reactRouter = __webpack_require__(219);
-
-	var _jqueryVendor = __webpack_require__(280);
-
-	var _jqueryVendor2 = _interopRequireDefault(_jqueryVendor);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	// Reducer
-	function counterReducer() {
-	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {
-	    count: 0,
-	    title: '消息'
-	  };
-	  var action = arguments[1];
-
-	  var count = state.count;
-	  switch (action.type) {
-	    case 'increase':
-	      return {
-	        count: count + 1,
-	        title: '消息' + count
-	      };
-	    case 'increaseTest':
-	      (0, _jqueryVendor2.default)('button').text('Do it' + count);
-	      console.log(action.filter);
-	      return {
-	        count: count + 1,
-	        title: '消息' + count
-	      };
-	    default:
-	      return state;
-	  }
-	}
-
-	exports.counterReducer = counterReducer;
-
-/***/ },
-/* 279 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _reactDom = __webpack_require__(28);
-
-	var _reactDom2 = _interopRequireDefault(_reactDom);
-
-	var _redux = __webpack_require__(171);
-
-	var _reactRedux = __webpack_require__(192);
-
-	var _reactRouter = __webpack_require__(219);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	// Action
-	var Action = {
-	  increaseAction: {
-	    type: 'increase'
-	  },
-	  increaseTestAction: {
-	    type: 'increaseTest'
-	  }
-	};
-
-	exports.default = Action;
-
-/***/ },
-/* 280 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _jquery = __webpack_require__(281);
-
-	var _jquery2 = _interopRequireDefault(_jquery);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	window.$ = _jquery2.default;
-	window.jQuery = _jquery2.default;
-	exports.default = _jquery2.default;
-
-/***/ },
+/* 278 */,
+/* 279 */,
+/* 280 */,
 /* 281 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -38300,7 +38185,10 @@
 
 
 /***/ },
-/* 282 */
+/* 282 */,
+/* 283 */,
+/* 284 */,
+/* 285 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -38324,7 +38212,7 @@
 
 	var _reactRouter = __webpack_require__(219);
 
-	var _Reducer = __webpack_require__(278);
+	var _Reducer = __webpack_require__(288);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -38334,7 +38222,7 @@
 	exports.GlobalStore = store;
 
 /***/ },
-/* 283 */
+/* 286 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -38358,7 +38246,7 @@
 
 	var _reactRouter = __webpack_require__(219);
 
-	var _Action = __webpack_require__(279);
+	var _Action = __webpack_require__(289);
 
 	var _Action2 = _interopRequireDefault(_Action);
 
@@ -38374,7 +38262,7 @@
 	}
 
 /***/ },
-/* 284 */
+/* 287 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -38398,7 +38286,7 @@
 
 	var _reactRouter = __webpack_require__(219);
 
-	var _Action = __webpack_require__(279);
+	var _Action = __webpack_require__(289);
 
 	var _Action2 = _interopRequireDefault(_Action);
 
@@ -38418,6 +38306,124 @@
 	    }
 	  };
 	}
+
+/***/ },
+/* 288 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.counterReducer = undefined;
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactDom = __webpack_require__(28);
+
+	var _reactDom2 = _interopRequireDefault(_reactDom);
+
+	var _redux = __webpack_require__(171);
+
+	var _reactRedux = __webpack_require__(192);
+
+	var _reactRouter = __webpack_require__(219);
+
+	var _jqueryVendor = __webpack_require__(290);
+
+	var _jqueryVendor2 = _interopRequireDefault(_jqueryVendor);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	// Reducer
+	function counterReducer() {
+	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {
+	    count: 0,
+	    title: '消息'
+	  };
+	  var action = arguments[1];
+
+	  var count = state.count;
+	  switch (action.type) {
+	    case 'increase':
+	      return {
+	        count: count + 1,
+	        title: '消息' + count
+	      };
+	    case 'increaseTest':
+	      (0, _jqueryVendor2.default)('button').text('Do it' + count);
+	      console.log(action.filter);
+	      return {
+	        count: count + 1,
+	        title: '消息' + count
+	      };
+	    default:
+	      return state;
+	  }
+	}
+
+	exports.counterReducer = counterReducer;
+
+/***/ },
+/* 289 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactDom = __webpack_require__(28);
+
+	var _reactDom2 = _interopRequireDefault(_reactDom);
+
+	var _redux = __webpack_require__(171);
+
+	var _reactRedux = __webpack_require__(192);
+
+	var _reactRouter = __webpack_require__(219);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	// Action
+	var Action = {
+	  increaseAction: {
+	    type: 'increase'
+	  },
+	  increaseTestAction: {
+	    type: 'increaseTest'
+	  }
+	};
+
+	exports.default = Action;
+
+/***/ },
+/* 290 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _jquery = __webpack_require__(281);
+
+	var _jquery2 = _interopRequireDefault(_jquery);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	window.$ = _jquery2.default;
+	window.jQuery = _jquery2.default;
+	exports.default = _jquery2.default;
 
 /***/ }
 /******/ ]);

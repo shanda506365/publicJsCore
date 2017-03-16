@@ -17,16 +17,16 @@ import {
   hashHistory,
   IndexRoute,
   IndexLink
-} from 'react-router'
+} from 'react-router' 
 
-import Action from './Action'
-
-
-// Map Redux state to component props
-export function mapStateToProps(state, ownProps) {
-  console.log('mapStateToProps', ownProps)
-  return {
-    count: state.count,
-    title: state.title
+// Action
+const Action = {
+  increaseAction: {
+    type: 'increase'
+  },
+  increaseTestAction :{
+    type: 'increaseTest'
   }
-}
+} 
+
+export default Action

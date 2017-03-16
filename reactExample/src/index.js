@@ -18,23 +18,19 @@ import {
   IndexRoute,
   IndexLink
 } from 'react-router'
+
+
 import {
   GlobalStore
-} from './Store'
-
-
-import {mapStateToProps} from './MapStateToProps'
-import {mapDispatchToProps} from './MapDispatchToProps'
+} from './lib/Store'
+import {mapStateToProps} from './lib/MapStateToProps'
+import {mapDispatchToProps} from './lib/MapDispatchToProps'
 
 
 import Main from './Main'
 import Counter from './Counter'
 import Test from './Test'
-
-
-
  
-
 
 // Connected Component
 const con_Main = connect(
