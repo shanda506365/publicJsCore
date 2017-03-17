@@ -3,9 +3,9 @@ import React, {
   PropTypes
 } from 'react'
 import ReactDOM from 'react-dom'
-import { 
+import {
   connect
-} from 'react-redux' 
+} from 'react-redux'
 import {
   Router,
   Route,
@@ -15,8 +15,12 @@ import {
   IndexLink
 } from 'react-router'
 
-import {mapStateToProps} from './lib/MapStateToProps'
-import {mapDispatchToProps} from './lib/MapDispatchToProps'
+import {
+  mapStateToProps
+} from './lib/MapStateToProps'
+import {
+  mapDispatchToProps
+} from './lib/MapDispatchToProps'
 
 import '../node_modules/weui/dist/style/weui.css'
 //import "!style!css!less!../node_modules/jquery-weui/dist/css/jquery-weui.css"
@@ -34,9 +38,7 @@ const Counter = React.createClass({
     router: React.PropTypes.object
   },
   componentDidMount() {
-    FastClick.attach(document.body);
-    console.log('FastClick', FastClick)
-    Weuijs.alert('alert');
+    FastClick.attach(document.body); 
     Weuijs.tab('.weui-tab', {
       defaultIndex: 0,
       onChange: function(index) {
@@ -55,7 +57,9 @@ const Counter = React.createClass({
        <span>{count}</span>
         <button onClick={onIncreaseClick}>计数</button> 
         <Link to="/Test">消息计数</Link>
-
+        <button onClick={()=>{
+                   Weuijs.alert('alert');
+                }}>alert</button>
         <div className="weui-tab">
           <div className="weui-navbar">
             <div className='weui-navbar__item'>选项一</div>
@@ -91,5 +95,7 @@ const con_Counter = connect(
   mapDispatchToProps
 )(Counter)
 
-export {Counter as Counter,con_Counter as con_Counter}
+export {
+  Counter as Counter, con_Counter as con_Counter
+}
 export default con_Counter

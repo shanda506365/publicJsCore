@@ -38341,8 +38341,6 @@
 	  },
 	  componentDidMount: function componentDidMount() {
 	    _fastclick2.default.attach(document.body);
-	    console.log('FastClick', _fastclick2.default);
-	    _weui2.default.alert('alert');
 	    _weui2.default.tab('.weui-tab', {
 	      defaultIndex: 0,
 	      onChange: function onChange(index) {
@@ -38373,6 +38371,13 @@
 	        _reactRouter.Link,
 	        { to: '/Test' },
 	        '\u6D88\u606F\u8BA1\u6570'
+	      ),
+	      _react2.default.createElement(
+	        'button',
+	        { onClick: function onClick() {
+	            _weui2.default.alert('alert');
+	          } },
+	        'alert'
 	      ),
 	      _react2.default.createElement(
 	        'div',
