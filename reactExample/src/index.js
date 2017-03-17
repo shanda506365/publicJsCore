@@ -51,7 +51,12 @@ ReactDOM.render(
   <Provider store={GlobalStore}>
     <Router history={hashHistory}>
       <Route path="/" component={con_Main} > 
-        <IndexRoute component={con_Counter}/>
+        <IndexRoute component={con_Counter} onEnter={function(nextState, replace){
+              console.log('onEnter',nextState,GlobalStore.getState())
+        }} 
+                onLeave={function (prevState) {
+                      //console.log(prevState) 
+                  }}/>
         <Route path='/Test' component={con_Test} />
       </Route> 
     </Router> 
