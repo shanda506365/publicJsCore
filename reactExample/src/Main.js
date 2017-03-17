@@ -3,9 +3,9 @@ import React, {
   PropTypes
 } from 'react'
 import ReactDOM from 'react-dom'
-import { 
+import {
   connect
-} from 'react-redux' 
+} from 'react-redux'
 import {
   Router,
   Route,
@@ -15,8 +15,14 @@ import {
   IndexLink
 } from 'react-router'
 
-import {mapStateToProps} from './lib/MapStateToProps'
-import {mapDispatchToProps} from './lib/MapDispatchToProps'
+import {
+  mapStateToProps
+} from './lib/MapStateToProps'
+import {
+  mapDispatchToProps
+} from './lib/MapDispatchToProps'
+
+import FastClick from '../node_modules/jquery-weui/dist/lib/fastclick'
 import Test from './Test'
 
 // React component
@@ -24,10 +30,14 @@ const Main = React.createClass({
   contextTypes: {
     router: React.PropTypes.object
   },
-  render() {
+  componentDidMount() {
+    FastClick.attach(document.body);
     
+  },
+  render() {
+
     console.log('Main', this.context, this.props)
-    return ( 
+    return (
       <div> 
         {this.props.children}
       </div>
@@ -40,5 +50,7 @@ const con_Main = connect(
   mapDispatchToProps
 )(Main)
 
-export {Main as Main,con_Main as con_Main} 
+export {
+  Main as Main, con_Main as con_Main
+}
 export default con_Main

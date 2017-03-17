@@ -38189,6 +38189,10 @@
 
 	var _MapDispatchToProps = __webpack_require__(281);
 
+	var _fastclick = __webpack_require__(292);
+
+	var _fastclick2 = _interopRequireDefault(_fastclick);
+
 	var _Test = __webpack_require__(283);
 
 	var _Test2 = _interopRequireDefault(_Test);
@@ -38201,6 +38205,9 @@
 
 	  contextTypes: {
 	    router: _react2.default.PropTypes.object
+	  },
+	  componentDidMount: function componentDidMount() {
+	    _fastclick2.default.attach(document.body);
 	  },
 	  render: function render() {
 
@@ -38322,10 +38329,6 @@
 
 	var _weui2 = _interopRequireDefault(_weui);
 
-	var _fastclick = __webpack_require__(292);
-
-	var _fastclick2 = _interopRequireDefault(_fastclick);
-
 	var _Test = __webpack_require__(283);
 
 	var _Test2 = _interopRequireDefault(_Test);
@@ -38333,6 +38336,11 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	// React component
+
+	//import "!style!css!less!../node_modules/jquery-weui/dist/css/jquery-weui.css"
+
+
+	//import Jweui from '../node_modules/jquery-weui/dist/js/jquery-weui'
 	var Counter = _react2.default.createClass({
 	  displayName: 'Counter',
 
@@ -38340,7 +38348,6 @@
 	    router: _react2.default.PropTypes.object
 	  },
 	  componentDidMount: function componentDidMount() {
-	    _fastclick2.default.attach(document.body);
 	    _weui2.default.tab('.weui-tab', {
 	      defaultIndex: 0,
 	      onChange: function onChange(index) {
@@ -38465,11 +38472,6 @@
 	    );
 	  }
 	});
-	//import "!style!css!less!../node_modules/jquery-weui/dist/css/jquery-weui.css"
-
-
-	//import Jweui from '../node_modules/jquery-weui/dist/js/jquery-weui'
-
 
 	var con_Counter = (0, _reactRedux.connect)(_MapStateToProps.mapStateToProps, _MapDispatchToProps.mapDispatchToProps)(Counter);
 

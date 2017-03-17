@@ -28,7 +28,7 @@ import '../node_modules/weui/dist/style/weui.css'
 
 //import Jweui from '../node_modules/jquery-weui/dist/js/jquery-weui'
 import Weuijs from 'weui.js'
-import FastClick from '../node_modules/jquery-weui/dist/lib/fastclick'
+
 import Test from './Test'
 
 
@@ -37,8 +37,7 @@ const Counter = React.createClass({
   contextTypes: {
     router: React.PropTypes.object
   },
-  componentDidMount() {
-    FastClick.attach(document.body); 
+  componentDidMount() { 
     Weuijs.tab('.weui-tab', {
       defaultIndex: 0,
       onChange: function(index) {
