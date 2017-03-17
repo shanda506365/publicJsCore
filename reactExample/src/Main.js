@@ -15,6 +15,8 @@ import {
   IndexLink
 } from 'react-router'
 
+import "!style!css!less!../less/index.less"
+
 import {
   mapStateToProps
 } from './lib/MapStateToProps'
@@ -38,7 +40,7 @@ const Main = React.createClass({
 
     console.log('Main', this.context, this.props)
     return (
-      <div> 
+      <div style={{height:'100%'}} > 
         {this.props.children}
       </div>
     )
