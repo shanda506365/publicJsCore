@@ -22,9 +22,7 @@ import {
 
 import {
   GlobalStore
-} from './lib/Store'
-
-
+} from './lib/Store' 
 
 import Main from './Main'
 import Counter from './Counter'
