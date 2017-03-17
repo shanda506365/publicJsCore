@@ -23,41 +23,24 @@ import {
 import {
   GlobalStore
 } from './lib/Store'
-import {mapStateToProps} from './lib/MapStateToProps'
-import {mapDispatchToProps} from './lib/MapDispatchToProps'
+
 
 
 import Main from './Main'
 import Counter from './Counter'
 import Test from './Test'
  
-
-// Connected Component
-const con_Main = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Main)
-const con_Counter = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Counter)
-const con_Test = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Test)
-
-
 ReactDOM.render(
   <Provider store={GlobalStore}>
     <Router history={hashHistory}>
-      <Route path="/" component={con_Main} > 
-        <IndexRoute component={con_Counter} onEnter={function(nextState, replace){
+      <Route path="/" component={Main} > 
+        <IndexRoute component={Counter} onEnter={function(nextState, replace){
               console.log('onEnter',nextState,GlobalStore.getState())
         }} 
                 onLeave={function (prevState) {
                       //console.log(prevState) 
                   }}/>
-        <Route path='/Test' component={con_Test} />
+        <Route path='/Test' component={Test} />
       </Route> 
     </Router> 
   </Provider>,

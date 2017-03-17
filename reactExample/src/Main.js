@@ -3,7 +3,10 @@ import React, {
   PropTypes
 } from 'react'
 import ReactDOM from 'react-dom'
- 
+import {
+  Provider,
+  connect
+} from 'react-redux' 
 import {
   Router,
   Route,
@@ -12,6 +15,9 @@ import {
   IndexRoute,
   IndexLink
 } from 'react-router'
+
+import {mapStateToProps} from './lib/MapStateToProps'
+import {mapDispatchToProps} from './lib/MapDispatchToProps'
 import Test from './Test'
 
 // React component
@@ -30,4 +36,10 @@ const Main = React.createClass({
   }
 })
 
-export default Main
+const con_Main = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Main)
+
+export {Main as Main,con_Main as con_Main} 
+export default con_Main

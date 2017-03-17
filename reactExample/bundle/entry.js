@@ -62,10 +62,6 @@
 
 	var _Store = __webpack_require__(275);
 
-	var _MapStateToProps = __webpack_require__(279);
-
-	var _MapDispatchToProps = __webpack_require__(281);
-
 	var _Main = __webpack_require__(282);
 
 	var _Main2 = _interopRequireDefault(_Main);
@@ -80,11 +76,6 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	// Connected Component
-	var con_Main = (0, _reactRedux.connect)(_MapStateToProps.mapStateToProps, _MapDispatchToProps.mapDispatchToProps)(_Main2.default);
-	var con_Counter = (0, _reactRedux.connect)(_MapStateToProps.mapStateToProps, _MapDispatchToProps.mapDispatchToProps)(_Counter2.default);
-	var con_Test = (0, _reactRedux.connect)(_MapStateToProps.mapStateToProps, _MapDispatchToProps.mapDispatchToProps)(_Test2.default);
-
 	_reactDom2.default.render(_react2.default.createElement(
 	  _reactRedux.Provider,
 	  { store: _Store.GlobalStore },
@@ -93,14 +84,14 @@
 	    { history: _reactRouter.hashHistory },
 	    _react2.default.createElement(
 	      _reactRouter.Route,
-	      { path: '/', component: con_Main },
-	      _react2.default.createElement(_reactRouter.IndexRoute, { component: con_Counter, onEnter: function onEnter(nextState, replace) {
+	      { path: '/', component: _Main2.default },
+	      _react2.default.createElement(_reactRouter.IndexRoute, { component: _Counter2.default, onEnter: function onEnter(nextState, replace) {
 	          console.log('onEnter', nextState, _Store.GlobalStore.getState());
 	        },
 	        onLeave: function onLeave(prevState) {
 	          //console.log(prevState) 
 	        } }),
-	      _react2.default.createElement(_reactRouter.Route, { path: '/Test', component: con_Test })
+	      _react2.default.createElement(_reactRouter.Route, { path: '/Test', component: _Test2.default })
 	    )
 	  )
 	), document.getElementById('root'));
@@ -38181,6 +38172,7 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
+	exports.con_Main = exports.Main = undefined;
 
 	var _react = __webpack_require__(1);
 
@@ -38190,7 +38182,13 @@
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
+	var _reactRedux = __webpack_require__(192);
+
 	var _reactRouter = __webpack_require__(219);
+
+	var _MapStateToProps = __webpack_require__(279);
+
+	var _MapDispatchToProps = __webpack_require__(281);
 
 	var _Test = __webpack_require__(283);
 
@@ -38216,7 +38214,11 @@
 	  }
 	});
 
-	exports.default = Main;
+	var con_Main = (0, _reactRedux.connect)(_MapStateToProps.mapStateToProps, _MapDispatchToProps.mapDispatchToProps)(Main);
+
+	exports.Main = Main;
+	exports.con_Main = con_Main;
+	exports.default = con_Main;
 
 /***/ },
 /* 283 */
@@ -38227,6 +38229,7 @@
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
+	exports.con_Test = exports.Test = undefined;
 
 	var _react = __webpack_require__(1);
 
@@ -38236,7 +38239,13 @@
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
+	var _reactRedux = __webpack_require__(192);
+
 	var _reactRouter = __webpack_require__(219);
+
+	var _MapStateToProps = __webpack_require__(279);
+
+	var _MapDispatchToProps = __webpack_require__(281);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -38275,7 +38284,11 @@
 		}
 	});
 
-	exports.default = Test;
+	var con_Test = (0, _reactRedux.connect)(_MapStateToProps.mapStateToProps, _MapDispatchToProps.mapDispatchToProps)(Test);
+
+	exports.Test = Test;
+	exports.con_Test = con_Test;
+	exports.default = con_Test;
 
 /***/ },
 /* 284 */
@@ -38286,6 +38299,7 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
+	exports.con_Counter = exports.Counter = undefined;
 
 	var _react = __webpack_require__(1);
 
@@ -38295,7 +38309,13 @@
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
+	var _reactRedux = __webpack_require__(192);
+
 	var _reactRouter = __webpack_require__(219);
+
+	var _MapStateToProps = __webpack_require__(279);
+
+	var _MapDispatchToProps = __webpack_require__(281);
 
 	__webpack_require__(285);
 
@@ -38387,7 +38407,36 @@
 	              'h1',
 	              null,
 	              '\u9875\u9762\u4E00'
-	            )
+	            ),
+	            _react2.default.createElement('br', null),
+	            _react2.default.createElement('br', null),
+	            _react2.default.createElement('br', null),
+	            _react2.default.createElement('br', null),
+	            _react2.default.createElement('br', null),
+	            _react2.default.createElement('br', null),
+	            _react2.default.createElement('br', null),
+	            _react2.default.createElement('br', null),
+	            _react2.default.createElement('br', null),
+	            _react2.default.createElement('br', null),
+	            _react2.default.createElement('br', null),
+	            _react2.default.createElement('br', null),
+	            _react2.default.createElement('br', null),
+	            _react2.default.createElement('br', null),
+	            _react2.default.createElement('br', null),
+	            _react2.default.createElement('br', null),
+	            _react2.default.createElement('br', null),
+	            _react2.default.createElement('br', null),
+	            _react2.default.createElement('br', null),
+	            _react2.default.createElement('br', null),
+	            _react2.default.createElement('br', null),
+	            _react2.default.createElement('br', null),
+	            _react2.default.createElement('br', null),
+	            _react2.default.createElement('br', null),
+	            _react2.default.createElement('br', null),
+	            _react2.default.createElement('br', null),
+	            _react2.default.createElement('br', null),
+	            _react2.default.createElement('br', null),
+	            '1123123'
 	          ),
 	          _react2.default.createElement(
 	            'div',
@@ -38416,7 +38465,13 @@
 
 
 	//import Jweui from '../node_modules/jquery-weui/dist/js/jquery-weui'
-	exports.default = Counter;
+
+
+	var con_Counter = (0, _reactRedux.connect)(_MapStateToProps.mapStateToProps, _MapDispatchToProps.mapDispatchToProps)(Counter);
+
+	exports.Counter = Counter;
+	exports.con_Counter = con_Counter;
+	exports.default = con_Counter;
 
 /***/ },
 /* 285 */

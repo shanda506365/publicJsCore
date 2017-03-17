@@ -3,7 +3,10 @@ import React, {
   PropTypes
 } from 'react'
 import ReactDOM from 'react-dom'
- 
+import {
+  Provider,
+  connect
+} from 'react-redux' 
 import {
   Router,
   Route,
@@ -12,6 +15,9 @@ import {
   IndexRoute,
   IndexLink
 } from 'react-router'
+
+import {mapStateToProps} from './lib/MapStateToProps'
+import {mapDispatchToProps} from './lib/MapDispatchToProps'
 
 import '../node_modules/weui/dist/style/weui.css'
 //import "!style!css!less!../node_modules/jquery-weui/dist/css/jquery-weui.css"
@@ -60,6 +66,12 @@ const Counter = React.createClass({
           <div className="weui-tab__panel">
               <div className="weui-tab__content">
                   <h1>页面一</h1>
+                  <br/><br/><br/><br/><br/><br/><br/>
+
+                  <br/><br/><br/><br/><br/><br/><br/>
+                  <br/><br/><br/><br/><br/><br/><br/>
+                  <br/><br/><br/><br/><br/><br/><br/>
+                  1123123
               </div>
               <div className="weui-tab__content">
                   <h1>页面二</h1>
@@ -74,4 +86,11 @@ const Counter = React.createClass({
   }
 })
 
-export default Counter
+
+const con_Counter = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Counter)
+
+export {Counter as Counter,con_Counter as con_Counter}
+export default con_Counter
