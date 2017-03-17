@@ -38116,17 +38116,16 @@
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
-	  value: true
+		value: true
 	});
-
 	// Action
 	var Action = {
-	  increaseAction: {
-	    type: 'increase'
-	  },
-	  increaseTestAction: {
-	    type: 'increaseTest'
-	  }
+		increaseAction: {
+			type: 'increase'
+		},
+		increaseTestAction: {
+			type: 'increaseTest'
+		}
 	};
 
 	exports.default = Action;

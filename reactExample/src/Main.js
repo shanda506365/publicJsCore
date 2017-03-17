@@ -3,8 +3,7 @@ import React, {
   PropTypes
 } from 'react'
 import ReactDOM from 'react-dom'
-import {
-  Provider,
+import { 
   connect
 } from 'react-redux' 
 import {

@@ -7,8 +7,7 @@ import {
   createStore
 } from 'redux'
 import {
-  Provider,
-  connect
+  Provider 
 } from 'react-redux'
 import {
   Router,
