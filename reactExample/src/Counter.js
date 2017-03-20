@@ -66,6 +66,15 @@ const Counter = React.createClass({
         <button onClick={()=>{
                    Weuijs.alert('alert');
                 }}>alert</button>
+
+        <button onClick={()=>{
+          try{
+            test
+          }catch(e){
+            throw e;
+          }
+              
+        }}>testError</button>
         <div className="weui-tab" >
           <div className="weui-navbar">
             <div className='weui-navbar__item'>选项一</div>
