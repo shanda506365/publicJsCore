@@ -27,8 +27,10 @@ import "!style!css!less!../node_modules/jquery-weui/dist/css/jquery-weui.css"
 
 
 
-import Weuijs from 'weui.js'
+
 import Jweui from '../node_modules/jquery-weui/dist/js/jquery-weui'
+
+import WeuiJs from 'weui.js'
 
 import Test from './Test'
 
@@ -39,7 +41,8 @@ const Counter = React.createClass({
     router: React.PropTypes.object
   },
   componentDidMount() {
-    Weuijs.tab('.weui-tab', {
+    WeuiJs.alert('alert');
+    WeuiJs.tab('.weui-tab', {
       defaultIndex: 0,
       onChange: function(index) {
         console.log(index);
@@ -67,7 +70,7 @@ const Counter = React.createClass({
 
         <button onClick={onTestValClick}>testVal</button> 
         <button onClick={()=>{ 
-                  $.alert('普通的alert');
+                  $.alert('alert');
                 }}>alert</button>
 
         <button onClick={()=>{ 

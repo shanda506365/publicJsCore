@@ -1,6 +1,6 @@
  import $ from './jquery-vendor.js'
  //import merge from 'merge'
-
+ import objectAssign from 'object-assign'
 
  // Reducer
  function counterReducer(state = {
@@ -9,11 +9,11 @@
    buttonText: '消息计数'
  }, action) {
    const count = state.count
-   const tstate = Object.assign({},state);
+   const tstate = objectAssign({},state);
    let rObj;
    switch (action.type) {
      case 'increase':
-       rObj = Object.assign(tstate, {
+       rObj = objectAssign(tstate, {
          count: count + 1,
          title: '消息' + count
        });
@@ -21,7 +21,7 @@
      case 'increaseTest':
        //$('button').text('Do it hahahaha' + count)
        console.log(action.filter)
-       rObj = Object.assign(tstate, {
+       rObj = objectAssign(tstate, {
          count: count + 1,
          title: '消息' + count 
        });

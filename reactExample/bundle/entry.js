@@ -28213,10 +28213,11 @@
 
 	var _jqueryVendor2 = _interopRequireDefault(_jqueryVendor);
 
+	var _objectAssign = __webpack_require__(302);
+
+	var _objectAssign2 = _interopRequireDefault(_objectAssign);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	//import merge from 'merge'
-
 
 	// Reducer
 	function counterReducer() {
@@ -28228,11 +28229,11 @@
 	  var action = arguments[1];
 
 	  var count = state.count;
-	  var tstate = Object.assign({}, state);
+	  var tstate = (0, _objectAssign2.default)({}, state);
 	  var rObj = void 0;
 	  switch (action.type) {
 	    case 'increase':
-	      rObj = Object.assign(tstate, {
+	      rObj = (0, _objectAssign2.default)(tstate, {
 	        count: count + 1,
 	        title: '消息' + count
 	      });
@@ -28240,7 +28241,7 @@
 	    case 'increaseTest':
 	      //$('button').text('Do it hahahaha' + count)
 	      console.log(action.filter);
-	      rObj = Object.assign(tstate, {
+	      rObj = (0, _objectAssign2.default)(tstate, {
 	        count: count + 1,
 	        title: '消息' + count
 	      });
@@ -28251,7 +28252,7 @@
 	      return state;
 	  }
 	}
-
+	//import merge from 'merge'
 	exports.counterReducer = counterReducer;
 
 /***/ },
@@ -39544,13 +39545,13 @@
 
 	__webpack_require__(293);
 
-	var _weui = __webpack_require__(296);
-
-	var _weui2 = _interopRequireDefault(_weui);
-
 	var _jqueryWeui = __webpack_require__(295);
 
 	var _jqueryWeui2 = _interopRequireDefault(_jqueryWeui);
+
+	var _weui = __webpack_require__(296);
+
+	var _weui2 = _interopRequireDefault(_weui);
 
 	var _Test = __webpack_require__(289);
 
@@ -39566,6 +39567,7 @@
 	    router: _react2.default.PropTypes.object
 	  },
 	  componentDidMount: function componentDidMount() {
+	    _weui2.default.alert('alert');
 	    _weui2.default.tab('.weui-tab', {
 	      defaultIndex: 0,
 	      onChange: function onChange(index) {
@@ -39612,7 +39614,7 @@
 	      _react2.default.createElement(
 	        'button',
 	        { onClick: function onClick() {
-	            $.alert('普通的alert');
+	            $.alert('alert');
 	          } },
 	        'alert'
 	      ),
@@ -46735,6 +46737,105 @@
 
 		return init(function () {});
 	}));
+
+
+/***/ },
+/* 299 */,
+/* 300 */,
+/* 301 */,
+/* 302 */
+/***/ function(module, exports) {
+
+	/*
+	object-assign
+	(c) Sindre Sorhus
+	@license MIT
+	*/
+
+	'use strict';
+	/* eslint-disable no-unused-vars */
+	var getOwnPropertySymbols = Object.getOwnPropertySymbols;
+	var hasOwnProperty = Object.prototype.hasOwnProperty;
+	var propIsEnumerable = Object.prototype.propertyIsEnumerable;
+
+	function toObject(val) {
+		if (val === null || val === undefined) {
+			throw new TypeError('Object.assign cannot be called with null or undefined');
+		}
+
+		return Object(val);
+	}
+
+	function shouldUseNative() {
+		try {
+			if (!Object.assign) {
+				return false;
+			}
+
+			// Detect buggy property enumeration order in older V8 versions.
+
+			// https://bugs.chromium.org/p/v8/issues/detail?id=4118
+			var test1 = new String('abc');  // eslint-disable-line no-new-wrappers
+			test1[5] = 'de';
+			if (Object.getOwnPropertyNames(test1)[0] === '5') {
+				return false;
+			}
+
+			// https://bugs.chromium.org/p/v8/issues/detail?id=3056
+			var test2 = {};
+			for (var i = 0; i < 10; i++) {
+				test2['_' + String.fromCharCode(i)] = i;
+			}
+			var order2 = Object.getOwnPropertyNames(test2).map(function (n) {
+				return test2[n];
+			});
+			if (order2.join('') !== '0123456789') {
+				return false;
+			}
+
+			// https://bugs.chromium.org/p/v8/issues/detail?id=3056
+			var test3 = {};
+			'abcdefghijklmnopqrst'.split('').forEach(function (letter) {
+				test3[letter] = letter;
+			});
+			if (Object.keys(Object.assign({}, test3)).join('') !==
+					'abcdefghijklmnopqrst') {
+				return false;
+			}
+
+			return true;
+		} catch (err) {
+			// We don't expect any of the above to throw, but better to be safe.
+			return false;
+		}
+	}
+
+	module.exports = shouldUseNative() ? Object.assign : function (target, source) {
+		var from;
+		var to = toObject(target);
+		var symbols;
+
+		for (var s = 1; s < arguments.length; s++) {
+			from = Object(arguments[s]);
+
+			for (var key in from) {
+				if (hasOwnProperty.call(from, key)) {
+					to[key] = from[key];
+				}
+			}
+
+			if (getOwnPropertySymbols) {
+				symbols = getOwnPropertySymbols(from);
+				for (var i = 0; i < symbols.length; i++) {
+					if (propIsEnumerable.call(from, symbols[i])) {
+						to[symbols[i]] = from[symbols[i]];
+					}
+				}
+			}
+		}
+
+		return to;
+	};
 
 
 /***/ }
