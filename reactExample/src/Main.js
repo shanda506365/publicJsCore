@@ -42,7 +42,7 @@ const Main = React.createClass({
 
     console.log('Main', this.context, this.props)
     return (
-      <div style={{height:'100%'}} > 
+      <div className='h100' > 
         {this.props.children}
       </div>
     )

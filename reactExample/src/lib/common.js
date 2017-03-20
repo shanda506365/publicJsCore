@@ -232,8 +232,7 @@
    //异常日志
    var Console_URL = $('head link[rel="console"]').attr('href');
    window.onerror = function(iMessage, iURL, iLine, iColumn, iError) {
-	   	window.setTimeout(function() {
-	   		console.log('onerror:::',iMessage, iURL, iLine, iColumn, iError)
+	   	window.setTimeout(function() { 
 
 	   		var iData = {
 	   			message: iMessage,
@@ -243,7 +242,7 @@
 	   		};
 
 	   		if (iError && iError.stack) iData.stack = (iError.stack || iError.stacktrace).toString();
-	   		console.log(Console_URL)
+	   		 
 	   		if (Console_URL) {
 	   			if (iData.stack) $.post(Console_URL, iData);
 	   			else $.get(Console_URL, iData);

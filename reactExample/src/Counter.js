@@ -59,7 +59,7 @@ const Counter = React.createClass({
     } = this.props
     console.log('Counter', this.context, this.props)
     return (
-      <div style={{height:'100%'}} > 
+      <div className='h100' > 
        <span>{count}</span>
         <button onClick={onIncreaseClick}>计数</button> 
         <Link to="/Test">消息计数</Link>
@@ -68,12 +68,7 @@ const Counter = React.createClass({
                 }}>alert</button>
 
         <button onClick={()=>{
-          try{
-            test
-          }catch(e){
-            throw e;
-          }
-              
+         test 
         }}>testError</button>
         <div className="weui-tab" >
           <div className="weui-navbar">

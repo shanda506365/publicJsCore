@@ -38142,7 +38142,7 @@
 	    console.log('Main', this.context, this.props);
 	    return _react2.default.createElement(
 	      'div',
-	      { style: { height: '100%' } },
+	      { className: 'h100' },
 	      this.props.children
 	    );
 	  }
@@ -38189,7 +38189,7 @@
 
 
 	// module
-	exports.push([module.id, "html {\n  font-size: 62.5%;\n  height: 100%;\n}\nbody {\n  font-size: 1.4rem;\n  height: 100%;\n  font-family: \"Helvetica Neue\", Helvetica, Microsoft Yahei, Hiragino Sans GB, WenQuanYi Micro Hei, sans-serif;\n}\n#root {\n  height: 100%;\n}\n#root .weui-tab__bd-item {\n  height: 100%;\n}\n", ""]);
+	exports.push([module.id, "html {\n  font-size: 62.5%;\n  height: 100%;\n}\nbody {\n  font-size: 1.4rem;\n  height: 100%;\n  font-family: \"Helvetica Neue\", Helvetica, Microsoft Yahei, Hiragino Sans GB, WenQuanYi Micro Hei, sans-serif;\n}\n#root {\n  height: 100%;\n}\n#root .h100 {\n  height: 100%;\n}\n#root .weui-tab__bd-item {\n  height: 100%;\n}\n", ""]);
 
 	// exports
 
@@ -39573,7 +39573,7 @@
 	    console.log('Counter', this.context, this.props);
 	    return _react2.default.createElement(
 	      'div',
-	      { style: { height: '100%' } },
+	      { className: 'h100' },
 	      _react2.default.createElement(
 	        'span',
 	        null,
@@ -39599,11 +39599,7 @@
 	      _react2.default.createElement(
 	        'button',
 	        { onClick: function onClick() {
-	            try {
-	              test;
-	            } catch (e) {
-	              throw e;
-	            }
+	            test;
 	          } },
 	        'testError'
 	      ),
@@ -46414,7 +46410,6 @@
 	var Console_URL = (0, _jqueryVendor2.default)('head link[rel="console"]').attr('href');
 	window.onerror = function (iMessage, iURL, iLine, iColumn, iError) {
 	   window.setTimeout(function () {
-	      console.log('onerror:::', iMessage, iURL, iLine, iColumn, iError);
 
 	      var iData = {
 	         message: iMessage,
@@ -46424,7 +46419,7 @@
 	      };
 
 	      if (iError && iError.stack) iData.stack = (iError.stack || iError.stacktrace).toString();
-	      console.log(Console_URL);
+
 	      if (Console_URL) {
 	         if (iData.stack) _jqueryVendor2.default.post(Console_URL, iData);else _jqueryVendor2.default.get(Console_URL, iData);
 	      }
