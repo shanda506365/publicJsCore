@@ -8,6 +8,7 @@
  		onIncreaseTestClick: () => dispatch({
  			type: 'increaseTest',
  			filter: ownProps
- 		})
+ 		}),
+ 		onTestValClick:()=>dispatch({type:''})
  	}
  }

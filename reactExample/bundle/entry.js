@@ -28215,29 +28215,39 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	//import merge from 'merge'
+
+
 	// Reducer
 	function counterReducer() {
 	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {
 	    count: 0,
-	    title: '消息'
+	    title: '消息',
+	    buttonText: '消息计数'
 	  };
 	  var action = arguments[1];
 
 	  var count = state.count;
+	  var tstate = Object.assign({}, state);
+	  var rObj = void 0;
 	  switch (action.type) {
 	    case 'increase':
-	      return {
+	      rObj = Object.assign(tstate, {
 	        count: count + 1,
 	        title: '消息' + count
-	      };
+	      });
+	      return rObj;
 	    case 'increaseTest':
-	      (0, _jqueryVendor2.default)('button').text('Do it hahahaha' + count);
+	      //$('button').text('Do it hahahaha' + count)
 	      console.log(action.filter);
-	      return {
+	      rObj = Object.assign(tstate, {
 	        count: count + 1,
 	        title: '消息' + count
-	      };
+	      });
+	      console.log(rObj);
+	      return rObj;
 	    default:
+	      console.log(state);
 	      return state;
 	  }
 	}
@@ -38524,7 +38534,8 @@
 	  console.log('mapStateToProps', ownProps);
 	  return {
 	    count: state.count,
-	    title: state.title
+	    title: state.title,
+	    buttonText: state.buttonText
 	  };
 	}
 
@@ -38577,6 +38588,9 @@
 	        type: 'increaseTest',
 	        filter: ownProps
 	      });
+	    },
+	    onTestValClick: function onTestValClick() {
+	      return dispatch({ type: '' });
 	    }
 	  };
 	}
@@ -39468,7 +39482,8 @@
 			var _props = this.props,
 			    count = _props.count,
 			    title = _props.title,
-			    onIncreaseTestClick = _props.onIncreaseTestClick;
+			    onIncreaseTestClick = _props.onIncreaseTestClick,
+			    buttonText = _props.buttonText;
 
 			console.log('Test', this.props);
 			return _react2.default.createElement(
@@ -39481,7 +39496,7 @@
 				_react2.default.createElement(
 					'button',
 					{ onClick: onIncreaseTestClick },
-					'\u6D88\u606F\u8BA1\u6570'
+					buttonText
 				),
 				_react2.default.createElement(
 					_reactRouter.Link,
@@ -39529,13 +39544,13 @@
 
 	__webpack_require__(293);
 
-	var _jqueryWeui = __webpack_require__(295);
-
-	var _jqueryWeui2 = _interopRequireDefault(_jqueryWeui);
-
 	var _weui = __webpack_require__(296);
 
 	var _weui2 = _interopRequireDefault(_weui);
+
+	var _jqueryWeui = __webpack_require__(295);
+
+	var _jqueryWeui2 = _interopRequireDefault(_jqueryWeui);
 
 	var _Test = __webpack_require__(289);
 
@@ -39557,7 +39572,6 @@
 	        console.log(index);
 	      }
 	    });
-
 	    $('.weui-tab__content').pullToRefresh().on('pull-to-refresh', function (done) {
 	      var self = this;
 	      setTimeout(function () {
@@ -39568,7 +39582,8 @@
 	  render: function render() {
 	    var _props = this.props,
 	        count = _props.count,
-	        onIncreaseClick = _props.onIncreaseClick;
+	        onIncreaseClick = _props.onIncreaseClick,
+	        onTestValClick = _props.onTestValClick;
 
 	    console.log('Counter', this.context, this.props);
 	    return _react2.default.createElement(
@@ -39591,8 +39606,13 @@
 	      ),
 	      _react2.default.createElement(
 	        'button',
+	        { onClick: onTestValClick },
+	        'testVal'
+	      ),
+	      _react2.default.createElement(
+	        'button',
 	        { onClick: function onClick() {
-	            _weui2.default.alert('alert');
+	            $.alert('普通的alert');
 	          } },
 	        'alert'
 	      ),
@@ -46426,6 +46446,7 @@
 	   }, 0);
 	   return true;
 	};
+	//window.console = function(){}
 
 	function Ajax(_ref, jdom) {
 	   var url = _ref.url,

@@ -26,8 +26,9 @@ import '../node_modules/weui/dist/style/weui.css'
 import "!style!css!less!../node_modules/jquery-weui/dist/css/jquery-weui.css"
 
 
-import Jweui from '../node_modules/jquery-weui/dist/js/jquery-weui'
+
 import Weuijs from 'weui.js'
+import Jweui from '../node_modules/jquery-weui/dist/js/jquery-weui'
 
 import Test from './Test'
 
@@ -43,8 +44,7 @@ const Counter = React.createClass({
       onChange: function(index) {
         console.log(index);
       }
-    });
-
+    }); 
     $('.weui-tab__content').pullToRefresh().on('pull-to-refresh', function(done) {
       var self = this
       setTimeout(function() {
@@ -55,7 +55,8 @@ const Counter = React.createClass({
   render() {
     const {
       count,
-      onIncreaseClick
+      onIncreaseClick,
+      onTestValClick
     } = this.props
     console.log('Counter', this.context, this.props)
     return (
@@ -63,11 +64,13 @@ const Counter = React.createClass({
        <span>{count}</span>
         <button onClick={onIncreaseClick}>计数</button> 
         <Link to="/Test">消息计数</Link>
-        <button onClick={()=>{
-                   Weuijs.alert('alert');
+
+        <button onClick={onTestValClick}>testVal</button> 
+        <button onClick={()=>{ 
+                  $.alert('普通的alert');
                 }}>alert</button>
 
-        <button onClick={()=>{
+        <button onClick={()=>{ 
          test 
         }}>testError</button>
         <div className="weui-tab" >

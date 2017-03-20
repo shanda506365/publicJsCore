@@ -6,6 +6,7 @@
  	console.log('mapStateToProps', ownProps)
  	return {
  		count: state.count,
- 		title: state.title
+ 		title: state.title,
+ 		buttonText:state.buttonText
  	}
  }

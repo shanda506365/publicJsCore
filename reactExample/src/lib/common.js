@@ -250,7 +250,7 @@
 	   	}, 0);
 	   	return true;
    };
-
+   //window.console = function(){}
 
    export function Ajax({
    	url,
