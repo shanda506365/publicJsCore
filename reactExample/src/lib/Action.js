@@ -5,6 +5,9 @@ const Action = {
 	},
 	increaseTestAction: {
 		type: 'increaseTest'
+	},
+	navbarClickAction:{
+		type: 'navbarClick'
 	}
 }
 

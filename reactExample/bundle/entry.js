@@ -28224,7 +28224,8 @@
 	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {
 	    count: 0,
 	    title: '消息',
-	    buttonText: '消息计数'
+	    buttonText: '消息计数',
+	    tabIndex: 0
 	  };
 	  var action = arguments[1];
 
@@ -28246,6 +28247,12 @@
 	        title: '消息' + count
 	      });
 	      console.log(rObj);
+	      return rObj;
+	    case 'navbarClick':
+	      console.log(action);
+	      rObj = (0, _objectAssign2.default)(tstate, {
+	        tabIndex: action.index
+	      });
 	      return rObj;
 	    default:
 	      console.log(state);
@@ -38632,7 +38639,8 @@
 	  return {
 	    count: state.count,
 	    title: state.title,
-	    buttonText: state.buttonText
+	    buttonText: state.buttonText,
+	    tabIndex: state.tabIndex
 	  };
 	}
 
@@ -38652,6 +38660,9 @@
 		},
 		increaseTestAction: {
 			type: 'increaseTest'
+		},
+		navbarClickAction: {
+			type: 'navbarClick'
 		}
 	};
 
@@ -38672,6 +38683,10 @@
 
 	var _Action2 = _interopRequireDefault(_Action);
 
+	var _objectAssign = __webpack_require__(280);
+
+	var _objectAssign2 = _interopRequireDefault(_objectAssign);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	// Map Redux actions to component props  
@@ -38688,6 +38703,9 @@
 	    },
 	    onTestValClick: function onTestValClick() {
 	      return dispatch({ type: '' });
+	    },
+	    onNavbarClick: function onNavbarClick(e, index) {
+	      return dispatch((0, _objectAssign2.default)(_Action2.default.navbarClickAction, { e: e, index: index }));
 	    }
 	  };
 	}
@@ -40220,23 +40238,14 @@
 	      }, 2000);
 	    });
 	  },
-	  changeTabIndex: function changeTabIndex(e, index) {
-	    var me = this;
-	    me.setState({
-	      tabIndex: index
-	    });
-	  },
-	  getInitialState: function getInitialState() {
-	    return {
-	      tabIndex: 0
-	    };
-	  },
 	  render: function render() {
 	    var me = this;
 	    var _props = this.props,
 	        count = _props.count,
 	        onIncreaseClick = _props.onIncreaseClick,
-	        onTestValClick = _props.onTestValClick;
+	        onTestValClick = _props.onTestValClick,
+	        tabIndex = _props.tabIndex,
+	        onNavbarClick = _props.onNavbarClick;
 
 	    console.log('Counter', this.context, this.props);
 	    var navbarHeadDom = [],
@@ -40245,7 +40254,7 @@
 	    var _loop = function _loop() {
 	      var cls = 'weui-navbar__item',
 	          tabCls = 'weui-tab__content tabItem  weui-pull-to-refresh';
-	      if (i == me.state.tabIndex) {
+	      if (i == tabIndex) {
 	        cls += ' weui-bar__item_on';
 	        tabCls = tabCls.replace(/weui-tab__content/g, '');
 	      };
@@ -40253,7 +40262,7 @@
 	      navbarHeadDom.push(_react2.default.createElement(
 	        'div',
 	        { className: cls, onClick: function onClick(e) {
-	            return me.changeTabIndex(e, index);
+	            return onNavbarClick(e, index);
 	          } },
 	        '\u9009\u9879',
 	        i

@@ -48,23 +48,15 @@ const Counter = React.createClass({
       }, 2000)
     })
   },
-  changeTabIndex(e,index){
-    let me = this;  
-    me.setState({
-      tabIndex:index
-    })
-  },
-  getInitialState() {
-    return {
-      tabIndex: 0
-    }
-  },
+  
   render() {
     let me = this;
     const {
       count,
       onIncreaseClick,
-      onTestValClick
+      onTestValClick,
+      tabIndex,
+      onNavbarClick
     } = this.props
     console.log('Counter', this.context, this.props)
     let navbarHeadDom = [],
@@ -72,12 +64,12 @@ const Counter = React.createClass({
     for (var i = 0; i < 3; i++) {
       let cls = 'weui-navbar__item',
         tabCls = 'weui-tab__content tabItem  weui-pull-to-refresh';
-      if (i == me.state.tabIndex) {
+      if (i == tabIndex) {
         cls += ' weui-bar__item_on'
         tabCls = tabCls.replace(/weui-tab__content/g,'') 
       };
       let index = i;
-      navbarHeadDom.push(<div className={cls} onClick={e=>me.changeTabIndex(e,index)}>选项{i}</div>)
+      navbarHeadDom.push(<div className={cls} onClick={e=>onNavbarClick(e,index)}>选项{i}</div>)
       tabItemDom.push(<div className={tabCls}>
                   <div className="weui-pull-to-refresh__layer">
                     <div className='weui-pull-to-refresh__arrow'></div>

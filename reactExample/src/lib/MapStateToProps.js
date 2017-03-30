@@ -7,6 +7,7 @@
  	return {
  		count: state.count,
  		title: state.title,
- 		buttonText:state.buttonText
+ 		buttonText:state.buttonText,
+ 		tabIndex: state.tabIndex
  	}
  }

@@ -1,5 +1,5 @@
  import Action from './Action'
-
+ import objectAssign from 'object-assign'
 
  // Map Redux actions to component props  
  export function mapDispatchToProps(dispatch, ownProps) {
@@ -9,6 +9,7 @@
  			type: 'increaseTest',
  			filter: ownProps
  		}),
- 		onTestValClick:()=>dispatch({type:''})
+ 		onTestValClick:()=>dispatch({type:''}),
+ 		onNavbarClick:(e,index)=>dispatch(objectAssign(Action.navbarClickAction,{e,index}))
  	}
  }
