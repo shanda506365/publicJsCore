@@ -39604,19 +39604,35 @@
 			return _react2.default.createElement(
 				'div',
 				null,
-				'TEST ',
-				count,
-				'  ',
-				title,
 				_react2.default.createElement(
-					'button',
-					{ onClick: onIncreaseTestClick },
-					buttonText
+					'h4',
+					null,
+					'TEST ',
+					count,
+					'  ',
+					title
 				),
 				_react2.default.createElement(
-					_reactRouter.Link,
-					{ to: '/' },
-					'\u8BA1\u6570'
+					'div',
+					{ className: 'weui-flex' },
+					_react2.default.createElement(
+						'div',
+						{ className: 'weui-flex__item' },
+						_react2.default.createElement(
+							'button',
+							{ className: 'weui-btn weui-btn_primary', onClick: onIncreaseTestClick },
+							buttonText
+						)
+					),
+					_react2.default.createElement(
+						'div',
+						{ className: 'weui-flex__item' },
+						_react2.default.createElement(
+							_reactRouter.Link,
+							{ className: 'weui-btn weui-btn_default', to: '/' },
+							'\u8BA1\u6570'
+						)
+					)
 				)
 			);
 		}
@@ -40329,38 +40345,62 @@
 	      'div',
 	      { className: 'h100' },
 	      _react2.default.createElement(
-	        'span',
+	        'h4',
 	        null,
 	        count
 	      ),
 	      _react2.default.createElement(
-	        'button',
-	        { onClick: onIncreaseClick },
-	        '\u8BA1\u6570'
-	      ),
-	      _react2.default.createElement(
-	        _reactRouter.Link,
-	        { to: '/Test' },
-	        '\u6D88\u606F\u8BA1\u6570'
-	      ),
-	      _react2.default.createElement(
-	        'button',
-	        { onClick: onTestValClick },
-	        'testVal'
-	      ),
-	      _react2.default.createElement(
-	        'button',
-	        { onClick: function onClick() {
-	            $.alert('alert');
-	          } },
-	        'alert'
-	      ),
-	      _react2.default.createElement(
-	        'button',
-	        { onClick: function onClick() {
-	            test;
-	          } },
-	        'testError'
+	        'div',
+	        { className: 'weui-flex' },
+	        _react2.default.createElement(
+	          'div',
+	          { 'class': 'weui-flex__item' },
+	          _react2.default.createElement(
+	            'button',
+	            { className: 'weui-btn weui-btn_primary', onClick: onIncreaseClick },
+	            '\u8BA1\u6570'
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'weui-flex__item' },
+	          _react2.default.createElement(
+	            _reactRouter.Link,
+	            { className: 'weui-btn weui-btn_default', to: '/Test' },
+	            '\u6D88\u606F\u8BA1\u6570'
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'weui-flex__item' },
+	          _react2.default.createElement(
+	            'button',
+	            { className: 'weui-btn weui-btn_primary', onClick: onTestValClick },
+	            'testVal'
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'weui-flex__item' },
+	          _react2.default.createElement(
+	            'button',
+	            { className: 'weui-btn weui-btn_primary', onClick: function onClick() {
+	                $.alert('alert');
+	              } },
+	            'alert'
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'weui-flex__item' },
+	          _react2.default.createElement(
+	            'button',
+	            { className: 'weui-btn weui-btn_primary', onClick: function onClick() {
+	                test;
+	              } },
+	            'testError'
+	          )
+	        )
 	      ),
 	      _react2.default.createElement(
 	        'div',

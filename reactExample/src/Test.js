@@ -32,9 +32,17 @@ const Test = React.createClass({
 		    } = this.props
 		console.log('Test',this.props)
 		return (
-			<div>TEST {count}  {title}
-				<button onClick={onIncreaseTestClick}>{buttonText}</button>
-			 	<Link to="/">计数</Link>
+			<div><h4>TEST {count}  {title}</h4>
+				<div className="weui-flex">
+					<div className="weui-flex__item">
+						<button className='weui-btn weui-btn_primary' onClick={onIncreaseTestClick}>{buttonText}</button>
+					</div>
+					<div className="weui-flex__item">
+							<Link className='weui-btn weui-btn_default' to="/">计数</Link>
+					</div>
+				</div>
+				
+			 
 			</div>
 		);
 	}

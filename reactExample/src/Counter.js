@@ -48,8 +48,8 @@ const Counter = React.createClass({
       }, 2000)
     })
   },
-  domInit(navbarHeadDom,tabItemDom,tabIndex,onNavbarClick) {
-    
+  domInit(navbarHeadDom, tabItemDom, tabIndex, onNavbarClick) {
+
     for (var i = 0; i < 3; i++) {
       let cls = 'weui-navbar__item',
         tabCls = 'weui-tab__content tabItem  weui-pull-to-refresh';
@@ -88,22 +88,35 @@ const Counter = React.createClass({
     console.log('Counter', this.context, this.props)
     let navbarHeadDom = [],
       tabItemDom = [];
-    me.domInit(navbarHeadDom,tabItemDom,tabIndex,onNavbarClick)
+    me.domInit(navbarHeadDom, tabItemDom, tabIndex, onNavbarClick)
 
     return (
       <div className='h100' > 
-       <span>{count}</span>
-        <button onClick={onIncreaseClick}>计数</button> 
-        <Link to="/Test">消息计数</Link>
-
-        <button onClick={onTestValClick}>testVal</button> 
-        <button onClick={()=>{ 
+      <h4>{count}</h4>
+      <div className="weui-flex">
+         <div class="weui-flex__item">
+          <button className='weui-btn weui-btn_primary' onClick={onIncreaseClick}>计数</button>
+         </div>
+         <div className="weui-flex__item">
+          <Link className='weui-btn weui-btn_default' to="/Test">消息计数</Link>
+         </div>
+         <div className="weui-flex__item">
+          <button className='weui-btn weui-btn_primary' onClick={onTestValClick}>testVal</button> 
+         </div>
+         <div className="weui-flex__item">
+          <button className='weui-btn weui-btn_primary' onClick={()=>{ 
                   $.alert('alert');
                 }}>alert</button>
-
-        <button onClick={()=>{ 
-         test 
-        }}>testError</button>
+         </div>
+         <div className="weui-flex__item">
+          <button className='weui-btn weui-btn_primary' onClick={()=>{ 
+             test 
+            }}>testError</button>
+         </div> 
+        
+    </div>
+       
+        
         <div className="weui-tab" >
               <div className="weui-navbar">
                 {navbarHeadDom}
