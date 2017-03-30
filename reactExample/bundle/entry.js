@@ -40238,19 +40238,7 @@
 	      }, 2000);
 	    });
 	  },
-	  render: function render() {
-	    var me = this;
-	    var _props = this.props,
-	        count = _props.count,
-	        onIncreaseClick = _props.onIncreaseClick,
-	        onTestValClick = _props.onTestValClick,
-	        tabIndex = _props.tabIndex,
-	        onNavbarClick = _props.onNavbarClick;
-
-	    console.log('Counter', this.context, this.props);
-	    var navbarHeadDom = [],
-	        tabItemDom = [];
-
+	  domInit: function domInit(navbarHeadDom, tabItemDom, tabIndex, onNavbarClick) {
 	    var _loop = function _loop() {
 	      var cls = 'weui-navbar__item',
 	          tabCls = 'weui-tab__content tabItem  weui-pull-to-refresh';
@@ -40322,6 +40310,20 @@
 	    for (var i = 0; i < 3; i++) {
 	      _loop();
 	    };
+	  },
+	  render: function render() {
+	    var me = this;
+	    var _props = this.props,
+	        count = _props.count,
+	        onIncreaseClick = _props.onIncreaseClick,
+	        onTestValClick = _props.onTestValClick,
+	        tabIndex = _props.tabIndex,
+	        onNavbarClick = _props.onNavbarClick;
+
+	    console.log('Counter', this.context, this.props);
+	    var navbarHeadDom = [],
+	        tabItemDom = [];
+	    me.domInit(navbarHeadDom, tabItemDom, tabIndex, onNavbarClick);
 
 	    return _react2.default.createElement(
 	      'div',

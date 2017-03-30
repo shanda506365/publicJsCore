@@ -40,7 +40,7 @@ const Counter = React.createClass({
     router: React.PropTypes.object
   },
   componentDidMount() {
-    
+
     $('.tabItem').pullToRefresh().on('pull-to-refresh', function(done) {
       var self = this
       setTimeout(function() {
@@ -48,25 +48,14 @@ const Counter = React.createClass({
       }, 2000)
     })
   },
-  
-  render() {
-    let me = this;
-    const {
-      count,
-      onIncreaseClick,
-      onTestValClick,
-      tabIndex,
-      onNavbarClick
-    } = this.props
-    console.log('Counter', this.context, this.props)
-    let navbarHeadDom = [],
-      tabItemDom = [];
+  domInit(navbarHeadDom,tabItemDom,tabIndex,onNavbarClick) {
+    
     for (var i = 0; i < 3; i++) {
       let cls = 'weui-navbar__item',
         tabCls = 'weui-tab__content tabItem  weui-pull-to-refresh';
       if (i == tabIndex) {
         cls += ' weui-bar__item_on'
-        tabCls = tabCls.replace(/weui-tab__content/g,'') 
+        tabCls = tabCls.replace(/weui-tab__content/g, '')
       };
       let index = i;
       navbarHeadDom.push(<div className={cls} onClick={e=>onNavbarClick(e,index)}>选项{i}</div>)
@@ -86,7 +75,20 @@ const Counter = React.createClass({
                   </div>
               </div>)
     };
-
+  },
+  render() {
+    let me = this;
+    const {
+      count,
+      onIncreaseClick,
+      onTestValClick,
+      tabIndex,
+      onNavbarClick
+    } = this.props
+    console.log('Counter', this.context, this.props)
+    let navbarHeadDom = [],
+      tabItemDom = [];
+    me.domInit(navbarHeadDom,tabItemDom,tabIndex,onNavbarClick)
 
     return (
       <div className='h100' > 
