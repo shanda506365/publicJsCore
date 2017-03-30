@@ -22,15 +22,14 @@ import {
   mapDispatchToProps
 } from './lib/MapDispatchToProps'
 
-import '../node_modules/weui/dist/style/weui.css'
+import 'weui'
 import "!style!css!less!../node_modules/jquery-weui/dist/css/jquery-weui.css"
-
 
 
 
 import Jweui from '../node_modules/jquery-weui/dist/js/jquery-weui'
 
-import WeuiJs from 'weui.js'
+// import WeuiJs from 'weui.js'
 
 import Test from './Test'
 
@@ -41,27 +40,62 @@ const Counter = React.createClass({
     router: React.PropTypes.object
   },
   componentDidMount() {
-    WeuiJs.alert('alert');
-    WeuiJs.tab('.weui-tab', {
-      defaultIndex: 0,
-      onChange: function(index) {
-        console.log(index);
-      }
-    }); 
-    $('.weui-tab__content').pullToRefresh().on('pull-to-refresh', function(done) {
+    
+    $('.tabItem').pullToRefresh().on('pull-to-refresh', function(done) {
       var self = this
       setTimeout(function() {
         $(self).pullToRefreshDone();
       }, 2000)
     })
   },
+  changeTabIndex(e,index){
+    let me = this;  
+    me.setState({
+      tabIndex:index
+    })
+  },
+  getInitialState() {
+    return {
+      tabIndex: 0
+    }
+  },
   render() {
+    let me = this;
     const {
       count,
       onIncreaseClick,
       onTestValClick
     } = this.props
     console.log('Counter', this.context, this.props)
+    let navbarHeadDom = [],
+      tabItemDom = [];
+    for (var i = 0; i < 3; i++) {
+      let cls = 'weui-navbar__item',
+        tabCls = 'weui-tab__content tabItem  weui-pull-to-refresh';
+      if (i == me.state.tabIndex) {
+        cls += ' weui-bar__item_on'
+        tabCls = tabCls.replace(/weui-tab__content/g,'') 
+      };
+      let index = i;
+      navbarHeadDom.push(<div className={cls} onClick={e=>me.changeTabIndex(e,index)}>选项{i}</div>)
+      tabItemDom.push(<div className={tabCls}>
+                  <div className="weui-pull-to-refresh__layer">
+                    <div className='weui-pull-to-refresh__arrow'></div>
+                    <div className='weui-pull-to-refresh__preloader'></div>
+                    <div className="down">下拉刷新</div>
+                    <div className="up">释放刷新</div>
+                    <div className="refresh">正在刷新</div>
+                  </div>
+                  <h1 className="doc-head">页面{i}</h1>
+                  <div className="content-padded">
+                    <p>  a fast, small, and feature-rich JavaScript library. It makes things like HTML document traversal and manipulation, event handling, animation, and Ajax much simpler with an easy-to-use API that works across a multitude of browsers. If you're new to jQuery, we recommend that you check out the jQuery Learning Center.</p>
+                    <p> is a fast, small, and feature-rich JavaScript library. It makes things like HTML document traversal and manipulation, event handling, animation, and Ajax much simpler with an easy-to-use API that works across a multitude of browsers. If you're new to jQuery, we recommend that you check out the jQuery Learning Center.</p>
+                    <p>  is a fast, small, and feature-rich JavaScript library. It makes things like HTML document traversal and manipulation, event handling, animation, and Ajax much simpler with an easy-to-use API that works across a multitude of browsers. If you're new to jQuery, we recommend that you check out the jQuery Learning Center.</p>
+                  </div>
+              </div>)
+    };
+
+
     return (
       <div className='h100' > 
        <span>{count}</span>
@@ -77,60 +111,13 @@ const Counter = React.createClass({
          test 
         }}>testError</button>
         <div className="weui-tab" >
-          <div className="weui-navbar">
-            <div className='weui-navbar__item'>选项一</div>
-            <div className='weui-navbar__item'>选项二</div>
-            <div className='weui-navbar__item'>选项三</div>  
-          </div>
-          <div className="weui-tab__panel" >
-               <div className="weui-tab__content weui-tab__bd-item weui-tab__bd-item--active  weui-pull-to-refresh">
-                  <div className="weui-pull-to-refresh__layer">
-                    <div className='weui-pull-to-refresh__arrow'></div>
-                    <div className='weui-pull-to-refresh__preloader'></div>
-                    <div className="down">下拉刷新</div>
-                    <div className="up">释放刷新</div>
-                    <div className="refresh">正在刷新</div>
-                  </div>
-                  <h1 className="doc-head">页面一</h1>
-                  <div className="content-padded">
-                    <p>  a fast, small, and feature-rich JavaScript library. It makes things like HTML document traversal and manipulation, event handling, animation, and Ajax much simpler with an easy-to-use API that works across a multitude of browsers. If you're new to jQuery, we recommend that you check out the jQuery Learning Center.</p>
-                    <p> is a fast, small, and feature-rich JavaScript library. It makes things like HTML document traversal and manipulation, event handling, animation, and Ajax much simpler with an easy-to-use API that works across a multitude of browsers. If you're new to jQuery, we recommend that you check out the jQuery Learning Center.</p>
-                    <p>  is a fast, small, and feature-rich JavaScript library. It makes things like HTML document traversal and manipulation, event handling, animation, and Ajax much simpler with an easy-to-use API that works across a multitude of browsers. If you're new to jQuery, we recommend that you check out the jQuery Learning Center.</p>
-                  </div>
+              <div className="weui-navbar">
+                {navbarHeadDom}
               </div>
-              <div className="weui-tab__content weui-tab__bd-item  weui-pull-to-refresh">
-                  <div className="weui-pull-to-refresh__layer">
-                      <div className='weui-pull-to-refresh__arrow'></div>
-                      <div className='weui-pull-to-refresh__preloader'></div>
-                      <div className="down">下拉刷新</div>
-                      <div className="up">释放刷新</div>
-                      <div className="refresh">正在刷新</div>
-                    </div>
-                    <h1 className="doc-head">页面二</h1>
-                    <div className="content-padded">
-                      <p>A great way to get introduced to  is to work through this tutorial, which walks you through the construction of an AngularJS web app. The app you will build is a catalog that displays a list of Android devices, lets you filter the list to see only devices that interest you, and then view details for any device.</p>
-                      <p>A great way to get introduced to  is to work through this tutorial, which walks you through the construction of an AngularJS web app. The app you will build is a catalog that displays a list of Android devices, lets you filter the list to see only devices that interest you, and then view details for any device.</p>
-                      <p>A great way to get introduced to  is to work through this tutorial, which walks you through the construction of an AngularJS web app. The app you will build is a catalog that displays a list of Android devices, lets you filter the list to see only devices that interest you, and then view details for any device.</p>
-                      <p>A great way to get introduced to  is to work through this tutorial, which walks you through the construction of an AngularJS web app. The app you will build is a catalog that displays a list of Android devices, lets you filter the list to see only devices that interest you, and then view details for any device.</p>
-                    </div>
-              </div>
-              <div className="weui-tab__content weui-tab__bd-item   weui-pull-to-refresh">
-                   <div className="weui-pull-to-refresh__layer">
-                      <div className='weui-pull-to-refresh__arrow'></div>
-                      <div className='weui-pull-to-refresh__preloader'></div>
-                      <div className="down">下拉刷新</div>
-                      <div className="up">释放刷新</div>
-                      <div className="refresh">正在刷新</div>
-                    </div>
-                    <div className="content-padded">
-                      <h1 className="doc-head">页面三</h1>
-                      <p>Lots of people use   as the V in MVC. Since   makes no assumptions about the rest of your technology stack, it's easy to try it out on a small feature in an existing project.</p>
-                      <p>Lots of people use   as the V in MVC. Since   makes no assumptions about the rest of your technology stack, it's easy to try it out on a small feature in an existing project.</p>
-                      <p>Lots of people use   as the V in MVC. Since   makes no assumptions about the rest of your technology stack, it's easy to try it out on a small feature in an existing project.</p>
-                    </div>
-              </div>
+              <div className="weui-tab__panel" >
+                  {tabItemDom}
+            </div>
         </div>
-    </div>
       </div>
     )
   }
