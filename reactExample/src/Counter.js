@@ -48,11 +48,11 @@ const Counter = React.createClass({
       }, 2000)
     })
   },
-  domInit(navbarHeadDom, tabItemDom, tabIndex, onNavbarClick) {
+  domInit(navbarHeadDom, tabItemDom, tabIndex,count, onNavbarClick,onIncreaseClick,onTestValClick) {
 
     for (var i = 0; i < 3; i++) {
       let cls = 'weui-navbar__item',
-        tabCls = 'weui-tab__content tabItem  weui-pull-to-refresh';
+        tabCls = 'weui-tab__content tabItem  weui-pull-to-refresh h100';
       if (i == tabIndex) {
         cls += ' weui-bar__item_on'
         tabCls = tabCls.replace(/weui-tab__content/g, '')
@@ -68,6 +68,29 @@ const Counter = React.createClass({
                     <div className="refresh">正在刷新</div>
                   </div>
                   <h1 className="doc-head">页面{i}</h1>
+                   <h4>{count}</h4>
+                    <div className="weui-flex">
+                       <div class="weui-flex__item">
+                        <button className='weui-btn weui-btn_primary' onClick={onIncreaseClick}>计数</button>
+                       </div>
+                       <div className="weui-flex__item">
+                        <Link className='weui-btn weui-btn_default' to="/Test">消息计数</Link>
+                       </div>
+                       <div className="weui-flex__item">
+                        <button className='weui-btn weui-btn_primary' onClick={onTestValClick}>testVal</button> 
+                       </div>
+                       <div className="weui-flex__item">
+                        <button className='weui-btn weui-btn_primary' onClick={()=>{ 
+                                $.alert('alert');
+                              }}>alert</button>
+                       </div>
+                       <div className="weui-flex__item">
+                        <button className='weui-btn weui-btn_primary' onClick={()=>{ 
+                           test 
+                          }}>testError</button>
+                       </div> 
+                      
+                  </div>
                   <div className="content-padded">
                     <p>  a fast, small, and feature-rich JavaScript library. It makes things like HTML document traversal and manipulation, event handling, animation, and Ajax much simpler with an easy-to-use API that works across a multitude of browsers. If you're new to jQuery, we recommend that you check out the jQuery Learning Center.</p>
                     <p> is a fast, small, and feature-rich JavaScript library. It makes things like HTML document traversal and manipulation, event handling, animation, and Ajax much simpler with an easy-to-use API that works across a multitude of browsers. If you're new to jQuery, we recommend that you check out the jQuery Learning Center.</p>
@@ -88,33 +111,11 @@ const Counter = React.createClass({
     console.log('Counter', this.context, this.props)
     let navbarHeadDom = [],
       tabItemDom = [];
-    me.domInit(navbarHeadDom, tabItemDom, tabIndex, onNavbarClick)
+    me.domInit(navbarHeadDom, tabItemDom, tabIndex,count, onNavbarClick,onIncreaseClick,onTestValClick)
 
     return (
       <div className='h100' > 
-      <h4>{count}</h4>
-      <div className="weui-flex">
-         <div class="weui-flex__item">
-          <button className='weui-btn weui-btn_primary' onClick={onIncreaseClick}>计数</button>
-         </div>
-         <div className="weui-flex__item">
-          <Link className='weui-btn weui-btn_default' to="/Test">消息计数</Link>
-         </div>
-         <div className="weui-flex__item">
-          <button className='weui-btn weui-btn_primary' onClick={onTestValClick}>testVal</button> 
-         </div>
-         <div className="weui-flex__item">
-          <button className='weui-btn weui-btn_primary' onClick={()=>{ 
-                  $.alert('alert');
-                }}>alert</button>
-         </div>
-         <div className="weui-flex__item">
-          <button className='weui-btn weui-btn_primary' onClick={()=>{ 
-             test 
-            }}>testError</button>
-         </div> 
-        
-    </div>
+     
        
         
         <div className="weui-tab" >

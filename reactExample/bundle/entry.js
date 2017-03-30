@@ -40254,10 +40254,10 @@
 	      }, 2000);
 	    });
 	  },
-	  domInit: function domInit(navbarHeadDom, tabItemDom, tabIndex, onNavbarClick) {
+	  domInit: function domInit(navbarHeadDom, tabItemDom, tabIndex, count, onNavbarClick, onIncreaseClick, onTestValClick) {
 	    var _loop = function _loop() {
 	      var cls = 'weui-navbar__item',
-	          tabCls = 'weui-tab__content tabItem  weui-pull-to-refresh';
+	          tabCls = 'weui-tab__content tabItem  weui-pull-to-refresh h100';
 	      if (i == tabIndex) {
 	        cls += ' weui-bar__item_on';
 	        tabCls = tabCls.replace(/weui-tab__content/g, '');
@@ -40302,6 +40302,64 @@
 	          i
 	        ),
 	        _react2.default.createElement(
+	          'h4',
+	          null,
+	          count
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'weui-flex' },
+	          _react2.default.createElement(
+	            'div',
+	            { 'class': 'weui-flex__item' },
+	            _react2.default.createElement(
+	              'button',
+	              { className: 'weui-btn weui-btn_primary', onClick: onIncreaseClick },
+	              '\u8BA1\u6570'
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'weui-flex__item' },
+	            _react2.default.createElement(
+	              _reactRouter.Link,
+	              { className: 'weui-btn weui-btn_default', to: '/Test' },
+	              '\u6D88\u606F\u8BA1\u6570'
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'weui-flex__item' },
+	            _react2.default.createElement(
+	              'button',
+	              { className: 'weui-btn weui-btn_primary', onClick: onTestValClick },
+	              'testVal'
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'weui-flex__item' },
+	            _react2.default.createElement(
+	              'button',
+	              { className: 'weui-btn weui-btn_primary', onClick: function onClick() {
+	                  $.alert('alert');
+	                } },
+	              'alert'
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'weui-flex__item' },
+	            _react2.default.createElement(
+	              'button',
+	              { className: 'weui-btn weui-btn_primary', onClick: function onClick() {
+	                  test;
+	                } },
+	              'testError'
+	            )
+	          )
+	        ),
+	        _react2.default.createElement(
 	          'div',
 	          { className: 'content-padded' },
 	          _react2.default.createElement(
@@ -40339,69 +40397,11 @@
 	    console.log('Counter', this.context, this.props);
 	    var navbarHeadDom = [],
 	        tabItemDom = [];
-	    me.domInit(navbarHeadDom, tabItemDom, tabIndex, onNavbarClick);
+	    me.domInit(navbarHeadDom, tabItemDom, tabIndex, count, onNavbarClick, onIncreaseClick, onTestValClick);
 
 	    return _react2.default.createElement(
 	      'div',
 	      { className: 'h100' },
-	      _react2.default.createElement(
-	        'h4',
-	        null,
-	        count
-	      ),
-	      _react2.default.createElement(
-	        'div',
-	        { className: 'weui-flex' },
-	        _react2.default.createElement(
-	          'div',
-	          { 'class': 'weui-flex__item' },
-	          _react2.default.createElement(
-	            'button',
-	            { className: 'weui-btn weui-btn_primary', onClick: onIncreaseClick },
-	            '\u8BA1\u6570'
-	          )
-	        ),
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'weui-flex__item' },
-	          _react2.default.createElement(
-	            _reactRouter.Link,
-	            { className: 'weui-btn weui-btn_default', to: '/Test' },
-	            '\u6D88\u606F\u8BA1\u6570'
-	          )
-	        ),
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'weui-flex__item' },
-	          _react2.default.createElement(
-	            'button',
-	            { className: 'weui-btn weui-btn_primary', onClick: onTestValClick },
-	            'testVal'
-	          )
-	        ),
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'weui-flex__item' },
-	          _react2.default.createElement(
-	            'button',
-	            { className: 'weui-btn weui-btn_primary', onClick: function onClick() {
-	                $.alert('alert');
-	              } },
-	            'alert'
-	          )
-	        ),
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'weui-flex__item' },
-	          _react2.default.createElement(
-	            'button',
-	            { className: 'weui-btn weui-btn_primary', onClick: function onClick() {
-	                test;
-	              } },
-	            'testError'
-	          )
-	        )
-	      ),
 	      _react2.default.createElement(
 	        'div',
 	        { className: 'weui-tab' },
