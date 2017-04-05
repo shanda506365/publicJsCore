@@ -42,7 +42,8 @@ const Counter = React.createClass({
   componentDidMount() {
 
     $('.tabItem').pullToRefresh().on('pull-to-refresh', function(done) {
-      var self = this
+      var self = this 
+      console.log('refresh')
       setTimeout(function() {
         $(self).pullToRefreshDone();
       }, 2000)
@@ -94,6 +95,7 @@ const Counter = React.createClass({
                   <div className="content-padded">
                     <p>  a fast, small, and feature-rich JavaScript library. It makes things like HTML document traversal and manipulation, event handling, animation, and Ajax much simpler with an easy-to-use API that works across a multitude of browsers. If you're new to jQuery, we recommend that you check out the jQuery Learning Center.</p>
                     <p> is a fast, small, and feature-rich JavaScript library. It makes things like HTML document traversal and manipulation, event handling, animation, and Ajax much simpler with an easy-to-use API that works across a multitude of browsers. If you're new to jQuery, we recommend that you check out the jQuery Learning Center.</p>
+                    <br/><br/><br/><br/>2<br/><br/><br/>2<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
                     <p>  is a fast, small, and feature-rich JavaScript library. It makes things like HTML document traversal and manipulation, event handling, animation, and Ajax much simpler with an easy-to-use API that works across a multitude of browsers. If you're new to jQuery, we recommend that you check out the jQuery Learning Center.</p>
                   </div>
               </div>)
@@ -121,7 +123,7 @@ const Counter = React.createClass({
                 {navbarHeadDom}
               </div>
               <div className="weui-tab__panel" >
-                  {tabItemDom}
+                {tabItemDom}
             </div>
         </div>
       </div>

@@ -40249,6 +40249,7 @@
 
 	    $('.tabItem').pullToRefresh().on('pull-to-refresh', function (done) {
 	      var self = this;
+	      console.log('refresh');
 	      setTimeout(function () {
 	        $(self).pullToRefreshDone();
 	      }, 2000);
@@ -40372,6 +40373,25 @@
 	            null,
 	            ' is a fast, small, and feature-rich JavaScript library. It makes things like HTML document traversal and manipulation, event handling, animation, and Ajax much simpler with an easy-to-use API that works across a multitude of browsers. If you\'re new to jQuery, we recommend that you check out the jQuery Learning Center.'
 	          ),
+	          _react2.default.createElement('br', null),
+	          _react2.default.createElement('br', null),
+	          _react2.default.createElement('br', null),
+	          _react2.default.createElement('br', null),
+	          '2',
+	          _react2.default.createElement('br', null),
+	          _react2.default.createElement('br', null),
+	          _react2.default.createElement('br', null),
+	          '2',
+	          _react2.default.createElement('br', null),
+	          _react2.default.createElement('br', null),
+	          _react2.default.createElement('br', null),
+	          _react2.default.createElement('br', null),
+	          _react2.default.createElement('br', null),
+	          _react2.default.createElement('br', null),
+	          _react2.default.createElement('br', null),
+	          _react2.default.createElement('br', null),
+	          _react2.default.createElement('br', null),
+	          _react2.default.createElement('br', null),
 	          _react2.default.createElement(
 	            'p',
 	            null,
@@ -44154,12 +44174,13 @@
 
 	  var PTR = function(el) {
 	    this.container = $(el);
-	    this.distance = 20;
+	    
+	    this.distance = 50;
 	    this.attachEvents();
 	  }
 
 	  PTR.prototype.touchStart = function(e) {
-	    if(this.container.hasClass("refreshing")) return;
+	    if(this.container.hasClass("refreshing")) return; 
 	    var p = $.getTouchPosition(e);
 	    this.start = p;
 	    this.diffX = this.diffY = 0;
@@ -44168,7 +44189,11 @@
 	  PTR.prototype.touchMove= function(e) {
 	    if(this.container.hasClass("refreshing")) return;
 	    if(!this.start) return false;
-	    if(this.container.scrollTop() > 0) return;
+	    var fixedContainer = this.container;
+	    if(!fixedContainer.hasClass("weui-tab__panel")){
+	      fixedContainer  = this.container.parents(".weui-tab__panel"); 
+	    } 
+	    if(fixedContainer.scrollTop() > 0) return;
 	    var p = $.getTouchPosition(e);
 	    this.diffX = p.x - this.start.x;
 	    this.diffY = p.y - this.start.y;
