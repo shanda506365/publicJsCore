@@ -40311,7 +40311,7 @@
 	          { className: 'weui-flex' },
 	          _react2.default.createElement(
 	            'div',
-	            { 'class': 'weui-flex__item' },
+	            { className: 'weui-flex__item' },
 	            _react2.default.createElement(
 	              'button',
 	              { className: 'weui-btn weui-btn_primary', onClick: onIncreaseClick },

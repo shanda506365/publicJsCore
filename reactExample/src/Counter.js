@@ -70,7 +70,7 @@ const Counter = React.createClass({
                   <h1 className="doc-head">页面{i}</h1>
                    <h4>{count}</h4>
                     <div className="weui-flex">
-                       <div class="weui-flex__item">
+                       <div className="weui-flex__item">
                         <button className='weui-btn weui-btn_primary' onClick={onIncreaseClick}>计数</button>
                        </div>
                        <div className="weui-flex__item">
@@ -114,9 +114,7 @@ const Counter = React.createClass({
     me.domInit(navbarHeadDom, tabItemDom, tabIndex,count, onNavbarClick,onIncreaseClick,onTestValClick)
 
     return (
-      <div className='h100' > 
-     
-       
+      <div className='h100' >  
         
         <div className="weui-tab" >
               <div className="weui-navbar">
