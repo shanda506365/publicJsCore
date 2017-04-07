@@ -3,12 +3,11 @@
 
  const mapDispatchToProps = {
  	mapDispatchToProps_Main: function(dispatch, ownProps) {
- 		return {  
- 		}
+ 		return {}
  	},
- 	mapDispatchToProps_Count : function(dispatch, ownProps) {
+ 	mapDispatchToProps_Count: function(dispatch, ownProps) {
  		return {
- 			onIncreaseClick: () => dispatch(Action.increaseAction), 
+ 			onIncreaseClick: () => dispatch(Action.increaseAction),
  			onTestValClick: () => dispatch({
  				type: ''
  			}),
@@ -18,12 +17,12 @@
  			}))
  		}
  	},
- 	mapDispatchToProps_Test : function(dispatch, ownProps) {
- 		return { 
+ 	mapDispatchToProps_Test: function(dispatch, ownProps) {
+ 		return {
  			onIncreaseTestClick: () => dispatch({
  				type: 'increaseTest',
  				filter: ownProps
- 			}) 
+ 			})
  		}
  	}
  }

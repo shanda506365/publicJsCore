@@ -42,14 +42,14 @@ const Counter = React.createClass({
   componentDidMount() {
 
     $('.tabItem').pullToRefresh().on('pull-to-refresh', function(done) {
-      var self = this 
+      var self = this
       console.log('refresh')
       setTimeout(function() {
         $(self).pullToRefreshDone();
       }, 2000)
     })
   },
-  domInit(navbarHeadDom, tabItemDom, tabIndex,count, onNavbarClick,onIncreaseClick,onTestValClick) {
+  domInit(navbarHeadDom, tabItemDom, tabIndex, count, onNavbarClick, onIncreaseClick, onTestValClick) {
 
     for (var i = 0; i < 3; i++) {
       let cls = 'weui-navbar__item',
@@ -113,7 +113,7 @@ const Counter = React.createClass({
     console.log('Counter', this.context, this.props)
     let navbarHeadDom = [],
       tabItemDom = [];
-    me.domInit(navbarHeadDom, tabItemDom, tabIndex,count, onNavbarClick,onIncreaseClick,onTestValClick)
+    me.domInit(navbarHeadDom, tabItemDom, tabIndex, count, onNavbarClick, onIncreaseClick, onTestValClick)
 
     return (
       <div className='h100' >  
