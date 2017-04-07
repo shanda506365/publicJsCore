@@ -39641,6 +39641,8 @@
 
 	var _MapDispatchToProps = __webpack_require__(288);
 
+	__webpack_require__(301);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var Test = _react2.default.createClass({
@@ -39668,6 +39670,47 @@
 					count,
 					'  ',
 					title
+				),
+				_react2.default.createElement(
+					'ul',
+					{ className: 'rongqi', onClick: function onClick() {
+							$('.rongqi').scrollLeft($('.rongqi').scrollLeft() + 50);
+						} },
+					_react2.default.createElement(
+						'li',
+						{ className: 'children' },
+						'123123123'
+					),
+					_react2.default.createElement(
+						'li',
+						{ className: 'children' },
+						'123123123'
+					),
+					_react2.default.createElement(
+						'li',
+						{ className: 'children' },
+						'123123123'
+					),
+					_react2.default.createElement(
+						'li',
+						{ className: 'children' },
+						'123123123'
+					),
+					_react2.default.createElement(
+						'li',
+						{ className: 'children' },
+						'123123123'
+					),
+					_react2.default.createElement(
+						'li',
+						{ className: 'children' },
+						'123123123'
+					),
+					_react2.default.createElement(
+						'li',
+						{ className: 'children' },
+						'123123123'
+					)
 				),
 				_react2.default.createElement(
 					'div',
@@ -55321,6 +55364,46 @@
 	    'age|1-100': 100,
 	    'color': _mockjs2.default.Random.color()
 	});
+
+/***/ },
+/* 301 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(302);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(285)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!../node_modules/css-loader/index.js!../node_modules/less-loader/index.js!./test.less", function() {
+				var newContent = require("!!../node_modules/css-loader/index.js!../node_modules/less-loader/index.js!./test.less");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 302 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(284)();
+	// imports
+
+
+	// module
+	exports.push([module.id, ".rongqi {\n  overflow: hidden;\n  white-space: nowrap;\n  text-overflow: ellipsis;\n  width: 162px;\n  height: 30px;\n}\n.children {\n  display: inline-block;\n}\n", ""]);
+
+	// exports
+
 
 /***/ }
 /******/ ]);
