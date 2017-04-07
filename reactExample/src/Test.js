@@ -47,10 +47,10 @@ const Test = React.createClass({
 		);
 	}
 })
-
+console.log(mapStateToProps)
 const con_Test = connect(
-  mapStateToProps,
-  mapDispatchToProps
+  mapStateToProps['mapStateToProps_Test'],
+  mapDispatchToProps['mapDispatchToProps_Test']
 )(Test)
 
 export {Test as Test,con_Test as con_Test}

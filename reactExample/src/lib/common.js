@@ -322,8 +322,8 @@
          })
       }
    }
-   // const apiPreFix = 'http://mp2.ai.com/' //'/'// 
-   const apiPreFix = '/' // 
+   const apiPreFix = 'http://mp2.ai.com/' //'/'// 
+   // const apiPreFix = '/' // 
    const iAPI = {
       login: apiPreFix + "common/login/check",
       announcement: apiPreFix + 'announcement/getLatest',

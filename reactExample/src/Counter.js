@@ -133,8 +133,8 @@ const Counter = React.createClass({
 
 
 const con_Counter = connect(
-  mapStateToProps,
-  mapDispatchToProps
+  mapStateToProps['mapStateToProps_Counter'],
+  mapDispatchToProps['mapDispatchToProps_Count']
 )(Counter)
 
 export {

@@ -27,7 +27,10 @@ import {
 import FastClick from '../node_modules/jquery-weui/dist/lib/fastclick'
 import Test from './Test'
 
-import common from './lib/common'
+import common,{Ajax,API} from './lib/common' 
+
+import mockData from './mockData/mockData'
+
 
 // React component
 const Main = React.createClass({
@@ -35,8 +38,24 @@ const Main = React.createClass({
     router: React.PropTypes.object
   },
   componentDidMount() {
+    let me = this;
     FastClick.attach(document.body);
     
+    Ajax({
+      url: API.login,
+      doneFun: function(msg) {
+        let data = JSON.parse(msg)
+
+
+        console.log(data)
+      },
+      failFun: function(jqXHR, textStatus) {
+        
+      },
+      alwaysFun: function() {}, 
+      context: me.context
+    }, false)
+
   },
   render() {
 
@@ -50,8 +69,8 @@ const Main = React.createClass({
 })
 
 const con_Main = connect(
-  mapStateToProps,
-  mapDispatchToProps
+  mapStateToProps['mapStateToProps_Main'],
+  mapDispatchToProps['mapDispatchToProps_Main']
 )(Main)
 
 export {
