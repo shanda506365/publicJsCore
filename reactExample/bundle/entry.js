@@ -39643,6 +39643,8 @@
 
 	__webpack_require__(301);
 
+	var _mockData = __webpack_require__(300);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var Test = _react2.default.createClass({
@@ -39660,6 +39662,17 @@
 			    buttonText = _props.buttonText;
 
 			console.log('Test', this.props);
+			var liDom = [];
+			console.log(_mockData.mData);
+			$.each(_mockData.mData.data, function (ix, item) {
+				liDom.push(_react2.default.createElement(
+					'li',
+					{ className: 'children', onClick: function onClick(e) {
+							console.log($(e.target).width());
+						} },
+					item.name
+				));
+			});
 			return _react2.default.createElement(
 				'div',
 				null,
@@ -39676,41 +39689,7 @@
 					{ className: 'rongqi', onClick: function onClick() {
 							$('.rongqi').scrollLeft($('.rongqi').scrollLeft() + 50);
 						} },
-					_react2.default.createElement(
-						'li',
-						{ className: 'children' },
-						'123123123'
-					),
-					_react2.default.createElement(
-						'li',
-						{ className: 'children' },
-						'123123123'
-					),
-					_react2.default.createElement(
-						'li',
-						{ className: 'children' },
-						'123123123'
-					),
-					_react2.default.createElement(
-						'li',
-						{ className: 'children' },
-						'123123123'
-					),
-					_react2.default.createElement(
-						'li',
-						{ className: 'children' },
-						'123123123'
-					),
-					_react2.default.createElement(
-						'li',
-						{ className: 'children' },
-						'123123123'
-					),
-					_react2.default.createElement(
-						'li',
-						{ className: 'children' },
-						'123123123'
-					)
+					liDom
 				),
 				_react2.default.createElement(
 					'div',
@@ -55349,6 +55328,11 @@
 
 	'use strict';
 
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	exports.mData = undefined;
+
 	var _mockjs = __webpack_require__(299);
 
 	var _mockjs2 = _interopRequireDefault(_mockjs);
@@ -55360,10 +55344,28 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	_mockjs2.default.mock(_common.API.login, {
-	    'name': _mockjs2.default.Random.name(),
-	    'age|1-100': 100,
-	    'color': _mockjs2.default.Random.color()
+		'suc': true,
+		'msg|1-10': '',
+		'code': '01',
+		'data|1-10': [{
+			'id|+1': 1,
+			'name': '@name',
+			'age|1-100': 100,
+			'color': _mockjs2.default.Random.color()
+		}]
 	});
+	var mData = _mockjs2.default.mock({
+		'suc': true,
+		'msg|1-10': '',
+		'code': '01',
+		'data|1-10': [{
+			'id|+1': 1,
+			'name': '@name',
+			'age|1-100': 100,
+			'color': '@color'
+		}]
+	});
+	exports.mData = mData;
 
 /***/ },
 /* 301 */

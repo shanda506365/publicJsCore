@@ -20,6 +20,8 @@ import {mapDispatchToProps} from './lib/MapDispatchToProps'
 
 import '!style!css!less!../less/test.less'
 
+import {mData} from './mockData/mockData'
+
 const Test = React.createClass({
 	contextTypes: {
 		router: React.PropTypes.object
@@ -33,16 +35,17 @@ const Test = React.createClass({
 		      buttonText
 		    } = this.props
 		console.log('Test',this.props)
+		let liDom=[] 
+		console.log(mData)
+		$.each(mData.data,function(ix,item){
+			liDom.push(<li className='children' onClick={(e)=>{
+			    		console.log($(e.target).width())
+			    	}}>{item.name}</li>  )
+		})
 		return (
 			<div><h4>TEST {count}  {title}</h4>
 			    <ul className='rongqi' onClick={()=>{$('.rongqi').scrollLeft($('.rongqi').scrollLeft()+50)}}>
-			    	<li className='children'>123123123</li>   
-			    	<li className='children'>123123123</li>   
-			    	<li className='children'>123123123</li>   
-			    	<li className='children'>123123123</li>   
-			    	<li className='children'>123123123</li>   
-			    	<li className='children'>123123123</li>   
-			    	<li className='children'>123123123</li>   
+			    	   {liDom}
 			    </ul>
 				<div className="weui-flex">
 					<div className="weui-flex__item">
