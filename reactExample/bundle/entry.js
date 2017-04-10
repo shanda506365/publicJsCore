@@ -55488,123 +55488,65 @@
 				)
 			));
 
+			var pullDiv = [_react2.default.createElement(
+				'div',
+				{ className: 'weui-pull-to-refresh__layer' },
+				_react2.default.createElement('div', { className: 'weui-pull-to-refresh__arrow' }),
+				_react2.default.createElement('div', { className: 'weui-pull-to-refresh__preloader' }),
+				_react2.default.createElement(
+					'div',
+					{ className: 'down' },
+					'\u4E0B\u62C9\u5237\u65B0'
+				),
+				_react2.default.createElement(
+					'div',
+					{ className: 'up' },
+					'\u91CA\u653E\u5237\u65B0'
+				),
+				_react2.default.createElement(
+					'div',
+					{ className: 'refresh' },
+					'\u6B63\u5728\u5237\u65B0'
+				)
+			)];
 			param.barPanelDom.push(_react2.default.createElement(
 				'div',
 				{ className: me.choseBarPanelCls(0) },
-				_react2.default.createElement(
-					'div',
-					{ className: 'weui-pull-to-refresh__layer' },
-					_react2.default.createElement('div', { className: 'weui-pull-to-refresh__arrow' }),
-					_react2.default.createElement('div', { className: 'weui-pull-to-refresh__preloader' }),
-					_react2.default.createElement(
-						'div',
-						{ className: 'down' },
-						'\u4E0B\u62C9\u5237\u65B0'
-					),
-					_react2.default.createElement(
-						'div',
-						{ className: 'up' },
-						'\u91CA\u653E\u5237\u65B0'
-					),
-					_react2.default.createElement(
-						'div',
-						{ className: 'refresh' },
-						'\u6B63\u5728\u5237\u65B0'
-					)
-				),
+				pullDiv,
 				'Page 1',
 				_react2.default.createElement(
 					_reactRouter.Link,
 					{ className: 'weui-btn weui-btn_default', to: '/' },
-					'\u8BA1\u6570'
+					'\u6D88\u606F\u8BA1\u6570'
 				)
 			));
+
 			param.barPanelDom.push(_react2.default.createElement(
 				'div',
 				{ className: me.choseBarPanelCls(1) },
-				_react2.default.createElement(
-					'div',
-					{ className: 'weui-pull-to-refresh__layer' },
-					_react2.default.createElement('div', { className: 'weui-pull-to-refresh__arrow' }),
-					_react2.default.createElement('div', { className: 'weui-pull-to-refresh__preloader' }),
-					_react2.default.createElement(
-						'div',
-						{ className: 'down' },
-						'\u4E0B\u62C9\u5237\u65B0'
-					),
-					_react2.default.createElement(
-						'div',
-						{ className: 'up' },
-						'\u91CA\u653E\u5237\u65B0'
-					),
-					_react2.default.createElement(
-						'div',
-						{ className: 'refresh' },
-						'\u6B63\u5728\u5237\u65B0'
-					)
-				),
+				pullDiv,
 				'Page 2',
 				_react2.default.createElement(
 					_reactRouter.Link,
 					{ className: 'weui-btn weui-btn_default', to: '/' },
-					'\u8BA1\u6570'
+					'\u6D88\u606F\u8BA1\u6570'
 				)
 			));
 			param.barPanelDom.push(_react2.default.createElement(
 				'div',
 				{ className: me.choseBarPanelCls(2) },
-				_react2.default.createElement(
-					'div',
-					{ className: 'weui-pull-to-refresh__layer' },
-					_react2.default.createElement('div', { className: 'weui-pull-to-refresh__arrow' }),
-					_react2.default.createElement('div', { className: 'weui-pull-to-refresh__preloader' }),
-					_react2.default.createElement(
-						'div',
-						{ className: 'down' },
-						'\u4E0B\u62C9\u5237\u65B0'
-					),
-					_react2.default.createElement(
-						'div',
-						{ className: 'up' },
-						'\u91CA\u653E\u5237\u65B0'
-					),
-					_react2.default.createElement(
-						'div',
-						{ className: 'refresh' },
-						'\u6B63\u5728\u5237\u65B0'
-					)
-				),
+				pullDiv,
 				'Page 3',
 				_react2.default.createElement(
 					_reactRouter.Link,
 					{ className: 'weui-btn weui-btn_default', to: '/' },
-					'\u8BA1\u6570'
+					'\u6D88\u606F\u8BA1\u6570'
 				)
 			));
 			param.barPanelDom.push(_react2.default.createElement(
 				'div',
 				{ className: me.choseBarPanelCls(3) },
-				_react2.default.createElement(
-					'div',
-					{ className: 'weui-pull-to-refresh__layer' },
-					_react2.default.createElement('div', { className: 'weui-pull-to-refresh__arrow' }),
-					_react2.default.createElement('div', { className: 'weui-pull-to-refresh__preloader' }),
-					_react2.default.createElement(
-						'div',
-						{ className: 'down' },
-						'\u4E0B\u62C9\u5237\u65B0'
-					),
-					_react2.default.createElement(
-						'div',
-						{ className: 'up' },
-						'\u91CA\u653E\u5237\u65B0'
-					),
-					_react2.default.createElement(
-						'div',
-						{ className: 'refresh' },
-						'\u6B63\u5728\u5237\u65B0'
-					)
-				),
+				pullDiv,
 				'Page 4',
 				_react2.default.createElement(
 					_reactRouter.Link,

@@ -74,40 +74,22 @@ const Quote = React.createClass({
 			            <p className="weui-tabbar__label">我</p>
 			        </a>)
 
-
+		const pullDiv = [<div className="weui-pull-to-refresh__layer">
+                    <div className='weui-pull-to-refresh__arrow'></div>
+                    <div className='weui-pull-to-refresh__preloader'></div>
+                    <div className="down">下拉刷新</div>
+                    <div className="up">释放刷新</div>
+                    <div className="refresh">正在刷新</div>
+                  </div>]
 		param.barPanelDom.push(<div className={me.choseBarPanelCls(0)}>
-			<div className="weui-pull-to-refresh__layer">
-                    <div className='weui-pull-to-refresh__arrow'></div>
-                    <div className='weui-pull-to-refresh__preloader'></div>
-                    <div className="down">下拉刷新</div>
-                    <div className="up">释放刷新</div>
-                    <div className="refresh">正在刷新</div>
-                  </div>
-			Page 1<Link className='weui-btn weui-btn_default' to="/">计数</Link></div>)
+			{pullDiv}
+			Page 1<Link className='weui-btn weui-btn_default' to="/">消息计数</Link></div>)
+		 
 		param.barPanelDom.push(<div className={me.choseBarPanelCls(1)}>
-			<div className="weui-pull-to-refresh__layer">
-                    <div className='weui-pull-to-refresh__arrow'></div>
-                    <div className='weui-pull-to-refresh__preloader'></div>
-                    <div className="down">下拉刷新</div>
-                    <div className="up">释放刷新</div>
-                    <div className="refresh">正在刷新</div>
-                  </div>Page 2<Link className='weui-btn weui-btn_default' to="/">计数</Link></div>)
-		param.barPanelDom.push(<div className={me.choseBarPanelCls(2)}>
-			<div className="weui-pull-to-refresh__layer">
-                    <div className='weui-pull-to-refresh__arrow'></div>
-                    <div className='weui-pull-to-refresh__preloader'></div>
-                    <div className="down">下拉刷新</div>
-                    <div className="up">释放刷新</div>
-                    <div className="refresh">正在刷新</div>
-                  </div>Page 3<Link className='weui-btn weui-btn_default' to="/">计数</Link></div>)
+			{pullDiv}Page 2<Link className='weui-btn weui-btn_default' to="/">消息计数</Link></div>)
+		param.barPanelDom.push(<div className={me.choseBarPanelCls(2)}>{pullDiv}Page 3<Link className='weui-btn weui-btn_default' to="/">消息计数</Link></div>)
 		param.barPanelDom.push(<div className={me.choseBarPanelCls(3)}>
-			<div className="weui-pull-to-refresh__layer">
-                    <div className='weui-pull-to-refresh__arrow'></div>
-                    <div className='weui-pull-to-refresh__preloader'></div>
-                    <div className="down">下拉刷新</div>
-                    <div className="up">释放刷新</div>
-                    <div className="refresh">正在刷新</div>
-                  </div>Page 4<Link className='weui-btn weui-btn_default' to="/">计数</Link></div>)
+			{pullDiv}Page 4<Link className='weui-btn weui-btn_default' to="/">计数</Link></div>)
 	},
 	render() {
 		const { 
