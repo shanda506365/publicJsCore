@@ -55528,7 +55528,7 @@
 				'Page 2',
 				_react2.default.createElement(
 					_reactRouter.Link,
-					{ className: 'weui-btn weui-btn_default', to: '/' },
+					{ className: 'weui-btn weui-btn_primary', to: '/' },
 					'\u6D88\u606F\u8BA1\u6570'
 				)
 			));
@@ -55550,8 +55550,8 @@
 				'Page 4',
 				_react2.default.createElement(
 					_reactRouter.Link,
-					{ className: 'weui-btn weui-btn_default', to: '/' },
-					'\u8BA1\u6570'
+					{ className: 'weui-btn weui-btn_primary', to: '/' },
+					'\u6D88\u606F\u8BA1\u6570'
 				)
 			));
 		},

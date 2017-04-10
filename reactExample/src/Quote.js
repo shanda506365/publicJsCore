@@ -86,10 +86,10 @@ const Quote = React.createClass({
 			Page 1<Link className='weui-btn weui-btn_default' to="/">消息计数</Link></div>)
 		 
 		param.barPanelDom.push(<div className={me.choseBarPanelCls(1)}>
-			{pullDiv}Page 2<Link className='weui-btn weui-btn_default' to="/">消息计数</Link></div>)
+			{pullDiv}Page 2<Link className='weui-btn weui-btn_primary' to="/">消息计数</Link></div>)
 		param.barPanelDom.push(<div className={me.choseBarPanelCls(2)}>{pullDiv}Page 3<Link className='weui-btn weui-btn_default' to="/">消息计数</Link></div>)
 		param.barPanelDom.push(<div className={me.choseBarPanelCls(3)}>
-			{pullDiv}Page 4<Link className='weui-btn weui-btn_default' to="/">计数</Link></div>)
+			{pullDiv}Page 4<Link className='weui-btn weui-btn_primary' to="/">消息计数</Link></div>)
 	},
 	render() {
 		const { 
