@@ -35,7 +35,7 @@ const Quote = React.createClass({
 	componentDidMount() {
 		let me = this;
 
-		$('.tabItem').pullToRefresh().on('pull-to-refresh', function(done) {
+		$('.barpanel').pullToRefresh().on('pull-to-refresh', function(done) {
 			var self = this
 			console.log('refresh')
 			setTimeout(function() {
@@ -53,7 +53,7 @@ const Quote = React.createClass({
 		const {
 			Quote
 		} = this.props, me = this;
-		return Quote.tabIndex == index ? '' : 'hide'
+		return Quote.tabIndex == index ? 'barpanel weui-pull-to-refresh h100' : 'barpanel hide weui-pull-to-refresh h100'
 	},
 	domInit(param) {
 		const me = this;
@@ -75,7 +75,15 @@ const Quote = React.createClass({
 			        </a>)
 
 
-		param.barPanelDom.push(<div className={me.choseBarPanelCls(0)}>Page 1<Link className='weui-btn weui-btn_default' to="/">计数</Link></div>)
+		param.barPanelDom.push(<div className={me.choseBarPanelCls(0)}>
+			<div className="weui-pull-to-refresh__layer">
+                    <div className='weui-pull-to-refresh__arrow'></div>
+                    <div className='weui-pull-to-refresh__preloader'></div>
+                    <div className="down">下拉刷新</div>
+                    <div className="up">释放刷新</div>
+                    <div className="refresh">正在刷新</div>
+                  </div>
+			Page 1<Link className='weui-btn weui-btn_default' to="/">计数</Link></div>)
 		param.barPanelDom.push(<div className={me.choseBarPanelCls(1)}>Page 2<Link className='weui-btn weui-btn_default' to="/">计数</Link></div>)
 		param.barPanelDom.push(<div className={me.choseBarPanelCls(2)}>Page 3<Link className='weui-btn weui-btn_default' to="/">计数</Link></div>)
 		param.barPanelDom.push(<div className={me.choseBarPanelCls(3)}>Page 4<Link className='weui-btn weui-btn_default' to="/">计数</Link></div>)

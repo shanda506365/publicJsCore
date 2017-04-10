@@ -55419,7 +55419,7 @@
 		componentDidMount: function componentDidMount() {
 			var me = this;
 
-			$('.tabItem').pullToRefresh().on('pull-to-refresh', function (done) {
+			$('.barpanel').pullToRefresh().on('pull-to-refresh', function (done) {
 				var self = this;
 				console.log('refresh');
 				setTimeout(function () {
@@ -55435,7 +55435,7 @@
 		choseBarPanelCls: function choseBarPanelCls(index) {
 			var Quote = this.props.Quote,
 			    me = this;
-			return Quote.tabIndex == index ? '' : 'hide';
+			return Quote.tabIndex == index ? 'barpanel weui-pull-to-refresh h100' : 'barpanel hide weui-pull-to-refresh h100';
 		},
 		domInit: function domInit(param) {
 			var me = this;
@@ -55491,6 +55491,27 @@
 			param.barPanelDom.push(_react2.default.createElement(
 				'div',
 				{ className: me.choseBarPanelCls(0) },
+				_react2.default.createElement(
+					'div',
+					{ className: 'weui-pull-to-refresh__layer' },
+					_react2.default.createElement('div', { className: 'weui-pull-to-refresh__arrow' }),
+					_react2.default.createElement('div', { className: 'weui-pull-to-refresh__preloader' }),
+					_react2.default.createElement(
+						'div',
+						{ className: 'down' },
+						'\u4E0B\u62C9\u5237\u65B0'
+					),
+					_react2.default.createElement(
+						'div',
+						{ className: 'up' },
+						'\u91CA\u653E\u5237\u65B0'
+					),
+					_react2.default.createElement(
+						'div',
+						{ className: 'refresh' },
+						'\u6B63\u5728\u5237\u65B0'
+					)
+				),
 				'Page 1',
 				_react2.default.createElement(
 					_reactRouter.Link,
