@@ -25,7 +25,7 @@ import {
 } from './lib/MapDispatchToProps'
 
 import FastClick from '../node_modules/jquery-weui/dist/lib/fastclick'
-import Test from './Test'
+ 
 
 import common,{Ajax,API} from './lib/common' 
 

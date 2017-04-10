@@ -8,6 +8,9 @@ const Action = {
 	},
 	navbarClickAction:{
 		type: 'navbarClick'
+	},
+	quote_tabbarClickAction:{
+		type:'quote_tabbarClick'
 	}
 }
 

@@ -54,6 +54,9 @@ const Test = React.createClass({
 					<div className="weui-flex__item">
 							<Link className='weui-btn weui-btn_default' to="/">计数</Link>
 					</div>
+					<div className="weui-flex__item">
+						<Link className='weui-btn weui-btn_default' to="/Quote">报价</Link>
+					</div>
 				</div>
 				
 			 

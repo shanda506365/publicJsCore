@@ -74,6 +74,10 @@
 
 	var _Test2 = _interopRequireDefault(_Test);
 
+	var _Quote = __webpack_require__(303);
+
+	var _Quote2 = _interopRequireDefault(_Quote);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	_reactDom2.default.render(_react2.default.createElement(
@@ -91,7 +95,8 @@
 	        onLeave: function onLeave(prevState) {
 	          //console.log(prevState) 
 	        } }),
-	      _react2.default.createElement(_reactRouter.Route, { path: '/Test', component: _Test2.default })
+	      _react2.default.createElement(_reactRouter.Route, { path: '/Test', component: _Test2.default }),
+	      _react2.default.createElement(_reactRouter.Route, { path: '/Quote', component: _Quote2.default })
 	    )
 	  )
 	), document.getElementById('root'));
@@ -28225,7 +28230,11 @@
 	    count: 0,
 	    title: '消息',
 	    buttonText: '消息计数',
-	    tabIndex: 0
+	    tabIndex: 0,
+	    Quote: {
+	      tabIndex: 0,
+	      title: 'Quote'
+	    }
 	  };
 	  var action = arguments[1];
 
@@ -28234,6 +28243,7 @@
 	  var rObj = void 0;
 	  switch (action.type) {
 	    case 'increase':
+	      console.log('=====1111');
 	      rObj = (0, _objectAssign2.default)(tstate, {
 	        count: count + 1,
 	        title: '消息' + count
@@ -28241,7 +28251,7 @@
 	      return rObj;
 	    case 'increaseTest':
 	      //$('button').text('Do it hahahaha' + count)
-	      console.log(action.filter);
+	      console.log('increaseTest', action.filter);
 	      rObj = (0, _objectAssign2.default)(tstate, {
 	        count: count + 1,
 	        title: '消息' + count
@@ -28253,6 +28263,15 @@
 	      rObj = (0, _objectAssign2.default)(tstate, {
 	        tabIndex: action.index
 	      });
+	      return rObj;
+	    case 'quote_tabbarClick':
+
+	      rObj = (0, _objectAssign2.default)(tstate, {
+	        Quote: {
+	          tabIndex: action.index
+	        }
+	      });
+	      console.log('quote_tabbarClick', rObj);
 	      return rObj;
 	    default:
 	      console.log(state);
@@ -38231,10 +38250,6 @@
 
 	var _fastclick2 = _interopRequireDefault(_fastclick);
 
-	var _Test = __webpack_require__(290);
-
-	var _Test2 = _interopRequireDefault(_Test);
-
 	var _common = __webpack_require__(295);
 
 	var _common2 = _interopRequireDefault(_common);
@@ -38320,7 +38335,7 @@
 
 
 	// module
-	exports.push([module.id, "html {\n  font-size: 62.5%;\n  height: 100%;\n}\nbody {\n  font-size: 1.4rem;\n  height: 100%;\n  font-family: \"Helvetica Neue\", Helvetica, Microsoft Yahei, Hiragino Sans GB, WenQuanYi Micro Hei, sans-serif;\n}\n#root {\n  height: 100%;\n}\n#root .h100 {\n  height: 100%;\n}\n#root .weui-tab__bd-item {\n  height: 100%;\n}\n", ""]);
+	exports.push([module.id, "html {\n  font-size: 62.5%;\n  height: 100%;\n}\nbody {\n  font-size: 1.4rem;\n  height: 100%;\n  font-family: \"Helvetica Neue\", Helvetica, Microsoft Yahei, Hiragino Sans GB, WenQuanYi Micro Hei, sans-serif;\n}\n#root {\n  height: 100%;\n}\n#root .h100 {\n  height: 100%;\n}\n#root .weui-tab__bd-item {\n  height: 100%;\n}\n#root .hide {\n  display: none;\n}\n", ""]);
 
 	// exports
 
@@ -38642,15 +38657,20 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports.mapStateToProps_Test = exports.mapStateToProps_Counter = exports.mapStateToProps_Main = exports.mapStateToProps = undefined;
+	exports.mapStateToProps_Quote = exports.mapStateToProps_Test = exports.mapStateToProps_Counter = exports.mapStateToProps_Main = exports.mapStateToProps = undefined;
 
 	var _Action = __webpack_require__(287);
 
 	var _Action2 = _interopRequireDefault(_Action);
 
+	var _objectAssign = __webpack_require__(280);
+
+	var _objectAssign2 = _interopRequireDefault(_objectAssign);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var mapStateToProps = {
+	  stateInit: {},
 	  mapStateToProps_Main: function mapStateToProps_Main(state, ownProps) {
 	    console.log('mapStateToProps_Main', ownProps);
 	    return {
@@ -38680,15 +38700,24 @@
 	      tabIndex: state.tabIndex,
 	      stateFlag: 'mapStateToProps_Test'
 	    };
+	  },
+	  mapStateToProps_Quote: function mapStateToProps_Quote(state, ownProps) {
+	    console.log('mapStateToProps_Quote', ownProps);
+	    var rObj = (0, _objectAssign2.default)(state, {
+	      stateFlag: 'mapStateToProps_Quote'
+	    });
+	    return rObj;
 	  }
 	};
 	var mapStateToProps_Main = mapStateToProps['mapStateToProps_Main'];
 	var mapStateToProps_Counter = mapStateToProps['mapStateToProps_Counter'];
 	var mapStateToProps_Test = mapStateToProps['mapStateToProps_Test'];
+	var mapStateToProps_Quote = mapStateToProps['mapStateToProps_Quote'];
 	exports.mapStateToProps = mapStateToProps;
 	exports.mapStateToProps_Main = mapStateToProps_Main;
 	exports.mapStateToProps_Counter = mapStateToProps_Counter;
 	exports.mapStateToProps_Test = mapStateToProps_Test;
+	exports.mapStateToProps_Quote = mapStateToProps_Quote;
 	exports.default = mapStateToProps;
 
 /***/ },
@@ -38710,6 +38739,9 @@
 		},
 		navbarClickAction: {
 			type: 'navbarClick'
+		},
+		quote_tabbarClickAction: {
+			type: 'quote_tabbarClick'
 		}
 	};
 
@@ -38724,7 +38756,7 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports.mapDispatchToProps_Test = exports.mapDispatchToProps_Count = exports.mapDispatchToProps_Main = exports.mapDispatchToProps = undefined;
+	exports.mapDispatchToProps_Quote = exports.mapDispatchToProps_Test = exports.mapDispatchToProps_Count = exports.mapDispatchToProps_Main = exports.mapDispatchToProps = undefined;
 
 	var _Action = __webpack_require__(287);
 
@@ -38767,16 +38799,28 @@
 	        });
 	      }
 	    };
+	  },
+	  mapDispatchToProps_Quote: function mapDispatchToProps_Quote(dispatch, ownProps) {
+	    return {
+	      onTabbarClick: function onTabbarClick(e, index) {
+	        return dispatch((0, _objectAssign2.default)(_Action2.default.quote_tabbarClickAction, {
+	          e: e,
+	          index: index
+	        }));
+	      }
+	    };
 	  }
 	};
 
 	var mapDispatchToProps_Main = mapDispatchToProps['mapDispatchToProps_Main'];
 	var mapDispatchToProps_Count = mapDispatchToProps['mapDispatchToProps_Count'];
 	var mapDispatchToProps_Test = mapDispatchToProps['mapDispatchToProps_Test'];
+	var mapDispatchToProps_Quote = mapDispatchToProps['mapDispatchToProps_Quote'];
 	exports.mapDispatchToProps = mapDispatchToProps;
 	exports.mapDispatchToProps_Main = mapDispatchToProps_Main;
 	exports.mapDispatchToProps_Count = mapDispatchToProps_Count;
 	exports.mapDispatchToProps_Test = mapDispatchToProps_Test;
+	exports.mapDispatchToProps_Quote = mapDispatchToProps_Quote;
 	exports.default = mapDispatchToProps;
 
 /***/ },
@@ -39722,6 +39766,15 @@
 							_reactRouter.Link,
 							{ className: 'weui-btn weui-btn_default', to: '/' },
 							'\u8BA1\u6570'
+						)
+					),
+					_react2.default.createElement(
+						'div',
+						{ className: 'weui-flex__item' },
+						_react2.default.createElement(
+							_reactRouter.Link,
+							{ className: 'weui-btn weui-btn_default', to: '/Quote' },
+							'\u62A5\u4EF7'
 						)
 					)
 				)
@@ -48848,6 +48901,7 @@
 	    router: _react2.default.PropTypes.object
 	  },
 	  componentDidMount: function componentDidMount() {
+	    var me = this;
 
 	    $('.tabItem').pullToRefresh().on('pull-to-refresh', function (done) {
 	      var self = this;
@@ -49017,6 +49071,7 @@
 	        onNavbarClick = _props.onNavbarClick;
 
 	    console.log('Counter', this.context, this.props);
+
 	    var navbarHeadDom = [],
 	        tabItemDom = [];
 	    me.domInit(navbarHeadDom, tabItemDom, tabIndex, count, onNavbarClick, onIncreaseClick, onTestValClick);
@@ -55414,6 +55469,200 @@
 	  }
 	}($);
 
+
+/***/ },
+/* 303 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	exports.con_Quote = exports.Quote = undefined;
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactDom = __webpack_require__(29);
+
+	var _reactDom2 = _interopRequireDefault(_reactDom);
+
+	var _reactRedux = __webpack_require__(193);
+
+	var _reactRouter = __webpack_require__(220);
+
+	var _MapStateToProps = __webpack_require__(286);
+
+	var _MapDispatchToProps = __webpack_require__(288);
+
+	__webpack_require__(298);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	//import "!style!css!less!../node_modules/jquery-weui/dist/css/jquery-weui.css"
+
+	//import Jweui from '../node_modules/jquery-weui/dist/js/jquery-weui'
+
+
+	var Quote = _react2.default.createClass({
+		displayName: 'Quote',
+
+		contextTypes: {
+			router: _react2.default.PropTypes.object
+		},
+		componentDidMount: function componentDidMount() {
+			var me = this;
+
+			$('.tabItem').pullToRefresh().on('pull-to-refresh', function (done) {
+				var self = this;
+				console.log('refresh');
+				setTimeout(function () {
+					$(self).pullToRefreshDone();
+				}, 2000);
+			});
+		},
+		choseBarItemCls: function choseBarItemCls(index) {
+			var Quote = this.props.Quote,
+			    me = this;
+			return "weui-tabbar__item " + (Quote.tabIndex == index ? 'weui-bar__item_on' : '');
+		},
+		choseBarPanelCls: function choseBarPanelCls(index) {
+			var Quote = this.props.Quote,
+			    me = this;
+			return Quote.tabIndex == index ? '' : 'hide';
+		},
+		domInit: function domInit(param) {
+			var me = this;
+			param.barItemDom.push(_react2.default.createElement(
+				'a',
+				{ href: 'javascript:;', className: me.choseBarItemCls(0), onClick: function onClick(e) {
+						return param.onTabbarClick(e, 0);
+					} },
+				_react2.default.createElement('img', { src: './images/icon_tabbar.png', alt: '', className: 'weui-tabbar__icon' }),
+				_react2.default.createElement(
+					'p',
+					{ className: 'weui-tabbar__label' },
+					'\u5FAE\u4FE1'
+				)
+			));
+			param.barItemDom.push(_react2.default.createElement(
+				'a',
+				{ href: 'javascript:;', className: me.choseBarItemCls(1), onClick: function onClick(e) {
+						return param.onTabbarClick(e, 1);
+					} },
+				_react2.default.createElement('img', { src: './images/icon_tabbar.png', alt: '', className: 'weui-tabbar__icon' }),
+				_react2.default.createElement(
+					'p',
+					{ className: 'weui-tabbar__label' },
+					'\u901A\u8BAF\u5F55'
+				)
+			));
+			param.barItemDom.push(_react2.default.createElement(
+				'a',
+				{ href: 'javascript:;', className: me.choseBarItemCls(2), onClick: function onClick(e) {
+						return param.onTabbarClick(e, 2);
+					} },
+				_react2.default.createElement('img', { src: './images/icon_tabbar.png', alt: '', className: 'weui-tabbar__icon' }),
+				_react2.default.createElement(
+					'p',
+					{ className: 'weui-tabbar__label' },
+					'\u53D1\u73B0'
+				)
+			));
+			param.barItemDom.push(_react2.default.createElement(
+				'a',
+				{ href: 'javascript:;', className: me.choseBarItemCls(3), onClick: function onClick(e) {
+						return param.onTabbarClick(e, 3);
+					} },
+				_react2.default.createElement('img', { src: './images/icon_tabbar.png', alt: '', className: 'weui-tabbar__icon' }),
+				_react2.default.createElement(
+					'p',
+					{ className: 'weui-tabbar__label' },
+					'\u6211'
+				)
+			));
+
+			param.barPanelDom.push(_react2.default.createElement(
+				'div',
+				{ className: me.choseBarPanelCls(0) },
+				'Page 1',
+				_react2.default.createElement(
+					_reactRouter.Link,
+					{ className: 'weui-btn weui-btn_default', to: '/' },
+					'\u8BA1\u6570'
+				)
+			));
+			param.barPanelDom.push(_react2.default.createElement(
+				'div',
+				{ className: me.choseBarPanelCls(1) },
+				'Page 2',
+				_react2.default.createElement(
+					_reactRouter.Link,
+					{ className: 'weui-btn weui-btn_default', to: '/' },
+					'\u8BA1\u6570'
+				)
+			));
+			param.barPanelDom.push(_react2.default.createElement(
+				'div',
+				{ className: me.choseBarPanelCls(2) },
+				'Page 3',
+				_react2.default.createElement(
+					_reactRouter.Link,
+					{ className: 'weui-btn weui-btn_default', to: '/' },
+					'\u8BA1\u6570'
+				)
+			));
+			param.barPanelDom.push(_react2.default.createElement(
+				'div',
+				{ className: me.choseBarPanelCls(3) },
+				'Page 4',
+				_react2.default.createElement(
+					_reactRouter.Link,
+					{ className: 'weui-btn weui-btn_default', to: '/' },
+					'\u8BA1\u6570'
+				)
+			));
+		},
+		render: function render() {
+			var _props = this.props,
+			    Quote = _props.Quote,
+			    onTabbarClick = _props.onTabbarClick,
+			    me = this;
+
+			console.log('Quote===', this.props);
+			var barItemDom = [],
+			    barPanelDom = [];
+			me.domInit({
+				Quote: Quote,
+				onTabbarClick: onTabbarClick,
+				barItemDom: barItemDom,
+				barPanelDom: barPanelDom
+			});
+
+			return _react2.default.createElement(
+				'div',
+				{ className: 'rc_quote weui-tab' },
+				_react2.default.createElement(
+					'div',
+					{ className: 'weui-tab__panel' },
+					barPanelDom
+				),
+				_react2.default.createElement(
+					'div',
+					{ className: 'weui-tabbar' },
+					barItemDom
+				)
+			);
+		}
+	});
+
+	var con_Quote = (0, _reactRedux.connect)(_MapStateToProps.mapStateToProps_Quote, _MapDispatchToProps.mapDispatchToProps_Quote)(Quote);
+
+	exports.Quote = Quote;
+	exports.con_Quote = con_Quote;
+	exports.default = con_Quote;
 
 /***/ }
 /******/ ]);

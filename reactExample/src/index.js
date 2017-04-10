@@ -26,6 +26,7 @@ import {
 import Main from './Main'
 import Counter from './Counter'
 import Test from './Test'
+import Quote from './Quote'
  
 
 ReactDOM.render(
@@ -39,6 +40,7 @@ ReactDOM.render(
                       //console.log(prevState) 
                   }}/>
         <Route path='/Test' component={Test} />
+        <Route path='/Quote' component={Quote} />
       </Route> 
     </Router> 
   </Provider>,

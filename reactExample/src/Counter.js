@@ -32,14 +32,14 @@ import Jweui from '../node_modules/jquery-weui/dist/js/jquery-weui'
 // import WeuiJs from 'weui.js'
  
 
-
 // React component
 const Counter = React.createClass({
   contextTypes: {
     router: React.PropTypes.object
   },
   componentDidMount() {
-
+    let me = this;
+    
     $('.tabItem').pullToRefresh().on('pull-to-refresh', function(done) {
       var self = this
       console.log('refresh')
@@ -109,7 +109,8 @@ const Counter = React.createClass({
       tabIndex,
       onNavbarClick
     } = this.props
-    console.log('Counter', this.context, this.props)
+    console.log('Counter', this.context, this.props) 
+
     let navbarHeadDom = [],
       tabItemDom = [];
     me.domInit(navbarHeadDom, tabItemDom, tabIndex, count, onNavbarClick, onIncreaseClick, onTestValClick)

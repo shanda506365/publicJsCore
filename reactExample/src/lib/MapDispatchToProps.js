@@ -24,16 +24,26 @@
  				filter: ownProps
  			})
  		}
+ 	},
+ 	mapDispatchToProps_Quote:function(dispatch, ownProps){
+ 		return {
+ 			onTabbarClick:(e,index)=> dispatch(objectAssign(Action.quote_tabbarClickAction, {
+ 				e,
+ 				index
+ 			}))
+ 		}
  	}
  }
 
  const mapDispatchToProps_Main = mapDispatchToProps['mapDispatchToProps_Main']
  const mapDispatchToProps_Count = mapDispatchToProps['mapDispatchToProps_Count']
  const mapDispatchToProps_Test = mapDispatchToProps['mapDispatchToProps_Test']
+ const mapDispatchToProps_Quote = mapDispatchToProps['mapDispatchToProps_Quote']
  export {
  	mapDispatchToProps as mapDispatchToProps,
  	mapDispatchToProps_Main as mapDispatchToProps_Main,
  	mapDispatchToProps_Count as mapDispatchToProps_Count,
- 	mapDispatchToProps_Test as mapDispatchToProps_Test
+ 	mapDispatchToProps_Test as mapDispatchToProps_Test,
+ 	mapDispatchToProps_Quote as mapDispatchToProps_Quote
  }
  export default mapDispatchToProps
