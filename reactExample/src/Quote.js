@@ -45,18 +45,18 @@ const Quote = React.createClass({
 	},
 	choseBarItemCls(index){
 		const {
-		 	Quote
-		} = this.props,me=this; 
-		return "weui-tabbar__item "+(Quote.tabIndex==index?'weui-bar__item_on':'')
+			Quote
+		} = this.props, me = this;
+		return "weui-tabbar__item " + (Quote.tabIndex == index ? 'weui-bar__item_on' : '')
 	},
-	choseBarPanelCls(index){
+	choseBarPanelCls(index) {
 		const {
-		 	Quote
-		} = this.props,me=this; 
-		return Quote.tabIndex==index?'':'hide'
+			Quote
+		} = this.props, me = this;
+		return Quote.tabIndex == index ? '' : 'hide'
 	},
 	domInit(param) {
-		const me=this; 
+		const me = this;
 		param.barItemDom.push(<a href="javascript:;" className={me.choseBarItemCls(0)} onClick={e=>param.onTabbarClick(e,0)}>
 			            <img src="./images/icon_tabbar.png" alt="" className="weui-tabbar__icon"/>
 			            <p className="weui-tabbar__label">微信</p>
@@ -83,18 +83,18 @@ const Quote = React.createClass({
 	render() {
 		const {
 			Quote,
-			onTabbarClick  
-		} = this.props,me=this;
-		console.log('Quote===',this.props)
+			onTabbarClick
+		} = this.props, me = this;
+		console.log('Quote===', this.props)
 		let barItemDom = [],
 			barPanelDom = []
 		me.domInit({
 			Quote,
 			onTabbarClick,
 			barItemDom,
-			barPanelDom 
+			barPanelDom
 		})
- 
+
 		return (
 			<div className='rc_quote weui-tab'>
 				<div className="weui-tab__panel">
