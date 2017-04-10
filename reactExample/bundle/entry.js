@@ -55522,6 +55522,27 @@
 			param.barPanelDom.push(_react2.default.createElement(
 				'div',
 				{ className: me.choseBarPanelCls(1) },
+				_react2.default.createElement(
+					'div',
+					{ className: 'weui-pull-to-refresh__layer' },
+					_react2.default.createElement('div', { className: 'weui-pull-to-refresh__arrow' }),
+					_react2.default.createElement('div', { className: 'weui-pull-to-refresh__preloader' }),
+					_react2.default.createElement(
+						'div',
+						{ className: 'down' },
+						'\u4E0B\u62C9\u5237\u65B0'
+					),
+					_react2.default.createElement(
+						'div',
+						{ className: 'up' },
+						'\u91CA\u653E\u5237\u65B0'
+					),
+					_react2.default.createElement(
+						'div',
+						{ className: 'refresh' },
+						'\u6B63\u5728\u5237\u65B0'
+					)
+				),
 				'Page 2',
 				_react2.default.createElement(
 					_reactRouter.Link,
@@ -55532,6 +55553,27 @@
 			param.barPanelDom.push(_react2.default.createElement(
 				'div',
 				{ className: me.choseBarPanelCls(2) },
+				_react2.default.createElement(
+					'div',
+					{ className: 'weui-pull-to-refresh__layer' },
+					_react2.default.createElement('div', { className: 'weui-pull-to-refresh__arrow' }),
+					_react2.default.createElement('div', { className: 'weui-pull-to-refresh__preloader' }),
+					_react2.default.createElement(
+						'div',
+						{ className: 'down' },
+						'\u4E0B\u62C9\u5237\u65B0'
+					),
+					_react2.default.createElement(
+						'div',
+						{ className: 'up' },
+						'\u91CA\u653E\u5237\u65B0'
+					),
+					_react2.default.createElement(
+						'div',
+						{ className: 'refresh' },
+						'\u6B63\u5728\u5237\u65B0'
+					)
+				),
 				'Page 3',
 				_react2.default.createElement(
 					_reactRouter.Link,
@@ -55542,6 +55584,27 @@
 			param.barPanelDom.push(_react2.default.createElement(
 				'div',
 				{ className: me.choseBarPanelCls(3) },
+				_react2.default.createElement(
+					'div',
+					{ className: 'weui-pull-to-refresh__layer' },
+					_react2.default.createElement('div', { className: 'weui-pull-to-refresh__arrow' }),
+					_react2.default.createElement('div', { className: 'weui-pull-to-refresh__preloader' }),
+					_react2.default.createElement(
+						'div',
+						{ className: 'down' },
+						'\u4E0B\u62C9\u5237\u65B0'
+					),
+					_react2.default.createElement(
+						'div',
+						{ className: 'up' },
+						'\u91CA\u653E\u5237\u65B0'
+					),
+					_react2.default.createElement(
+						'div',
+						{ className: 'refresh' },
+						'\u6B63\u5728\u5237\u65B0'
+					)
+				),
 				'Page 4',
 				_react2.default.createElement(
 					_reactRouter.Link,
@@ -55551,16 +55614,12 @@
 			));
 		},
 		render: function render() {
-			var _props = this.props,
-			    Quote = _props.Quote,
-			    onTabbarClick = _props.onTabbarClick,
+			var onTabbarClick = this.props.onTabbarClick,
 			    me = this;
-
 			console.log('Quote===', this.props);
 			var barItemDom = [],
 			    barPanelDom = [];
 			me.domInit({
-				Quote: Quote,
 				onTabbarClick: onTabbarClick,
 				barItemDom: barItemDom,
 				barPanelDom: barPanelDom
