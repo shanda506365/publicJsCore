@@ -18,10 +18,10 @@ import {
 import "!style!css!less!../less/index.less"
 
 import {
-  mapStateToProps
+  mapStateToProps_Main
 } from './lib/MapStateToProps'
 import {
-  mapDispatchToProps
+  mapDispatchToProps_Main
 } from './lib/MapDispatchToProps'
 
 import FastClick from '../node_modules/jquery-weui/dist/lib/fastclick'
@@ -69,8 +69,8 @@ const Main = React.createClass({
 })
 
 const con_Main = connect(
-  mapStateToProps['mapStateToProps_Main'],
-  mapDispatchToProps['mapDispatchToProps_Main']
+  mapStateToProps_Main,
+  mapDispatchToProps_Main
 )(Main)
 
 export {

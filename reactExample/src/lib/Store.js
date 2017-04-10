@@ -6,9 +6,8 @@
    counterReducer
  } from './Reducer'
  // Store
- const store = createStore(counterReducer)
-
+ const store = createStore(counterReducer) 
 
  export {
-   store as GlobalStore
+   store as GlobalStore 
  }

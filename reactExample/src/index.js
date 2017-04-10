@@ -20,13 +20,14 @@ import {
 
 
 import {
-  GlobalStore
+  GlobalStore 
 } from './lib/Store' 
 
 import Main from './Main'
 import Counter from './Counter'
 import Test from './Test'
  
+
 ReactDOM.render(
   <Provider store={GlobalStore}>
     <Router history={hashHistory}>

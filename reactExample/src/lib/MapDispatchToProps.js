@@ -27,7 +27,13 @@
  	}
  }
 
+ const mapDispatchToProps_Main = mapDispatchToProps['mapDispatchToProps_Main']
+ const mapDispatchToProps_Count = mapDispatchToProps['mapDispatchToProps_Count']
+ const mapDispatchToProps_Test = mapDispatchToProps['mapDispatchToProps_Test']
  export {
- 	mapDispatchToProps as mapDispatchToProps
+ 	mapDispatchToProps as mapDispatchToProps,
+ 	mapDispatchToProps_Main as mapDispatchToProps_Main,
+ 	mapDispatchToProps_Count as mapDispatchToProps_Count,
+ 	mapDispatchToProps_Test as mapDispatchToProps_Test
  }
  export default mapDispatchToProps

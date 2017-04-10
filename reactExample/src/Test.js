@@ -15,8 +15,8 @@ import {
 	IndexLink
 } from 'react-router'
 
-import {mapStateToProps} from './lib/MapStateToProps'
-import {mapDispatchToProps} from './lib/MapDispatchToProps' 
+import {mapStateToProps_Test} from './lib/MapStateToProps'
+import {mapDispatchToProps_Test} from './lib/MapDispatchToProps' 
 
 import '!style!css!less!../less/test.less'
 
@@ -60,11 +60,10 @@ const Test = React.createClass({
 			</div>
 		);
 	}
-})
-console.log(mapStateToProps)
+}) 
 const con_Test = connect(
-  mapStateToProps['mapStateToProps_Test'],
-  mapDispatchToProps['mapDispatchToProps_Test']
+  mapStateToProps_Test,
+  mapDispatchToProps_Test
 )(Test)
 
 export {Test as Test,con_Test as con_Test}

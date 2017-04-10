@@ -16,10 +16,10 @@ import {
 } from 'react-router'
 
 import {
-  mapStateToProps
+  mapStateToProps_Counter
 } from './lib/MapStateToProps'
 import {
-  mapDispatchToProps
+  mapDispatchToProps_Count
 } from './lib/MapDispatchToProps'
 
 import 'weui'
@@ -30,8 +30,7 @@ import "!style!css!less!../node_modules/jquery-weui/dist/css/jquery-weui.css"
 import Jweui from '../node_modules/jquery-weui/dist/js/jquery-weui'
 
 // import WeuiJs from 'weui.js'
-
-import Test from './Test'
+ 
 
 
 // React component
@@ -93,10 +92,10 @@ const Counter = React.createClass({
                       
                   </div>
                   <div className="content-padded">
-                    <p>  a fast, small, and feature-rich JavaScript library. It makes things like HTML document traversal and manipulation, event handling, animation, and Ajax much simpler with an easy-to-use API that works across a multitude of browsers. If you're new to jQuery, we recommend that you check out the jQuery Learning Center.</p>
-                    <p> is a fast, small, and feature-rich JavaScript library. It makes things like HTML document traversal and manipulation, event handling, animation, and Ajax much simpler with an easy-to-use API that works across a multitude of browsers. If you're new to jQuery, we recommend that you check out the jQuery Learning Center.</p>
+                    <p> adsfadfadsfitasdfadfasdfa</p>
+                    <p> afasdfsadfasdfasdf</p>
                     <br/><br/><br/><br/>2<br/><br/><br/>2<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-                    <p>  is a fast, small, and feature-rich JavaScript library. It makes things like HTML document traversal and manipulation, event handling, animation, and Ajax much simpler with an easy-to-use API that works across a multitude of browsers. If you're new to jQuery, we recommend that you check out the jQuery Learning Center.</p>
+                    <p> 234234213412341234</p>
                   </div>
               </div>)
     };
@@ -133,8 +132,8 @@ const Counter = React.createClass({
 
 
 const con_Counter = connect(
-  mapStateToProps['mapStateToProps_Counter'],
-  mapDispatchToProps['mapDispatchToProps_Count']
+  mapStateToProps_Counter,
+  mapDispatchToProps_Count
 )(Counter)
 
 export {
