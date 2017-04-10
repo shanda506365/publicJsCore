@@ -14,7 +14,7 @@
    } 
  }, action) {
    const count = state.count
-   const tstate = deepAssign({}, state);
+   const tstate =JSON.parse(JSON.stringify(state));
    let rObj;
    switch (action.type) {
      case 'increase':
@@ -40,8 +40,8 @@
        });
        return rObj
      case 'quote_tabbarClick':
-       const temp = JSON.parse(JSON.stringify(tstate));
-       rObj = deepAssign(temp, { 
+       
+       rObj = deepAssign(tstate, { 
          Quote: {
            tabIndex: action.index
          }

@@ -28239,7 +28239,7 @@
 	  var action = arguments[1];
 
 	  var count = state.count;
-	  var tstate = (0, _deepAssign2.default)({}, state);
+	  var tstate = JSON.parse(JSON.stringify(state));
 	  var rObj = void 0;
 	  switch (action.type) {
 	    case 'increase':
@@ -28265,8 +28265,8 @@
 	      });
 	      return rObj;
 	    case 'quote_tabbarClick':
-	      var temp = JSON.parse(JSON.stringify(tstate));
-	      rObj = (0, _deepAssign2.default)(temp, {
+
+	      rObj = (0, _deepAssign2.default)(tstate, {
 	        Quote: {
 	          tabIndex: action.index
 	        }
