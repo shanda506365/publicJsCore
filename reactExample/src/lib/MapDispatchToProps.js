@@ -1,5 +1,5 @@
  import Action from './Action'
- import objectAssign from 'object-assign'
+ import deepAssign from 'deep-assign'
 
  const mapDispatchToProps = {
  	mapDispatchToProps_Main: function(dispatch, ownProps) {
@@ -11,7 +11,7 @@
  			onTestValClick: () => dispatch({
  				type: ''
  			}),
- 			onNavbarClick: (e, index) => dispatch(objectAssign(Action.navbarClickAction, {
+ 			onNavbarClick: (e, index) => dispatch(deepAssign(Action.navbarClickAction, {
  				e,
  				index
  			}))
@@ -25,9 +25,9 @@
  			})
  		}
  	},
- 	mapDispatchToProps_Quote:function(dispatch, ownProps){
+ 	mapDispatchToProps_Quote: function(dispatch, ownProps) {
  		return {
- 			onTabbarClick:(e,index)=> dispatch(objectAssign(Action.quote_tabbarClickAction, {
+ 			onTabbarClick: (e, index) => dispatch(deepAssign(Action.quote_tabbarClickAction, {
  				e,
  				index
  			}))

@@ -1,6 +1,6 @@
  import $ from './jquery-vendor.js'
  //import merge from 'merge'
- import objectAssign from 'object-assign'
+ import deepAssign from 'deep-assign'
 
  // Reducer
  function counterReducer(state = {
@@ -14,12 +14,12 @@
    } 
  }, action) {
    const count = state.count
-   const tstate = objectAssign({}, state);
+   const tstate = deepAssign({}, state);
    let rObj;
    switch (action.type) {
      case 'increase':
      console.log('=====1111')
-       rObj = objectAssign(tstate, {
+       rObj = deepAssign(tstate, {
          count: count + 1,
          title: '消息' + count
        });
@@ -27,7 +27,7 @@
      case 'increaseTest':
        //$('button').text('Do it hahahaha' + count)
        console.log('increaseTest',action.filter)
-       rObj = objectAssign(tstate, {
+       rObj = deepAssign(tstate, {
          count: count + 1,
          title: '消息' + count
        });
@@ -35,13 +35,13 @@
        return rObj
      case 'navbarClick':
        console.log(action) 
-       rObj = objectAssign(tstate, {
+       rObj = deepAssign(tstate, {
          tabIndex: action.index
        });
        return rObj
      case 'quote_tabbarClick':
-       
-       rObj = objectAssign(tstate, { 
+       const temp = JSON.parse(JSON.stringify(tstate));
+       rObj = deepAssign(temp, { 
          Quote: {
            tabIndex: action.index
          }

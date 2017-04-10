@@ -94,7 +94,7 @@ const Quote = React.createClass({
 			barItemDom,
 			barPanelDom 
 		})
-
+ 
 		return (
 			<div className='rc_quote weui-tab'>
 				<div className="weui-tab__panel">

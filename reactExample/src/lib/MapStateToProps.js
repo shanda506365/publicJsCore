@@ -1,9 +1,6 @@
  import Action from './Action'
- import objectAssign from 'object-assign'
- const mapStateToProps = {
- 	stateInit:{
- 		
- 	},
+ import deepAssign from 'deep-assign'
+ const mapStateToProps = { 
  	mapStateToProps_Main: function(state, ownProps) {
  		console.log('mapStateToProps_Main', ownProps)
  		return {
@@ -36,7 +33,7 @@
  	},
  	mapStateToProps_Quote: function(state, ownProps) {
  		console.log('mapStateToProps_Quote', ownProps)
- 		let rObj = objectAssign(state, {
+ 		let rObj = deepAssign(state, {
  			stateFlag: 'mapStateToProps_Quote'
  		});
  		return rObj

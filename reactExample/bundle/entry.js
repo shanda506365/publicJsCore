@@ -28218,9 +28218,9 @@
 
 	var _jqueryVendor2 = _interopRequireDefault(_jqueryVendor);
 
-	var _objectAssign = __webpack_require__(280);
+	var _deepAssign = __webpack_require__(304);
 
-	var _objectAssign2 = _interopRequireDefault(_objectAssign);
+	var _deepAssign2 = _interopRequireDefault(_deepAssign);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -28239,12 +28239,12 @@
 	  var action = arguments[1];
 
 	  var count = state.count;
-	  var tstate = (0, _objectAssign2.default)({}, state);
+	  var tstate = (0, _deepAssign2.default)({}, state);
 	  var rObj = void 0;
 	  switch (action.type) {
 	    case 'increase':
 	      console.log('=====1111');
-	      rObj = (0, _objectAssign2.default)(tstate, {
+	      rObj = (0, _deepAssign2.default)(tstate, {
 	        count: count + 1,
 	        title: '消息' + count
 	      });
@@ -28252,7 +28252,7 @@
 	    case 'increaseTest':
 	      //$('button').text('Do it hahahaha' + count)
 	      console.log('increaseTest', action.filter);
-	      rObj = (0, _objectAssign2.default)(tstate, {
+	      rObj = (0, _deepAssign2.default)(tstate, {
 	        count: count + 1,
 	        title: '消息' + count
 	      });
@@ -28260,13 +28260,13 @@
 	      return rObj;
 	    case 'navbarClick':
 	      console.log(action);
-	      rObj = (0, _objectAssign2.default)(tstate, {
+	      rObj = (0, _deepAssign2.default)(tstate, {
 	        tabIndex: action.index
 	      });
 	      return rObj;
 	    case 'quote_tabbarClick':
-
-	      rObj = (0, _objectAssign2.default)(tstate, {
+	      var temp = JSON.parse(JSON.stringify(tstate));
+	      rObj = (0, _deepAssign2.default)(temp, {
 	        Quote: {
 	          tabIndex: action.index
 	        }
@@ -38122,102 +38122,7 @@
 
 
 /***/ },
-/* 280 */
-/***/ function(module, exports) {
-
-	/*
-	object-assign
-	(c) Sindre Sorhus
-	@license MIT
-	*/
-
-	'use strict';
-	/* eslint-disable no-unused-vars */
-	var getOwnPropertySymbols = Object.getOwnPropertySymbols;
-	var hasOwnProperty = Object.prototype.hasOwnProperty;
-	var propIsEnumerable = Object.prototype.propertyIsEnumerable;
-
-	function toObject(val) {
-		if (val === null || val === undefined) {
-			throw new TypeError('Object.assign cannot be called with null or undefined');
-		}
-
-		return Object(val);
-	}
-
-	function shouldUseNative() {
-		try {
-			if (!Object.assign) {
-				return false;
-			}
-
-			// Detect buggy property enumeration order in older V8 versions.
-
-			// https://bugs.chromium.org/p/v8/issues/detail?id=4118
-			var test1 = new String('abc');  // eslint-disable-line no-new-wrappers
-			test1[5] = 'de';
-			if (Object.getOwnPropertyNames(test1)[0] === '5') {
-				return false;
-			}
-
-			// https://bugs.chromium.org/p/v8/issues/detail?id=3056
-			var test2 = {};
-			for (var i = 0; i < 10; i++) {
-				test2['_' + String.fromCharCode(i)] = i;
-			}
-			var order2 = Object.getOwnPropertyNames(test2).map(function (n) {
-				return test2[n];
-			});
-			if (order2.join('') !== '0123456789') {
-				return false;
-			}
-
-			// https://bugs.chromium.org/p/v8/issues/detail?id=3056
-			var test3 = {};
-			'abcdefghijklmnopqrst'.split('').forEach(function (letter) {
-				test3[letter] = letter;
-			});
-			if (Object.keys(Object.assign({}, test3)).join('') !==
-					'abcdefghijklmnopqrst') {
-				return false;
-			}
-
-			return true;
-		} catch (err) {
-			// We don't expect any of the above to throw, but better to be safe.
-			return false;
-		}
-	}
-
-	module.exports = shouldUseNative() ? Object.assign : function (target, source) {
-		var from;
-		var to = toObject(target);
-		var symbols;
-
-		for (var s = 1; s < arguments.length; s++) {
-			from = Object(arguments[s]);
-
-			for (var key in from) {
-				if (hasOwnProperty.call(from, key)) {
-					to[key] = from[key];
-				}
-			}
-
-			if (getOwnPropertySymbols) {
-				symbols = getOwnPropertySymbols(from);
-				for (var i = 0; i < symbols.length; i++) {
-					if (propIsEnumerable.call(from, symbols[i])) {
-						to[symbols[i]] = from[symbols[i]];
-					}
-				}
-			}
-		}
-
-		return to;
-	};
-
-
-/***/ },
+/* 280 */,
 /* 281 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -38663,14 +38568,13 @@
 
 	var _Action2 = _interopRequireDefault(_Action);
 
-	var _objectAssign = __webpack_require__(280);
+	var _deepAssign = __webpack_require__(304);
 
-	var _objectAssign2 = _interopRequireDefault(_objectAssign);
+	var _deepAssign2 = _interopRequireDefault(_deepAssign);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var mapStateToProps = {
-	  stateInit: {},
 	  mapStateToProps_Main: function mapStateToProps_Main(state, ownProps) {
 	    console.log('mapStateToProps_Main', ownProps);
 	    return {
@@ -38703,7 +38607,7 @@
 	  },
 	  mapStateToProps_Quote: function mapStateToProps_Quote(state, ownProps) {
 	    console.log('mapStateToProps_Quote', ownProps);
-	    var rObj = (0, _objectAssign2.default)(state, {
+	    var rObj = (0, _deepAssign2.default)(state, {
 	      stateFlag: 'mapStateToProps_Quote'
 	    });
 	    return rObj;
@@ -38762,9 +38666,9 @@
 
 	var _Action2 = _interopRequireDefault(_Action);
 
-	var _objectAssign = __webpack_require__(280);
+	var _deepAssign = __webpack_require__(304);
 
-	var _objectAssign2 = _interopRequireDefault(_objectAssign);
+	var _deepAssign2 = _interopRequireDefault(_deepAssign);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -38783,7 +38687,7 @@
 	        });
 	      },
 	      onNavbarClick: function onNavbarClick(e, index) {
-	        return dispatch((0, _objectAssign2.default)(_Action2.default.navbarClickAction, {
+	        return dispatch((0, _deepAssign2.default)(_Action2.default.navbarClickAction, {
 	          e: e,
 	          index: index
 	        }));
@@ -38803,7 +38707,7 @@
 	  mapDispatchToProps_Quote: function mapDispatchToProps_Quote(dispatch, ownProps) {
 	    return {
 	      onTabbarClick: function onTabbarClick(e, index) {
-	        return dispatch((0, _objectAssign2.default)(_Action2.default.quote_tabbarClickAction, {
+	        return dispatch((0, _deepAssign2.default)(_Action2.default.quote_tabbarClickAction, {
 	          e: e,
 	          index: index
 	        }));
@@ -55663,6 +55567,91 @@
 	exports.Quote = Quote;
 	exports.con_Quote = con_Quote;
 	exports.default = con_Quote;
+
+/***/ },
+/* 304 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	var isObj = __webpack_require__(305);
+	var hasOwnProperty = Object.prototype.hasOwnProperty;
+	var propIsEnumerable = Object.prototype.propertyIsEnumerable;
+
+	function toObject(val) {
+		if (val === null || val === undefined) {
+			throw new TypeError('Sources cannot be null or undefined');
+		}
+
+		return Object(val);
+	}
+
+	function assignKey(to, from, key) {
+		var val = from[key];
+
+		if (val === undefined || val === null) {
+			return;
+		}
+
+		if (hasOwnProperty.call(to, key)) {
+			if (to[key] === undefined || to[key] === null) {
+				throw new TypeError('Cannot convert undefined or null to object (' + key + ')');
+			}
+		}
+
+		if (!hasOwnProperty.call(to, key) || !isObj(val)) {
+			to[key] = val;
+		} else {
+			to[key] = assign(Object(to[key]), from[key]);
+		}
+	}
+
+	function assign(to, from) {
+		if (to === from) {
+			return to;
+		}
+
+		from = Object(from);
+
+		for (var key in from) {
+			if (hasOwnProperty.call(from, key)) {
+				assignKey(to, from, key);
+			}
+		}
+
+		if (Object.getOwnPropertySymbols) {
+			var symbols = Object.getOwnPropertySymbols(from);
+
+			for (var i = 0; i < symbols.length; i++) {
+				if (propIsEnumerable.call(from, symbols[i])) {
+					assignKey(to, from, symbols[i]);
+				}
+			}
+		}
+
+		return to;
+	}
+
+	module.exports = function deepAssign(target) {
+		target = toObject(target);
+
+		for (var s = 1; s < arguments.length; s++) {
+			assign(target, arguments[s]);
+		}
+
+		return target;
+	};
+
+
+/***/ },
+/* 305 */
+/***/ function(module, exports) {
+
+	'use strict';
+	module.exports = function (x) {
+		var type = typeof x;
+		return x !== null && (type === 'object' || type === 'function');
+	};
+
 
 /***/ }
 /******/ ]);
