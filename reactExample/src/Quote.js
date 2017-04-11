@@ -42,7 +42,7 @@ class Quote extends Component {
 				$(self).pullToRefreshDone();
 			}, 2000)
 		})
-		$('.weui-tab__panel').css('height', document.body.clientHeight-50);
+		$('.weui-tab__panel').css('height', document.body.clientHeight - 50);
 	}
 	choseBarItemCls(index) {
 		const {
@@ -84,27 +84,29 @@ class Quote extends Component {
                   </div>]
 		param.barPanelDom.push(<div className={me.choseBarPanelCls(0)}>
 			{pullDiv}
-			Page 1<Link className='weui-btn weui-btn_default' to="/">消息计数</Link><p> afasdfsadfasdfasdf</p>
+			Page 1<Link className='weui-btn weui-btn_default' to="/">消息计数{param.count}</Link><p> afasdfsadfasdfasdf</p>
                     <br/><br/><br/><br/>2<br/><br/><br/>2<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
                     <p> 234234213412341234</p></div>)
 
 		param.barPanelDom.push(<div className={me.choseBarPanelCls(1)}>
-			{pullDiv}Page 2<Link className='weui-btn weui-btn_primary' to="/">消息计数</Link>
+			{pullDiv}Page 2<Link className='weui-btn weui-btn_primary' to="/">消息计数{param.count}</Link>
 			<p> afasdfsadfasdfasdf</p>
                     <br/><br/><br/><br/>2<br/><br/><br/>2<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
                     <p> 234234213412341234</p></div>)
-		param.barPanelDom.push(<div className={me.choseBarPanelCls(2)}>{pullDiv}Page 3<Link className='weui-btn weui-btn_default' to="/">消息计数</Link></div>)
+		param.barPanelDom.push(<div className={me.choseBarPanelCls(2)}>{pullDiv}Page 3<Link className='weui-btn weui-btn_default' to="/">消息计数{param.count}</Link></div>)
 		param.barPanelDom.push(<div className={me.choseBarPanelCls(3)}>
-			{pullDiv}Page 4<Link className='weui-btn weui-btn_primary' to="/">消息计数</Link></div>)
+			{pullDiv}Page 4<Link className='weui-btn weui-btn_primary' to="/">消息计数{param.count}</Link></div>)
 	}
 	render() {
 		const {
+			count,
 			onTabbarClick
 		} = this.props, me = this;
 		console.log('Quote===', this.props)
 		let barItemDom = [],
 			barPanelDom = []
 		me.domInit({
+			count,
 			onTabbarClick,
 			barItemDom,
 			barPanelDom

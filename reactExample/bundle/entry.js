@@ -55675,7 +55675,8 @@
 					_react2.default.createElement(
 						_reactRouter.Link,
 						{ className: 'weui-btn weui-btn_default', to: '/' },
-						'\u6D88\u606F\u8BA1\u6570'
+						'\u6D88\u606F\u8BA1\u6570',
+						param.count
 					),
 					_react2.default.createElement(
 						'p',
@@ -55716,7 +55717,8 @@
 					_react2.default.createElement(
 						_reactRouter.Link,
 						{ className: 'weui-btn weui-btn_primary', to: '/' },
-						'\u6D88\u606F\u8BA1\u6570'
+						'\u6D88\u606F\u8BA1\u6570',
+						param.count
 					),
 					_react2.default.createElement(
 						'p',
@@ -55756,7 +55758,8 @@
 					_react2.default.createElement(
 						_reactRouter.Link,
 						{ className: 'weui-btn weui-btn_default', to: '/' },
-						'\u6D88\u606F\u8BA1\u6570'
+						'\u6D88\u606F\u8BA1\u6570',
+						param.count
 					)
 				));
 				param.barPanelDom.push(_react2.default.createElement(
@@ -55767,19 +55770,24 @@
 					_react2.default.createElement(
 						_reactRouter.Link,
 						{ className: 'weui-btn weui-btn_primary', to: '/' },
-						'\u6D88\u606F\u8BA1\u6570'
+						'\u6D88\u606F\u8BA1\u6570',
+						param.count
 					)
 				));
 			}
 		}, {
 			key: 'render',
 			value: function render() {
-				var onTabbarClick = this.props.onTabbarClick,
+				var _props = this.props,
+				    count = _props.count,
+				    onTabbarClick = _props.onTabbarClick,
 				    me = this;
+
 				console.log('Quote===', this.props);
 				var barItemDom = [],
 				    barPanelDom = [];
 				me.domInit({
+					count: count,
 					onTabbarClick: onTabbarClick,
 					barItemDom: barItemDom,
 					barPanelDom: barPanelDom
