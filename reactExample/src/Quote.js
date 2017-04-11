@@ -42,8 +42,9 @@ const Quote = React.createClass({
 				$(self).pullToRefreshDone();
 			}, 2000)
 		})
+		$('.weui-tab__panel').css('height', document.body.clientHeight-50);
 	},
-	choseBarItemCls(index){
+	choseBarItemCls(index) {
 		const {
 			Quote
 		} = this.props, me = this;
@@ -53,7 +54,7 @@ const Quote = React.createClass({
 		const {
 			Quote
 		} = this.props, me = this;
-		return Quote.tabIndex == index ? 'barpanel weui-pull-to-refresh h100' : 'barpanel hide weui-pull-to-refresh h100'
+		return Quote.tabIndex == index ? 'barpanel weui-pull-to-refresh' : 'barpanel hide weui-pull-to-refresh'
 	},
 	domInit(param) {
 		const me = this;
@@ -83,35 +84,40 @@ const Quote = React.createClass({
                   </div>]
 		param.barPanelDom.push(<div className={me.choseBarPanelCls(0)}>
 			{pullDiv}
-			Page 1<Link className='weui-btn weui-btn_default' to="/">消息计数</Link></div>)
-		 
+			Page 1<Link className='weui-btn weui-btn_default' to="/">消息计数</Link><p> afasdfsadfasdfasdf</p>
+                    <br/><br/><br/><br/>2<br/><br/><br/>2<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+                    <p> 234234213412341234</p></div>)
+
 		param.barPanelDom.push(<div className={me.choseBarPanelCls(1)}>
-			{pullDiv}Page 2<Link className='weui-btn weui-btn_primary' to="/">消息计数</Link></div>)
+			{pullDiv}Page 2<Link className='weui-btn weui-btn_primary' to="/">消息计数</Link>
+			<p> afasdfsadfasdfasdf</p>
+                    <br/><br/><br/><br/>2<br/><br/><br/>2<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+                    <p> 234234213412341234</p></div>)
 		param.barPanelDom.push(<div className={me.choseBarPanelCls(2)}>{pullDiv}Page 3<Link className='weui-btn weui-btn_default' to="/">消息计数</Link></div>)
 		param.barPanelDom.push(<div className={me.choseBarPanelCls(3)}>
 			{pullDiv}Page 4<Link className='weui-btn weui-btn_primary' to="/">消息计数</Link></div>)
 	},
 	render() {
-		const { 
+		const {
 			onTabbarClick
 		} = this.props, me = this;
 		console.log('Quote===', this.props)
 		let barItemDom = [],
 			barPanelDom = []
-		me.domInit({ 
+		me.domInit({
 			onTabbarClick,
 			barItemDom,
 			barPanelDom
 		})
 
 		return (
-			<div className='rc_quote weui-tab'>
+			<div className='rc_quote weui-tab'> 
 				<div className="weui-tab__panel">
-					 {barPanelDom}
+				 {barPanelDom}
 			    </div>
 			    <div className="weui-tabbar">
 			        {barItemDom}
-			    </div>
+			    </div> 
 			</div>
 		);
 	}

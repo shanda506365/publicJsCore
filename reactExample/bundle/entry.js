@@ -62,19 +62,19 @@
 
 	var _Store = __webpack_require__(276);
 
-	var _Main = __webpack_require__(281);
+	var _Main = __webpack_require__(282);
 
 	var _Main2 = _interopRequireDefault(_Main);
 
-	var _Counter = __webpack_require__(297);
+	var _Counter = __webpack_require__(295);
 
 	var _Counter2 = _interopRequireDefault(_Counter);
 
-	var _Test = __webpack_require__(290);
+	var _Test = __webpack_require__(301);
 
 	var _Test2 = _interopRequireDefault(_Test);
 
-	var _Quote = __webpack_require__(303);
+	var _Quote = __webpack_require__(304);
 
 	var _Quote2 = _interopRequireDefault(_Quote);
 
@@ -28218,7 +28218,7 @@
 
 	var _jqueryVendor2 = _interopRequireDefault(_jqueryVendor);
 
-	var _deepAssign = __webpack_require__(304);
+	var _deepAssign = __webpack_require__(280);
 
 	var _deepAssign2 = _interopRequireDefault(_deepAssign);
 
@@ -38122,8 +38122,92 @@
 
 
 /***/ },
-/* 280 */,
+/* 280 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	var isObj = __webpack_require__(281);
+	var hasOwnProperty = Object.prototype.hasOwnProperty;
+	var propIsEnumerable = Object.prototype.propertyIsEnumerable;
+
+	function toObject(val) {
+		if (val === null || val === undefined) {
+			throw new TypeError('Sources cannot be null or undefined');
+		}
+
+		return Object(val);
+	}
+
+	function assignKey(to, from, key) {
+		var val = from[key];
+
+		if (val === undefined || val === null) {
+			return;
+		}
+
+		if (hasOwnProperty.call(to, key)) {
+			if (to[key] === undefined || to[key] === null) {
+				throw new TypeError('Cannot convert undefined or null to object (' + key + ')');
+			}
+		}
+
+		if (!hasOwnProperty.call(to, key) || !isObj(val)) {
+			to[key] = val;
+		} else {
+			to[key] = assign(Object(to[key]), from[key]);
+		}
+	}
+
+	function assign(to, from) {
+		if (to === from) {
+			return to;
+		}
+
+		from = Object(from);
+
+		for (var key in from) {
+			if (hasOwnProperty.call(from, key)) {
+				assignKey(to, from, key);
+			}
+		}
+
+		if (Object.getOwnPropertySymbols) {
+			var symbols = Object.getOwnPropertySymbols(from);
+
+			for (var i = 0; i < symbols.length; i++) {
+				if (propIsEnumerable.call(from, symbols[i])) {
+					assignKey(to, from, symbols[i]);
+				}
+			}
+		}
+
+		return to;
+	}
+
+	module.exports = function deepAssign(target) {
+		target = toObject(target);
+
+		for (var s = 1; s < arguments.length; s++) {
+			assign(target, arguments[s]);
+		}
+
+		return target;
+	};
+
+
+/***/ },
 /* 281 */
+/***/ function(module, exports) {
+
+	'use strict';
+	module.exports = function (x) {
+		var type = typeof x;
+		return x !== null && (type === 'object' || type === 'function');
+	};
+
+
+/***/ },
+/* 282 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -38145,17 +38229,17 @@
 
 	var _reactRouter = __webpack_require__(220);
 
-	__webpack_require__(282);
+	__webpack_require__(283);
 
-	var _MapStateToProps = __webpack_require__(286);
+	var _MapStateToProps = __webpack_require__(287);
 
-	var _MapDispatchToProps = __webpack_require__(288);
+	var _MapDispatchToProps = __webpack_require__(289);
 
-	var _fastclick = __webpack_require__(289);
+	var _fastclick = __webpack_require__(290);
 
 	var _fastclick2 = _interopRequireDefault(_fastclick);
 
-	var _common = __webpack_require__(295);
+	var _common = __webpack_require__(291);
 
 	var _common2 = _interopRequireDefault(_common);
 
@@ -38206,16 +38290,16 @@
 	exports.default = con_Main;
 
 /***/ },
-/* 282 */
+/* 283 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(283);
+	var content = __webpack_require__(284);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(285)(content, {});
+	var update = __webpack_require__(286)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -38232,21 +38316,21 @@
 	}
 
 /***/ },
-/* 283 */
+/* 284 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(284)();
+	exports = module.exports = __webpack_require__(285)();
 	// imports
 
 
 	// module
-	exports.push([module.id, "html {\n  font-size: 62.5%;\n  height: 100%;\n}\nbody {\n  font-size: 1.4rem;\n  height: 100%;\n  font-family: \"Helvetica Neue\", Helvetica, Microsoft Yahei, Hiragino Sans GB, WenQuanYi Micro Hei, sans-serif;\n}\n#root {\n  height: 100%;\n}\n#root .h100 {\n  height: 100%;\n}\n#root .weui-tab__bd-item {\n  height: 100%;\n}\n#root .hide {\n  display: none;\n}\n", ""]);
+	exports.push([module.id, "html {\n  font-size: 62.5%;\n  height: 100%;\n}\nbody {\n  font-size: 1.4rem;\n  height: 100%;\n  font-family: \"Helvetica Neue\", Helvetica, Microsoft Yahei, Hiragino Sans GB, WenQuanYi Micro Hei, sans-serif;\n}\n#root {\n  height: 100%;\n}\n#root .h100 {\n  height: 100%;\n}\n#root .weui-tab__bd-item {\n  height: 100%;\n}\n#root .hide {\n  display: none;\n}\n#root .weui-tab__panel {\n  overflow: auto;\n}\n", ""]);
 
 	// exports
 
 
 /***/ },
-/* 284 */
+/* 285 */
 /***/ function(module, exports) {
 
 	/*
@@ -38302,7 +38386,7 @@
 
 
 /***/ },
-/* 285 */
+/* 286 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -38554,7 +38638,7 @@
 
 
 /***/ },
-/* 286 */
+/* 287 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -38564,11 +38648,11 @@
 	});
 	exports.mapStateToProps_Quote = exports.mapStateToProps_Test = exports.mapStateToProps_Counter = exports.mapStateToProps_Main = exports.mapStateToProps = undefined;
 
-	var _Action = __webpack_require__(287);
+	var _Action = __webpack_require__(288);
 
 	var _Action2 = _interopRequireDefault(_Action);
 
-	var _deepAssign = __webpack_require__(304);
+	var _deepAssign = __webpack_require__(280);
 
 	var _deepAssign2 = _interopRequireDefault(_deepAssign);
 
@@ -38625,7 +38709,7 @@
 	exports.default = mapStateToProps;
 
 /***/ },
-/* 287 */
+/* 288 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -38652,7 +38736,7 @@
 	exports.default = Action;
 
 /***/ },
-/* 288 */
+/* 289 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -38662,11 +38746,11 @@
 	});
 	exports.mapDispatchToProps_Quote = exports.mapDispatchToProps_Test = exports.mapDispatchToProps_Count = exports.mapDispatchToProps_Main = exports.mapDispatchToProps = undefined;
 
-	var _Action = __webpack_require__(287);
+	var _Action = __webpack_require__(288);
 
 	var _Action2 = _interopRequireDefault(_Action);
 
-	var _deepAssign = __webpack_require__(304);
+	var _deepAssign = __webpack_require__(280);
 
 	var _deepAssign2 = _interopRequireDefault(_deepAssign);
 
@@ -38728,7 +38812,7 @@
 	exports.default = mapDispatchToProps;
 
 /***/ },
-/* 289 */
+/* 290 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;;(function () {
@@ -39575,160 +39659,556 @@
 
 
 /***/ },
-/* 290 */
+/* 291 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
-		value: true
+	   value: true
 	});
-	exports.con_Test = exports.Test = undefined;
+	exports.API = undefined;
+	exports.Ajax = Ajax;
+	exports.CheckLogin = CheckLogin;
 
-	var _react = __webpack_require__(2);
+	var _jqueryVendor = __webpack_require__(278);
 
-	var _react2 = _interopRequireDefault(_react);
+	var _jqueryVendor2 = _interopRequireDefault(_jqueryVendor);
 
-	var _reactDom = __webpack_require__(29);
+	var _jsCookie = __webpack_require__(292);
 
-	var _reactDom2 = _interopRequireDefault(_reactDom);
-
-	var _reactRedux = __webpack_require__(193);
-
-	var _reactRouter = __webpack_require__(220);
-
-	var _MapStateToProps = __webpack_require__(286);
-
-	var _MapDispatchToProps = __webpack_require__(288);
-
-	__webpack_require__(291);
-
-	var _mockData = __webpack_require__(293);
+	var _jsCookie2 = _interopRequireDefault(_jsCookie);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var Test = _react2.default.createClass({
-		displayName: 'Test',
+	var common = {
+	   getNagavVersion: function getNagavVersion() {
 
-		contextTypes: {
-			router: _react2.default.PropTypes.object
-		},
+	      //Google Chrome 20 +
+	      //Apple Safari 4.0+
+	      //Mozilla Firefox 5.0+
+	      //Opera 11.0+
+	      //Microsoft Internet Explorer 9.0+ 
+	      //Edge
 
-		render: function render() {
-			var _props = this.props,
-			    count = _props.count,
-			    title = _props.title,
-			    onIncreaseTestClick = _props.onIncreaseTestClick,
-			    buttonText = _props.buttonText;
+	      var Sys = {};
+	      var ua = navigator.userAgent.toLowerCase();
 
-			console.log('Test', this.props);
-			var liDom = [];
-			console.log(_mockData.mData);
-			$.each(_mockData.mData.data, function (ix, item) {
-				liDom.push(_react2.default.createElement(
-					'li',
-					{ className: 'children', onClick: function onClick(e) {
-							console.log($(e.target).width());
-						} },
-					item.name
-				));
-			});
-			return _react2.default.createElement(
-				'div',
-				null,
-				_react2.default.createElement(
-					'h4',
-					null,
-					'TEST ',
-					count,
-					'  ',
-					title
-				),
-				_react2.default.createElement(
-					'ul',
-					{ className: 'rongqi', onClick: function onClick() {
-							$('.rongqi').scrollLeft($('.rongqi').scrollLeft() + 50);
-						} },
-					liDom
-				),
-				_react2.default.createElement(
-					'div',
-					{ className: 'weui-flex' },
-					_react2.default.createElement(
-						'div',
-						{ className: 'weui-flex__item' },
-						_react2.default.createElement(
-							'button',
-							{ className: 'weui-btn weui-btn_primary', onClick: onIncreaseTestClick },
-							buttonText
-						)
-					),
-					_react2.default.createElement(
-						'div',
-						{ className: 'weui-flex__item' },
-						_react2.default.createElement(
-							_reactRouter.Link,
-							{ className: 'weui-btn weui-btn_default', to: '/' },
-							'\u8BA1\u6570'
-						)
-					),
-					_react2.default.createElement(
-						'div',
-						{ className: 'weui-flex__item' },
-						_react2.default.createElement(
-							_reactRouter.Link,
-							{ className: 'weui-btn weui-btn_default', to: '/Quote' },
-							'\u62A5\u4EF7'
-						)
-					)
-				)
-			);
-		}
-	});
-	var con_Test = (0, _reactRedux.connect)(_MapStateToProps.mapStateToProps_Test, _MapDispatchToProps.mapDispatchToProps_Test)(Test);
+	      var s;
+	      (s = ua.match(/msie ([\d.]+)/)) ? Sys.isIE = s[1] : (s = ua.match(/firefox\/([\d.]+)/)) ? Sys.isGecko = s[1] : (s = ua.match(/chrome\/([\d.]+)/)) ? Sys.isWebkit = s[1] : (s = ua.match(/opera.([\d.]+)/)) ? Sys.IsOpera = s[1] : (s = ua.match(/version\/([\d.]+).*safari/)) ? Sys.isSafari = s[1] : (s = ua.match(/iphone os ([\d.]+)/)) ? Sys.isIOS = s[1] : (s = ua.match(/rv:([\d.]+)/)) ? Sys.isEdge = s[1] : 0;
+	      return Sys;
+	   },
+	   createUrl: function createUrl(url) {
+	      var d = new Date().getTime();
+	      var keyword = 'randomD';
+	      // if (url.indexOf(keyword) != -1)
+	      //var re = /(\w+)=(\w+)/ig
+	      var re = new RegExp("(" + keyword + ")+=(\\w+)", "gi");
+	      var mc = url.match(re);
 
-	exports.Test = Test;
-	exports.con_Test = con_Test;
-	exports.default = con_Test;
+	      if (mc && mc.length > 0) url = url.replace(re, '');
 
-/***/ },
-/* 291 */
-/***/ function(module, exports, __webpack_require__) {
+	      if (url.indexOf('?') == -1) {
+	         return url + "?" + keyword + "=" + d;
+	      } else {
+	         return url + "&" + keyword + "=" + d;
+	      }
+	   },
+	   regex: {
+	      fail_text: '验证失败',
+	      empty_text: '不能为空',
+	      telephone: /^(\d{11}|((\d{3,4}\-)|)\d{7,8}(|([-\u8f6c]{1}\d{1,5})))$/, //^(\d{11})$|^(\+\d{13})$/,
+	      telephone_partten: '^(\\d{11}||((\\d{3,4}\\-)|)\\d{7,8}(|([-\\u8f6c]{1}\\d{1,5})))$', //'^(\\d{11})$|^(\\+\\d{13})$',
+	      telephone_text: '请输入正确的手机或座机号码',
+	      random: /^[0-9]{4}$/,
+	      random_partten: '^[0-9]{4}$',
+	      random_text: '请输入正确的授权码',
+	      password: /^[0-9a-zA-Z]{6,15}$/,
+	      password_partten: '^[0-9a-zA-Z]{6,15}$',
+	      password_text: '请输入6到15位密码',
+	      identical_text: '两次密码不一致',
+	      repassword_text: '确认密码',
+	      email_text: '邮箱格式不正确',
+	      nickname: /^([\w\W]){2,25}$/,
+	      nickname_partten: '^([\\w\\W]){2,25}$',
+	      nickname_text: '请输入2到8个字',
+	      nickname_ph: '2到8个字，建议使用真实姓名，以方便朋友查找',
+	      company: /^([\w\W]){2,20}$/,
+	      company_partten: '^([\\w\\W]){2,20}$',
+	      company_text: '请输入2到20个字',
+	      company_ph: '2到20个字',
+	      productName: /^([\w\W]){2,60}$/,
+	      productName_partten: '^([\\w\\W]){2,150}$',
+	      productName_text: '请输入2到150个字',
+	      productName_ph: '2到150个字',
+	      productTagName: /^([\w\W]){2,16}$/,
+	      productTagName_partten: '^([\\w\\W]){2,16}$',
+	      productTagName_text: '请输入2到16个字',
+	      productTagName_ph: '2到16个字',
+	      price: /^(0|(0(\.\d{1,2})?)|(([1-6]|\d){0,6}(\.\d{1,2})?))$/,
+	      price_partten: '^(0|(0(\\.\\d{1,2})?)|(([1-6]|\\d){0,6}(\\.\\d{1,2})?))$',
+	      price_text: '整数最多6位,若有小数,最多2位',
+	      price_ph: '正确格式的价格0.00',
+	      remark: /^([\w\W]){0,100}$/,
+	      remark_partten: '^([\\w\\W]){0,20}$',
+	      remark_text: '请输入少于20个字',
+	      remark_ph: '不能超过20个字'
+	   },
+	   feedbackIcons: {
+	      valid: 'glyphicon glyphicon-ok',
+	      invalid: 'glyphicon glyphicon-remove',
+	      validating: 'glyphicon glyphicon-refresh'
+	   },
+	   isValidField: function isValidField(form, filedName) {
+	      var validators = form.options.fields[filedName].validators;
+	      var flag = true;
+	      for (var v in validators) {
+	         var temp = form.getFieldElements(filedName).data('bv.result.' + v);
+	         if (temp == 'INVALID') {
+	            return false;
+	         }
+	      }
+	      return flag;
+	   },
+	   initDragScroll: function initDragScroll() {
+	      var _y;
+	      var scrolling = false;
+	      document.onmousedown = function (e) {
+	         var e = window.event || e;
+	         _y = e.clientY;
+	         scrolling = true;
+	      };
+	      document.onmousemove = function (e) {
+	         if (!scrolling) return;
+	         var e = window.event || e;
+	         var move = (e.clientY - _y) / 4;
+	         if ((0, _jqueryVendor2.default)('.mdivR .fixed-table-body').length > 0) {
+	            var scrollTop = (0, _jqueryVendor2.default)('.fixed-table-body').scrollTop();
+	            (0, _jqueryVendor2.default)('.fixed-table-body').scrollTop(scrollTop + move);
+	         } else {
+	            var scrollTop = (0, _jqueryVendor2.default)('.mdivR').scrollTop();
+	            (0, _jqueryVendor2.default)('.mdivR').scrollTop(scrollTop + move);
+	         }
+	      };
 
-	// style-loader: Adds some css to the DOM by adding a <style> tag
+	      document.onmouseup = function () {
+	         scrolling = false;
+	      };
+	   },
+	   layout: function layout() {
+	      if ((0, _jqueryVendor2.default)('.htmlbody').width() <= 768) {
+	         (0, _jqueryVendor2.default)('.htmlbody').css({
+	            overflow: 'auto'
+	         });
+	         (0, _jqueryVendor2.default)('.mdivL,.mdivR').css({
+	            'height': '100%',
+	            overflow: 'hidden'
+	         });
+	         if ((0, _jqueryVendor2.default)('.mdivR .fixed-table-container').length > 0) {
+	            var height = '100%'; //- 500
+	            //dd
+	            (0, _jqueryVendor2.default)('.mdivR').css({
+	               'height': height + (0, _jqueryVendor2.default)('.fixed-table-container').data('mheight'),
+	               overflow: 'hidden'
+	            });
+	            (0, _jqueryVendor2.default)('.fixed-table-container').css('height', height);
+	            var options = (0, _jqueryVendor2.default)('#table').bootstrapTable('getOptions');
+	            options.height = height;
+	            (0, _jqueryVendor2.default)('#table').bootstrapTable('refreshOptions', options);
+	         }
+	      } else {
+	         (0, _jqueryVendor2.default)('.htmlbody').css({
+	            overflow: 'hidden'
+	         });
+	         (0, _jqueryVendor2.default)('.mdivL,.mdivR').css({
+	            'height': document.documentElement.clientHeight, //- 200,
+	            overflow: 'auto'
+	         });
+	         if ((0, _jqueryVendor2.default)('.mdivR .fixed-table-container').length > 0) {
+	            (0, _jqueryVendor2.default)('.mdivL,.mdivR').css({
+	               'height': document.documentElement.clientHeight, //- 200,
+	               overflow: 'hidden'
+	            });
+	            var _height = document.documentElement.clientHeight - (0, _jqueryVendor2.default)('.fixed-table-container').data('mheight');
+	            (0, _jqueryVendor2.default)('.fixed-table-container').css('height', _height);
+	            var _options = (0, _jqueryVendor2.default)('#table').bootstrapTable('getOptions');
+	            _options.height = _height;
+	            (0, _jqueryVendor2.default)('#table').bootstrapTable('refreshOptions', _options);
+	            (0, _jqueryVendor2.default)('#table').bootstrapTable('resetWidth');
+	         }
+	      }
+	   }
+	};
+	Array.prototype.clone = function () {
+	   return this.slice(0);
+	};
+	Array.prototype.remove = function (val) {
+	   var index = this.indexOf(val);
+	   if (index > -1) {
+	      this.splice(index, 1);
+	   }
+	};
+	Array.prototype.removeObj = function (objVal, srcKey) {
+	   var ix = -1;
+	   for (var i = 0; i < this.length; i++) {
+	      if (this[i][srcKey] == objVal) {
+	         ix = i;
+	      }
+	   }
+	   this.splice(ix, 1);
+	};
+	Array.prototype.replaceObj = function (srcKey, newItem) {
+	   var ix = -1;
+	   for (var i = 0; i < this.length; i++) {
+	      if (this[i][srcKey] == newItem[srcKey]) {
+	         ix = i;
+	         this[i] = newItem;
+	      }
+	   }
+	};
+	String.prototype.trim = function () {
+	   return this.replace(/(^\s*)|(\s*$)/g, "");
+	};
+	String.prototype.ltrim = function () {
+	   return this.replace(/(^\s*)/g, "");
+	};
+	String.prototype.rtrim = function () {
+	   return this.replace(/(\s*$)/g, "");
+	};
+	Date.prototype.format = function (format) {
+	   var o = {
+	      "M+": this.getMonth() + 1, //month
+	      "d+": this.getDate(), //day
+	      "h+": this.getHours(), //hour
+	      "m+": this.getMinutes(), //minute
+	      "s+": this.getSeconds(), //second
+	      "q+": Math.floor((this.getMonth() + 3) / 3), //quarter
+	      "S": this.getMilliseconds() //millisecond
+	   };
 
-	// load the styles
-	var content = __webpack_require__(292);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(285)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!../node_modules/css-loader/index.js!../node_modules/less-loader/index.js!./test.less", function() {
-				var newContent = require("!!../node_modules/css-loader/index.js!../node_modules/less-loader/index.js!./test.less");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
+	   if (/(y+)/.test(format)) {
+	      format = format.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+	   }
+
+	   for (var k in o) {
+	      if (new RegExp("(" + k + ")").test(format)) {
+	         format = format.replace(RegExp.$1, RegExp.$1.length == 1 ? o[k] : ("00" + o[k]).substr(("" + o[k]).length));
+	      }
+	   }
+	   return format;
+	};
+
+	//异常日志
+	var Console_URL = (0, _jqueryVendor2.default)('head link[rel="console"]').attr('href');
+	if (Console_URL) {
+	   window.onerror = function (iMessage, iURL, iLine, iColumn, iError) {
+	      window.setTimeout(function () {
+
+	         var iData = {
+	            message: iMessage,
+	            url: iURL,
+	            line: iLine,
+	            column: iColumn || window.event && window.event.errorCharacter || 0
+	         };
+
+	         if (iError && iError.stack) iData.stack = (iError.stack || iError.stacktrace).toString();
+
+	         if (Console_URL) {
+	            if (iData.stack) _jqueryVendor2.default.post(Console_URL, iData);else _jqueryVendor2.default.get(Console_URL, iData);
+	         }
+	      }, 0);
+	      return true;
+	   };
+	   //window.console = function(){}
+	};
+
+	function Ajax(_ref, jdom) {
+	   var url = _ref.url,
+	       data = _ref.data,
+	       method = _ref.method,
+	       doneFun = _ref.doneFun,
+	       failFun = _ref.failFun,
+	       alwaysFun = _ref.alwaysFun,
+	       context = _ref.context;
+
+
+	   _jqueryVendor2.default.ajax({
+	      method: method || "POST",
+	      url: url,
+	      beforeSend: function beforeSend(xhr) {
+	         if (jdom != false) {
+	            var dom = jdom || (0, _jqueryVendor2.default)('body');
+	            dom.loadingOverlay();
+	         }
+	      },
+	      data: data || {}
+	   }).done(function (msg) {
+	      var data = JSON.parse(msg);
+	      //登录信息验证
+	      if (data.code == '99') {
+	         _jsCookie2.default.remove('hasLogin');
+	         context.router.push({
+	            pathname: '/',
+	            state: {
+	               backurl: context.router.getCurrentLocation().pathname
+	            }
+	         });
+	         return;
+	      }
+	      if (doneFun && typeof doneFun === 'function') {
+	         doneFun(msg);
+	      }
+	   }).fail(function (jqXHR, textStatus, errorThrown) {
+
+	      if (failFun && typeof failFun === 'function') {
+	         failFun(jqXHR, textStatus, errorThrown);
+	      }
+	   }).always(function () {
+	      if (alwaysFun && typeof alwaysFun === 'function') {
+	         alwaysFun();
+	      }
+
+	      if (jdom != false) {
+	         var dom = jdom || (0, _jqueryVendor2.default)('body');
+	         dom.loadingOverlay('remove');
+	      }
+	   });
 	}
+
+	function CheckLogin(nextState, replace) {
+	   var ck = _jsCookie2.default.get('hasLogin');
+	   if (typeof ck == 'undefined' || ck == false) {
+	      replace({
+	         pathname: '/Login',
+	         state: {
+	            backurl: nextState.location.pathname
+	         }
+	      });
+	   }
+	}
+	var apiPreFix = 'http://mp2.ai.com/'; //'/'// 
+	// const apiPreFix = '/' // 
+	var iAPI = {
+	   login: apiPreFix + "common/login/check",
+	   announcement: apiPreFix + 'announcement/getLatest',
+	   getBarcode: apiPreFix + "common/login/getQRcodePng",
+	   logout: apiPreFix + "common/logout",
+	   productIndex: apiPreFix + 'product/index',
+	   productAdd: apiPreFix + 'product/add',
+	   productEdit: apiPreFix + 'product/update',
+	   productDel: apiPreFix + 'product/delete',
+	   productBatchDel: apiPreFix + 'product/deleteBatch',
+	   productSort: apiPreFix + 'product/sort',
+	   productDownload: apiPreFix + 'product/download',
+	   productLog: apiPreFix + 'product/log',
+	   productExport: apiPreFix + 'product/export',
+	   clearData: apiPreFix + 'productTag/deleteAll',
+	   productDownloadTemplate: apiPreFix + 'images/aibaojia.csv',
+	   productUpload: apiPreFix + 'product/upload',
+	   productTagIndex: apiPreFix + 'productTag/index',
+	   productTagAdd: apiPreFix + 'productTag/add',
+	   productTagEdit: apiPreFix + 'productTag/update',
+	   productTagDel: apiPreFix + 'productTag/delete',
+	   productTagBatchDel: apiPreFix + 'productTag/deleteBatch',
+	   productTagSort: apiPreFix + 'productTag/sort',
+	   productTag: apiPreFix + 'productTag/all',
+	   customerIndex: apiPreFix + 'clientUser/index',
+	   customerEdit: apiPreFix + 'clientUser/update',
+	   customerDel: apiPreFix + 'clientUser/delete',
+	   customerBatchDel: apiPreFix + 'clientUser/deleteBatch',
+	   customerBatchLevel: apiPreFix + 'clientUser/batchUpdateClientLevel',
+	   customerSort: apiPreFix + 'clientUser/sort',
+	   userIndex: apiPreFix + 'userInfo/index',
+	   companyEdit: apiPreFix + 'company/update',
+	   userEdit: apiPreFix + 'userInfo/update',
+	   addaccountIndex: apiPreFix + 'company/searchUser',
+	   addaccountAdd: apiPreFix + 'company/addUserToCompany',
+	   accountIndex: apiPreFix + 'company/users',
+	   accountEdit: apiPreFix + 'company/setAdmin',
+	   accountDel: apiPreFix + 'company/outCompany',
+	   sendAllMes: apiPreFix + 'pushMessage/push'
+	};
+	exports.API = iAPI;
+	exports.default = common;
+
+	// 	(function(w) {
+	// 		w.getNagavVersion = function() {
+	// 			var Sys = {}
+	// 			var ua = navigator.userAgent.toLowerCase()
+	// 			var s
+	// 			(s = ua.match(/msie ([\d.]+)/)) ? Sys.isIE = s[1]:
+	// 				(s = ua.match(/firefox\/([\d.]+)/)) ? Sys.isGecko = s[1] :
+	// 				(s = ua.match(/chrome\/([\d.]+)/)) ? Sys.isWebkit = s[1] :
+	// 				(s = ua.match(/opera.([\d.]+)/)) ? Sys.IsOpera = s[1] :
+	// 				(s = ua.match(/version\/([\d.]+).*safari/)) ? Sys.isSafari = s[1] :
+	// 				(s = ua.match(/rv:([\d.]+)/)) ? Sys.isEdge = s[1] : 0
+
+	// 			return Sys
+	// 		}
+	// 	})(window)
+
+	// }
 
 /***/ },
 /* 292 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(284)();
-	// imports
+	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
+	 * JavaScript Cookie v2.1.3
+	 * https://github.com/js-cookie/js-cookie
+	 *
+	 * Copyright 2006, 2015 Klaus Hartl & Fagner Brack
+	 * Released under the MIT license
+	 */
+	;(function (factory) {
+		var registeredInModuleLoader = false;
+		if (true) {
+			!(__WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.call(exports, __webpack_require__, exports, module)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			registeredInModuleLoader = true;
+		}
+		if (true) {
+			module.exports = factory();
+			registeredInModuleLoader = true;
+		}
+		if (!registeredInModuleLoader) {
+			var OldCookies = window.Cookies;
+			var api = window.Cookies = factory();
+			api.noConflict = function () {
+				window.Cookies = OldCookies;
+				return api;
+			};
+		}
+	}(function () {
+		function extend () {
+			var i = 0;
+			var result = {};
+			for (; i < arguments.length; i++) {
+				var attributes = arguments[ i ];
+				for (var key in attributes) {
+					result[key] = attributes[key];
+				}
+			}
+			return result;
+		}
 
+		function init (converter) {
+			function api (key, value, attributes) {
+				var result;
+				if (typeof document === 'undefined') {
+					return;
+				}
 
-	// module
-	exports.push([module.id, ".rongqi {\n  overflow: hidden;\n  white-space: nowrap;\n  text-overflow: ellipsis;\n  width: 162px;\n  height: 30px;\n}\n.children {\n  display: inline-block;\n}\n", ""]);
+				// Write
 
-	// exports
+				if (arguments.length > 1) {
+					attributes = extend({
+						path: '/'
+					}, api.defaults, attributes);
+
+					if (typeof attributes.expires === 'number') {
+						var expires = new Date();
+						expires.setMilliseconds(expires.getMilliseconds() + attributes.expires * 864e+5);
+						attributes.expires = expires;
+					}
+
+					try {
+						result = JSON.stringify(value);
+						if (/^[\{\[]/.test(result)) {
+							value = result;
+						}
+					} catch (e) {}
+
+					if (!converter.write) {
+						value = encodeURIComponent(String(value))
+							.replace(/%(23|24|26|2B|3A|3C|3E|3D|2F|3F|40|5B|5D|5E|60|7B|7D|7C)/g, decodeURIComponent);
+					} else {
+						value = converter.write(value, key);
+					}
+
+					key = encodeURIComponent(String(key));
+					key = key.replace(/%(23|24|26|2B|5E|60|7C)/g, decodeURIComponent);
+					key = key.replace(/[\(\)]/g, escape);
+
+					return (document.cookie = [
+						key, '=', value,
+						attributes.expires ? '; expires=' + attributes.expires.toUTCString() : '', // use expires attribute, max-age is not supported by IE
+						attributes.path ? '; path=' + attributes.path : '',
+						attributes.domain ? '; domain=' + attributes.domain : '',
+						attributes.secure ? '; secure' : ''
+					].join(''));
+				}
+
+				// Read
+
+				if (!key) {
+					result = {};
+				}
+
+				// To prevent the for loop in the first place assign an empty array
+				// in case there are no cookies at all. Also prevents odd result when
+				// calling "get()"
+				var cookies = document.cookie ? document.cookie.split('; ') : [];
+				var rdecode = /(%[0-9A-Z]{2})+/g;
+				var i = 0;
+
+				for (; i < cookies.length; i++) {
+					var parts = cookies[i].split('=');
+					var cookie = parts.slice(1).join('=');
+
+					if (cookie.charAt(0) === '"') {
+						cookie = cookie.slice(1, -1);
+					}
+
+					try {
+						var name = parts[0].replace(rdecode, decodeURIComponent);
+						cookie = converter.read ?
+							converter.read(cookie, name) : converter(cookie, name) ||
+							cookie.replace(rdecode, decodeURIComponent);
+
+						if (this.json) {
+							try {
+								cookie = JSON.parse(cookie);
+							} catch (e) {}
+						}
+
+						if (key === name) {
+							result = cookie;
+							break;
+						}
+
+						if (!key) {
+							result[name] = cookie;
+						}
+					} catch (e) {}
+				}
+
+				return result;
+			}
+
+			api.set = api;
+			api.get = function (key) {
+				return api.call(api, key);
+			};
+			api.getJSON = function () {
+				return api.apply({
+					json: true
+				}, [].slice.call(arguments));
+			};
+			api.defaults = {};
+
+			api.remove = function (key, attributes) {
+				api(key, '', extend(attributes, {
+					expires: -1
+				}));
+			};
+
+			api.withConverter = init;
+
+			return api;
+		}
+
+		return init(function () {});
+	}));
 
 
 /***/ },
@@ -39746,7 +40226,7 @@
 
 	var _mockjs2 = _interopRequireDefault(_mockjs);
 
-	var _common = __webpack_require__(295);
+	var _common = __webpack_require__(291);
 
 	var _common2 = _interopRequireDefault(_common);
 
@@ -48211,559 +48691,6 @@
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
-	   value: true
-	});
-	exports.API = undefined;
-	exports.Ajax = Ajax;
-	exports.CheckLogin = CheckLogin;
-
-	var _jqueryVendor = __webpack_require__(278);
-
-	var _jqueryVendor2 = _interopRequireDefault(_jqueryVendor);
-
-	var _jsCookie = __webpack_require__(296);
-
-	var _jsCookie2 = _interopRequireDefault(_jsCookie);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var common = {
-	   getNagavVersion: function getNagavVersion() {
-
-	      //Google Chrome 20 +
-	      //Apple Safari 4.0+
-	      //Mozilla Firefox 5.0+
-	      //Opera 11.0+
-	      //Microsoft Internet Explorer 9.0+ 
-	      //Edge
-
-	      var Sys = {};
-	      var ua = navigator.userAgent.toLowerCase();
-
-	      var s;
-	      (s = ua.match(/msie ([\d.]+)/)) ? Sys.isIE = s[1] : (s = ua.match(/firefox\/([\d.]+)/)) ? Sys.isGecko = s[1] : (s = ua.match(/chrome\/([\d.]+)/)) ? Sys.isWebkit = s[1] : (s = ua.match(/opera.([\d.]+)/)) ? Sys.IsOpera = s[1] : (s = ua.match(/version\/([\d.]+).*safari/)) ? Sys.isSafari = s[1] : (s = ua.match(/iphone os ([\d.]+)/)) ? Sys.isIOS = s[1] : (s = ua.match(/rv:([\d.]+)/)) ? Sys.isEdge = s[1] : 0;
-	      return Sys;
-	   },
-	   createUrl: function createUrl(url) {
-	      var d = new Date().getTime();
-	      var keyword = 'randomD';
-	      // if (url.indexOf(keyword) != -1)
-	      //var re = /(\w+)=(\w+)/ig
-	      var re = new RegExp("(" + keyword + ")+=(\\w+)", "gi");
-	      var mc = url.match(re);
-
-	      if (mc && mc.length > 0) url = url.replace(re, '');
-
-	      if (url.indexOf('?') == -1) {
-	         return url + "?" + keyword + "=" + d;
-	      } else {
-	         return url + "&" + keyword + "=" + d;
-	      }
-	   },
-	   regex: {
-	      fail_text: '验证失败',
-	      empty_text: '不能为空',
-	      telephone: /^(\d{11}|((\d{3,4}\-)|)\d{7,8}(|([-\u8f6c]{1}\d{1,5})))$/, //^(\d{11})$|^(\+\d{13})$/,
-	      telephone_partten: '^(\\d{11}||((\\d{3,4}\\-)|)\\d{7,8}(|([-\\u8f6c]{1}\\d{1,5})))$', //'^(\\d{11})$|^(\\+\\d{13})$',
-	      telephone_text: '请输入正确的手机或座机号码',
-	      random: /^[0-9]{4}$/,
-	      random_partten: '^[0-9]{4}$',
-	      random_text: '请输入正确的授权码',
-	      password: /^[0-9a-zA-Z]{6,15}$/,
-	      password_partten: '^[0-9a-zA-Z]{6,15}$',
-	      password_text: '请输入6到15位密码',
-	      identical_text: '两次密码不一致',
-	      repassword_text: '确认密码',
-	      email_text: '邮箱格式不正确',
-	      nickname: /^([\w\W]){2,25}$/,
-	      nickname_partten: '^([\\w\\W]){2,25}$',
-	      nickname_text: '请输入2到8个字',
-	      nickname_ph: '2到8个字，建议使用真实姓名，以方便朋友查找',
-	      company: /^([\w\W]){2,20}$/,
-	      company_partten: '^([\\w\\W]){2,20}$',
-	      company_text: '请输入2到20个字',
-	      company_ph: '2到20个字',
-	      productName: /^([\w\W]){2,60}$/,
-	      productName_partten: '^([\\w\\W]){2,150}$',
-	      productName_text: '请输入2到150个字',
-	      productName_ph: '2到150个字',
-	      productTagName: /^([\w\W]){2,16}$/,
-	      productTagName_partten: '^([\\w\\W]){2,16}$',
-	      productTagName_text: '请输入2到16个字',
-	      productTagName_ph: '2到16个字',
-	      price: /^(0|(0(\.\d{1,2})?)|(([1-6]|\d){0,6}(\.\d{1,2})?))$/,
-	      price_partten: '^(0|(0(\\.\\d{1,2})?)|(([1-6]|\\d){0,6}(\\.\\d{1,2})?))$',
-	      price_text: '整数最多6位,若有小数,最多2位',
-	      price_ph: '正确格式的价格0.00',
-	      remark: /^([\w\W]){0,100}$/,
-	      remark_partten: '^([\\w\\W]){0,20}$',
-	      remark_text: '请输入少于20个字',
-	      remark_ph: '不能超过20个字'
-	   },
-	   feedbackIcons: {
-	      valid: 'glyphicon glyphicon-ok',
-	      invalid: 'glyphicon glyphicon-remove',
-	      validating: 'glyphicon glyphicon-refresh'
-	   },
-	   isValidField: function isValidField(form, filedName) {
-	      var validators = form.options.fields[filedName].validators;
-	      var flag = true;
-	      for (var v in validators) {
-	         var temp = form.getFieldElements(filedName).data('bv.result.' + v);
-	         if (temp == 'INVALID') {
-	            return false;
-	         }
-	      }
-	      return flag;
-	   },
-	   initDragScroll: function initDragScroll() {
-	      var _y;
-	      var scrolling = false;
-	      document.onmousedown = function (e) {
-	         var e = window.event || e;
-	         _y = e.clientY;
-	         scrolling = true;
-	      };
-	      document.onmousemove = function (e) {
-	         if (!scrolling) return;
-	         var e = window.event || e;
-	         var move = (e.clientY - _y) / 4;
-	         if ((0, _jqueryVendor2.default)('.mdivR .fixed-table-body').length > 0) {
-	            var scrollTop = (0, _jqueryVendor2.default)('.fixed-table-body').scrollTop();
-	            (0, _jqueryVendor2.default)('.fixed-table-body').scrollTop(scrollTop + move);
-	         } else {
-	            var scrollTop = (0, _jqueryVendor2.default)('.mdivR').scrollTop();
-	            (0, _jqueryVendor2.default)('.mdivR').scrollTop(scrollTop + move);
-	         }
-	      };
-
-	      document.onmouseup = function () {
-	         scrolling = false;
-	      };
-	   },
-	   layout: function layout() {
-	      if ((0, _jqueryVendor2.default)('.htmlbody').width() <= 768) {
-	         (0, _jqueryVendor2.default)('.htmlbody').css({
-	            overflow: 'auto'
-	         });
-	         (0, _jqueryVendor2.default)('.mdivL,.mdivR').css({
-	            'height': '100%',
-	            overflow: 'hidden'
-	         });
-	         if ((0, _jqueryVendor2.default)('.mdivR .fixed-table-container').length > 0) {
-	            var height = '100%'; //- 500
-	            //dd
-	            (0, _jqueryVendor2.default)('.mdivR').css({
-	               'height': height + (0, _jqueryVendor2.default)('.fixed-table-container').data('mheight'),
-	               overflow: 'hidden'
-	            });
-	            (0, _jqueryVendor2.default)('.fixed-table-container').css('height', height);
-	            var options = (0, _jqueryVendor2.default)('#table').bootstrapTable('getOptions');
-	            options.height = height;
-	            (0, _jqueryVendor2.default)('#table').bootstrapTable('refreshOptions', options);
-	         }
-	      } else {
-	         (0, _jqueryVendor2.default)('.htmlbody').css({
-	            overflow: 'hidden'
-	         });
-	         (0, _jqueryVendor2.default)('.mdivL,.mdivR').css({
-	            'height': document.documentElement.clientHeight, //- 200,
-	            overflow: 'auto'
-	         });
-	         if ((0, _jqueryVendor2.default)('.mdivR .fixed-table-container').length > 0) {
-	            (0, _jqueryVendor2.default)('.mdivL,.mdivR').css({
-	               'height': document.documentElement.clientHeight, //- 200,
-	               overflow: 'hidden'
-	            });
-	            var _height = document.documentElement.clientHeight - (0, _jqueryVendor2.default)('.fixed-table-container').data('mheight');
-	            (0, _jqueryVendor2.default)('.fixed-table-container').css('height', _height);
-	            var _options = (0, _jqueryVendor2.default)('#table').bootstrapTable('getOptions');
-	            _options.height = _height;
-	            (0, _jqueryVendor2.default)('#table').bootstrapTable('refreshOptions', _options);
-	            (0, _jqueryVendor2.default)('#table').bootstrapTable('resetWidth');
-	         }
-	      }
-	   }
-	};
-	Array.prototype.clone = function () {
-	   return this.slice(0);
-	};
-	Array.prototype.remove = function (val) {
-	   var index = this.indexOf(val);
-	   if (index > -1) {
-	      this.splice(index, 1);
-	   }
-	};
-	Array.prototype.removeObj = function (objVal, srcKey) {
-	   var ix = -1;
-	   for (var i = 0; i < this.length; i++) {
-	      if (this[i][srcKey] == objVal) {
-	         ix = i;
-	      }
-	   }
-	   this.splice(ix, 1);
-	};
-	Array.prototype.replaceObj = function (srcKey, newItem) {
-	   var ix = -1;
-	   for (var i = 0; i < this.length; i++) {
-	      if (this[i][srcKey] == newItem[srcKey]) {
-	         ix = i;
-	         this[i] = newItem;
-	      }
-	   }
-	};
-	String.prototype.trim = function () {
-	   return this.replace(/(^\s*)|(\s*$)/g, "");
-	};
-	String.prototype.ltrim = function () {
-	   return this.replace(/(^\s*)/g, "");
-	};
-	String.prototype.rtrim = function () {
-	   return this.replace(/(\s*$)/g, "");
-	};
-	Date.prototype.format = function (format) {
-	   var o = {
-	      "M+": this.getMonth() + 1, //month
-	      "d+": this.getDate(), //day
-	      "h+": this.getHours(), //hour
-	      "m+": this.getMinutes(), //minute
-	      "s+": this.getSeconds(), //second
-	      "q+": Math.floor((this.getMonth() + 3) / 3), //quarter
-	      "S": this.getMilliseconds() //millisecond
-	   };
-
-	   if (/(y+)/.test(format)) {
-	      format = format.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
-	   }
-
-	   for (var k in o) {
-	      if (new RegExp("(" + k + ")").test(format)) {
-	         format = format.replace(RegExp.$1, RegExp.$1.length == 1 ? o[k] : ("00" + o[k]).substr(("" + o[k]).length));
-	      }
-	   }
-	   return format;
-	};
-
-	//异常日志
-	var Console_URL = (0, _jqueryVendor2.default)('head link[rel="console"]').attr('href');
-	if (Console_URL) {
-	   window.onerror = function (iMessage, iURL, iLine, iColumn, iError) {
-	      window.setTimeout(function () {
-
-	         var iData = {
-	            message: iMessage,
-	            url: iURL,
-	            line: iLine,
-	            column: iColumn || window.event && window.event.errorCharacter || 0
-	         };
-
-	         if (iError && iError.stack) iData.stack = (iError.stack || iError.stacktrace).toString();
-
-	         if (Console_URL) {
-	            if (iData.stack) _jqueryVendor2.default.post(Console_URL, iData);else _jqueryVendor2.default.get(Console_URL, iData);
-	         }
-	      }, 0);
-	      return true;
-	   };
-	   //window.console = function(){}
-	};
-
-	function Ajax(_ref, jdom) {
-	   var url = _ref.url,
-	       data = _ref.data,
-	       method = _ref.method,
-	       doneFun = _ref.doneFun,
-	       failFun = _ref.failFun,
-	       alwaysFun = _ref.alwaysFun,
-	       context = _ref.context;
-
-
-	   _jqueryVendor2.default.ajax({
-	      method: method || "POST",
-	      url: url,
-	      beforeSend: function beforeSend(xhr) {
-	         if (jdom != false) {
-	            var dom = jdom || (0, _jqueryVendor2.default)('body');
-	            dom.loadingOverlay();
-	         }
-	      },
-	      data: data || {}
-	   }).done(function (msg) {
-	      var data = JSON.parse(msg);
-	      //登录信息验证
-	      if (data.code == '99') {
-	         _jsCookie2.default.remove('hasLogin');
-	         context.router.push({
-	            pathname: '/',
-	            state: {
-	               backurl: context.router.getCurrentLocation().pathname
-	            }
-	         });
-	         return;
-	      }
-	      if (doneFun && typeof doneFun === 'function') {
-	         doneFun(msg);
-	      }
-	   }).fail(function (jqXHR, textStatus, errorThrown) {
-
-	      if (failFun && typeof failFun === 'function') {
-	         failFun(jqXHR, textStatus, errorThrown);
-	      }
-	   }).always(function () {
-	      if (alwaysFun && typeof alwaysFun === 'function') {
-	         alwaysFun();
-	      }
-
-	      if (jdom != false) {
-	         var dom = jdom || (0, _jqueryVendor2.default)('body');
-	         dom.loadingOverlay('remove');
-	      }
-	   });
-	}
-
-	function CheckLogin(nextState, replace) {
-	   var ck = _jsCookie2.default.get('hasLogin');
-	   if (typeof ck == 'undefined' || ck == false) {
-	      replace({
-	         pathname: '/Login',
-	         state: {
-	            backurl: nextState.location.pathname
-	         }
-	      });
-	   }
-	}
-	var apiPreFix = 'http://mp2.ai.com/'; //'/'// 
-	// const apiPreFix = '/' // 
-	var iAPI = {
-	   login: apiPreFix + "common/login/check",
-	   announcement: apiPreFix + 'announcement/getLatest',
-	   getBarcode: apiPreFix + "common/login/getQRcodePng",
-	   logout: apiPreFix + "common/logout",
-	   productIndex: apiPreFix + 'product/index',
-	   productAdd: apiPreFix + 'product/add',
-	   productEdit: apiPreFix + 'product/update',
-	   productDel: apiPreFix + 'product/delete',
-	   productBatchDel: apiPreFix + 'product/deleteBatch',
-	   productSort: apiPreFix + 'product/sort',
-	   productDownload: apiPreFix + 'product/download',
-	   productLog: apiPreFix + 'product/log',
-	   productExport: apiPreFix + 'product/export',
-	   clearData: apiPreFix + 'productTag/deleteAll',
-	   productDownloadTemplate: apiPreFix + 'images/aibaojia.csv',
-	   productUpload: apiPreFix + 'product/upload',
-	   productTagIndex: apiPreFix + 'productTag/index',
-	   productTagAdd: apiPreFix + 'productTag/add',
-	   productTagEdit: apiPreFix + 'productTag/update',
-	   productTagDel: apiPreFix + 'productTag/delete',
-	   productTagBatchDel: apiPreFix + 'productTag/deleteBatch',
-	   productTagSort: apiPreFix + 'productTag/sort',
-	   productTag: apiPreFix + 'productTag/all',
-	   customerIndex: apiPreFix + 'clientUser/index',
-	   customerEdit: apiPreFix + 'clientUser/update',
-	   customerDel: apiPreFix + 'clientUser/delete',
-	   customerBatchDel: apiPreFix + 'clientUser/deleteBatch',
-	   customerBatchLevel: apiPreFix + 'clientUser/batchUpdateClientLevel',
-	   customerSort: apiPreFix + 'clientUser/sort',
-	   userIndex: apiPreFix + 'userInfo/index',
-	   companyEdit: apiPreFix + 'company/update',
-	   userEdit: apiPreFix + 'userInfo/update',
-	   addaccountIndex: apiPreFix + 'company/searchUser',
-	   addaccountAdd: apiPreFix + 'company/addUserToCompany',
-	   accountIndex: apiPreFix + 'company/users',
-	   accountEdit: apiPreFix + 'company/setAdmin',
-	   accountDel: apiPreFix + 'company/outCompany',
-	   sendAllMes: apiPreFix + 'pushMessage/push'
-	};
-	exports.API = iAPI;
-	exports.default = common;
-
-	// 	(function(w) {
-	// 		w.getNagavVersion = function() {
-	// 			var Sys = {}
-	// 			var ua = navigator.userAgent.toLowerCase()
-	// 			var s
-	// 			(s = ua.match(/msie ([\d.]+)/)) ? Sys.isIE = s[1]:
-	// 				(s = ua.match(/firefox\/([\d.]+)/)) ? Sys.isGecko = s[1] :
-	// 				(s = ua.match(/chrome\/([\d.]+)/)) ? Sys.isWebkit = s[1] :
-	// 				(s = ua.match(/opera.([\d.]+)/)) ? Sys.IsOpera = s[1] :
-	// 				(s = ua.match(/version\/([\d.]+).*safari/)) ? Sys.isSafari = s[1] :
-	// 				(s = ua.match(/rv:([\d.]+)/)) ? Sys.isEdge = s[1] : 0
-
-	// 			return Sys
-	// 		}
-	// 	})(window)
-
-	// }
-
-/***/ },
-/* 296 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
-	 * JavaScript Cookie v2.1.3
-	 * https://github.com/js-cookie/js-cookie
-	 *
-	 * Copyright 2006, 2015 Klaus Hartl & Fagner Brack
-	 * Released under the MIT license
-	 */
-	;(function (factory) {
-		var registeredInModuleLoader = false;
-		if (true) {
-			!(__WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.call(exports, __webpack_require__, exports, module)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-			registeredInModuleLoader = true;
-		}
-		if (true) {
-			module.exports = factory();
-			registeredInModuleLoader = true;
-		}
-		if (!registeredInModuleLoader) {
-			var OldCookies = window.Cookies;
-			var api = window.Cookies = factory();
-			api.noConflict = function () {
-				window.Cookies = OldCookies;
-				return api;
-			};
-		}
-	}(function () {
-		function extend () {
-			var i = 0;
-			var result = {};
-			for (; i < arguments.length; i++) {
-				var attributes = arguments[ i ];
-				for (var key in attributes) {
-					result[key] = attributes[key];
-				}
-			}
-			return result;
-		}
-
-		function init (converter) {
-			function api (key, value, attributes) {
-				var result;
-				if (typeof document === 'undefined') {
-					return;
-				}
-
-				// Write
-
-				if (arguments.length > 1) {
-					attributes = extend({
-						path: '/'
-					}, api.defaults, attributes);
-
-					if (typeof attributes.expires === 'number') {
-						var expires = new Date();
-						expires.setMilliseconds(expires.getMilliseconds() + attributes.expires * 864e+5);
-						attributes.expires = expires;
-					}
-
-					try {
-						result = JSON.stringify(value);
-						if (/^[\{\[]/.test(result)) {
-							value = result;
-						}
-					} catch (e) {}
-
-					if (!converter.write) {
-						value = encodeURIComponent(String(value))
-							.replace(/%(23|24|26|2B|3A|3C|3E|3D|2F|3F|40|5B|5D|5E|60|7B|7D|7C)/g, decodeURIComponent);
-					} else {
-						value = converter.write(value, key);
-					}
-
-					key = encodeURIComponent(String(key));
-					key = key.replace(/%(23|24|26|2B|5E|60|7C)/g, decodeURIComponent);
-					key = key.replace(/[\(\)]/g, escape);
-
-					return (document.cookie = [
-						key, '=', value,
-						attributes.expires ? '; expires=' + attributes.expires.toUTCString() : '', // use expires attribute, max-age is not supported by IE
-						attributes.path ? '; path=' + attributes.path : '',
-						attributes.domain ? '; domain=' + attributes.domain : '',
-						attributes.secure ? '; secure' : ''
-					].join(''));
-				}
-
-				// Read
-
-				if (!key) {
-					result = {};
-				}
-
-				// To prevent the for loop in the first place assign an empty array
-				// in case there are no cookies at all. Also prevents odd result when
-				// calling "get()"
-				var cookies = document.cookie ? document.cookie.split('; ') : [];
-				var rdecode = /(%[0-9A-Z]{2})+/g;
-				var i = 0;
-
-				for (; i < cookies.length; i++) {
-					var parts = cookies[i].split('=');
-					var cookie = parts.slice(1).join('=');
-
-					if (cookie.charAt(0) === '"') {
-						cookie = cookie.slice(1, -1);
-					}
-
-					try {
-						var name = parts[0].replace(rdecode, decodeURIComponent);
-						cookie = converter.read ?
-							converter.read(cookie, name) : converter(cookie, name) ||
-							cookie.replace(rdecode, decodeURIComponent);
-
-						if (this.json) {
-							try {
-								cookie = JSON.parse(cookie);
-							} catch (e) {}
-						}
-
-						if (key === name) {
-							result = cookie;
-							break;
-						}
-
-						if (!key) {
-							result[name] = cookie;
-						}
-					} catch (e) {}
-				}
-
-				return result;
-			}
-
-			api.set = api;
-			api.get = function (key) {
-				return api.call(api, key);
-			};
-			api.getJSON = function () {
-				return api.apply({
-					json: true
-				}, [].slice.call(arguments));
-			};
-			api.defaults = {};
-
-			api.remove = function (key, attributes) {
-				api(key, '', extend(attributes, {
-					expires: -1
-				}));
-			};
-
-			api.withConverter = init;
-
-			return api;
-		}
-
-		return init(function () {});
-	}));
-
-
-/***/ },
-/* 297 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
 	exports.con_Counter = exports.Counter = undefined;
@@ -48780,15 +48707,15 @@
 
 	var _reactRouter = __webpack_require__(220);
 
-	var _MapStateToProps = __webpack_require__(286);
+	var _MapStateToProps = __webpack_require__(287);
 
-	var _MapDispatchToProps = __webpack_require__(288);
+	var _MapDispatchToProps = __webpack_require__(289);
+
+	__webpack_require__(296);
 
 	__webpack_require__(298);
 
-	__webpack_require__(300);
-
-	var _jqueryWeui = __webpack_require__(302);
+	var _jqueryWeui = __webpack_require__(300);
 
 	var _jqueryWeui2 = _interopRequireDefault(_jqueryWeui);
 
@@ -49008,16 +48935,16 @@
 	exports.default = con_Counter;
 
 /***/ },
-/* 298 */
+/* 296 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(299);
+	var content = __webpack_require__(297);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(285)(content, {});
+	var update = __webpack_require__(286)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -49034,10 +48961,10 @@
 	}
 
 /***/ },
-/* 299 */
+/* 297 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(284)();
+	exports = module.exports = __webpack_require__(285)();
 	// imports
 
 
@@ -49048,16 +48975,16 @@
 
 
 /***/ },
-/* 300 */
+/* 298 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(301);
+	var content = __webpack_require__(299);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(285)(content, {});
+	var update = __webpack_require__(286)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -49074,10 +49001,10 @@
 	}
 
 /***/ },
-/* 301 */
+/* 299 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(284)();
+	exports = module.exports = __webpack_require__(285)();
 	// imports
 
 
@@ -49088,7 +49015,7 @@
 
 
 /***/ },
-/* 302 */
+/* 300 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/** 
@@ -55375,7 +55302,164 @@
 
 
 /***/ },
+/* 301 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	exports.con_Test = exports.Test = undefined;
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactDom = __webpack_require__(29);
+
+	var _reactDom2 = _interopRequireDefault(_reactDom);
+
+	var _reactRedux = __webpack_require__(193);
+
+	var _reactRouter = __webpack_require__(220);
+
+	var _MapStateToProps = __webpack_require__(287);
+
+	var _MapDispatchToProps = __webpack_require__(289);
+
+	__webpack_require__(302);
+
+	var _mockData = __webpack_require__(293);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var Test = _react2.default.createClass({
+		displayName: 'Test',
+
+		contextTypes: {
+			router: _react2.default.PropTypes.object
+		},
+
+		render: function render() {
+			var _props = this.props,
+			    count = _props.count,
+			    title = _props.title,
+			    onIncreaseTestClick = _props.onIncreaseTestClick,
+			    buttonText = _props.buttonText;
+
+			console.log('Test', this.props);
+			var liDom = [];
+			console.log(_mockData.mData);
+			$.each(_mockData.mData.data, function (ix, item) {
+				liDom.push(_react2.default.createElement(
+					'li',
+					{ className: 'children', onClick: function onClick(e) {
+							console.log($(e.target).width());
+						} },
+					item.name
+				));
+			});
+			return _react2.default.createElement(
+				'div',
+				null,
+				_react2.default.createElement(
+					'h4',
+					null,
+					'TEST ',
+					count,
+					'  ',
+					title
+				),
+				_react2.default.createElement(
+					'ul',
+					{ className: 'rongqi', onClick: function onClick() {
+							$('.rongqi').scrollLeft($('.rongqi').scrollLeft() + 50);
+						} },
+					liDom
+				),
+				_react2.default.createElement(
+					'div',
+					{ className: 'weui-flex' },
+					_react2.default.createElement(
+						'div',
+						{ className: 'weui-flex__item' },
+						_react2.default.createElement(
+							'button',
+							{ className: 'weui-btn weui-btn_primary', onClick: onIncreaseTestClick },
+							buttonText
+						)
+					),
+					_react2.default.createElement(
+						'div',
+						{ className: 'weui-flex__item' },
+						_react2.default.createElement(
+							_reactRouter.Link,
+							{ className: 'weui-btn weui-btn_default', to: '/' },
+							'\u8BA1\u6570'
+						)
+					),
+					_react2.default.createElement(
+						'div',
+						{ className: 'weui-flex__item' },
+						_react2.default.createElement(
+							_reactRouter.Link,
+							{ className: 'weui-btn weui-btn_default', to: '/Quote' },
+							'\u62A5\u4EF7'
+						)
+					)
+				)
+			);
+		}
+	});
+	var con_Test = (0, _reactRedux.connect)(_MapStateToProps.mapStateToProps_Test, _MapDispatchToProps.mapDispatchToProps_Test)(Test);
+
+	exports.Test = Test;
+	exports.con_Test = con_Test;
+	exports.default = con_Test;
+
+/***/ },
+/* 302 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(303);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(286)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!../node_modules/css-loader/index.js!../node_modules/less-loader/index.js!./test.less", function() {
+				var newContent = require("!!../node_modules/css-loader/index.js!../node_modules/less-loader/index.js!./test.less");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
 /* 303 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(285)();
+	// imports
+
+
+	// module
+	exports.push([module.id, ".rongqi {\n  overflow: hidden;\n  white-space: nowrap;\n  text-overflow: ellipsis;\n  width: 162px;\n  height: 30px;\n}\n.children {\n  display: inline-block;\n}\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 304 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55397,11 +55481,11 @@
 
 	var _reactRouter = __webpack_require__(220);
 
-	var _MapStateToProps = __webpack_require__(286);
+	var _MapStateToProps = __webpack_require__(287);
 
-	var _MapDispatchToProps = __webpack_require__(288);
+	var _MapDispatchToProps = __webpack_require__(289);
 
-	__webpack_require__(298);
+	__webpack_require__(296);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -55426,6 +55510,7 @@
 					$(self).pullToRefreshDone();
 				}, 2000);
 			});
+			$('.weui-tab__panel').css('height', document.body.clientHeight - 50);
 		},
 		choseBarItemCls: function choseBarItemCls(index) {
 			var Quote = this.props.Quote,
@@ -55435,7 +55520,7 @@
 		choseBarPanelCls: function choseBarPanelCls(index) {
 			var Quote = this.props.Quote,
 			    me = this;
-			return Quote.tabIndex == index ? 'barpanel weui-pull-to-refresh h100' : 'barpanel hide weui-pull-to-refresh h100';
+			return Quote.tabIndex == index ? 'barpanel weui-pull-to-refresh' : 'barpanel hide weui-pull-to-refresh';
 		},
 		domInit: function domInit(param) {
 			var me = this;
@@ -55518,6 +55603,35 @@
 					_reactRouter.Link,
 					{ className: 'weui-btn weui-btn_default', to: '/' },
 					'\u6D88\u606F\u8BA1\u6570'
+				),
+				_react2.default.createElement(
+					'p',
+					null,
+					' afasdfsadfasdfasdf'
+				),
+				_react2.default.createElement('br', null),
+				_react2.default.createElement('br', null),
+				_react2.default.createElement('br', null),
+				_react2.default.createElement('br', null),
+				'2',
+				_react2.default.createElement('br', null),
+				_react2.default.createElement('br', null),
+				_react2.default.createElement('br', null),
+				'2',
+				_react2.default.createElement('br', null),
+				_react2.default.createElement('br', null),
+				_react2.default.createElement('br', null),
+				_react2.default.createElement('br', null),
+				_react2.default.createElement('br', null),
+				_react2.default.createElement('br', null),
+				_react2.default.createElement('br', null),
+				_react2.default.createElement('br', null),
+				_react2.default.createElement('br', null),
+				_react2.default.createElement('br', null),
+				_react2.default.createElement(
+					'p',
+					null,
+					' 234234213412341234'
 				)
 			));
 
@@ -55530,6 +55644,35 @@
 					_reactRouter.Link,
 					{ className: 'weui-btn weui-btn_primary', to: '/' },
 					'\u6D88\u606F\u8BA1\u6570'
+				),
+				_react2.default.createElement(
+					'p',
+					null,
+					' afasdfsadfasdfasdf'
+				),
+				_react2.default.createElement('br', null),
+				_react2.default.createElement('br', null),
+				_react2.default.createElement('br', null),
+				_react2.default.createElement('br', null),
+				'2',
+				_react2.default.createElement('br', null),
+				_react2.default.createElement('br', null),
+				_react2.default.createElement('br', null),
+				'2',
+				_react2.default.createElement('br', null),
+				_react2.default.createElement('br', null),
+				_react2.default.createElement('br', null),
+				_react2.default.createElement('br', null),
+				_react2.default.createElement('br', null),
+				_react2.default.createElement('br', null),
+				_react2.default.createElement('br', null),
+				_react2.default.createElement('br', null),
+				_react2.default.createElement('br', null),
+				_react2.default.createElement('br', null),
+				_react2.default.createElement(
+					'p',
+					null,
+					' 234234213412341234'
 				)
 			));
 			param.barPanelDom.push(_react2.default.createElement(
@@ -55589,91 +55732,6 @@
 	exports.Quote = Quote;
 	exports.con_Quote = con_Quote;
 	exports.default = con_Quote;
-
-/***/ },
-/* 304 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	var isObj = __webpack_require__(305);
-	var hasOwnProperty = Object.prototype.hasOwnProperty;
-	var propIsEnumerable = Object.prototype.propertyIsEnumerable;
-
-	function toObject(val) {
-		if (val === null || val === undefined) {
-			throw new TypeError('Sources cannot be null or undefined');
-		}
-
-		return Object(val);
-	}
-
-	function assignKey(to, from, key) {
-		var val = from[key];
-
-		if (val === undefined || val === null) {
-			return;
-		}
-
-		if (hasOwnProperty.call(to, key)) {
-			if (to[key] === undefined || to[key] === null) {
-				throw new TypeError('Cannot convert undefined or null to object (' + key + ')');
-			}
-		}
-
-		if (!hasOwnProperty.call(to, key) || !isObj(val)) {
-			to[key] = val;
-		} else {
-			to[key] = assign(Object(to[key]), from[key]);
-		}
-	}
-
-	function assign(to, from) {
-		if (to === from) {
-			return to;
-		}
-
-		from = Object(from);
-
-		for (var key in from) {
-			if (hasOwnProperty.call(from, key)) {
-				assignKey(to, from, key);
-			}
-		}
-
-		if (Object.getOwnPropertySymbols) {
-			var symbols = Object.getOwnPropertySymbols(from);
-
-			for (var i = 0; i < symbols.length; i++) {
-				if (propIsEnumerable.call(from, symbols[i])) {
-					assignKey(to, from, symbols[i]);
-				}
-			}
-		}
-
-		return to;
-	}
-
-	module.exports = function deepAssign(target) {
-		target = toObject(target);
-
-		for (var s = 1; s < arguments.length; s++) {
-			assign(target, arguments[s]);
-		}
-
-		return target;
-	};
-
-
-/***/ },
-/* 305 */
-/***/ function(module, exports) {
-
-	'use strict';
-	module.exports = function (x) {
-		var type = typeof x;
-		return x !== null && (type === 'object' || type === 'function');
-	};
-
 
 /***/ }
 /******/ ]);
