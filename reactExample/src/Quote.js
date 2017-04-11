@@ -31,7 +31,7 @@ import 'weui'
 class Quote extends Component {
 	contextTypes: {
 		router: React.PropTypes.object
-	}
+	} 
 	componentDidMount() {
 		let me = this;
 
