@@ -115,7 +115,7 @@ class Quote extends Component {
 		})
 
 		return (
-			<div className='rc_quote weui-tab'> 
+			<div className='rc_quote weui-tab' onTouchMove={()=>{console.log('onTouchMove')}}> 
 				<div className="weui-tab__panel">
 				 	{barPanelDom}
 			    </div>
