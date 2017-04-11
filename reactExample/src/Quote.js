@@ -23,6 +23,7 @@ import {
 } from './lib/MapDispatchToProps'
 
 import 'weui'
+import '../css/iconfont.css'
 //import "!style!css!less!../node_modules/jquery-weui/dist/css/jquery-weui.css"
 
 //import Jweui from '../node_modules/jquery-weui/dist/js/jquery-weui'
@@ -58,20 +59,21 @@ class Quote extends Component {
 	}
 	domInit(param) {
 		const me = this;
+
 		param.barItemDom.push(<a href="javascript:;" className={me.choseBarItemCls(0)} onClick={e=>param.onTabbarClick(e,0)}>
-			            <img src="./images/icon_tabbar.png" alt="" className="weui-tabbar__icon"/>
+			            <span className="iconfont icon-fuzhi weui-tabbar__icon"></span>
 			            <p className="weui-tabbar__label">微信</p>
 			        </a>)
 		param.barItemDom.push(<a href="javascript:;" className={me.choseBarItemCls(1)} onClick={e=>param.onTabbarClick(e,1)}>
-			            <img src="./images/icon_tabbar.png" alt="" className="weui-tabbar__icon"/>
+			            <span className="iconfont icon-qiandai weui-tabbar__icon"></span>
 			            <p className="weui-tabbar__label">通讯录</p>
 			        </a>)
 		param.barItemDom.push(<a href="javascript:;" className={me.choseBarItemCls(2)} onClick={e=>param.onTabbarClick(e,2)}>
-			            <img src="./images/icon_tabbar.png" alt="" className="weui-tabbar__icon"/>
+			            <span className="iconfont icon-icon weui-tabbar__icon"></span>
 			            <p className="weui-tabbar__label">发现</p>
 			        </a>)
 		param.barItemDom.push(<a href="javascript:;" className={me.choseBarItemCls(3)} onClick={e=>param.onTabbarClick(e,3)}>
-			            <img src="./images/icon_tabbar.png" alt="" className="weui-tabbar__icon"/>
+			            <span className="iconfont icon-15 weui-tabbar__icon"></span>
 			            <p className="weui-tabbar__label">我</p>
 			        </a>)
 
