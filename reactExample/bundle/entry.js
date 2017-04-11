@@ -38217,6 +38217,8 @@
 	});
 	exports.con_Main = exports.Main = undefined;
 
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
 	var _react = __webpack_require__(2);
 
 	var _react2 = _interopRequireDefault(_react);
@@ -38249,39 +38251,55 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 	// React component
-	var Main = _react2.default.createClass({
-	  displayName: 'Main',
+	var Main = function (_Component) {
+	  _inherits(Main, _Component);
 
-	  contextTypes: {
-	    router: _react2.default.PropTypes.object
-	  },
-	  componentDidMount: function componentDidMount() {
-	    var me = this;
-	    _fastclick2.default.attach(document.body);
+	  function Main() {
+	    _classCallCheck(this, Main);
 
-	    (0, _common.Ajax)({
-	      url: _common.API.login,
-	      doneFun: function doneFun(msg) {
-	        var data = JSON.parse(msg);
-
-	        console.log(data);
-	      },
-	      failFun: function failFun(jqXHR, textStatus) {},
-	      alwaysFun: function alwaysFun() {},
-	      context: me.context
-	    }, false);
-	  },
-	  render: function render() {
-
-	    console.log('Main', this.context, this.props);
-	    return _react2.default.createElement(
-	      'div',
-	      { className: 'h100' },
-	      this.props.children
-	    );
+	    return _possibleConstructorReturn(this, (Main.__proto__ || Object.getPrototypeOf(Main)).apply(this, arguments));
 	  }
-	});
+
+	  _createClass(Main, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      var me = this;
+	      _fastclick2.default.attach(document.body);
+
+	      (0, _common.Ajax)({
+	        url: _common.API.login,
+	        doneFun: function doneFun(msg) {
+	          var data = JSON.parse(msg);
+
+	          console.log(data);
+	        },
+	        failFun: function failFun(jqXHR, textStatus) {},
+	        alwaysFun: function alwaysFun() {},
+	        context: me.context
+	      }, false);
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+
+	      console.log('Main', this.context, this.props);
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'h100' },
+	        this.props.children
+	      );
+	    }
+	  }]);
+
+	  return Main;
+	}(_react.Component);
 
 	var con_Main = (0, _reactRedux.connect)(_MapStateToProps.mapStateToProps_Main, _MapDispatchToProps.mapDispatchToProps_Main)(Main);
 
@@ -48695,6 +48713,8 @@
 	});
 	exports.con_Counter = exports.Counter = undefined;
 
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
 	var _react = __webpack_require__(2);
 
 	var _react2 = _interopRequireDefault(_react);
@@ -48721,212 +48741,230 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 	// import WeuiJs from 'weui.js'
 
 
 	// React component
-	var Counter = _react2.default.createClass({
-	  displayName: 'Counter',
+	var Counter = function (_Component) {
+	  _inherits(Counter, _Component);
 
-	  contextTypes: {
-	    router: _react2.default.PropTypes.object
-	  },
-	  componentDidMount: function componentDidMount() {
-	    var me = this;
+	  function Counter() {
+	    _classCallCheck(this, Counter);
 
-	    $('.tabItem').pullToRefresh().on('pull-to-refresh', function (done) {
-	      var self = this;
-	      console.log('refresh');
-	      setTimeout(function () {
-	        $(self).pullToRefreshDone();
-	      }, 2000);
-	    });
-	  },
-	  domInit: function domInit(navbarHeadDom, tabItemDom, tabIndex, count, onNavbarClick, onIncreaseClick, onTestValClick) {
-	    var _loop = function _loop() {
-	      var cls = 'weui-navbar__item',
-	          tabCls = 'weui-tab__content tabItem  weui-pull-to-refresh h100';
-	      if (i == tabIndex) {
-	        cls += ' weui-bar__item_on';
-	        tabCls = tabCls.replace(/weui-tab__content/g, '');
-	      };
-	      var index = i;
-	      navbarHeadDom.push(_react2.default.createElement(
-	        'div',
-	        { className: cls, onClick: function onClick(e) {
-	            return onNavbarClick(e, index);
-	          } },
-	        '\u9009\u9879',
-	        i
-	      ));
-	      tabItemDom.push(_react2.default.createElement(
-	        'div',
-	        { className: tabCls },
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'weui-pull-to-refresh__layer' },
-	          _react2.default.createElement('div', { className: 'weui-pull-to-refresh__arrow' }),
-	          _react2.default.createElement('div', { className: 'weui-pull-to-refresh__preloader' }),
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'down' },
-	            '\u4E0B\u62C9\u5237\u65B0'
-	          ),
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'up' },
-	            '\u91CA\u653E\u5237\u65B0'
-	          ),
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'refresh' },
-	            '\u6B63\u5728\u5237\u65B0'
-	          )
-	        ),
-	        _react2.default.createElement(
-	          'h1',
-	          { className: 'doc-head' },
-	          '\u9875\u9762',
-	          i
-	        ),
-	        _react2.default.createElement(
-	          'h4',
-	          null,
-	          count
-	        ),
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'weui-flex' },
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'weui-flex__item' },
-	            _react2.default.createElement(
-	              'button',
-	              { className: 'weui-btn weui-btn_primary', onClick: onIncreaseClick },
-	              '\u8BA1\u6570'
-	            )
-	          ),
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'weui-flex__item' },
-	            _react2.default.createElement(
-	              _reactRouter.Link,
-	              { className: 'weui-btn weui-btn_default', to: '/Test' },
-	              '\u6D88\u606F\u8BA1\u6570'
-	            )
-	          ),
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'weui-flex__item' },
-	            _react2.default.createElement(
-	              'button',
-	              { className: 'weui-btn weui-btn_primary', onClick: onTestValClick },
-	              'testVal'
-	            )
-	          ),
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'weui-flex__item' },
-	            _react2.default.createElement(
-	              'button',
-	              { className: 'weui-btn weui-btn_primary', onClick: function onClick() {
-	                  $.alert('alert');
-	                } },
-	              'alert'
-	            )
-	          ),
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'weui-flex__item' },
-	            _react2.default.createElement(
-	              'button',
-	              { className: 'weui-btn weui-btn_primary', onClick: function onClick() {
-	                  test;
-	                } },
-	              'testError'
-	            )
-	          )
-	        ),
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'content-padded' },
-	          _react2.default.createElement(
-	            'p',
-	            null,
-	            ' adsfadfadsfitasdfadfasdfa'
-	          ),
-	          _react2.default.createElement(
-	            'p',
-	            null,
-	            ' afasdfsadfasdfasdf'
-	          ),
-	          _react2.default.createElement('br', null),
-	          _react2.default.createElement('br', null),
-	          _react2.default.createElement('br', null),
-	          _react2.default.createElement('br', null),
-	          '2',
-	          _react2.default.createElement('br', null),
-	          _react2.default.createElement('br', null),
-	          _react2.default.createElement('br', null),
-	          '2',
-	          _react2.default.createElement('br', null),
-	          _react2.default.createElement('br', null),
-	          _react2.default.createElement('br', null),
-	          _react2.default.createElement('br', null),
-	          _react2.default.createElement('br', null),
-	          _react2.default.createElement('br', null),
-	          _react2.default.createElement('br', null),
-	          _react2.default.createElement('br', null),
-	          _react2.default.createElement('br', null),
-	          _react2.default.createElement('br', null),
-	          _react2.default.createElement(
-	            'p',
-	            null,
-	            ' 234234213412341234'
-	          )
-	        )
-	      ));
-	    };
-
-	    for (var i = 0; i < 3; i++) {
-	      _loop();
-	    };
-	  },
-	  render: function render() {
-	    var me = this;
-	    var _props = this.props,
-	        count = _props.count,
-	        onIncreaseClick = _props.onIncreaseClick,
-	        onTestValClick = _props.onTestValClick,
-	        tabIndex = _props.tabIndex,
-	        onNavbarClick = _props.onNavbarClick;
-
-	    console.log('Counter', this.context, this.props);
-
-	    var navbarHeadDom = [],
-	        tabItemDom = [];
-	    me.domInit(navbarHeadDom, tabItemDom, tabIndex, count, onNavbarClick, onIncreaseClick, onTestValClick);
-
-	    return _react2.default.createElement(
-	      'div',
-	      { className: 'h100' },
-	      _react2.default.createElement(
-	        'div',
-	        { className: 'weui-tab' },
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'weui-navbar' },
-	          navbarHeadDom
-	        ),
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'weui-tab__panel' },
-	          tabItemDom
-	        )
-	      )
-	    );
+	    return _possibleConstructorReturn(this, (Counter.__proto__ || Object.getPrototypeOf(Counter)).apply(this, arguments));
 	  }
-	});
+
+	  _createClass(Counter, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      var me = this;
+
+	      $('.tabItem').pullToRefresh().on('pull-to-refresh', function (done) {
+	        var self = this;
+	        console.log('refresh');
+	        setTimeout(function () {
+	          $(self).pullToRefreshDone();
+	        }, 2000);
+	      });
+	    }
+	  }, {
+	    key: 'domInit',
+	    value: function domInit(navbarHeadDom, tabItemDom, tabIndex, count, onNavbarClick, onIncreaseClick, onTestValClick) {
+	      var _loop = function _loop() {
+	        var cls = 'weui-navbar__item',
+	            tabCls = 'weui-tab__content tabItem  weui-pull-to-refresh h100';
+	        if (i == tabIndex) {
+	          cls += ' weui-bar__item_on';
+	          tabCls = tabCls.replace(/weui-tab__content/g, '');
+	        };
+	        var index = i;
+	        navbarHeadDom.push(_react2.default.createElement(
+	          'div',
+	          { className: cls, onClick: function onClick(e) {
+	              return onNavbarClick(e, index);
+	            } },
+	          '\u9009\u9879',
+	          i
+	        ));
+	        tabItemDom.push(_react2.default.createElement(
+	          'div',
+	          { className: tabCls },
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'weui-pull-to-refresh__layer' },
+	            _react2.default.createElement('div', { className: 'weui-pull-to-refresh__arrow' }),
+	            _react2.default.createElement('div', { className: 'weui-pull-to-refresh__preloader' }),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'down' },
+	              '\u4E0B\u62C9\u5237\u65B0'
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'up' },
+	              '\u91CA\u653E\u5237\u65B0'
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'refresh' },
+	              '\u6B63\u5728\u5237\u65B0'
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'h1',
+	            { className: 'doc-head' },
+	            '\u9875\u9762',
+	            i
+	          ),
+	          _react2.default.createElement(
+	            'h4',
+	            null,
+	            count
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'weui-flex' },
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'weui-flex__item' },
+	              _react2.default.createElement(
+	                'button',
+	                { className: 'weui-btn weui-btn_primary', onClick: onIncreaseClick },
+	                '\u8BA1\u6570'
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'weui-flex__item' },
+	              _react2.default.createElement(
+	                _reactRouter.Link,
+	                { className: 'weui-btn weui-btn_default', to: '/Test' },
+	                '\u6D88\u606F\u8BA1\u6570'
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'weui-flex__item' },
+	              _react2.default.createElement(
+	                'button',
+	                { className: 'weui-btn weui-btn_primary', onClick: onTestValClick },
+	                'testVal'
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'weui-flex__item' },
+	              _react2.default.createElement(
+	                'button',
+	                { className: 'weui-btn weui-btn_primary', onClick: function onClick() {
+	                    $.alert('alert');
+	                  } },
+	                'alert'
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'weui-flex__item' },
+	              _react2.default.createElement(
+	                'button',
+	                { className: 'weui-btn weui-btn_primary', onClick: function onClick() {
+	                    test;
+	                  } },
+	                'testError'
+	              )
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'content-padded' },
+	            _react2.default.createElement(
+	              'p',
+	              null,
+	              ' adsfadfadsfitasdfadfasdfa'
+	            ),
+	            _react2.default.createElement(
+	              'p',
+	              null,
+	              ' afasdfsadfasdfasdf'
+	            ),
+	            _react2.default.createElement('br', null),
+	            _react2.default.createElement('br', null),
+	            _react2.default.createElement('br', null),
+	            _react2.default.createElement('br', null),
+	            '2',
+	            _react2.default.createElement('br', null),
+	            _react2.default.createElement('br', null),
+	            _react2.default.createElement('br', null),
+	            '2',
+	            _react2.default.createElement('br', null),
+	            _react2.default.createElement('br', null),
+	            _react2.default.createElement('br', null),
+	            _react2.default.createElement('br', null),
+	            _react2.default.createElement('br', null),
+	            _react2.default.createElement('br', null),
+	            _react2.default.createElement('br', null),
+	            _react2.default.createElement('br', null),
+	            _react2.default.createElement('br', null),
+	            _react2.default.createElement('br', null),
+	            _react2.default.createElement(
+	              'p',
+	              null,
+	              ' 234234213412341234'
+	            )
+	          )
+	        ));
+	      };
+
+	      for (var i = 0; i < 3; i++) {
+	        _loop();
+	      };
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var me = this;
+	      var _props = this.props,
+	          count = _props.count,
+	          onIncreaseClick = _props.onIncreaseClick,
+	          onTestValClick = _props.onTestValClick,
+	          tabIndex = _props.tabIndex,
+	          onNavbarClick = _props.onNavbarClick;
+
+	      console.log('Counter', this.context, this.props);
+
+	      var navbarHeadDom = [],
+	          tabItemDom = [];
+	      me.domInit(navbarHeadDom, tabItemDom, tabIndex, count, onNavbarClick, onIncreaseClick, onTestValClick);
+
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'h100' },
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'weui-tab' },
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'weui-navbar' },
+	            navbarHeadDom
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'weui-tab__panel' },
+	            tabItemDom
+	          )
+	        )
+	      );
+	    }
+	  }]);
+
+	  return Counter;
+	}(_react.Component);
 
 	var con_Counter = (0, _reactRedux.connect)(_MapStateToProps.mapStateToProps_Counter, _MapDispatchToProps.mapDispatchToProps_Count)(Counter);
 
@@ -55312,6 +55350,8 @@
 	});
 	exports.con_Test = exports.Test = undefined;
 
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
 	var _react = __webpack_require__(2);
 
 	var _react2 = _interopRequireDefault(_react);
@@ -55334,84 +55374,98 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var Test = _react2.default.createClass({
-		displayName: 'Test',
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-		contextTypes: {
-			router: _react2.default.PropTypes.object
-		},
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-		render: function render() {
-			var _props = this.props,
-			    count = _props.count,
-			    title = _props.title,
-			    onIncreaseTestClick = _props.onIncreaseTestClick,
-			    buttonText = _props.buttonText;
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-			console.log('Test', this.props);
-			var liDom = [];
-			console.log(_mockData.mData);
-			$.each(_mockData.mData.data, function (ix, item) {
-				liDom.push(_react2.default.createElement(
-					'li',
-					{ className: 'children', onClick: function onClick(e) {
-							console.log($(e.target).width());
-						} },
-					item.name
-				));
-			});
-			return _react2.default.createElement(
-				'div',
-				null,
-				_react2.default.createElement(
-					'h4',
-					null,
-					'TEST ',
-					count,
-					'  ',
-					title
-				),
-				_react2.default.createElement(
-					'ul',
-					{ className: 'rongqi', onClick: function onClick() {
-							$('.rongqi').scrollLeft($('.rongqi').scrollLeft() + 50);
-						} },
-					liDom
-				),
-				_react2.default.createElement(
+	var Test = function (_Component) {
+		_inherits(Test, _Component);
+
+		function Test() {
+			_classCallCheck(this, Test);
+
+			return _possibleConstructorReturn(this, (Test.__proto__ || Object.getPrototypeOf(Test)).apply(this, arguments));
+		}
+
+		_createClass(Test, [{
+			key: 'render',
+			value: function render() {
+				var _props = this.props,
+				    count = _props.count,
+				    title = _props.title,
+				    onIncreaseTestClick = _props.onIncreaseTestClick,
+				    buttonText = _props.buttonText;
+
+				console.log('Test', this.props);
+				var liDom = [];
+				console.log(_mockData.mData);
+				$.each(_mockData.mData.data, function (ix, item) {
+					liDom.push(_react2.default.createElement(
+						'li',
+						{ className: 'children', onClick: function onClick(e) {
+								console.log($(e.target).width());
+							} },
+						item.name
+					));
+				});
+				return _react2.default.createElement(
 					'div',
-					{ className: 'weui-flex' },
+					null,
 					_react2.default.createElement(
-						'div',
-						{ className: 'weui-flex__item' },
-						_react2.default.createElement(
-							'button',
-							{ className: 'weui-btn weui-btn_primary', onClick: onIncreaseTestClick },
-							buttonText
-						)
+						'h4',
+						null,
+						'TEST ',
+						count,
+						'  ',
+						title
+					),
+					_react2.default.createElement(
+						'ul',
+						{ className: 'rongqi', onClick: function onClick() {
+								$('.rongqi').scrollLeft($('.rongqi').scrollLeft() + 50);
+							} },
+						liDom
 					),
 					_react2.default.createElement(
 						'div',
-						{ className: 'weui-flex__item' },
+						{ className: 'weui-flex' },
 						_react2.default.createElement(
-							_reactRouter.Link,
-							{ className: 'weui-btn weui-btn_default', to: '/' },
-							'\u8BA1\u6570'
-						)
-					),
-					_react2.default.createElement(
-						'div',
-						{ className: 'weui-flex__item' },
+							'div',
+							{ className: 'weui-flex__item' },
+							_react2.default.createElement(
+								'button',
+								{ className: 'weui-btn weui-btn_primary', onClick: onIncreaseTestClick },
+								buttonText
+							)
+						),
 						_react2.default.createElement(
-							_reactRouter.Link,
-							{ className: 'weui-btn weui-btn_default', to: '/Quote' },
-							'\u62A5\u4EF7'
+							'div',
+							{ className: 'weui-flex__item' },
+							_react2.default.createElement(
+								_reactRouter.Link,
+								{ className: 'weui-btn weui-btn_default', to: '/' },
+								'\u8BA1\u6570'
+							)
+						),
+						_react2.default.createElement(
+							'div',
+							{ className: 'weui-flex__item' },
+							_react2.default.createElement(
+								_reactRouter.Link,
+								{ className: 'weui-btn weui-btn_default', to: '/Quote' },
+								'\u62A5\u4EF7'
+							)
 						)
 					)
-				)
-			);
-		}
-	});
+				);
+			}
+		}]);
+
+		return Test;
+	}(_react.Component);
+
 	var con_Test = (0, _reactRedux.connect)(_MapStateToProps.mapStateToProps_Test, _MapDispatchToProps.mapDispatchToProps_Test)(Test);
 
 	exports.Test = Test;
@@ -55469,6 +55523,8 @@
 	});
 	exports.con_Quote = exports.Quote = undefined;
 
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
 	var _react = __webpack_require__(2);
 
 	var _react2 = _interopRequireDefault(_react);
@@ -55489,243 +55545,265 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 	//import "!style!css!less!../node_modules/jquery-weui/dist/css/jquery-weui.css"
 
 	//import Jweui from '../node_modules/jquery-weui/dist/js/jquery-weui'
 
 
-	var Quote = _react2.default.createClass({
-		displayName: 'Quote',
+	var Quote = function (_Component) {
+		_inherits(Quote, _Component);
 
-		contextTypes: {
-			router: _react2.default.PropTypes.object
-		},
-		componentDidMount: function componentDidMount() {
-			var me = this;
+		function Quote() {
+			_classCallCheck(this, Quote);
 
-			$('.barpanel').pullToRefresh().on('pull-to-refresh', function (done) {
-				var self = this;
-				console.log('refresh');
-				setTimeout(function () {
-					$(self).pullToRefreshDone();
-				}, 2000);
-			});
-			$('.weui-tab__panel').css('height', document.body.clientHeight - 50);
-		},
-		choseBarItemCls: function choseBarItemCls(index) {
-			var Quote = this.props.Quote,
-			    me = this;
-			return "weui-tabbar__item " + (Quote.tabIndex == index ? 'weui-bar__item_on' : '');
-		},
-		choseBarPanelCls: function choseBarPanelCls(index) {
-			var Quote = this.props.Quote,
-			    me = this;
-			return Quote.tabIndex == index ? 'barpanel weui-pull-to-refresh' : 'barpanel hide weui-pull-to-refresh';
-		},
-		domInit: function domInit(param) {
-			var me = this;
-			param.barItemDom.push(_react2.default.createElement(
-				'a',
-				{ href: 'javascript:;', className: me.choseBarItemCls(0), onClick: function onClick(e) {
-						return param.onTabbarClick(e, 0);
-					} },
-				_react2.default.createElement('img', { src: './images/icon_tabbar.png', alt: '', className: 'weui-tabbar__icon' }),
-				_react2.default.createElement(
-					'p',
-					{ className: 'weui-tabbar__label' },
-					'\u5FAE\u4FE1'
-				)
-			));
-			param.barItemDom.push(_react2.default.createElement(
-				'a',
-				{ href: 'javascript:;', className: me.choseBarItemCls(1), onClick: function onClick(e) {
-						return param.onTabbarClick(e, 1);
-					} },
-				_react2.default.createElement('img', { src: './images/icon_tabbar.png', alt: '', className: 'weui-tabbar__icon' }),
-				_react2.default.createElement(
-					'p',
-					{ className: 'weui-tabbar__label' },
-					'\u901A\u8BAF\u5F55'
-				)
-			));
-			param.barItemDom.push(_react2.default.createElement(
-				'a',
-				{ href: 'javascript:;', className: me.choseBarItemCls(2), onClick: function onClick(e) {
-						return param.onTabbarClick(e, 2);
-					} },
-				_react2.default.createElement('img', { src: './images/icon_tabbar.png', alt: '', className: 'weui-tabbar__icon' }),
-				_react2.default.createElement(
-					'p',
-					{ className: 'weui-tabbar__label' },
-					'\u53D1\u73B0'
-				)
-			));
-			param.barItemDom.push(_react2.default.createElement(
-				'a',
-				{ href: 'javascript:;', className: me.choseBarItemCls(3), onClick: function onClick(e) {
-						return param.onTabbarClick(e, 3);
-					} },
-				_react2.default.createElement('img', { src: './images/icon_tabbar.png', alt: '', className: 'weui-tabbar__icon' }),
-				_react2.default.createElement(
-					'p',
-					{ className: 'weui-tabbar__label' },
-					'\u6211'
-				)
-			));
-
-			var pullDiv = [_react2.default.createElement(
-				'div',
-				{ className: 'weui-pull-to-refresh__layer' },
-				_react2.default.createElement('div', { className: 'weui-pull-to-refresh__arrow' }),
-				_react2.default.createElement('div', { className: 'weui-pull-to-refresh__preloader' }),
-				_react2.default.createElement(
-					'div',
-					{ className: 'down' },
-					'\u4E0B\u62C9\u5237\u65B0'
-				),
-				_react2.default.createElement(
-					'div',
-					{ className: 'up' },
-					'\u91CA\u653E\u5237\u65B0'
-				),
-				_react2.default.createElement(
-					'div',
-					{ className: 'refresh' },
-					'\u6B63\u5728\u5237\u65B0'
-				)
-			)];
-			param.barPanelDom.push(_react2.default.createElement(
-				'div',
-				{ className: me.choseBarPanelCls(0) },
-				pullDiv,
-				'Page 1',
-				_react2.default.createElement(
-					_reactRouter.Link,
-					{ className: 'weui-btn weui-btn_default', to: '/' },
-					'\u6D88\u606F\u8BA1\u6570'
-				),
-				_react2.default.createElement(
-					'p',
-					null,
-					' afasdfsadfasdfasdf'
-				),
-				_react2.default.createElement('br', null),
-				_react2.default.createElement('br', null),
-				_react2.default.createElement('br', null),
-				_react2.default.createElement('br', null),
-				'2',
-				_react2.default.createElement('br', null),
-				_react2.default.createElement('br', null),
-				_react2.default.createElement('br', null),
-				'2',
-				_react2.default.createElement('br', null),
-				_react2.default.createElement('br', null),
-				_react2.default.createElement('br', null),
-				_react2.default.createElement('br', null),
-				_react2.default.createElement('br', null),
-				_react2.default.createElement('br', null),
-				_react2.default.createElement('br', null),
-				_react2.default.createElement('br', null),
-				_react2.default.createElement('br', null),
-				_react2.default.createElement('br', null),
-				_react2.default.createElement(
-					'p',
-					null,
-					' 234234213412341234'
-				)
-			));
-
-			param.barPanelDom.push(_react2.default.createElement(
-				'div',
-				{ className: me.choseBarPanelCls(1) },
-				pullDiv,
-				'Page 2',
-				_react2.default.createElement(
-					_reactRouter.Link,
-					{ className: 'weui-btn weui-btn_primary', to: '/' },
-					'\u6D88\u606F\u8BA1\u6570'
-				),
-				_react2.default.createElement(
-					'p',
-					null,
-					' afasdfsadfasdfasdf'
-				),
-				_react2.default.createElement('br', null),
-				_react2.default.createElement('br', null),
-				_react2.default.createElement('br', null),
-				_react2.default.createElement('br', null),
-				'2',
-				_react2.default.createElement('br', null),
-				_react2.default.createElement('br', null),
-				_react2.default.createElement('br', null),
-				'2',
-				_react2.default.createElement('br', null),
-				_react2.default.createElement('br', null),
-				_react2.default.createElement('br', null),
-				_react2.default.createElement('br', null),
-				_react2.default.createElement('br', null),
-				_react2.default.createElement('br', null),
-				_react2.default.createElement('br', null),
-				_react2.default.createElement('br', null),
-				_react2.default.createElement('br', null),
-				_react2.default.createElement('br', null),
-				_react2.default.createElement(
-					'p',
-					null,
-					' 234234213412341234'
-				)
-			));
-			param.barPanelDom.push(_react2.default.createElement(
-				'div',
-				{ className: me.choseBarPanelCls(2) },
-				pullDiv,
-				'Page 3',
-				_react2.default.createElement(
-					_reactRouter.Link,
-					{ className: 'weui-btn weui-btn_default', to: '/' },
-					'\u6D88\u606F\u8BA1\u6570'
-				)
-			));
-			param.barPanelDom.push(_react2.default.createElement(
-				'div',
-				{ className: me.choseBarPanelCls(3) },
-				pullDiv,
-				'Page 4',
-				_react2.default.createElement(
-					_reactRouter.Link,
-					{ className: 'weui-btn weui-btn_primary', to: '/' },
-					'\u6D88\u606F\u8BA1\u6570'
-				)
-			));
-		},
-		render: function render() {
-			var onTabbarClick = this.props.onTabbarClick,
-			    me = this;
-			console.log('Quote===', this.props);
-			var barItemDom = [],
-			    barPanelDom = [];
-			me.domInit({
-				onTabbarClick: onTabbarClick,
-				barItemDom: barItemDom,
-				barPanelDom: barPanelDom
-			});
-
-			return _react2.default.createElement(
-				'div',
-				{ className: 'rc_quote weui-tab' },
-				_react2.default.createElement(
-					'div',
-					{ className: 'weui-tab__panel' },
-					barPanelDom
-				),
-				_react2.default.createElement(
-					'div',
-					{ className: 'weui-tabbar' },
-					barItemDom
-				)
-			);
+			return _possibleConstructorReturn(this, (Quote.__proto__ || Object.getPrototypeOf(Quote)).apply(this, arguments));
 		}
-	});
+
+		_createClass(Quote, [{
+			key: 'componentDidMount',
+			value: function componentDidMount() {
+				var me = this;
+
+				$('.barpanel').pullToRefresh().on('pull-to-refresh', function (done) {
+					var self = this;
+					console.log('refresh');
+					setTimeout(function () {
+						$(self).pullToRefreshDone();
+					}, 2000);
+				});
+				$('.weui-tab__panel').css('height', document.body.clientHeight - 50);
+			}
+		}, {
+			key: 'choseBarItemCls',
+			value: function choseBarItemCls(index) {
+				var Quote = this.props.Quote,
+				    me = this;
+				return "weui-tabbar__item " + (Quote.tabIndex == index ? 'weui-bar__item_on' : '');
+			}
+		}, {
+			key: 'choseBarPanelCls',
+			value: function choseBarPanelCls(index) {
+				var Quote = this.props.Quote,
+				    me = this;
+				return Quote.tabIndex == index ? 'barpanel weui-pull-to-refresh' : 'barpanel hide weui-pull-to-refresh';
+			}
+		}, {
+			key: 'domInit',
+			value: function domInit(param) {
+				var me = this;
+				param.barItemDom.push(_react2.default.createElement(
+					'a',
+					{ href: 'javascript:;', className: me.choseBarItemCls(0), onClick: function onClick(e) {
+							return param.onTabbarClick(e, 0);
+						} },
+					_react2.default.createElement('img', { src: './images/icon_tabbar.png', alt: '', className: 'weui-tabbar__icon' }),
+					_react2.default.createElement(
+						'p',
+						{ className: 'weui-tabbar__label' },
+						'\u5FAE\u4FE1'
+					)
+				));
+				param.barItemDom.push(_react2.default.createElement(
+					'a',
+					{ href: 'javascript:;', className: me.choseBarItemCls(1), onClick: function onClick(e) {
+							return param.onTabbarClick(e, 1);
+						} },
+					_react2.default.createElement('img', { src: './images/icon_tabbar.png', alt: '', className: 'weui-tabbar__icon' }),
+					_react2.default.createElement(
+						'p',
+						{ className: 'weui-tabbar__label' },
+						'\u901A\u8BAF\u5F55'
+					)
+				));
+				param.barItemDom.push(_react2.default.createElement(
+					'a',
+					{ href: 'javascript:;', className: me.choseBarItemCls(2), onClick: function onClick(e) {
+							return param.onTabbarClick(e, 2);
+						} },
+					_react2.default.createElement('img', { src: './images/icon_tabbar.png', alt: '', className: 'weui-tabbar__icon' }),
+					_react2.default.createElement(
+						'p',
+						{ className: 'weui-tabbar__label' },
+						'\u53D1\u73B0'
+					)
+				));
+				param.barItemDom.push(_react2.default.createElement(
+					'a',
+					{ href: 'javascript:;', className: me.choseBarItemCls(3), onClick: function onClick(e) {
+							return param.onTabbarClick(e, 3);
+						} },
+					_react2.default.createElement('img', { src: './images/icon_tabbar.png', alt: '', className: 'weui-tabbar__icon' }),
+					_react2.default.createElement(
+						'p',
+						{ className: 'weui-tabbar__label' },
+						'\u6211'
+					)
+				));
+
+				var pullDiv = [_react2.default.createElement(
+					'div',
+					{ className: 'weui-pull-to-refresh__layer' },
+					_react2.default.createElement('div', { className: 'weui-pull-to-refresh__arrow' }),
+					_react2.default.createElement('div', { className: 'weui-pull-to-refresh__preloader' }),
+					_react2.default.createElement(
+						'div',
+						{ className: 'down' },
+						'\u4E0B\u62C9\u5237\u65B0'
+					),
+					_react2.default.createElement(
+						'div',
+						{ className: 'up' },
+						'\u91CA\u653E\u5237\u65B0'
+					),
+					_react2.default.createElement(
+						'div',
+						{ className: 'refresh' },
+						'\u6B63\u5728\u5237\u65B0'
+					)
+				)];
+				param.barPanelDom.push(_react2.default.createElement(
+					'div',
+					{ className: me.choseBarPanelCls(0) },
+					pullDiv,
+					'Page 1',
+					_react2.default.createElement(
+						_reactRouter.Link,
+						{ className: 'weui-btn weui-btn_default', to: '/' },
+						'\u6D88\u606F\u8BA1\u6570'
+					),
+					_react2.default.createElement(
+						'p',
+						null,
+						' afasdfsadfasdfasdf'
+					),
+					_react2.default.createElement('br', null),
+					_react2.default.createElement('br', null),
+					_react2.default.createElement('br', null),
+					_react2.default.createElement('br', null),
+					'2',
+					_react2.default.createElement('br', null),
+					_react2.default.createElement('br', null),
+					_react2.default.createElement('br', null),
+					'2',
+					_react2.default.createElement('br', null),
+					_react2.default.createElement('br', null),
+					_react2.default.createElement('br', null),
+					_react2.default.createElement('br', null),
+					_react2.default.createElement('br', null),
+					_react2.default.createElement('br', null),
+					_react2.default.createElement('br', null),
+					_react2.default.createElement('br', null),
+					_react2.default.createElement('br', null),
+					_react2.default.createElement('br', null),
+					_react2.default.createElement(
+						'p',
+						null,
+						' 234234213412341234'
+					)
+				));
+
+				param.barPanelDom.push(_react2.default.createElement(
+					'div',
+					{ className: me.choseBarPanelCls(1) },
+					pullDiv,
+					'Page 2',
+					_react2.default.createElement(
+						_reactRouter.Link,
+						{ className: 'weui-btn weui-btn_primary', to: '/' },
+						'\u6D88\u606F\u8BA1\u6570'
+					),
+					_react2.default.createElement(
+						'p',
+						null,
+						' afasdfsadfasdfasdf'
+					),
+					_react2.default.createElement('br', null),
+					_react2.default.createElement('br', null),
+					_react2.default.createElement('br', null),
+					_react2.default.createElement('br', null),
+					'2',
+					_react2.default.createElement('br', null),
+					_react2.default.createElement('br', null),
+					_react2.default.createElement('br', null),
+					'2',
+					_react2.default.createElement('br', null),
+					_react2.default.createElement('br', null),
+					_react2.default.createElement('br', null),
+					_react2.default.createElement('br', null),
+					_react2.default.createElement('br', null),
+					_react2.default.createElement('br', null),
+					_react2.default.createElement('br', null),
+					_react2.default.createElement('br', null),
+					_react2.default.createElement('br', null),
+					_react2.default.createElement('br', null),
+					_react2.default.createElement(
+						'p',
+						null,
+						' 234234213412341234'
+					)
+				));
+				param.barPanelDom.push(_react2.default.createElement(
+					'div',
+					{ className: me.choseBarPanelCls(2) },
+					pullDiv,
+					'Page 3',
+					_react2.default.createElement(
+						_reactRouter.Link,
+						{ className: 'weui-btn weui-btn_default', to: '/' },
+						'\u6D88\u606F\u8BA1\u6570'
+					)
+				));
+				param.barPanelDom.push(_react2.default.createElement(
+					'div',
+					{ className: me.choseBarPanelCls(3) },
+					pullDiv,
+					'Page 4',
+					_react2.default.createElement(
+						_reactRouter.Link,
+						{ className: 'weui-btn weui-btn_primary', to: '/' },
+						'\u6D88\u606F\u8BA1\u6570'
+					)
+				));
+			}
+		}, {
+			key: 'render',
+			value: function render() {
+				var onTabbarClick = this.props.onTabbarClick,
+				    me = this;
+				console.log('Quote===', this.props);
+				var barItemDom = [],
+				    barPanelDom = [];
+				me.domInit({
+					onTabbarClick: onTabbarClick,
+					barItemDom: barItemDom,
+					barPanelDom: barPanelDom
+				});
+
+				return _react2.default.createElement(
+					'div',
+					{ className: 'rc_quote weui-tab' },
+					_react2.default.createElement(
+						'div',
+						{ className: 'weui-tab__panel' },
+						barPanelDom
+					),
+					_react2.default.createElement(
+						'div',
+						{ className: 'weui-tabbar' },
+						barItemDom
+					)
+				);
+			}
+		}]);
+
+		return Quote;
+	}(_react.Component);
 
 	var con_Quote = (0, _reactRedux.connect)(_MapStateToProps.mapStateToProps_Quote, _MapDispatchToProps.mapDispatchToProps_Quote)(Quote);
 

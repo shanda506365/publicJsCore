@@ -33,10 +33,10 @@ import Jweui from '../node_modules/jquery-weui/dist/js/jquery-weui'
  
 
 // React component
-const Counter = React.createClass({
+class Counter extends Component {
   contextTypes: {
     router: React.PropTypes.object
-  },
+  }
   componentDidMount() {
     let me = this;
     
@@ -47,7 +47,7 @@ const Counter = React.createClass({
         $(self).pullToRefreshDone();
       }, 2000)
     })
-  },
+  }
   domInit(navbarHeadDom, tabItemDom, tabIndex, count, onNavbarClick, onIncreaseClick, onTestValClick) {
 
     for (var i = 0; i < 3; i++) {
@@ -99,7 +99,7 @@ const Counter = React.createClass({
                   </div>
               </div>)
     };
-  },
+  }
   render() {
     let me = this;
     const {
@@ -129,7 +129,7 @@ const Counter = React.createClass({
       </div>
     )
   }
-})
+}
 
 
 const con_Counter = connect(

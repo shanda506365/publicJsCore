@@ -28,10 +28,10 @@ import 'weui'
 //import Jweui from '../node_modules/jquery-weui/dist/js/jquery-weui'
 
 
-const Quote = React.createClass({
+class Quote extends Component {
 	contextTypes: {
 		router: React.PropTypes.object
-	},
+	}
 	componentDidMount() {
 		let me = this;
 
@@ -43,19 +43,19 @@ const Quote = React.createClass({
 			}, 2000)
 		})
 		$('.weui-tab__panel').css('height', document.body.clientHeight-50);
-	},
+	}
 	choseBarItemCls(index) {
 		const {
 			Quote
 		} = this.props, me = this;
 		return "weui-tabbar__item " + (Quote.tabIndex == index ? 'weui-bar__item_on' : '')
-	},
+	}
 	choseBarPanelCls(index) {
 		const {
 			Quote
 		} = this.props, me = this;
 		return Quote.tabIndex == index ? 'barpanel weui-pull-to-refresh' : 'barpanel hide weui-pull-to-refresh'
-	},
+	}
 	domInit(param) {
 		const me = this;
 		param.barItemDom.push(<a href="javascript:;" className={me.choseBarItemCls(0)} onClick={e=>param.onTabbarClick(e,0)}>
@@ -96,7 +96,7 @@ const Quote = React.createClass({
 		param.barPanelDom.push(<div className={me.choseBarPanelCls(2)}>{pullDiv}Page 3<Link className='weui-btn weui-btn_default' to="/">消息计数</Link></div>)
 		param.barPanelDom.push(<div className={me.choseBarPanelCls(3)}>
 			{pullDiv}Page 4<Link className='weui-btn weui-btn_primary' to="/">消息计数</Link></div>)
-	},
+	}
 	render() {
 		const {
 			onTabbarClick
@@ -113,7 +113,7 @@ const Quote = React.createClass({
 		return (
 			<div className='rc_quote weui-tab'> 
 				<div className="weui-tab__panel">
-				 {barPanelDom}
+				 	{barPanelDom}
 			    </div>
 			    <div className="weui-tabbar">
 			        {barItemDom}
@@ -121,7 +121,7 @@ const Quote = React.createClass({
 			</div>
 		);
 	}
-})
+}
 
 const con_Quote = connect(
 	mapStateToProps_Quote,

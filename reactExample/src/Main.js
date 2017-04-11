@@ -33,10 +33,10 @@ import mockData from './mockData/mockData'
 
 
 // React component
-const Main = React.createClass({
+class Main extends Component {
   contextTypes: {
     router: React.PropTypes.object
-  },
+  }
   componentDidMount() {
     let me = this;
     FastClick.attach(document.body);
@@ -56,7 +56,7 @@ const Main = React.createClass({
       context: me.context
     }, false)
 
-  },
+  }
   render() {
 
     console.log('Main', this.context, this.props)
@@ -66,7 +66,7 @@ const Main = React.createClass({
       </div>
     )
   }
-})
+}
 
 const con_Main = connect(
   mapStateToProps_Main,

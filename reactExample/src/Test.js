@@ -22,11 +22,10 @@ import '!style!css!less!../less/test.less'
 
 import {mData} from './mockData/mockData'
 
-const Test = React.createClass({
+class Test extends Component {
 	contextTypes: {
 		router: React.PropTypes.object
-	},
-	 
+	} 
 	render() {
 		 const {
 		      count,
@@ -63,7 +62,7 @@ const Test = React.createClass({
 			</div>
 		);
 	}
-}) 
+}
 const con_Test = connect(
   mapStateToProps_Test,
   mapDispatchToProps_Test
