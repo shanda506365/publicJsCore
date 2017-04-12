@@ -38445,7 +38445,7 @@
 	    key: 'render',
 	    value: function render() {
 	      var _props = this.props,
-	          onPro_stateClick = _props.onPro_stateClick,
+	          onPro_stateChange = _props.onPro_stateChange,
 	          pro_state = _props.pro_state,
 	          me = this;
 
@@ -38497,7 +38497,7 @@
 	                'a',
 	                { href: 'javascript:;',
 	                  className: 'weui-dialog__btn weui-dialog__btn_primary', onClick: function onClick() {
-	                    return onPro_stateClick('Resolved');
+	                    return onPro_stateChange('Resolved');
 	                  } },
 	                '\u786E\u5B9A'
 	              )
@@ -38980,7 +38980,7 @@
 
 	var mapDispatchToProps_Common = function mapDispatchToProps_Common(dispatch, ownProps) {
 	  return {
-	    onPro_stateClick: function onPro_stateClick(state) {
+	    onPro_stateChange: function onPro_stateChange(state) {
 	      return dispatch((0, _deepAssign2.default)(_Action2.default.pro_stateClickAction, {
 	        state: state
 	      }));
@@ -39327,7 +39327,7 @@
 	      url: url,
 	      beforeSend: function beforeSend(xhr) {
 	         if (loadmask != false) {
-	            props.onPro_stateClick('Pending');
+	            props.onPro_stateChange('Pending');
 	         }
 	      },
 	      data: data || {}
@@ -39336,7 +39336,7 @@
 	      //登录信息验证
 	      if (data.code == '99') {
 	         _jsCookie2.default.remove('hasLogin');
-	         props.onPro_stateClick('Rejected');
+	         props.onPro_stateChange('Rejected');
 	         return;
 	      }
 	      if (doneFun && typeof doneFun === 'function') {
@@ -39353,7 +39353,7 @@
 	      }
 
 	      if (loadmask != false) {
-	         props.onPro_stateClick('Resolved');
+	         props.onPro_stateChange('Resolved');
 	      }
 	   });
 	}
@@ -54789,7 +54789,7 @@
 				    title = _props.title,
 				    onIncreaseTestClick = _props.onIncreaseTestClick,
 				    buttonText = _props.buttonText,
-				    onPro_stateClick = _props.onPro_stateClick;
+				    onPro_stateChange = _props.onPro_stateChange;
 
 				console.log('Test', this.props);
 				var liDom = [];
@@ -54858,7 +54858,7 @@
 							_react2.default.createElement(
 								'button',
 								{ className: 'weui-btn weui-btn_primary', onClick: function onClick() {
-										return onPro_stateClick('Rejected');
+										return onPro_stateChange('Rejected');
 									} },
 								'Rejected'
 							)
@@ -54869,7 +54869,7 @@
 							_react2.default.createElement(
 								'button',
 								{ className: 'weui-btn weui-btn_primary', onClick: function onClick() {
-										return onPro_stateClick('Pending');
+										return onPro_stateChange('Pending');
 									} },
 								'Pending'
 							)
@@ -54991,7 +54991,7 @@
 			value: function componentDidMount() {
 				var _props = this.props,
 				    onTabbarClick = _props.onTabbarClick,
-				    onPro_stateClick = _props.onPro_stateClick,
+				    onPro_stateChange = _props.onPro_stateChange,
 				    me = this;
 
 				$('.barpanel').pullToRefresh().on('pull-to-refresh', function (done) {
@@ -55012,7 +55012,7 @@
 							onTabbarClick(null, 2);
 						} else {
 							setTimeout(function () {
-								onPro_stateClick('Rejected');
+								onPro_stateChange('Rejected');
 							}, 1);
 						}
 					},
@@ -55124,7 +55124,7 @@
 							_react2.default.createElement(
 								'button',
 								{ className: 'weui-btn weui-btn_primary', onClick: function onClick() {
-										return param.onPro_stateClick('Rejected');
+										return param.onPro_stateChange('Rejected');
 									} },
 								'Rejected'
 							)
@@ -55135,7 +55135,7 @@
 							_react2.default.createElement(
 								'button',
 								{ className: 'weui-btn weui-btn_primary', onClick: function onClick() {
-										return param.onPro_stateClick('Pending');
+										return param.onPro_stateChange('Pending');
 									} },
 								'Pending'
 							)
@@ -55251,7 +55251,7 @@
 				var _props2 = this.props,
 				    count = _props2.count,
 				    onTabbarClick = _props2.onTabbarClick,
-				    onPro_stateClick = _props2.onPro_stateClick,
+				    onPro_stateChange = _props2.onPro_stateChange,
 				    me = this;
 
 				console.log('Quote===', this.props);
@@ -55262,7 +55262,7 @@
 					onTabbarClick: onTabbarClick,
 					barItemDom: barItemDom,
 					barPanelDom: barPanelDom,
-					onPro_stateClick: onPro_stateClick
+					onPro_stateChange: onPro_stateChange
 				});
 
 				return _react2.default.createElement(

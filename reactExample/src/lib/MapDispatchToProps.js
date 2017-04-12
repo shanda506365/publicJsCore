@@ -3,7 +3,7 @@
 
  const mapDispatchToProps_Common = function(dispatch, ownProps) {
  	return {
- 		onPro_stateClick: (state) => dispatch(deepAssign(Action.pro_stateClickAction, {
+ 		onPro_stateChange: (state) => dispatch(deepAssign(Action.pro_stateClickAction, {
  			state
  		}))
  	}

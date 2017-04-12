@@ -39,7 +39,7 @@ class Quote extends Component {
 	componentDidMount() {
 		const {
 			onTabbarClick,
-			onPro_stateClick
+			onPro_stateChange
 		} = this.props, me = this;
 		$('.barpanel').pullToRefresh().on('pull-to-refresh', function(done) {
 			var self = this
@@ -59,7 +59,7 @@ class Quote extends Component {
 					onTabbarClick(null, 2)
 				} else { 
 					setTimeout(function(){
-						onPro_stateClick('Rejected')
+						onPro_stateChange('Rejected')
 					},1)
 					
 				} 
@@ -115,11 +115,11 @@ class Quote extends Component {
 			{pullDiv}
 			<div className="weui-flex">
 			<div className="weui-flex__item">
-						<button className='weui-btn weui-btn_primary' onClick={()=>param.onPro_stateClick('Rejected')}>
+						<button className='weui-btn weui-btn_primary' onClick={()=>param.onPro_stateChange('Rejected')}>
 						Rejected</button>
 					</div>
 					<div className="weui-flex__item">
-						<button className='weui-btn weui-btn_primary' onClick={()=>param.onPro_stateClick('Pending')}>
+						<button className='weui-btn weui-btn_primary' onClick={()=>param.onPro_stateChange('Pending')}>
 						Pending</button>
 					</div>
 					</div>
@@ -140,7 +140,7 @@ class Quote extends Component {
 		const {
 			count,
 			onTabbarClick,
-			onPro_stateClick
+			onPro_stateChange
 		} = this.props, me = this;
 		console.log('Quote===', this.props)
 		let barItemDom = [],
@@ -150,7 +150,7 @@ class Quote extends Component {
 			onTabbarClick,
 			barItemDom,
 			barPanelDom,
-			onPro_stateClick
+			onPro_stateChange
 		})
 
 		return (

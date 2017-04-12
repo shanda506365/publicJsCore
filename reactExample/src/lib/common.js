@@ -273,7 +273,7 @@
             url: url,
             beforeSend: function(xhr) {
                if (loadmask != false) {
-                  props.onPro_stateClick('Pending')
+                  props.onPro_stateChange('Pending')
                }
 
             },
@@ -284,7 +284,7 @@
                //登录信息验证
             if (data.code == '99') {
                cookie.remove('hasLogin')
-               props.onPro_stateClick('Rejected')
+               props.onPro_stateChange('Rejected')
                return
             }
             if (doneFun && typeof doneFun === 'function') {
@@ -301,7 +301,7 @@
             }
 
             if (loadmask != false) {
-               props.onPro_stateClick('Resolved')
+               props.onPro_stateChange('Resolved')
             }
          })
    }

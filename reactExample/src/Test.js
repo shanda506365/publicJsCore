@@ -32,7 +32,7 @@ class Test extends Component {
 		      title,
 		      onIncreaseTestClick,
 		      buttonText,
-		      onPro_stateClick
+		      onPro_stateChange
 		    } = this.props
 		console.log('Test',this.props)
 		let liDom=[] 
@@ -60,11 +60,11 @@ class Test extends Component {
 						<Link className='weui-btn weui-btn_default' to="/Quote">报价</Link>
 					</div>
 					<div className="weui-flex__item">
-						<button className='weui-btn weui-btn_primary' onClick={()=>onPro_stateClick('Rejected')}>
+						<button className='weui-btn weui-btn_primary' onClick={()=>onPro_stateChange('Rejected')}>
 						Rejected</button>
 					</div>
 					<div className="weui-flex__item">
-						<button className='weui-btn weui-btn_primary' onClick={()=>onPro_stateClick('Pending')}>
+						<button className='weui-btn weui-btn_primary' onClick={()=>onPro_stateChange('Pending')}>
 						Pending</button>
 					</div>
 				</div>

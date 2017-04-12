@@ -46,7 +46,7 @@ class Main extends Component {
   }
   render() {
     const {
-      onPro_stateClick,
+      onPro_stateChange,
       pro_state 
     } = this.props, me = this;
     console.log('Main', this.context, this.props)
@@ -67,7 +67,7 @@ class Main extends Component {
                 <div className="weui-dialog__bd">弹窗内容，告知当前页面信息等</div>
                 <div className="weui-dialog__ft">
                     <a href="javascript:;" 
-                    className="weui-dialog__btn weui-dialog__btn_primary" onClick={()=>onPro_stateClick('Resolved')}>确定</a>
+                    className="weui-dialog__btn weui-dialog__btn_primary" onClick={()=>onPro_stateChange('Resolved')}>确定</a>
                 </div>
             </div>
         </div>
