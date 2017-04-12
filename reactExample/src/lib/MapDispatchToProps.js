@@ -1,9 +1,17 @@
  import Action from './Action'
  import deepAssign from 'deep-assign'
 
+ const mapDispatchToProps_Common = function(dispatch, ownProps) {
+ 	return {
+ 		onPro_stateClick: (state) => dispatch(deepAssign(Action.pro_stateClickAction, {
+ 			state
+ 		}))
+ 	}
+
+ }
  const mapDispatchToProps = {
  	mapDispatchToProps_Main: function(dispatch, ownProps) {
- 		return {}
+ 		return mapDispatchToProps_Common(dispatch, ownProps);
  	},
  	mapDispatchToProps_Count: function(dispatch, ownProps) {
  		return {
@@ -11,27 +19,27 @@
  			onTestValClick: () => dispatch({
  				type: ''
  			}),
- 			onNavbarClick: (e, index) => dispatch(deepAssign(Action.navbarClickAction, {
+ 			onNavbarClick: (e, index) => dispatch(deepAssign(Action.onNavbarClick, {
  				e,
  				index
  			}))
  		}
  	},
  	mapDispatchToProps_Test: function(dispatch, ownProps) {
- 		return {
+ 		return deepAssign({
  			onIncreaseTestClick: () => dispatch({
  				type: 'increaseTest',
  				filter: ownProps
  			})
- 		}
+ 		}, mapDispatchToProps_Common(dispatch, ownProps))
  	},
  	mapDispatchToProps_Quote: function(dispatch, ownProps) {
- 		return {
+ 		return deepAssign({
  			onTabbarClick: (e, index) => dispatch(deepAssign(Action.quote_tabbarClickAction, {
  				e,
  				index
  			}))
- 		}
+ 		}, mapDispatchToProps_Common(dispatch, ownProps))
  	}
  }
 

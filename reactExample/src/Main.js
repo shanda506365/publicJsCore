@@ -25,9 +25,12 @@ import {
 } from './lib/MapDispatchToProps'
 
 // import FastClick from '../node_modules/jquery-weui/dist/lib/fastclick'
- 
 
-import common,{Ajax,API} from './lib/common' 
+
+import common, {
+  Ajax,
+  API
+} from './lib/common'
 
 import mockData from './mockData/mockData'
 
@@ -42,11 +45,32 @@ class Main extends Component {
     // FastClick.attach(document.body); 
   }
   render() {
-
+    const {
+      onPro_stateClick,
+      pro_state 
+    } = this.props, me = this;
     console.log('Main', this.context, this.props)
     return (
       <div className='h100' > 
         {this.props.children}
+        <div className={pro_state=='Pending'?'showLoading':'hide'}>
+            <div className="weui-mask_transparent"></div>
+            <div className="weui-toast">
+                <i className="weui-loading weui-icon_toast"></i>
+                <p className="weui-toast__content">数据加载中</p>
+            </div>
+        </div>
+        <div className={pro_state=='Rejected'?'showDialog':'hide'}>
+            <div className="weui-mask"></div>
+            <div className="weui-dialog">
+                <div className="weui-dialog__hd"><strong className="weui-dialog__title">弹窗标题</strong></div>
+                <div className="weui-dialog__bd">弹窗内容，告知当前页面信息等</div>
+                <div className="weui-dialog__ft">
+                    <a href="javascript:;" 
+                    className="weui-dialog__btn weui-dialog__btn_primary" onClick={()=>onPro_stateClick('Resolved')}>确定</a>
+                </div>
+            </div>
+        </div>
       </div>
     )
   }

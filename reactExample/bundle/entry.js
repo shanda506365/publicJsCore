@@ -28393,6 +28393,7 @@
 	    title: '消息',
 	    buttonText: '消息计数',
 	    tabIndex: 0,
+	    pro_state: 'Resolved', //Pending,Rejected
 	    Quote: {
 	      tabIndex: 0,
 	      title: 'Quote'
@@ -28434,6 +28435,12 @@
 	        }
 	      });
 	      console.log('quote_tabbarClick', rObj);
+	      return rObj;
+	    case 'pro_stateClick':
+	      console.log('pro_stateClick', action);
+	      rObj = (0, _deepAssign2.default)(tstate, {
+	        pro_state: action.state
+	      });
 	      return rObj;
 	    default:
 	      console.log(state);
@@ -38437,12 +38444,66 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
+	      var _props = this.props,
+	          onPro_stateClick = _props.onPro_stateClick,
+	          pro_state = _props.pro_state,
+	          me = this;
 
 	      console.log('Main', this.context, this.props);
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'h100' },
-	        this.props.children
+	        this.props.children,
+	        _react2.default.createElement(
+	          'div',
+	          { className: pro_state == 'Pending' ? 'showLoading' : 'hide' },
+	          _react2.default.createElement('div', { className: 'weui-mask_transparent' }),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'weui-toast' },
+	            _react2.default.createElement('i', { className: 'weui-loading weui-icon_toast' }),
+	            _react2.default.createElement(
+	              'p',
+	              { className: 'weui-toast__content' },
+	              '\u6570\u636E\u52A0\u8F7D\u4E2D'
+	            )
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: pro_state == 'Rejected' ? 'showDialog' : 'hide' },
+	          _react2.default.createElement('div', { className: 'weui-mask' }),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'weui-dialog' },
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'weui-dialog__hd' },
+	              _react2.default.createElement(
+	                'strong',
+	                { className: 'weui-dialog__title' },
+	                '\u5F39\u7A97\u6807\u9898'
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'weui-dialog__bd' },
+	              '\u5F39\u7A97\u5185\u5BB9\uFF0C\u544A\u77E5\u5F53\u524D\u9875\u9762\u4FE1\u606F\u7B49'
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'weui-dialog__ft' },
+	              _react2.default.createElement(
+	                'a',
+	                { href: 'javascript:;',
+	                  className: 'weui-dialog__btn weui-dialog__btn_primary', onClick: function onClick() {
+	                    return onPro_stateClick('Resolved');
+	                  } },
+	                '\u786E\u5B9A'
+	              )
+	            )
+	          )
+	        )
 	      );
 	    }
 	  }]);
@@ -38491,7 +38552,7 @@
 
 
 	// module
-	exports.push([module.id, "html {\n  font-size: 62.5%;\n  height: 100%;\n}\nbody {\n  font-size: 1.4rem;\n  height: 100%;\n  font-family: \"Helvetica Neue\", Helvetica, Microsoft Yahei, Hiragino Sans GB, WenQuanYi Micro Hei, sans-serif;\n}\n#root {\n  height: 100%;\n}\n#root .h100 {\n  height: 100%;\n}\n#root .weui-tab__bd-item {\n  height: 100%;\n}\n#root .hide {\n  display: none;\n}\n#root .showLoading {\n  display: none;\n}\n#root .showDialog {\n  display: none;\n}\n#root .showDialog .weui-mask {\n  opacity: 1;\n  visibility: visible;\n}\n#root .showDialog .weui-dialog {\n  opacity: 1;\n  visibility: visible;\n}\n", ""]);
+	exports.push([module.id, "html {\n  font-size: 62.5%;\n  height: 100%;\n}\nbody {\n  font-size: 1.4rem;\n  height: 100%;\n  font-family: \"Helvetica Neue\", Helvetica, Microsoft Yahei, Hiragino Sans GB, WenQuanYi Micro Hei, sans-serif;\n}\n#root {\n  height: 100%;\n}\n#root .h100 {\n  height: 100%;\n}\n#root .weui-tab__bd-item {\n  height: 100%;\n}\n#root .hide {\n  display: none;\n}\n#root .showLoading .weui-toast {\n  opacity: 1;\n  visibility: visible;\n}\n#root .showDialog .weui-mask {\n  opacity: 1;\n  visibility: visible;\n}\n#root .showDialog .weui-dialog {\n  opacity: 1;\n  visibility: visible;\n}\n", ""]);
 
 	// exports
 
@@ -38828,33 +38889,24 @@
 	var mapStateToProps = {
 	  mapStateToProps_Main: function mapStateToProps_Main(state, ownProps) {
 	    console.log('mapStateToProps_Main', ownProps);
-	    return {
-	      count: state.count,
-	      title: state.title,
-	      buttonText: state.buttonText,
-	      tabIndex: state.tabIndex,
+	    var rObj = (0, _deepAssign2.default)(state, {
 	      stateFlag: 'mapStateToProps_Main'
-	    };
+	    });
+	    return rObj;
 	  },
 	  mapStateToProps_Counter: function mapStateToProps_Counter(state, ownProps) {
 	    console.log('mapStateToProps_Counter', ownProps);
-	    return {
-	      count: state.count,
-	      title: state.title,
-	      buttonText: state.buttonText,
-	      tabIndex: state.tabIndex,
+	    var rObj = (0, _deepAssign2.default)(state, {
 	      stateFlag: 'mapStateToProps_Counter'
-	    };
+	    });
+	    return rObj;
 	  },
 	  mapStateToProps_Test: function mapStateToProps_Test(state, ownProps) {
 	    console.log('mapStateToProps_Test', ownProps);
-	    return {
-	      count: state.count,
-	      title: state.title,
-	      buttonText: state.buttonText,
-	      tabIndex: state.tabIndex,
+	    var rObj = (0, _deepAssign2.default)(state, {
 	      stateFlag: 'mapStateToProps_Test'
-	    };
+	    });
+	    return rObj;
 	  },
 	  mapStateToProps_Quote: function mapStateToProps_Quote(state, ownProps) {
 	    console.log('mapStateToProps_Quote', ownProps);
@@ -38897,6 +38949,9 @@
 		},
 		quote_tabbarClickAction: {
 			type: 'quote_tabbarClick'
+		},
+		pro_stateClickAction: {
+			type: 'pro_stateClick'
 		}
 	};
 
@@ -38923,9 +38978,18 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	var mapDispatchToProps_Common = function mapDispatchToProps_Common(dispatch, ownProps) {
+	  return {
+	    onPro_stateClick: function onPro_stateClick(state) {
+	      return dispatch((0, _deepAssign2.default)(_Action2.default.pro_stateClickAction, {
+	        state: state
+	      }));
+	    }
+	  };
+	};
 	var mapDispatchToProps = {
 	  mapDispatchToProps_Main: function mapDispatchToProps_Main(dispatch, ownProps) {
-	    return {};
+	    return mapDispatchToProps_Common(dispatch, ownProps);
 	  },
 	  mapDispatchToProps_Count: function mapDispatchToProps_Count(dispatch, ownProps) {
 	    return {
@@ -38938,7 +39002,7 @@
 	        });
 	      },
 	      onNavbarClick: function onNavbarClick(e, index) {
-	        return dispatch((0, _deepAssign2.default)(_Action2.default.navbarClickAction, {
+	        return dispatch((0, _deepAssign2.default)(_Action2.default.onNavbarClick, {
 	          e: e,
 	          index: index
 	        }));
@@ -38946,24 +39010,24 @@
 	    };
 	  },
 	  mapDispatchToProps_Test: function mapDispatchToProps_Test(dispatch, ownProps) {
-	    return {
+	    return (0, _deepAssign2.default)({
 	      onIncreaseTestClick: function onIncreaseTestClick() {
 	        return dispatch({
 	          type: 'increaseTest',
 	          filter: ownProps
 	        });
 	      }
-	    };
+	    }, mapDispatchToProps_Common(dispatch, ownProps));
 	  },
 	  mapDispatchToProps_Quote: function mapDispatchToProps_Quote(dispatch, ownProps) {
-	    return {
+	    return (0, _deepAssign2.default)({
 	      onTabbarClick: function onTabbarClick(e, index) {
 	        return dispatch((0, _deepAssign2.default)(_Action2.default.quote_tabbarClickAction, {
 	          e: e,
 	          index: index
 	        }));
 	      }
-	    };
+	    }, mapDispatchToProps_Common(dispatch, ownProps));
 	  }
 	};
 
@@ -54730,7 +54794,8 @@
 				    count = _props.count,
 				    title = _props.title,
 				    onIncreaseTestClick = _props.onIncreaseTestClick,
-				    buttonText = _props.buttonText;
+				    buttonText = _props.buttonText,
+				    onPro_stateClick = _props.onPro_stateClick;
 
 				console.log('Test', this.props);
 				var liDom = [];
@@ -54744,6 +54809,7 @@
 						item.name
 					));
 				});
+
 				return _react2.default.createElement(
 					'div',
 					null,
@@ -54791,52 +54857,27 @@
 								{ className: 'weui-btn weui-btn_default', to: '/Quote' },
 								'\u62A5\u4EF7'
 							)
-						)
-					),
-					_react2.default.createElement(
-						'div',
-						{ className: 'showLoading' },
-						_react2.default.createElement('div', { className: 'weui-mask_transparent' }),
+						),
 						_react2.default.createElement(
 							'div',
-							{ className: 'weui-toast' },
-							_react2.default.createElement('i', { className: 'weui-loading weui-icon_toast' }),
+							{ className: 'weui-flex__item' },
 							_react2.default.createElement(
-								'p',
-								{ className: 'weui-toast__content' },
-								'\u6570\u636E\u52A0\u8F7D\u4E2D'
+								'button',
+								{ className: 'weui-btn weui-btn_primary', onClick: function onClick() {
+										return onPro_stateClick('Rejected');
+									} },
+								'Rejected'
 							)
-						)
-					),
-					_react2.default.createElement(
-						'div',
-						{ className: 'showDialog' },
-						_react2.default.createElement('div', { className: 'weui-mask' }),
+						),
 						_react2.default.createElement(
 							'div',
-							{ className: 'weui-dialog' },
+							{ className: 'weui-flex__item' },
 							_react2.default.createElement(
-								'div',
-								{ className: 'weui-dialog__hd' },
-								_react2.default.createElement(
-									'strong',
-									{ className: 'weui-dialog__title' },
-									'\u5F39\u7A97\u6807\u9898'
-								)
-							),
-							_react2.default.createElement(
-								'div',
-								{ className: 'weui-dialog__bd' },
-								'\u5F39\u7A97\u5185\u5BB9\uFF0C\u544A\u77E5\u5F53\u524D\u9875\u9762\u4FE1\u606F\u7B49'
-							),
-							_react2.default.createElement(
-								'div',
-								{ className: 'weui-dialog__ft' },
-								_react2.default.createElement(
-									'a',
-									{ href: 'javascript:;', className: 'weui-dialog__btn weui-dialog__btn_primary' },
-									'\u786E\u5B9A'
-								)
+								'button',
+								{ className: 'weui-btn weui-btn_primary', onClick: function onClick() {
+										return onPro_stateClick('Pending');
+									} },
+								'Pending'
 							)
 						)
 					)
@@ -55072,6 +55113,32 @@
 					'div',
 					{ className: me.choseBarPanelCls(0) },
 					pullDiv,
+					_react2.default.createElement(
+						'div',
+						{ className: 'weui-flex' },
+						_react2.default.createElement(
+							'div',
+							{ className: 'weui-flex__item' },
+							_react2.default.createElement(
+								'button',
+								{ className: 'weui-btn weui-btn_primary', onClick: function onClick() {
+										return param.onPro_stateClick('Rejected');
+									} },
+								'Rejected'
+							)
+						),
+						_react2.default.createElement(
+							'div',
+							{ className: 'weui-flex__item' },
+							_react2.default.createElement(
+								'button',
+								{ className: 'weui-btn weui-btn_primary', onClick: function onClick() {
+										return param.onPro_stateClick('Pending');
+									} },
+								'Pending'
+							)
+						)
+					),
 					'Page 1',
 					_react2.default.createElement(
 						_reactRouter.Link,
@@ -55182,6 +55249,7 @@
 				var _props = this.props,
 				    count = _props.count,
 				    onTabbarClick = _props.onTabbarClick,
+				    onPro_stateClick = _props.onPro_stateClick,
 				    me = this;
 
 				console.log('Quote===', this.props);
@@ -55191,7 +55259,8 @@
 					count: count,
 					onTabbarClick: onTabbarClick,
 					barItemDom: barItemDom,
-					barPanelDom: barPanelDom
+					barPanelDom: barPanelDom,
+					onPro_stateClick: onPro_stateClick
 				});
 
 				return _react2.default.createElement(

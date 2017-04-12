@@ -27,14 +27,17 @@ import '../css/iconfont.css'
 //import "!style!css!less!../node_modules/jquery-weui/dist/css/jquery-weui.css"
 
 //import Jweui from '../node_modules/jquery-weui/dist/js/jquery-weui'
-import common,{Ajax,API} from './lib/common' 
+import common, {
+	Ajax,
+	API
+} from './lib/common'
 
 class Quote extends Component {
 	contextTypes: {
 		router: React.PropTypes.object
 	}
 	componentDidMount() {
-		const { 
+		const {
 			onTabbarClick
 		} = this.props, me = this;
 		$('.barpanel').pullToRefresh().on('pull-to-refresh', function(done) {
@@ -101,8 +104,16 @@ class Quote extends Component {
                   </div>]
 		param.barPanelDom.push(<div className={me.choseBarPanelCls(0)}>
 			{pullDiv}
-			
-			
+			<div className="weui-flex">
+			<div className="weui-flex__item">
+						<button className='weui-btn weui-btn_primary' onClick={()=>param.onPro_stateClick('Rejected')}>
+						Rejected</button>
+					</div>
+					<div className="weui-flex__item">
+						<button className='weui-btn weui-btn_primary' onClick={()=>param.onPro_stateClick('Pending')}>
+						Pending</button>
+					</div>
+					</div>
 			Page 1<Link className='weui-btn weui-btn_default' to="/">消息计数{param.count}</Link><p> afasdfsadfasdfasdf</p>
                     <br/><br/><br/><br/>2<br/><br/><br/>2<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
                     <p> 234234213412341234</p></div>)
@@ -119,7 +130,8 @@ class Quote extends Component {
 	render() {
 		const {
 			count,
-			onTabbarClick
+			onTabbarClick,
+			onPro_stateClick
 		} = this.props, me = this;
 		console.log('Quote===', this.props)
 		let barItemDom = [],
@@ -128,7 +140,8 @@ class Quote extends Component {
 			count,
 			onTabbarClick,
 			barItemDom,
-			barPanelDom
+			barPanelDom,
+			onPro_stateClick
 		})
 
 		return (

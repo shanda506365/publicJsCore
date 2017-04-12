@@ -6,11 +6,14 @@ const Action = {
 	increaseTestAction: {
 		type: 'increaseTest'
 	},
-	navbarClickAction:{
+	navbarClickAction: {
 		type: 'navbarClick'
 	},
-	quote_tabbarClickAction:{
-		type:'quote_tabbarClick'
+	quote_tabbarClickAction: {
+		type: 'quote_tabbarClick'
+	},
+	pro_stateClickAction: {
+		type: 'pro_stateClick'
 	}
 }
 

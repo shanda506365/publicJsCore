@@ -3,33 +3,24 @@
  const mapStateToProps = { 
  	mapStateToProps_Main: function(state, ownProps) {
  		console.log('mapStateToProps_Main', ownProps)
- 		return {
- 			count: state.count,
- 			title: state.title,
- 			buttonText: state.buttonText,
- 			tabIndex: state.tabIndex,
+ 		let rObj = deepAssign(state, {
  			stateFlag: 'mapStateToProps_Main'
- 		}
+ 		});
+ 		return rObj
  	},
  	mapStateToProps_Counter: function(state, ownProps) {
  		console.log('mapStateToProps_Counter', ownProps)
- 		return {
- 			count: state.count,
- 			title: state.title,
- 			buttonText: state.buttonText,
- 			tabIndex: state.tabIndex,
+ 		let rObj = deepAssign(state, {
  			stateFlag: 'mapStateToProps_Counter'
- 		}
+ 		});
+ 		return rObj
  	},
  	mapStateToProps_Test: function(state, ownProps) {
  		console.log('mapStateToProps_Test', ownProps)
- 		return {
- 			count: state.count,
- 			title: state.title,
- 			buttonText: state.buttonText,
- 			tabIndex: state.tabIndex,
+ 		let rObj = deepAssign(state, {
  			stateFlag: 'mapStateToProps_Test'
- 		}
+ 		});
+ 		return rObj
  	},
  	mapStateToProps_Quote: function(state, ownProps) {
  		console.log('mapStateToProps_Quote', ownProps)
