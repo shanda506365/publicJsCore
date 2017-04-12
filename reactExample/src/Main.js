@@ -24,7 +24,7 @@ import {
   mapDispatchToProps_Main
 } from './lib/MapDispatchToProps'
 
-import FastClick from '../node_modules/jquery-weui/dist/lib/fastclick'
+// import FastClick from '../node_modules/jquery-weui/dist/lib/fastclick'
  
 
 import common,{Ajax,API} from './lib/common' 
@@ -39,23 +39,7 @@ class Main extends Component {
   }
   componentDidMount() {
     let me = this;
-    FastClick.attach(document.body);
-    
-    Ajax({
-      url: API.login,
-      doneFun: function(msg) {
-        let data = JSON.parse(msg)
-
-
-        console.log(data)
-      },
-      failFun: function(jqXHR, textStatus) {
-        
-      },
-      alwaysFun: function() {}, 
-      context: me.context
-    }, false)
-
+    // FastClick.attach(document.body); 
   }
   render() {
 

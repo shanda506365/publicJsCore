@@ -3,7 +3,9 @@ import common, {
 	Ajax,
 	API
 } from './../lib/common'
-
+Mock.setup({
+	timeout: '1000-4000'
+})
 Mock.mock(API.login, {
 	'suc': true,
 	'msg|1-10': '',

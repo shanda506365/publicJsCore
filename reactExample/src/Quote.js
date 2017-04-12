@@ -27,15 +27,16 @@ import '../css/iconfont.css'
 //import "!style!css!less!../node_modules/jquery-weui/dist/css/jquery-weui.css"
 
 //import Jweui from '../node_modules/jquery-weui/dist/js/jquery-weui'
-
+import common,{Ajax,API} from './lib/common' 
 
 class Quote extends Component {
 	contextTypes: {
 		router: React.PropTypes.object
-	} 
+	}
 	componentDidMount() {
-		let me = this;
-
+		const { 
+			onTabbarClick
+		} = this.props, me = this;
 		$('.barpanel').pullToRefresh().on('pull-to-refresh', function(done) {
 			var self = this
 			console.log('refresh')
@@ -44,6 +45,19 @@ class Quote extends Component {
 			}, 2000)
 		})
 		$('.weui-tab__panel').css('height', document.body.clientHeight - 50);
+		Ajax({
+			url: API.login,
+			doneFun: function(msg) {
+				let data = JSON.parse(msg) 
+				console.log('API.login',data)
+				onTabbarClick(null,2)
+			},
+			failFun: function(jqXHR, textStatus) {
+
+			},
+			alwaysFun: function() {},
+			context: me.context
+		})
 	}
 	choseBarItemCls(index) {
 		const {
