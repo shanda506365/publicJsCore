@@ -38491,7 +38491,7 @@
 
 
 	// module
-	exports.push([module.id, "html {\n  font-size: 62.5%;\n  height: 100%;\n}\nbody {\n  font-size: 1.4rem;\n  height: 100%;\n  font-family: \"Helvetica Neue\", Helvetica, Microsoft Yahei, Hiragino Sans GB, WenQuanYi Micro Hei, sans-serif;\n}\n#root {\n  height: 100%;\n}\n#root .h100 {\n  height: 100%;\n}\n#root .weui-tab__bd-item {\n  height: 100%;\n}\n#root .hide {\n  display: none;\n}\n", ""]);
+	exports.push([module.id, "html {\n  font-size: 62.5%;\n  height: 100%;\n}\nbody {\n  font-size: 1.4rem;\n  height: 100%;\n  font-family: \"Helvetica Neue\", Helvetica, Microsoft Yahei, Hiragino Sans GB, WenQuanYi Micro Hei, sans-serif;\n}\n#root {\n  height: 100%;\n}\n#root .h100 {\n  height: 100%;\n}\n#root .weui-tab__bd-item {\n  height: 100%;\n}\n#root .hide {\n  display: none;\n}\n#root .showLoading {\n  display: none;\n}\n#root .showDialog {\n  display: none;\n}\n#root .showDialog .weui-mask {\n  opacity: 1;\n  visibility: visible;\n}\n#root .showDialog .weui-dialog {\n  opacity: 1;\n  visibility: visible;\n}\n", ""]);
 
 	// exports
 
@@ -54792,6 +54792,53 @@
 								'\u62A5\u4EF7'
 							)
 						)
+					),
+					_react2.default.createElement(
+						'div',
+						{ className: 'showLoading' },
+						_react2.default.createElement('div', { className: 'weui-mask_transparent' }),
+						_react2.default.createElement(
+							'div',
+							{ className: 'weui-toast' },
+							_react2.default.createElement('i', { className: 'weui-loading weui-icon_toast' }),
+							_react2.default.createElement(
+								'p',
+								{ className: 'weui-toast__content' },
+								'\u6570\u636E\u52A0\u8F7D\u4E2D'
+							)
+						)
+					),
+					_react2.default.createElement(
+						'div',
+						{ className: 'showDialog' },
+						_react2.default.createElement('div', { className: 'weui-mask' }),
+						_react2.default.createElement(
+							'div',
+							{ className: 'weui-dialog' },
+							_react2.default.createElement(
+								'div',
+								{ className: 'weui-dialog__hd' },
+								_react2.default.createElement(
+									'strong',
+									{ className: 'weui-dialog__title' },
+									'\u5F39\u7A97\u6807\u9898'
+								)
+							),
+							_react2.default.createElement(
+								'div',
+								{ className: 'weui-dialog__bd' },
+								'\u5F39\u7A97\u5185\u5BB9\uFF0C\u544A\u77E5\u5F53\u524D\u9875\u9762\u4FE1\u606F\u7B49'
+							),
+							_react2.default.createElement(
+								'div',
+								{ className: 'weui-dialog__ft' },
+								_react2.default.createElement(
+									'a',
+									{ href: 'javascript:;', className: 'weui-dialog__btn weui-dialog__btn_primary' },
+									'\u786E\u5B9A'
+								)
+							)
+						)
 					)
 				);
 			}
@@ -54917,17 +54964,20 @@
 					}, 2000);
 				});
 				$('.weui-tab__panel').css('height', document.body.clientHeight - 50);
-				(0, _common.Ajax)({
-					url: _common.API.login,
-					doneFun: function doneFun(msg) {
-						var data = JSON.parse(msg);
-						console.log('API.login', data);
-						onTabbarClick(null, 2);
-					},
-					failFun: function failFun(jqXHR, textStatus) {},
-					alwaysFun: function alwaysFun() {},
-					context: me.context
-				});
+
+				// Ajax({
+				// 	url: API.login,
+				// 	doneFun: function(msg) {
+				// 		let data = JSON.parse(msg) 
+				// 		console.log('API.login',data)
+				// 		onTabbarClick(null,2)
+				// 	},
+				// 	failFun: function(jqXHR, textStatus) {
+
+				// 	},
+				// 	alwaysFun: function() {},
+				// 	context: me.context
+				// })
 			}
 		}, {
 			key: 'choseBarItemCls',

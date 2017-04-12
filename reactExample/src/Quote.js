@@ -45,19 +45,20 @@ class Quote extends Component {
 			}, 2000)
 		})
 		$('.weui-tab__panel').css('height', document.body.clientHeight - 50);
-		Ajax({
-			url: API.login,
-			doneFun: function(msg) {
-				let data = JSON.parse(msg) 
-				console.log('API.login',data)
-				onTabbarClick(null,2)
-			},
-			failFun: function(jqXHR, textStatus) {
 
-			},
-			alwaysFun: function() {},
-			context: me.context
-		})
+		// Ajax({
+		// 	url: API.login,
+		// 	doneFun: function(msg) {
+		// 		let data = JSON.parse(msg) 
+		// 		console.log('API.login',data)
+		// 		onTabbarClick(null,2)
+		// 	},
+		// 	failFun: function(jqXHR, textStatus) {
+
+		// 	},
+		// 	alwaysFun: function() {},
+		// 	context: me.context
+		// })
 	}
 	choseBarItemCls(index) {
 		const {
@@ -100,6 +101,8 @@ class Quote extends Component {
                   </div>]
 		param.barPanelDom.push(<div className={me.choseBarPanelCls(0)}>
 			{pullDiv}
+			
+			
 			Page 1<Link className='weui-btn weui-btn_default' to="/">消息计数{param.count}</Link><p> afasdfsadfasdfasdf</p>
                     <br/><br/><br/><br/>2<br/><br/><br/>2<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
                     <p> 234234213412341234</p></div>)
