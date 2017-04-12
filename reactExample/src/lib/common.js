@@ -3,7 +3,7 @@
    import "!style!css!less!../../less/loadmask.less"
    import '../LoadMask'
    var common = {
-        getNagavVersion: function() {
+      getNagavVersion: function() {
 
          //Google Chrome 20 +
          //Apple Safari 4.0+
@@ -17,14 +17,14 @@
 
          var s;
          (s = ua.match(/msie ([\d.]+)/)) ? Sys.isIE = s[1]:
-             (s = ua.match(/firefox\/([\d.]+)/)) ? Sys.isGecko = s[1] :
-             (s = ua.match(/chrome\/([\d.]+)/)) ? Sys.isWebkit = s[1] :
-             (s = ua.match(/opera.([\d.]+)/)) ? Sys.IsOpera = s[1] :
-             (s = ua.match(/version\/([\d.]+).*safari/)) ? Sys.isSafari = s[1] :
-             (s = ua.match(/iphone os ([\d.]+)/)) ? Sys.isIOS = s[1] :
-             (s = ua.match(/rv:([\d.]+)/)) ? Sys.isEdge = s[1] : 0;
+            (s = ua.match(/firefox\/([\d.]+)/)) ? Sys.isGecko = s[1] :
+            (s = ua.match(/chrome\/([\d.]+)/)) ? Sys.isWebkit = s[1] :
+            (s = ua.match(/opera.([\d.]+)/)) ? Sys.IsOpera = s[1] :
+            (s = ua.match(/version\/([\d.]+).*safari/)) ? Sys.isSafari = s[1] :
+            (s = ua.match(/iphone os ([\d.]+)/)) ? Sys.isIOS = s[1] :
+            (s = ua.match(/rv:([\d.]+)/)) ? Sys.isEdge = s[1] : 0;
          return Sys;
-     },
+      },
       createUrl: function(url) {
          var d = (new Date()).getTime()
          var keyword = 'randomD'
@@ -264,16 +264,16 @@
       doneFun,
       failFun,
       alwaysFun,
-      context
-   }, jdom) {
+      context,
+      props
+   }, loadmask) {
 
       $.ajax({
             method: method || "POST",
             url: url,
             beforeSend: function(xhr) {
-               if (jdom != false) {
-                  var dom = jdom || $('body')
-                  dom.loadingOverlay()
+               if (loadmask != false) {
+                  props.onPro_stateClick('Pending')
                }
 
             },
@@ -284,12 +284,7 @@
                //登录信息验证
             if (data.code == '99') {
                cookie.remove('hasLogin')
-               context.router.push({
-                  pathname: `/`,
-                  state: {
-                     backurl: context.router.getCurrentLocation().pathname
-                  }
-               })
+               props.onPro_stateClick('Rejected')
                return
             }
             if (doneFun && typeof doneFun === 'function') {
@@ -305,9 +300,8 @@
                alwaysFun()
             }
 
-            if (jdom != false) {
-               var dom = jdom || $('body')
-               dom.loadingOverlay('remove')
+            if (loadmask != false) {
+               props.onPro_stateClick('Resolved')
             }
          })
    }
@@ -324,7 +318,7 @@
       }
    }
    const apiPreFix = 'http://mp2.ai.com/' //'/'// 
-   // const apiPreFix = '/' // 
+      // const apiPreFix = '/' // 
    const iAPI = {
       login: apiPreFix + "common/login/check",
       announcement: apiPreFix + 'announcement/getLatest',

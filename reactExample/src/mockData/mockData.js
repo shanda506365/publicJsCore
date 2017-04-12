@@ -7,7 +7,7 @@ Mock.setup({
 	timeout: '1000-4000'
 })
 Mock.mock(API.login, {
-	'suc': true,
+	'suc|9-1': true,
 	'msg|1-10': '',
 	'code': '01',
 	'data|1-10':[{

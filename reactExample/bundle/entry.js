@@ -39311,23 +39311,23 @@
 	   //window.console = function(){}
 	};
 
-	function Ajax(_ref, jdom) {
+	function Ajax(_ref, loadmask) {
 	   var url = _ref.url,
 	       data = _ref.data,
 	       method = _ref.method,
 	       doneFun = _ref.doneFun,
 	       failFun = _ref.failFun,
 	       alwaysFun = _ref.alwaysFun,
-	       context = _ref.context;
+	       context = _ref.context,
+	       props = _ref.props;
 
 
 	   _jqueryVendor2.default.ajax({
 	      method: method || "POST",
 	      url: url,
 	      beforeSend: function beforeSend(xhr) {
-	         if (jdom != false) {
-	            var dom = jdom || (0, _jqueryVendor2.default)('body');
-	            dom.loadingOverlay();
+	         if (loadmask != false) {
+	            props.onPro_stateClick('Pending');
 	         }
 	      },
 	      data: data || {}
@@ -39336,12 +39336,7 @@
 	      //登录信息验证
 	      if (data.code == '99') {
 	         _jsCookie2.default.remove('hasLogin');
-	         context.router.push({
-	            pathname: '/',
-	            state: {
-	               backurl: context.router.getCurrentLocation().pathname
-	            }
-	         });
+	         props.onPro_stateClick('Rejected');
 	         return;
 	      }
 	      if (doneFun && typeof doneFun === 'function') {
@@ -39357,9 +39352,8 @@
 	         alwaysFun();
 	      }
 
-	      if (jdom != false) {
-	         var dom = jdom || (0, _jqueryVendor2.default)('body');
-	         dom.loadingOverlay('remove');
+	      if (loadmask != false) {
+	         props.onPro_stateClick('Resolved');
 	      }
 	   });
 	}
@@ -39625,7 +39619,7 @@
 		timeout: '1000-4000'
 	});
 	_mockjs2.default.mock(_common.API.login, {
-		'suc': true,
+		'suc|9-1': true,
 		'msg|1-10': '',
 		'code': '01',
 		'data|1-10': [{
@@ -54995,8 +54989,11 @@
 		_createClass(Quote, [{
 			key: 'componentDidMount',
 			value: function componentDidMount() {
-				var onTabbarClick = this.props.onTabbarClick,
+				var _props = this.props,
+				    onTabbarClick = _props.onTabbarClick,
+				    onPro_stateClick = _props.onPro_stateClick,
 				    me = this;
+
 				$('.barpanel').pullToRefresh().on('pull-to-refresh', function (done) {
 					var self = this;
 					console.log('refresh');
@@ -55006,19 +55003,24 @@
 				});
 				$('.weui-tab__panel').css('height', document.body.clientHeight - 50);
 
-				// Ajax({
-				// 	url: API.login,
-				// 	doneFun: function(msg) {
-				// 		let data = JSON.parse(msg) 
-				// 		console.log('API.login',data)
-				// 		onTabbarClick(null,2)
-				// 	},
-				// 	failFun: function(jqXHR, textStatus) {
-
-				// 	},
-				// 	alwaysFun: function() {},
-				// 	context: me.context
-				// })
+				(0, _common.Ajax)({
+					url: _common.API.login,
+					doneFun: function doneFun(msg) {
+						var data = JSON.parse(msg);
+						console.log('API.login', data);
+						if (data.suc) {
+							onTabbarClick(null, 2);
+						} else {
+							setTimeout(function () {
+								onPro_stateClick('Rejected');
+							}, 1);
+						}
+					},
+					failFun: function failFun(jqXHR, textStatus) {},
+					alwaysFun: function alwaysFun() {},
+					context: me.context,
+					props: me.props
+				});
 			}
 		}, {
 			key: 'choseBarItemCls',
@@ -55246,10 +55248,10 @@
 		}, {
 			key: 'render',
 			value: function render() {
-				var _props = this.props,
-				    count = _props.count,
-				    onTabbarClick = _props.onTabbarClick,
-				    onPro_stateClick = _props.onPro_stateClick,
+				var _props2 = this.props,
+				    count = _props2.count,
+				    onTabbarClick = _props2.onTabbarClick,
+				    onPro_stateClick = _props2.onPro_stateClick,
 				    me = this;
 
 				console.log('Quote===', this.props);

@@ -38,7 +38,8 @@ class Quote extends Component {
 	}
 	componentDidMount() {
 		const {
-			onTabbarClick
+			onTabbarClick,
+			onPro_stateClick
 		} = this.props, me = this;
 		$('.barpanel').pullToRefresh().on('pull-to-refresh', function(done) {
 			var self = this
@@ -49,19 +50,27 @@ class Quote extends Component {
 		})
 		$('.weui-tab__panel').css('height', document.body.clientHeight - 50);
 
-		// Ajax({
-		// 	url: API.login,
-		// 	doneFun: function(msg) {
-		// 		let data = JSON.parse(msg) 
-		// 		console.log('API.login',data)
-		// 		onTabbarClick(null,2)
-		// 	},
-		// 	failFun: function(jqXHR, textStatus) {
+		Ajax({
+			url: API.login,
+			doneFun: function(msg) {
+				let data = JSON.parse(msg)
+				console.log('API.login', data)
+				if (data.suc) { 
+					onTabbarClick(null, 2)
+				} else { 
+					setTimeout(function(){
+						onPro_stateClick('Rejected')
+					},1)
+					
+				} 
+			},
+			failFun: function(jqXHR, textStatus) {
 
-		// 	},
-		// 	alwaysFun: function() {},
-		// 	context: me.context
-		// })
+			},
+			alwaysFun: function() {},
+			context: me.context,
+			props: me.props
+		})
 	}
 	choseBarItemCls(index) {
 		const {
