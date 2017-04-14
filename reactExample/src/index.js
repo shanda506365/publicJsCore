@@ -27,7 +27,7 @@ import Main from './Main'
 import Counter from './Counter'
 import Test from './Test'
 import Quote from './Quote'
-import SimpleForm from './SimpleForm'
+import ReduxForm from './ReduxForm'
  
 
 ReactDOM.render(
@@ -42,7 +42,7 @@ ReactDOM.render(
                   }}/>
         <Route path='/Test' component={Test} />
         <Route path='/Quote' component={Quote} />
-        <Route path='/SimpleForm' component={SimpleForm} />
+        <Route path='/ReduxForm' component={ReduxForm} />
       </Route> 
     </Router> 
   </Provider>,

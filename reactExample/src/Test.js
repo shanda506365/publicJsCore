@@ -63,7 +63,7 @@ class Test extends Component {
 						<Link className='weui-btn weui-btn_default' to="/Quote">报价</Link>
 					</div>
 					<div className="weui-flex__item">
-						<Link className='weui-btn weui-btn_default' to="/SimpleForm">SimpleForm</Link>
+						<Link className='weui-btn weui-btn_default' to="/ReduxForm">ReduxForm</Link>
 					</div>
 					<div className="weui-flex__item">
 						<button className='weui-btn weui-btn_primary' onClick={()=>onPro_stateChange('Rejected')}>
