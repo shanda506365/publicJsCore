@@ -29,12 +29,13 @@ class Test extends Component {
 	render() {
 		 const { 
 		      onIncreaseTestClick,
-		      onPro_stateChange
-		    } = this.props,{
-		      count,
-		      title, 
-		      buttonText 
-		    } = this.props.counterReducer
+		      onPro_stateChange,
+		      counterReducer:{
+			      count,
+			      title, 
+			      buttonText 
+			    }
+		    } = this.props
 		console.log('Test',this.props)
 		let liDom=[] 
 		console.log(mData)
@@ -51,20 +52,25 @@ class Test extends Component {
 			    <ul className='rongqi' onClick={()=>{$('.rongqi').scrollLeft($('.rongqi').scrollLeft()+50)}}>
 			    	   {liDom}
 			    </ul>
+		 
+			   
 				<div className="weui-flex">
 					<div className="weui-flex__item">
-						<button className='weui-btn weui-btn_primary' onClick={onIncreaseTestClick}>
+						<button className='weui-btn weui-btn_primary h100' onClick={onIncreaseTestClick}>
 						{buttonText}</button>
 					</div>
 					<div className="weui-flex__item">
-							<Link className='weui-btn weui-btn_default' to="/">计数</Link>
+							<Link className='weui-btn weui-btn_default' to="/">计数计数计数计数计数计数计数计数计数计数计数</Link>
 					</div>
 					<div className="weui-flex__item">
-						<Link className='weui-btn weui-btn_default' to="/Quote">报价</Link>
+						<Link className='weui-btn weui-btn_default h100' to="/Quote">报价</Link>
 					</div>
 					<div className="weui-flex__item">
-						<Link className='weui-btn weui-btn_default' to="/ReduxForm">ReduxForm</Link>
+						<Link className='weui-btn weui-btn_default h100' to="/ReduxForm">ReduxForm</Link>
 					</div>
+					
+				</div>
+				<div className="weui-flex">
 					<div className="weui-flex__item">
 						<button className='weui-btn weui-btn_primary' onClick={()=>onPro_stateChange('Rejected')}>
 						Rejected</button>

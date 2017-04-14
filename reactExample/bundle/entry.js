@@ -38585,7 +38585,7 @@
 
 
 	// module
-	exports.push([module.id, "html {\n  font-size: 62.5%;\n  height: 100%;\n}\nbody {\n  font-size: 1.4rem;\n  height: 100%;\n  font-family: \"Helvetica Neue\", Helvetica, Microsoft Yahei, Hiragino Sans GB, WenQuanYi Micro Hei, sans-serif;\n}\n#root {\n  height: 100%;\n}\n#root .h100 {\n  height: 100%;\n}\n#root .weui-tab__bd-item {\n  height: 100%;\n}\n#root .hide {\n  display: none;\n}\n#root .showLoading .weui-toast {\n  opacity: 1;\n  visibility: visible;\n}\n#root .showDialog .weui-mask {\n  opacity: 1;\n  visibility: visible;\n}\n#root .showDialog .weui-dialog {\n  opacity: 1;\n  visibility: visible;\n}\n#root .weui-flex {\n  flex-wrap: wrap;\n}\n", ""]);
+	exports.push([module.id, "html {\n  font-size: 62.5%;\n  height: 100%;\n}\nbody {\n  font-size: 1.4rem;\n  height: 100%;\n  font-family: \"Helvetica Neue\", Helvetica, Microsoft Yahei, Hiragino Sans GB, WenQuanYi Micro Hei, sans-serif;\n}\n#root {\n  height: 100%;\n}\n#root .h100 {\n  height: 100%;\n}\n#root .weui-tab__bd-item {\n  height: 100%;\n}\n#root .hide {\n  display: none;\n}\n#root .showLoading .weui-toast {\n  opacity: 1;\n  visibility: visible;\n}\n#root .showDialog .weui-mask {\n  opacity: 1;\n  visibility: visible;\n}\n#root .showDialog .weui-dialog {\n  opacity: 1;\n  visibility: visible;\n}\n", ""]);
 
 	// exports
 
@@ -54946,7 +54946,7 @@
 				var _props = this.props,
 				    onIncreaseTestClick = _props.onIncreaseTestClick,
 				    onPro_stateChange = _props.onPro_stateChange,
-				    _props$counterReducer = this.props.counterReducer,
+				    _props$counterReducer = _props.counterReducer,
 				    count = _props$counterReducer.count,
 				    title = _props$counterReducer.title,
 				    buttonText = _props$counterReducer.buttonText;
@@ -55013,7 +55013,7 @@
 							{ className: 'weui-flex__item' },
 							_react2.default.createElement(
 								'button',
-								{ className: 'weui-btn weui-btn_primary', onClick: onIncreaseTestClick },
+								{ className: 'weui-btn weui-btn_primary h100', onClick: onIncreaseTestClick },
 								buttonText
 							)
 						),
@@ -55023,7 +55023,7 @@
 							_react2.default.createElement(
 								_reactRouter.Link,
 								{ className: 'weui-btn weui-btn_default', to: '/' },
-								'\u8BA1\u6570'
+								'\u8BA1\u6570\u8BA1\u6570\u8BA1\u6570\u8BA1\u6570\u8BA1\u6570\u8BA1\u6570\u8BA1\u6570\u8BA1\u6570\u8BA1\u6570\u8BA1\u6570\u8BA1\u6570'
 							)
 						),
 						_react2.default.createElement(
@@ -55031,7 +55031,7 @@
 							{ className: 'weui-flex__item' },
 							_react2.default.createElement(
 								_reactRouter.Link,
-								{ className: 'weui-btn weui-btn_default', to: '/Quote' },
+								{ className: 'weui-btn weui-btn_default h100', to: '/Quote' },
 								'\u62A5\u4EF7'
 							)
 						),
@@ -55040,10 +55040,14 @@
 							{ className: 'weui-flex__item' },
 							_react2.default.createElement(
 								_reactRouter.Link,
-								{ className: 'weui-btn weui-btn_default', to: '/ReduxForm' },
+								{ className: 'weui-btn weui-btn_default h100', to: '/ReduxForm' },
 								'ReduxForm'
 							)
-						),
+						)
+					),
+					_react2.default.createElement(
+						'div',
+						{ className: 'weui-flex' },
 						_react2.default.createElement(
 							'div',
 							{ className: 'weui-flex__item' },
@@ -66229,7 +66233,7 @@
 	      _react2.default.createElement(
 	        'div',
 	        null,
-	        _react2.default.createElement(_reduxForm.Field, { name: 'firstName', component: 'input', type: 'text', placeholder: 'First Name' })
+	        _react2.default.createElement(_reduxForm.Field, { style: { width: '300px' }, className: 'sdfsd', name: 'firstName', component: 'input', type: 'text', placeholder: 'First Name' })
 	      )
 	    ),
 	    _react2.default.createElement(

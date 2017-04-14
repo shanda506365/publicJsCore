@@ -16,7 +16,7 @@ let SimpleForm = (props) => {
       <div>
         <label>First Name</label>
         <div>
-          <Field name="firstName" component="input" type="text" placeholder="First Name"/>
+          <Field style={{width:'300px'}} className='sdfsd' name="firstName" component="input" type="text" placeholder="First Name"/>
         </div>
       </div>
       <div>

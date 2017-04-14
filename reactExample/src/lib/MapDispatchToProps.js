@@ -50,15 +50,16 @@
  			})),
  			onSimpleFormLoad: () => dispatch(Action.simpleFormLoadAction)
  		}, mapDispatchToProps_Common(dispatch, ownProps))
- 	} 
+ 	}
 
  }
+
 
  const mapDispatchToProps_Main = mapDispatchToProps['mapDispatchToProps_Main']
  const mapDispatchToProps_Count = mapDispatchToProps['mapDispatchToProps_Count']
  const mapDispatchToProps_Test = mapDispatchToProps['mapDispatchToProps_Test']
  const mapDispatchToProps_Quote = mapDispatchToProps['mapDispatchToProps_Quote']
- const mapDispatchToProps_ReduxForm = mapDispatchToProps['mapDispatchToProps_ReduxForm'] 
+ const mapDispatchToProps_ReduxForm = mapDispatchToProps['mapDispatchToProps_ReduxForm']
  
  export {
  	mapDispatchToProps as mapDispatchToProps,
@@ -66,6 +67,6 @@
  	mapDispatchToProps_Count as mapDispatchToProps_Count,
  	mapDispatchToProps_Test as mapDispatchToProps_Test,
  	mapDispatchToProps_Quote as mapDispatchToProps_Quote,
- 	mapDispatchToProps_ReduxForm as mapDispatchToProps_ReduxForm 
+ 	mapDispatchToProps_ReduxForm as mapDispatchToProps_ReduxForm
  }
  export default mapDispatchToProps
