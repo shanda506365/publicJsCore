@@ -44,9 +44,9 @@ class Test extends Component {
 			    		console.log($(e.target).width())
 			    	}}>{item.name}</li>)
 		})
-		for (let tt of mData.data) {
+		// for (let tt of mData.data) {
 		   
-		}; 
+		// }; 
 		return (
 			<div><h4>TEST111 {count}  {title}</h4>
 			    <ul className='rongqi' onClick={()=>{$('.rongqi').scrollLeft($('.rongqi').scrollLeft()+50)}}>

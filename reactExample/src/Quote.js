@@ -68,7 +68,7 @@ class Quote extends Component {
 
 			},
 			alwaysFun: function() {},
-			context: me.context,
+			context: me.props.context,
 			props: me.props
 		})
 	}

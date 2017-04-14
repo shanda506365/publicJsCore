@@ -48487,7 +48487,7 @@
 	          tabIndex = _props$counterReducer.tabIndex,
 	          count = _props$counterReducer.count;
 
-	      console.log('Counter', this.context, this.props);
+	      console.log('Counter', this.props);
 
 	      var navbarHeadDom = [],
 	          tabItemDom = [];
@@ -54963,30 +54963,9 @@
 						item.name
 					));
 				});
-				var _iteratorNormalCompletion = true;
-				var _didIteratorError = false;
-				var _iteratorError = undefined;
+				// for (let tt of mData.data) {
 
-				try {
-					for (var _iterator = _mockData.mData.data[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-						var tt = _step.value;
-					}
-				} catch (err) {
-					_didIteratorError = true;
-					_iteratorError = err;
-				} finally {
-					try {
-						if (!_iteratorNormalCompletion && _iterator.return) {
-							_iterator.return();
-						}
-					} finally {
-						if (_didIteratorError) {
-							throw _iteratorError;
-						}
-					}
-				}
-
-				;
+				// }; 
 				return _react2.default.createElement(
 					'div',
 					null,
@@ -55214,7 +55193,7 @@
 					},
 					failFun: function failFun(jqXHR, textStatus) {},
 					alwaysFun: function alwaysFun() {},
-					context: me.context,
+					context: me.props.context,
 					props: me.props
 				});
 			}

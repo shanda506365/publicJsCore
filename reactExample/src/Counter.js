@@ -110,7 +110,7 @@ class Counter extends Component {
       tabIndex,
       count
     } = this.props.counterReducer
-    console.log('Counter', this.context, this.props)
+    console.log('Counter', this.props)
 
     let navbarHeadDom = [],
       tabItemDom = [];
