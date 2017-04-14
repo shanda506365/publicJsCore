@@ -44,7 +44,7 @@ class Test extends Component {
 			    	}}>{item.name}</li>)
 		})
 		for (let tt of mData.data) {
-		   console.log(tt)
+		   
 		}; 
 		return (
 			<div><h4>TEST111 {count}  {title}</h4>

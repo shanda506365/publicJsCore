@@ -12,11 +12,20 @@
    Quote: {
      tabIndex: 0,
      title: 'Quote'
+   },
+   SimpleFormData: {
+     firstName: 'Jane',
+     lastName: 'Doe',
+     age: 44,
+     sex: 'female',
+     employed: true,
+     favoriteColor: 'Blue',
+     bio: 'Born to write amazing Redux code.'
    }
  }, action) {
    const count = state.count
    const tstate = JSON.parse(JSON.stringify(state));
-   console.log('statestate',state);
+   console.log('statestate', state);
    let rObj;
    switch (action.type) {
      case 'increase':
@@ -51,10 +60,25 @@
        console.log('quote_tabbarClick', rObj)
        return rObj
      case 'pro_stateClick':
-     console.log('pro_stateClick',action)
+       console.log('pro_stateClick', action)
        rObj = deepAssign(tstate, {
          pro_state: action.state
        });
+       return rObj
+     case 'formSubmit':
+       console.log('formSubmit', action)
+       rObj = deepAssign(tstate, {
+         pro_state: action.state
+       });
+       return rObj
+     case 'simpleFormLoad':
+       console.log('simpleFormLoad', action)
+       rObj = deepAssign(tstate, {
+         SimpleFormData: {
+           lastName: 'count:' + tstate.count
+         }
+       });
+       console.log('simpleFormLoad', rObj)
        return rObj
      default:
        console.log(state)

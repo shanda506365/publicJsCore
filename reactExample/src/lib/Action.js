@@ -14,6 +14,12 @@ const Action = {
 	},
 	pro_stateClickAction: {
 		type: 'pro_stateClick'
+	},
+	formSubmitAction:{
+		type:'formSubmit'
+	},
+	simpleFormLoadAction:{
+		type:'simpleFormLoad'
 	}
 }
 

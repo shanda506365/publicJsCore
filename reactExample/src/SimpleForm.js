@@ -1,10 +1,18 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import { Field, reduxForm } from 'redux-form'
+ 
 
-const SimpleForm = (props) => {
-  const { handleSubmit, pristine, reset, submitting } = props
+
+let SimpleForm = (props) => {
+  const { handleSubmit, pristine, reset, submitting } = props 
+  console.log('SimpleForm=====',props)
+  // load({
+  //   firstName:props.counterReducer.tabIndex
+  // })
   return (
     <form onSubmit={handleSubmit}>
+    
       <div>
         <label>First Name</label>
         <div>
@@ -61,6 +69,8 @@ const SimpleForm = (props) => {
   )
 }
 
-export default reduxForm({
+SimpleForm = reduxForm({
   form: 'simple'  // a unique identifier for this form
-})(SimpleForm)
+})(SimpleForm);
+ 
+export default SimpleForm

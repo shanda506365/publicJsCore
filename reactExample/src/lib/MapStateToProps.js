@@ -28,17 +28,26 @@
  			stateFlag: 'mapStateToProps_Quote'
  		});
  		return rObj
+ 	},
+ 	mapStateToProps_ReduxForm: function(state, ownProps) {
+ 		console.log('mapStateToProps_ReduxForm',state, ownProps) 
+ 		let rObj = deepAssign(state, {
+ 			stateFlag: 'mapStateToProps_ReduxForm' 
+ 		});
+ 		return rObj
  	}
  }
  const mapStateToProps_Main = mapStateToProps['mapStateToProps_Main']
  const mapStateToProps_Counter = mapStateToProps['mapStateToProps_Counter']
  const mapStateToProps_Test = mapStateToProps['mapStateToProps_Test']
  const mapStateToProps_Quote = mapStateToProps['mapStateToProps_Quote']
+ const mapStateToProps_ReduxForm = mapStateToProps['mapStateToProps_ReduxForm']
  export {
  	mapStateToProps as mapStateToProps,
  	mapStateToProps_Main as mapStateToProps_Main,
  	mapStateToProps_Counter as mapStateToProps_Counter,
  	mapStateToProps_Test as mapStateToProps_Test,
- 	mapStateToProps_Quote as mapStateToProps_Quote
+ 	mapStateToProps_Quote as mapStateToProps_Quote,
+ 	mapStateToProps_ReduxForm as mapStateToProps_ReduxForm
  }
  export default mapStateToProps

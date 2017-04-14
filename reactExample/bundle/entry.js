@@ -28407,6 +28407,15 @@
 	    Quote: {
 	      tabIndex: 0,
 	      title: 'Quote'
+	    },
+	    SimpleFormData: {
+	      firstName: 'Jane',
+	      lastName: 'Doe',
+	      age: 44,
+	      sex: 'female',
+	      employed: true,
+	      favoriteColor: 'Blue',
+	      bio: 'Born to write amazing Redux code.'
 	    }
 	  };
 	  var action = arguments[1];
@@ -28452,6 +28461,21 @@
 	      rObj = (0, _deepAssign2.default)(tstate, {
 	        pro_state: action.state
 	      });
+	      return rObj;
+	    case 'formSubmit':
+	      console.log('formSubmit', action);
+	      rObj = (0, _deepAssign2.default)(tstate, {
+	        pro_state: action.state
+	      });
+	      return rObj;
+	    case 'simpleFormLoad':
+	      console.log('simpleFormLoad', action);
+	      rObj = (0, _deepAssign2.default)(tstate, {
+	        SimpleFormData: {
+	          lastName: 'count:' + tstate.count
+	        }
+	      });
+	      console.log('simpleFormLoad', rObj);
 	      return rObj;
 	    default:
 	      console.log(state);
@@ -38883,7 +38907,7 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports.mapStateToProps_Quote = exports.mapStateToProps_Test = exports.mapStateToProps_Counter = exports.mapStateToProps_Main = exports.mapStateToProps = undefined;
+	exports.mapStateToProps_ReduxForm = exports.mapStateToProps_Quote = exports.mapStateToProps_Test = exports.mapStateToProps_Counter = exports.mapStateToProps_Main = exports.mapStateToProps = undefined;
 
 	var _Action = __webpack_require__(290);
 
@@ -38923,17 +38947,26 @@
 	      stateFlag: 'mapStateToProps_Quote'
 	    });
 	    return rObj;
+	  },
+	  mapStateToProps_ReduxForm: function mapStateToProps_ReduxForm(state, ownProps) {
+	    console.log('mapStateToProps_ReduxForm', state, ownProps);
+	    var rObj = (0, _deepAssign2.default)(state, {
+	      stateFlag: 'mapStateToProps_ReduxForm'
+	    });
+	    return rObj;
 	  }
 	};
 	var mapStateToProps_Main = mapStateToProps['mapStateToProps_Main'];
 	var mapStateToProps_Counter = mapStateToProps['mapStateToProps_Counter'];
 	var mapStateToProps_Test = mapStateToProps['mapStateToProps_Test'];
 	var mapStateToProps_Quote = mapStateToProps['mapStateToProps_Quote'];
+	var mapStateToProps_ReduxForm = mapStateToProps['mapStateToProps_ReduxForm'];
 	exports.mapStateToProps = mapStateToProps;
 	exports.mapStateToProps_Main = mapStateToProps_Main;
 	exports.mapStateToProps_Counter = mapStateToProps_Counter;
 	exports.mapStateToProps_Test = mapStateToProps_Test;
 	exports.mapStateToProps_Quote = mapStateToProps_Quote;
+	exports.mapStateToProps_ReduxForm = mapStateToProps_ReduxForm;
 	exports.default = mapStateToProps;
 
 /***/ },
@@ -38961,6 +38994,12 @@
 		},
 		pro_stateClickAction: {
 			type: 'pro_stateClick'
+		},
+		formSubmitAction: {
+			type: 'formSubmit'
+		},
+		simpleFormLoadAction: {
+			type: 'simpleFormLoad'
 		}
 	};
 
@@ -38975,7 +39014,7 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports.mapDispatchToProps_Quote = exports.mapDispatchToProps_Test = exports.mapDispatchToProps_Count = exports.mapDispatchToProps_Main = exports.mapDispatchToProps = undefined;
+	exports.mapDispatchToProps_ReduxForm = exports.mapDispatchToProps_Quote = exports.mapDispatchToProps_Test = exports.mapDispatchToProps_Count = exports.mapDispatchToProps_Main = exports.mapDispatchToProps = undefined;
 
 	var _Action = __webpack_require__(290);
 
@@ -39037,18 +39076,36 @@
 	        }));
 	      }
 	    }, mapDispatchToProps_Common(dispatch, ownProps));
+	  },
+	  mapDispatchToProps_ReduxForm: function mapDispatchToProps_ReduxForm(dispatch, ownProps) {
+	    return (0, _deepAssign2.default)({
+	      onFormSubmit: function onFormSubmit(e, values, state) {
+	        return dispatch((0, _deepAssign2.default)(_Action2.default.formSubmitAction, {
+	          e: e,
+	          values: values,
+	          state: state
+	        }));
+	      },
+	      onSimpleFormLoad: function onSimpleFormLoad() {
+	        return dispatch(_Action2.default.simpleFormLoadAction);
+	      }
+	    }, mapDispatchToProps_Common(dispatch, ownProps));
 	  }
+
 	};
 
 	var mapDispatchToProps_Main = mapDispatchToProps['mapDispatchToProps_Main'];
 	var mapDispatchToProps_Count = mapDispatchToProps['mapDispatchToProps_Count'];
 	var mapDispatchToProps_Test = mapDispatchToProps['mapDispatchToProps_Test'];
 	var mapDispatchToProps_Quote = mapDispatchToProps['mapDispatchToProps_Quote'];
+	var mapDispatchToProps_ReduxForm = mapDispatchToProps['mapDispatchToProps_ReduxForm'];
+
 	exports.mapDispatchToProps = mapDispatchToProps;
 	exports.mapDispatchToProps_Main = mapDispatchToProps_Main;
 	exports.mapDispatchToProps_Count = mapDispatchToProps_Count;
 	exports.mapDispatchToProps_Test = mapDispatchToProps_Test;
 	exports.mapDispatchToProps_Quote = mapDispatchToProps_Quote;
+	exports.mapDispatchToProps_ReduxForm = mapDispatchToProps_ReduxForm;
 	exports.default = mapDispatchToProps;
 
 /***/ },
@@ -54913,8 +54970,6 @@
 				try {
 					for (var _iterator = _mockData.mData.data[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
 						var tt = _step.value;
-
-						console.log(tt);
 					}
 				} catch (err) {
 					_didIteratorError = true;
@@ -66144,6 +66199,8 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _reactRedux = __webpack_require__(195);
+
 	var _reduxForm = __webpack_require__(318);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -66154,6 +66211,10 @@
 	      reset = props.reset,
 	      submitting = props.submitting;
 
+	  console.log('SimpleForm=====', props);
+	  // load({
+	  //   firstName:props.counterReducer.tabIndex
+	  // })
 	  return _react2.default.createElement(
 	    'form',
 	    { onSubmit: handleSubmit },
@@ -66302,9 +66363,11 @@
 	  );
 	};
 
-	exports.default = (0, _reduxForm.reduxForm)({
+	SimpleForm = (0, _reduxForm.reduxForm)({
 	  form: 'simple' // a unique identifier for this form
 	})(SimpleForm);
+
+	exports.default = SimpleForm;
 
 /***/ },
 /* 535 */
@@ -66443,6 +66506,8 @@
 	});
 	exports.con_ReduxForm = exports.ReduxForm = undefined;
 
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 	var _react = __webpack_require__(2);
@@ -66454,6 +66519,8 @@
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
 	var _reactRedux = __webpack_require__(195);
+
+	var _reactRouter = __webpack_require__(222);
 
 	var _MapStateToProps = __webpack_require__(289);
 
@@ -66485,19 +66552,40 @@
 	  }
 
 	  _createClass(ReduxForm, [{
-	    key: 'submit',
-	    value: function submit(values) {
-	      // Do something with the form values
-	      console.log(values);
-	    }
-	  }, {
 	    key: 'render',
 	    value: function render() {
+	      console.log('ReduxForm===', this.props);
+	      var _props = this.props,
+	          onFormSubmit = _props.onFormSubmit,
+	          onSimpleFormLoad = _props.onSimpleFormLoad,
+	          SimpleFormData = this.props.counterReducer.SimpleFormData;
+
+
 	      return _react2.default.createElement(
 	        'div',
 	        null,
-	        _react2.default.createElement(_SyncValidationForm2.default, { onSubmit: this.submit }),
-	        _react2.default.createElement(_SimpleForm2.default, { onSubmit: this.submit })
+	        _react2.default.createElement(
+	          _reactRouter.Link,
+	          { className: 'weui-btn weui-btn_default', to: '/Test' },
+	          '\u6D88\u606F\u8BA1\u6570'
+	        ),
+	        _react2.default.createElement(_SyncValidationForm2.default, { onSubmit: function onSubmit(values) {
+	            onFormSubmit(null, values, 'Rejected');
+	          } }),
+	        _react2.default.createElement(
+	          'div',
+	          null,
+	          _react2.default.createElement(
+	            'button',
+	            { type: 'button', onClick: function onClick() {
+	                return onSimpleFormLoad(SimpleFormData);
+	              } },
+	            'Load Account'
+	          )
+	        ),
+	        _react2.default.createElement(_SimpleForm2.default, _extends({ onSubmit: function onSubmit(values) {
+	            onFormSubmit(null, values, 'Rejected');
+	          } }, this.props, { enableReinitialize: true, initialValues: SimpleFormData }))
 	      );
 	    }
 	  }]);
@@ -66505,7 +66593,7 @@
 	  return ReduxForm;
 	}(_react.Component);
 
-	var con_ReduxForm = (0, _reactRedux.connect)(_MapStateToProps.mapStateToProps_Quote, _MapDispatchToProps.mapDispatchToProps_Quote)(ReduxForm);
+	var con_ReduxForm = (0, _reactRedux.connect)(_MapStateToProps.mapStateToProps_ReduxForm, _MapDispatchToProps.mapDispatchToProps_ReduxForm)(ReduxForm);
 
 	exports.ReduxForm = ReduxForm;
 	exports.con_ReduxForm = con_ReduxForm;
