@@ -50,7 +50,7 @@ class Main extends Component {
     } = this.props, {
       pro_state
     } = this.props.counterReducer, me = this;
-    console.log('Main', this.context, this.props)
+    console.log('Main', this.props)
     return (
       <div className='h100' > 
         {this.props.children}

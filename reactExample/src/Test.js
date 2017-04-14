@@ -60,7 +60,7 @@ class Test extends Component {
 						{buttonText}</button>
 					</div>
 					<div className="weui-flex__item">
-							<Link className='weui-btn weui-btn_default' to="/">计数计数计数计数计数计数计数计数计数计数计数</Link>
+							<Link className='weui-btn weui-btn_default' to="/">计数计数计数计数计数</Link>
 					</div>
 					<div className="weui-flex__item">
 						<Link className='weui-btn weui-btn_default h100' to="/Quote">报价</Link>

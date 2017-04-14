@@ -59,15 +59,23 @@ const renderField = ({
 		error,
 		warning
 	}
-}) => (
-	<div>
-    <label>{label}</label>
-    <div>
-      <input {...input} placeholder={label} type={type}/>
-      {touched && ((error && <span>{error}</span>) || (warning && <span>{warning}</span>))}
-    </div>
-  </div>
-)
+}) => {
+	return (
+		<div>
+		    <label>{label}</label>
+		    <div>
+		      <input {...input} placeholder={label} type={type}/>
+		      {touched && ((error && <span>{error}</span>) || (warning && <span>{warning}</span>))}
+		    </div>
+  		</div>
+	)
+}
+const renderLink = ({
+		input,
+		text,
+		to
+	}) =>
+	<Link {...input} to={to}>{text}</Link>
 
 const SyncValidationForm = (props) => {
 	const {
@@ -81,6 +89,9 @@ const SyncValidationForm = (props) => {
       <Field name="username" type="text" component={renderField} label="Username"/>
       <Field name="email" type="email" component={renderField} label="Email"/>
       <Field name="age" type="number" component={renderField} label="Age"/>
+      <Field
+          name="favoriteColor"
+          component={renderLink} text='计数' to="/"/>
       <div>
         <button type="submit" disabled={submitting}>Submit</button>
         <button type="button" disabled={pristine || submitting} onClick={reset}>Clear Values</button>
@@ -94,4 +105,3 @@ export default reduxForm({
 	validate, // <--- validation function given to redux-form
 	warn // <--- warning function given to redux-form
 })(SyncValidationForm)
-

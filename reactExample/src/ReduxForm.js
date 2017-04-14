@@ -28,19 +28,27 @@ import SimpleForm from './SimpleForm';
 
 
 class ReduxForm extends Component {
+  contextTypes: {
+    router: React.PropTypes.object
+  }
   render() {
     console.log('ReduxForm===', this.props)
     const {
       onFormSubmit,
       onSimpleFormLoad
-    } = this.props,{
+    } = this.props, {
       SimpleFormData
-    } = this.props.counterReducer
-    
+    } = this.props.counterReducer,
+    me = this;
+
 
     return (
       <div>
-        <Link className='weui-btn weui-btn_default' to="/Test">消息计数</Link>
+        <button className='weui-btn weui-btn_default' onClick={
+          ()=> {me.props.router.push({
+                              pathname: '/Test' 
+                            })}
+        }>消息计数</button>
         <SyncValidationForm onSubmit={values =>{
           onFormSubmit(null,values,'Rejected')
         }} />
@@ -49,7 +57,7 @@ class ReduxForm extends Component {
         </div>
         <SimpleForm onSubmit={values =>{
           onFormSubmit(null,values,'Rejected')
-        }}  {...this.props}  enableReinitialize={true} initialValues={SimpleFormData}/>
+        }} onSimpleFormLoad={onSimpleFormLoad} enableReinitialize={true} initialValues={SimpleFormData}/>
       </div>
     );
   }

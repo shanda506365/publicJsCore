@@ -38482,7 +38482,7 @@
 	      var onPro_stateChange = this.props.onPro_stateChange,
 	          pro_state = this.props.counterReducer.pro_state,
 	          me = this;
-	      console.log('Main', this.context, this.props);
+	      console.log('Main', this.props);
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'h100' },
@@ -55023,7 +55023,7 @@
 							_react2.default.createElement(
 								_reactRouter.Link,
 								{ className: 'weui-btn weui-btn_default', to: '/' },
-								'\u8BA1\u6570\u8BA1\u6570\u8BA1\u6570\u8BA1\u6570\u8BA1\u6570\u8BA1\u6570\u8BA1\u6570\u8BA1\u6570\u8BA1\u6570\u8BA1\u6570\u8BA1\u6570'
+								'\u8BA1\u6570\u8BA1\u6570\u8BA1\u6570\u8BA1\u6570\u8BA1\u6570'
 							)
 						),
 						_react2.default.createElement(
@@ -66439,6 +66439,7 @@
 		    touched = _ref$meta.touched,
 		    error = _ref$meta.error,
 		    warning = _ref$meta.warning;
+
 		return _react2.default.createElement(
 			'div',
 			null,
@@ -66463,6 +66464,16 @@
 			)
 		);
 	};
+	var renderLink = function renderLink(_ref2) {
+		var input = _ref2.input,
+		    text = _ref2.text,
+		    to = _ref2.to;
+		return _react2.default.createElement(
+			_reactRouter.Link,
+			_extends({}, input, { to: to }),
+			text
+		);
+	};
 
 	var SyncValidationForm = function SyncValidationForm(props) {
 		var handleSubmit = props.handleSubmit,
@@ -66476,6 +66487,9 @@
 			_react2.default.createElement(_reduxForm.Field, { name: 'username', type: 'text', component: renderField, label: 'Username' }),
 			_react2.default.createElement(_reduxForm.Field, { name: 'email', type: 'email', component: renderField, label: 'Email' }),
 			_react2.default.createElement(_reduxForm.Field, { name: 'age', type: 'number', component: renderField, label: 'Age' }),
+			_react2.default.createElement(_reduxForm.Field, {
+				name: 'favoriteColor',
+				component: renderLink, text: '\u8BA1\u6570', to: '/' }),
 			_react2.default.createElement(
 				'div',
 				null,
@@ -66509,8 +66523,6 @@
 	  value: true
 	});
 	exports.con_ReduxForm = exports.ReduxForm = undefined;
-
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -66562,15 +66574,20 @@
 	      var _props = this.props,
 	          onFormSubmit = _props.onFormSubmit,
 	          onSimpleFormLoad = _props.onSimpleFormLoad,
-	          SimpleFormData = this.props.counterReducer.SimpleFormData;
+	          SimpleFormData = this.props.counterReducer.SimpleFormData,
+	          me = this;
 
 
 	      return _react2.default.createElement(
 	        'div',
 	        null,
 	        _react2.default.createElement(
-	          _reactRouter.Link,
-	          { className: 'weui-btn weui-btn_default', to: '/Test' },
+	          'button',
+	          { className: 'weui-btn weui-btn_default', onClick: function onClick() {
+	              me.props.router.push({
+	                pathname: '/Test'
+	              });
+	            } },
 	          '\u6D88\u606F\u8BA1\u6570'
 	        ),
 	        _react2.default.createElement(_SyncValidationForm2.default, { onSubmit: function onSubmit(values) {
@@ -66587,9 +66604,9 @@
 	            'Load Account'
 	          )
 	        ),
-	        _react2.default.createElement(_SimpleForm2.default, _extends({ onSubmit: function onSubmit(values) {
+	        _react2.default.createElement(_SimpleForm2.default, { onSubmit: function onSubmit(values) {
 	            onFormSubmit(null, values, 'Rejected');
-	          } }, this.props, { enableReinitialize: true, initialValues: SimpleFormData }))
+	          }, onSimpleFormLoad: onSimpleFormLoad, enableReinitialize: true, initialValues: SimpleFormData })
 	      );
 	    }
 	  }]);
