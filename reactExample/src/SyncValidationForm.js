@@ -74,7 +74,7 @@ const renderLink = ({
 		input,
 		text,
 		to
-	}) =>
+	}) => 
 	<Link {...input} to={to}>{text}</Link>
 
 const SyncValidationForm = (props) => {
