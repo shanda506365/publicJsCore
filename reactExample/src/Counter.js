@@ -30,7 +30,7 @@ import "!style!css!less!../node_modules/jquery-weui/dist/css/jquery-weui.css"
 import Jweui from '../node_modules/jquery-weui/dist/js/jquery-weui'
 
 // import WeuiJs from 'weui.js'
- 
+
 
 // React component
 class Counter extends Component {
@@ -39,7 +39,7 @@ class Counter extends Component {
   }
   componentDidMount() {
     let me = this;
-    
+
     $('.tabItem').pullToRefresh().on('pull-to-refresh', function(done) {
       var self = this
       console.log('refresh')
@@ -103,13 +103,14 @@ class Counter extends Component {
   render() {
     let me = this;
     const {
-      count,
       onIncreaseClick,
       onTestValClick,
-      tabIndex,
       onNavbarClick
-    } = this.props
-    console.log('Counter', this.context, this.props) 
+    } = this.props, {
+      tabIndex,
+      count
+    } = this.props.counterReducer
+    console.log('Counter', this.context, this.props)
 
     let navbarHeadDom = [],
       tabItemDom = [];

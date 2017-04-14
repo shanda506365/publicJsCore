@@ -75,13 +75,13 @@ class Quote extends Component {
 	choseBarItemCls(index) {
 		const {
 			Quote
-		} = this.props, me = this;
+		} = this.props.counterReducer, me = this;
 		return "weui-tabbar__item " + (Quote.tabIndex == index ? 'weui-bar__item_on' : '')
 	}
 	choseBarPanelCls(index) {
 		const {
 			Quote
-		} = this.props, me = this;
+		} = this.props.counterReducer, me = this;
 		return Quote.tabIndex == index ? 'barpanel weui-pull-to-refresh' : 'barpanel hide weui-pull-to-refresh'
 	}
 	domInit(param) {
@@ -137,11 +137,12 @@ class Quote extends Component {
 			{pullDiv}Page 4<Link className='weui-btn weui-btn_primary' to="/">消息计数{param.count}</Link></div>)
 	}
 	render() {
-		const {
-			count,
+		const { 
 			onTabbarClick,
 			onPro_stateChange
-		} = this.props, me = this;
+		} = this.props,{
+			count 
+		} = this.props.counterReducer, me = this;
 		console.log('Quote===', this.props)
 		let barItemDom = [],
 			barPanelDom = []
@@ -153,6 +154,7 @@ class Quote extends Component {
 			onPro_stateChange
 		})
 
+		
 		return (
 			<div className='rc_quote weui-tab' onTouchMove={()=>{console.log('onTouchMove')}}> 
 				<div className="weui-tab__panel">

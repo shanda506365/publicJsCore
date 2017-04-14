@@ -27,13 +27,14 @@ class Test extends Component {
 		router: React.PropTypes.object
 	} 
 	render() {
-		 const {
-		      count,
-		      title,
+		 const { 
 		      onIncreaseTestClick,
-		      buttonText,
 		      onPro_stateChange
-		    } = this.props
+		    } = this.props,{
+		      count,
+		      title, 
+		      buttonText 
+		    } = this.props.counterReducer
 		console.log('Test',this.props)
 		let liDom=[] 
 		console.log(mData)
@@ -42,9 +43,11 @@ class Test extends Component {
 			    		console.log($(e.target).width())
 			    	}}>{item.name}</li>)
 		})
-		 
+		for (let tt of mData.data) {
+		   console.log(tt)
+		}; 
 		return (
-			<div><h4>TEST {count}  {title}</h4>
+			<div><h4>TEST111 {count}  {title}</h4>
 			    <ul className='rongqi' onClick={()=>{$('.rongqi').scrollLeft($('.rongqi').scrollLeft()+50)}}>
 			    	   {liDom}
 			    </ul>
@@ -58,6 +61,9 @@ class Test extends Component {
 					</div>
 					<div className="weui-flex__item">
 						<Link className='weui-btn weui-btn_default' to="/Quote">报价</Link>
+					</div>
+					<div className="weui-flex__item">
+						<Link className='weui-btn weui-btn_default' to="/SyncValidationForm">SyncValidationForm</Link>
 					</div>
 					<div className="weui-flex__item">
 						<button className='weui-btn weui-btn_primary' onClick={()=>onPro_stateChange('Rejected')}>

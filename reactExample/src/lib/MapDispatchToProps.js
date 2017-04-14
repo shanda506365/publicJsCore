@@ -19,7 +19,7 @@
  			onTestValClick: () => dispatch({
  				type: ''
  			}),
- 			onNavbarClick: (e, index) => dispatch(deepAssign(Action.onNavbarClick, {
+ 			onNavbarClick: (e, index) => dispatch(deepAssign(Action.navbarClickAction, {
  				e,
  				index
  			}))

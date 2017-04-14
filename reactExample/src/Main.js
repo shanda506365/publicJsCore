@@ -47,8 +47,9 @@ class Main extends Component {
   render() {
     const {
       onPro_stateChange,
-      pro_state 
-    } = this.props, me = this;
+    } = this.props, {
+      pro_state
+    } = this.props.counterReducer, me = this;
     console.log('Main', this.context, this.props)
     return (
       <div className='h100' > 

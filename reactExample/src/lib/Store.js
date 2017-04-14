@@ -1,13 +1,21 @@
  import {
-   createStore
+ 	createStore,
+ 	combineReducers
  } from 'redux'
-
  import {
-   counterReducer
+ 	reducer as reduxFormReducer
+ } from 'redux-form';
+ import {
+ 	counterReducer
  } from './Reducer'
+
+ const reducer = combineReducers({
+ 	counterReducer: counterReducer,
+ 	form: reduxFormReducer, // mounted under "form"
+ });
  // Store
- const store = createStore(counterReducer) 
+ const store = createStore(reducer)
 
  export {
-   store as GlobalStore 
+ 	store as GlobalStore
  }

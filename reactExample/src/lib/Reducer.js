@@ -16,6 +16,7 @@
  }, action) {
    const count = state.count
    const tstate = JSON.parse(JSON.stringify(state));
+   console.log('statestate',state);
    let rObj;
    switch (action.type) {
      case 'increase':
