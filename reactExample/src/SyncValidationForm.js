@@ -20,6 +20,7 @@ import {
 	reduxForm
 } from 'redux-form'
 
+import 'rc-select/assets/index.css';
 import Select, {
     Option
   } from 'rc-select/lib/index';
@@ -81,6 +82,32 @@ const renderLink = ({
 	}) => 
 	<Link {...input} to={to}>{text}</Link>
 
+
+const renderSelect = ({
+		input,
+		options,
+		tagSels
+	})=> {
+	console.log(options)
+	return (<Select animation={null} 
+            dropdownMenuStyle={{maxHeight:120,overflow: 'auto'}} 
+            style={{ width: '100%' }}
+            multiple={true} 
+            readOnly={true}
+            optionFilterProp="children"
+            optionLabelProp="title" 
+            placeholder="点击此处批量选择分类设置利润"
+            notFoundContent="没有该分类或该分类不支持设置利润"
+            onChange={(val)=>{ 
+                //me.setState({ tagSels: val } ); 
+            }}  
+            tokenSeparators={[' ', ',']} 
+          >
+            {options}
+          </Select>)
+}
+
+
 const SyncValidationForm = (props) => {
 	const {
 		handleSubmit,
@@ -88,6 +115,10 @@ const SyncValidationForm = (props) => {
 		reset,
 		submitting
 	} = props
+	 let options = [],tagSels=[]
+	 options.push(<Option key={1}  title={111111}> 
+            {'tesetest'}
+          </Option>);
 	return (
 		<form onSubmit={handleSubmit}>
 	      <Field name="username" type="text" component={renderField} label="Username"/>
@@ -96,6 +127,9 @@ const SyncValidationForm = (props) => {
 	      <Field
 	          name="favoriteColor"
 	          component={renderLink} text='计数' to="/"/>
+	      <Field
+	          name="select"
+	          component={renderSelect} options={options}/>
 	      <div>
 	        <button type="submit" disabled={submitting}>Submit</button>
 	        <button type="button" disabled={pristine || submitting} onClick={reset}>Clear Values</button>
