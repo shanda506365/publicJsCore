@@ -20,6 +20,9 @@ const Action = {
 	},
 	simpleFormLoadAction:{
 		type:'simpleFormLoad'
+	},
+	tagSelectAction:{
+		type:'tagSelect'
 	}
 }
 

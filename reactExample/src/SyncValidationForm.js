@@ -86,10 +86,13 @@ const renderLink = ({
 const renderSelect = ({
 		input,
 		options,
-		tagSels
+		tagSels,
+		onTagSelect
 	})=> {
-	console.log(options)
-	return (<Select animation={null} 
+	console.log('renderSelect',options,
+		tagSels,
+		onTagSelect)
+	return (<Select value={tagSels} animation={null} 
             dropdownMenuStyle={{maxHeight:120,overflow: 'auto'}} 
             style={{ width: '100%' }}
             multiple={true} 
@@ -99,7 +102,7 @@ const renderSelect = ({
             placeholder="点击此处批量选择分类设置利润"
             notFoundContent="没有该分类或该分类不支持设置利润"
             onChange={(val)=>{ 
-                //me.setState({ tagSels: val } ); 
+                onTagSelect(null,val)
             }}  
             tokenSeparators={[' ', ',']} 
           >
@@ -113,12 +116,15 @@ const SyncValidationForm = (props) => {
 		handleSubmit,
 		pristine,
 		reset,
-		submitting
+		submitting,
+		onTagSelect,
+		initialValues
 	} = props
-	 let options = [],tagSels=[]
+	 let options = []
 	 options.push(<Option key={1}  title={111111}> 
             {'tesetest'}
           </Option>);
+	console.log('SyncValidationForm',props)
 	return (
 		<form onSubmit={handleSubmit}>
 	      <Field name="username" type="text" component={renderField} label="Username"/>
@@ -128,8 +134,9 @@ const SyncValidationForm = (props) => {
 	          name="favoriteColor"
 	          component={renderLink} text='计数' to="/"/>
 	      <Field
-	          name="select"
-	          component={renderSelect} options={options}/>
+	          name="tagSels"
+	          component={renderSelect} onTagSelect={onTagSelect} options={options} tagSels={initialValues.tagSels} 
+	            />
 	      <div>
 	        <button type="submit" disabled={submitting}>Submit</button>
 	        <button type="button" disabled={pristine || submitting} onClick={reset}>Clear Values</button>

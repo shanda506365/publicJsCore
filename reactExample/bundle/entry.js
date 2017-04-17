@@ -39047,6 +39047,10 @@
 	    employed: true,
 	    favoriteColor: 'Blue',
 	    bio: 'Born to write amazing Redux code.'
+	  },
+	  SyncValidationFormData: {
+	    username: 11,
+	    tagSels: []
 	  }
 	});
 	// Reducer
@@ -39099,6 +39103,11 @@
 	      console.log('simpleFormLoad', action);
 	      rObj = tstate.setIn(['SimpleFormData', 'lastName'], 'count:' + tstate.get('count'));
 	      console.log('simpleFormLoad', rObj);
+	      return rObj.toJSON();
+	    case 'tagSelect':
+	      console.log('tagSelect', action);
+	      rObj = tstate.setIn(['SyncValidationFormData', 'tagSels'], action.tagSels);
+	      console.log('tagSelect', rObj.toJSON());
 	      return rObj.toJSON();
 	    default:
 	      console.log(state);
@@ -49540,6 +49549,9 @@
 		},
 		simpleFormLoadAction: {
 			type: 'simpleFormLoad'
+		},
+		tagSelectAction: {
+			type: 'tagSelect'
 		}
 	};
 
@@ -49626,6 +49638,12 @@
 	      },
 	      onSimpleFormLoad: function onSimpleFormLoad() {
 	        return dispatch(_Action2.default.simpleFormLoadAction);
+	      },
+	      onTagSelect: function onTagSelect(e, tagSels) {
+	        return dispatch((0, _immutable.fromJS)(_Action2.default.tagSelectAction).mergeDeep({
+	          e: e,
+	          tagSels: tagSels
+	        }).toJSON());
 	      }
 	    }).mergeDeep(mapDispatchToProps_Common(dispatch, ownProps)).toJSON();
 	  }
@@ -66131,7 +66149,10 @@
 	      var _props = this.props,
 	          onFormSubmit = _props.onFormSubmit,
 	          onSimpleFormLoad = _props.onSimpleFormLoad,
-	          SimpleFormData = this.props.counterReducer.SimpleFormData,
+	          onTagSelect = _props.onTagSelect,
+	          _props$counterReducer = _props.counterReducer,
+	          SimpleFormData = _props$counterReducer.SimpleFormData,
+	          SyncValidationFormData = _props$counterReducer.SyncValidationFormData,
 	          me = this;
 
 
@@ -66149,7 +66170,7 @@
 	        ),
 	        _react2.default.createElement(_SyncValidationForm2.default, { onSubmit: function onSubmit(values) {
 	            onFormSubmit(null, values, 'Rejected');
-	          } }),
+	          }, onTagSelect: onTagSelect, initialValues: SyncValidationFormData }),
 	        _react2.default.createElement(
 	          'div',
 	          null,
@@ -66163,7 +66184,9 @@
 	        ),
 	        _react2.default.createElement(_SimpleForm2.default, { onSubmit: function onSubmit(values) {
 	            onFormSubmit(null, values, 'Rejected');
-	          }, onSimpleFormLoad: onSimpleFormLoad, enableReinitialize: true, initialValues: SimpleFormData })
+	          }, onSimpleFormLoad: onSimpleFormLoad, enableReinitialize: true,
+	          initialValues: SimpleFormData
+	        })
 	      );
 	    }
 	  }]);
@@ -66288,12 +66311,13 @@
 	var renderSelect = function renderSelect(_ref3) {
 		var input = _ref3.input,
 		    options = _ref3.options,
-		    tagSels = _ref3.tagSels;
+		    tagSels = _ref3.tagSels,
+		    onTagSelect = _ref3.onTagSelect;
 
-		console.log(options);
+		console.log('renderSelect', options, tagSels, onTagSelect);
 		return _react2.default.createElement(
 			_index2.default,
-			{ animation: null,
+			{ value: tagSels, animation: null,
 				dropdownMenuStyle: { maxHeight: 120, overflow: 'auto' },
 				style: { width: '100%' },
 				multiple: true,
@@ -66303,7 +66327,7 @@
 				placeholder: '\u70B9\u51FB\u6B64\u5904\u6279\u91CF\u9009\u62E9\u5206\u7C7B\u8BBE\u7F6E\u5229\u6DA6',
 				notFoundContent: '\u6CA1\u6709\u8BE5\u5206\u7C7B\u6216\u8BE5\u5206\u7C7B\u4E0D\u652F\u6301\u8BBE\u7F6E\u5229\u6DA6',
 				onChange: function onChange(val) {
-					//me.setState({ tagSels: val } ); 
+					onTagSelect(null, val);
 				},
 				tokenSeparators: [' ', ',']
 			},
@@ -66315,15 +66339,17 @@
 		var handleSubmit = props.handleSubmit,
 		    pristine = props.pristine,
 		    reset = props.reset,
-		    submitting = props.submitting;
+		    submitting = props.submitting,
+		    onTagSelect = props.onTagSelect,
+		    initialValues = props.initialValues;
 
-		var options = [],
-		    tagSels = [];
+		var options = [];
 		options.push(_react2.default.createElement(
 			_index.Option,
 			{ key: 1, title: 111111 },
 			'tesetest'
 		));
+		console.log('SyncValidationForm', props);
 		return _react2.default.createElement(
 			'form',
 			{ onSubmit: handleSubmit },
@@ -66334,8 +66360,9 @@
 				name: 'favoriteColor',
 				component: renderLink, text: '\u8BA1\u6570', to: '/' }),
 			_react2.default.createElement(_reduxForm.Field, {
-				name: 'select',
-				component: renderSelect, options: options }),
+				name: 'tagSels',
+				component: renderSelect, onTagSelect: onTagSelect, options: options, tagSels: initialValues.tagSels
+			}),
 			_react2.default.createElement(
 				'div',
 				null,

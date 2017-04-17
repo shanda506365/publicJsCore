@@ -23,7 +23,11 @@
        sex: 'female',
        employed: true,
        favoriteColor: 'Blue',
-       bio: 'Born to write amazing Redux code.'
+       bio: 'Born to write amazing Redux code.' 
+     },
+     SyncValidationFormData:{
+        username:11,
+        tagSels:[]
      }
    })
    // Reducer
@@ -69,6 +73,11 @@
        console.log('simpleFormLoad', action)
        rObj= tstate.setIn(['SimpleFormData','lastName'],'count:' + tstate.get('count')) 
        console.log('simpleFormLoad', rObj)
+       return rObj.toJSON()
+     case 'tagSelect':
+       console.log('tagSelect', action)
+       rObj= tstate.setIn(['SyncValidationFormData','tagSels'],action.tagSels) 
+       console.log('tagSelect', rObj.toJSON())
        return rObj.toJSON()
      default:
        console.log(state)

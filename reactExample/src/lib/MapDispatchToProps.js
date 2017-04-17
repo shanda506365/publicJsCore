@@ -49,7 +49,11 @@
  				values,
  				state
  			}).toJSON()),
- 			onSimpleFormLoad: () => dispatch(Action.simpleFormLoadAction)
+ 			onSimpleFormLoad: () => dispatch(Action.simpleFormLoadAction),
+ 			onTagSelect:(e,tagSels)=>dispatch(fromJS(Action.tagSelectAction).mergeDeep({
+ 				e,
+ 				tagSels 
+ 			}).toJSON())
  		}).mergeDeep(mapDispatchToProps_Common(dispatch, ownProps)).toJSON()
  	}
 

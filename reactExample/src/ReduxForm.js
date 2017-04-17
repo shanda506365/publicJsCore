@@ -35,10 +35,13 @@ class ReduxForm extends Component {
     console.log('ReduxForm===', this.props)
     const {
       onFormSubmit,
-      onSimpleFormLoad
-    } = this.props, {
-      SimpleFormData
-    } = this.props.counterReducer,
+      onSimpleFormLoad,
+      onTagSelect,
+      counterReducer:{
+        SimpleFormData,
+        SyncValidationFormData
+      }
+    } = this.props,
     me = this;
 
 
@@ -51,13 +54,15 @@ class ReduxForm extends Component {
         }>消息计数</button>
         <SyncValidationForm onSubmit={values =>{
           onFormSubmit(null,values,'Rejected')
-        }} />
+        }}   onTagSelect={onTagSelect} initialValues={SyncValidationFormData}/>
         <div>
           <button type="button" onClick={() => onSimpleFormLoad(SimpleFormData)}>Load Account</button>
         </div>
         <SimpleForm onSubmit={values =>{
           onFormSubmit(null,values,'Rejected')
-        }} onSimpleFormLoad={onSimpleFormLoad} enableReinitialize={true} initialValues={SimpleFormData}/>
+        }} onSimpleFormLoad={onSimpleFormLoad} enableReinitialize={true} 
+         initialValues={SimpleFormData}
+        />
       </div>
     );
   }
