@@ -20,6 +20,10 @@ import {
 	reduxForm
 } from 'redux-form'
 
+import Select, {
+    Option
+  } from 'rc-select/lib/index';
+
 const validate = values => {
 	const errors = {}
 	if (!values.username) {
@@ -86,17 +90,17 @@ const SyncValidationForm = (props) => {
 	} = props
 	return (
 		<form onSubmit={handleSubmit}>
-      <Field name="username" type="text" component={renderField} label="Username"/>
-      <Field name="email" type="email" component={renderField} label="Email"/>
-      <Field name="age" type="number" component={renderField} label="Age"/>
-      <Field
-          name="favoriteColor"
-          component={renderLink} text='计数' to="/"/>
-      <div>
-        <button type="submit" disabled={submitting}>Submit</button>
-        <button type="button" disabled={pristine || submitting} onClick={reset}>Clear Values</button>
-      </div>
-    </form>
+	      <Field name="username" type="text" component={renderField} label="Username"/>
+	      <Field name="email" type="email" component={renderField} label="Email"/>
+	      <Field name="age" type="number" component={renderField} label="Age"/>
+	      <Field
+	          name="favoriteColor"
+	          component={renderLink} text='计数' to="/"/>
+	      <div>
+	        <button type="submit" disabled={submitting}>Submit</button>
+	        <button type="button" disabled={pristine || submitting} onClick={reset}>Clear Values</button>
+	      </div>
+    	</form>
 	)
 }
 
