@@ -35,6 +35,7 @@ import common, {
 import mockData from './mockData/mockData'
 
 
+
 // React component
 class Main extends Component {
   contextTypes: {
@@ -43,13 +44,15 @@ class Main extends Component {
   componentDidMount() {
     let me = this;
     // FastClick.attach(document.body); 
+
   }
   render() {
     const {
       onPro_stateChange,
-    } = this.props, {
-      pro_state
-    } = this.props.counterReducer, me = this;
+      counterReducer: {
+        pro_state
+      }
+    } = this.props, me = this;
     console.log('Main', this.props)
     return (
       <div className='h100' > 

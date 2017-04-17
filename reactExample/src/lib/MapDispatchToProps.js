@@ -1,13 +1,14 @@
  import Action from './Action'
- import deepAssign from 'deep-assign'
+ import { 
+ 	fromJS
+ } from 'immutable'
 
  const mapDispatchToProps_Common = function(dispatch, ownProps) {
  	return {
- 		onPro_stateChange: (state) => dispatch(deepAssign(Action.pro_stateClickAction, {
+ 		onPro_stateChange: (state) => dispatch(fromJS(Action.pro_stateClickAction).mergeDeep({
  			state
- 		}))
- 	}
-
+ 		}).toJSON())
+ 	} 
  }
  const mapDispatchToProps = {
  	mapDispatchToProps_Main: function(dispatch, ownProps) {
@@ -19,37 +20,37 @@
  			onTestValClick: () => dispatch({
  				type: ''
  			}),
- 			onNavbarClick: (e, index) => dispatch(deepAssign(Action.navbarClickAction, {
+ 			onNavbarClick: (e, index) => dispatch(fromJS(Action.navbarClickAction).mergeDeep({
  				e,
  				index
- 			}))
+ 			}).toJSON())
  		}
  	},
  	mapDispatchToProps_Test: function(dispatch, ownProps) {
- 		return deepAssign({
+ 		return fromJS({
  			onIncreaseTestClick: () => dispatch({
  				type: 'increaseTest',
  				filter: ownProps
  			})
- 		}, mapDispatchToProps_Common(dispatch, ownProps))
+ 		}).mergeDeep(mapDispatchToProps_Common(dispatch, ownProps)).toJSON()
  	},
  	mapDispatchToProps_Quote: function(dispatch, ownProps) {
- 		return deepAssign({
- 			onTabbarClick: (e, index) => dispatch(deepAssign(Action.quote_tabbarClickAction, {
+ 		return fromJS({
+ 			onTabbarClick: (e, index) => dispatch(fromJS(Action.quote_tabbarClickAction).mergeDeep({
  				e,
  				index
- 			}))
- 		}, mapDispatchToProps_Common(dispatch, ownProps))
+ 			}).toJSON())
+ 		}).mergeDeep(mapDispatchToProps_Common(dispatch, ownProps)).toJSON()
  	},
  	mapDispatchToProps_ReduxForm: function(dispatch, ownProps) {
- 		return deepAssign({
- 			onFormSubmit: (e, values, state) => dispatch(deepAssign(Action.formSubmitAction, {
+ 		return fromJS({
+ 			onFormSubmit: (e, values, state) => dispatch(fromJS(Action.formSubmitAction).mergeDeep({
  				e,
  				values,
  				state
- 			})),
+ 			}).toJSON()),
  			onSimpleFormLoad: () => dispatch(Action.simpleFormLoadAction)
- 		}, mapDispatchToProps_Common(dispatch, ownProps))
+ 		}).mergeDeep(mapDispatchToProps_Common(dispatch, ownProps)).toJSON()
  	}
 
  }
@@ -60,7 +61,7 @@
  const mapDispatchToProps_Test = mapDispatchToProps['mapDispatchToProps_Test']
  const mapDispatchToProps_Quote = mapDispatchToProps['mapDispatchToProps_Quote']
  const mapDispatchToProps_ReduxForm = mapDispatchToProps['mapDispatchToProps_ReduxForm']
- 
+
  export {
  	mapDispatchToProps as mapDispatchToProps,
  	mapDispatchToProps_Main as mapDispatchToProps_Main,

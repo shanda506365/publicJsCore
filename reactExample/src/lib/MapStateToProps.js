@@ -1,40 +1,44 @@
  import Action from './Action'
- import deepAssign from 'deep-assign'
+ 
+  import {
+   Map,
+   fromJS
+ } from 'immutable'
  const mapStateToProps = { 
  	mapStateToProps_Main: function(state, ownProps) {
- 		console.log('mapStateToProps_Main', ownProps)
- 		let rObj = deepAssign(state, {
+ 		console.log('mapStateToProps_Main',state, ownProps)
+ 		let rObj = fromJS(state).mergeDeep({
  			stateFlag: 'mapStateToProps_Main'
  		});
- 		return rObj
+ 		return rObj.toJSON()
  	},
  	mapStateToProps_Counter: function(state, ownProps) {
  		console.log('mapStateToProps_Counter', ownProps)
- 		let rObj = deepAssign(state, {
+ 		let rObj = fromJS(state).mergeDeep({
  			stateFlag: 'mapStateToProps_Counter'
  		});
- 		return rObj
+ 		return rObj.toJSON()
  	},
  	mapStateToProps_Test: function(state, ownProps) {
  		console.log('mapStateToProps_Test', ownProps)
- 		let rObj = deepAssign(state, {
+ 		let rObj = fromJS(state).mergeDeep({
  			stateFlag: 'mapStateToProps_Test'
  		});
- 		return rObj
+ 		return rObj.toJSON()
  	},
  	mapStateToProps_Quote: function(state, ownProps) {
  		console.log('mapStateToProps_Quote', ownProps)
- 		let rObj = deepAssign(state, {
+ 		let rObj = fromJS(state).mergeDeep({
  			stateFlag: 'mapStateToProps_Quote'
  		});
- 		return rObj
+ 		return rObj.toJSON()
  	},
  	mapStateToProps_ReduxForm: function(state, ownProps) {
  		console.log('mapStateToProps_ReduxForm',state, ownProps) 
- 		let rObj = deepAssign(state, {
+ 		let rObj = fromJS(state).mergeDeep({
  			stateFlag: 'mapStateToProps_ReduxForm' 
  		});
- 		return rObj
+ 		return rObj.toJSON()
  	}
  }
  const mapStateToProps_Main = mapStateToProps['mapStateToProps_Main']

@@ -105,11 +105,12 @@ class Counter extends Component {
     const {
       onIncreaseClick,
       onTestValClick,
-      onNavbarClick
-    } = this.props, {
-      tabIndex,
-      count
-    } = this.props.counterReducer
+      onNavbarClick,
+      counterReducer:{
+        tabIndex,
+        count
+      }
+    } = this.props
     console.log('Counter', this.props)
 
     let navbarHeadDom = [],

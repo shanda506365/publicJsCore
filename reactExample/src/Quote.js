@@ -139,10 +139,11 @@ class Quote extends Component {
 	render() {
 		const { 
 			onTabbarClick,
-			onPro_stateChange
-		} = this.props,{
-			count 
-		} = this.props.counterReducer, me = this;
+			onPro_stateChange,
+			counterReducer:{
+				count
+			}
+		} = this.props, me = this;
 		console.log('Quote===', this.props)
 		let barItemDom = [],
 			barPanelDom = []
