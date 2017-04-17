@@ -65,13 +65,22 @@ const renderField = ({
 		warning
 	}
 }) => {
+	let cls = 'weui-cell',errorDom=[];
+	if(touched && error){
+		cls += ' weui-cell_warn';
+		errorDom.push(<div className="weui-cell__ft">
+            <i className="weui-icon-warn"></i>
+        </div>)
+	}
+	 
 	return (
-		<div>
-		    <label>{label}</label>
-		    <div>
-		      <input {...input} placeholder={label} type={type}/>
-		      {touched && ((error && <span>{error}</span>) || (warning && <span>{warning}</span>))}
+		<div className={cls}>
+		    <div className="weui-cell__hd"><label className='weui-label'>{label}</label></div>
+		    <div className="weui-cell__bd">
+		      <input {...input} className='weui-input' placeholder={label} type={type}/> 
 		    </div>
+		    {errorDom}
+		    {touched && ((error && <span>{error}</span>) || (warning && <span>{warning}</span>))}
   		</div>
 	)
 }
@@ -124,10 +133,13 @@ const SyncValidationForm = (props) => {
 	 options.push(<Option key={1}  title={111111}> 
             {'tesetest'}
           </Option>);
+	  options.push(<Option key={2}  title={3333}> 
+            {'tesetes3333t'}
+          </Option>);
 	console.log('SyncValidationForm',props)
 	return (
-		<form onSubmit={handleSubmit}>
-	      <Field name="username" type="text" component={renderField} label="Username"/>
+		<form onSubmit={handleSubmit} className='weui-cells weui-cells-form'>
+	      <Field name="username" type="text"  component={renderField} label="Username"/>
 	      <Field name="email" type="email" component={renderField} label="Email"/>
 	      <Field name="age" type="number" component={renderField} label="Age"/>
 	      <Field
@@ -144,6 +156,8 @@ const SyncValidationForm = (props) => {
     	</form>
 	)
 }
+
+export {renderField as renderField}
 
 export default reduxForm({
 	form: 'syncValidation', // a unique identifier for this form

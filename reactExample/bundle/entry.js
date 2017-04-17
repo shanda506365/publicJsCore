@@ -71191,6 +71191,7 @@
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
+	exports.renderField = undefined;
 
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -71255,28 +71256,44 @@
 		    error = _ref$meta.error,
 		    warning = _ref$meta.warning;
 
+		var cls = 'weui-cell',
+		    errorDom = [];
+		if (touched && error) {
+			cls += ' weui-cell_warn';
+			errorDom.push(_react2.default.createElement(
+				'div',
+				{ className: 'weui-cell__ft' },
+				_react2.default.createElement('i', { className: 'weui-icon-warn' })
+			));
+		}
+
 		return _react2.default.createElement(
 			'div',
-			null,
+			{ className: cls },
 			_react2.default.createElement(
-				'label',
-				null,
-				label
+				'div',
+				{ className: 'weui-cell__hd' },
+				_react2.default.createElement(
+					'label',
+					{ className: 'weui-label' },
+					label
+				)
 			),
 			_react2.default.createElement(
 				'div',
+				{ className: 'weui-cell__bd' },
+				_react2.default.createElement('input', _extends({}, input, { className: 'weui-input', placeholder: label, type: type }))
+			),
+			errorDom,
+			touched && (error && _react2.default.createElement(
+				'span',
 				null,
-				_react2.default.createElement('input', _extends({}, input, { placeholder: label, type: type })),
-				touched && (error && _react2.default.createElement(
-					'span',
-					null,
-					error
-				) || warning && _react2.default.createElement(
-					'span',
-					null,
-					warning
-				))
-			)
+				error
+			) || warning && _react2.default.createElement(
+				'span',
+				null,
+				warning
+			))
 		);
 	};
 	var renderLink = function renderLink(_ref2) {
@@ -71331,10 +71348,15 @@
 			{ key: 1, title: 111111 },
 			'tesetest'
 		));
+		options.push(_react2.default.createElement(
+			_index.Option,
+			{ key: 2, title: 3333 },
+			'tesetes3333t'
+		));
 		console.log('SyncValidationForm', props);
 		return _react2.default.createElement(
 			'form',
-			{ onSubmit: handleSubmit },
+			{ onSubmit: handleSubmit, className: 'weui-cells weui-cells-form' },
 			_react2.default.createElement(_reduxForm.Field, { name: 'username', type: 'text', component: renderField, label: 'Username' }),
 			_react2.default.createElement(_reduxForm.Field, { name: 'email', type: 'email', component: renderField, label: 'Email' }),
 			_react2.default.createElement(_reduxForm.Field, { name: 'age', type: 'number', component: renderField, label: 'Age' }),
@@ -71362,6 +71384,7 @@
 		);
 	};
 
+	exports.renderField = renderField;
 	exports.default = (0, _reduxForm.reduxForm)({
 		form: 'syncValidation', // a unique identifier for this form
 		validate: validate, // <--- validation function given to redux-form
@@ -83058,6 +83081,8 @@
 
 	var _reduxForm = __webpack_require__(279);
 
+	var _SyncValidationForm = __webpack_require__(533);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var SimpleForm = function SimpleForm(props) {
@@ -83072,21 +83097,8 @@
 	  // })
 	  return _react2.default.createElement(
 	    'form',
-	    { onSubmit: handleSubmit },
-	    _react2.default.createElement(
-	      'div',
-	      null,
-	      _react2.default.createElement(
-	        'label',
-	        null,
-	        'First Name'
-	      ),
-	      _react2.default.createElement(
-	        'div',
-	        null,
-	        _react2.default.createElement(_reduxForm.Field, { style: { width: '300px' }, className: 'sdfsd', name: 'firstName', component: 'input', type: 'text', placeholder: 'First Name' })
-	      )
-	    ),
+	    { onSubmit: handleSubmit, className: 'weui-cells weui-cells-form' },
+	    _react2.default.createElement(_reduxForm.Field, { name: 'firstName', component: _SyncValidationForm.renderField, type: 'text', label: 'First Name' }),
 	    _react2.default.createElement(
 	      'div',
 	      null,

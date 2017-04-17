@@ -1,24 +1,34 @@
 import React from 'react'
-import { connect } from 'react-redux'
-import { Field, reduxForm } from 'redux-form'
- 
+import {
+  connect
+} from 'react-redux'
+import {
+  Field,
+  reduxForm
+} from 'redux-form'
+import {
+  renderField
+} from './SyncValidationForm'
+
 
 
 let SimpleForm = (props) => {
-  const { handleSubmit, pristine, reset, submitting } = props 
-  console.log('SimpleForm=====',props)
-  // load({
-  //   firstName:props.counterReducer.tabIndex
-  // })
+  const {
+    handleSubmit,
+    pristine,
+    reset,
+    submitting
+  } = props
+  console.log('SimpleForm=====', props)
+    // load({
+    //   firstName:props.counterReducer.tabIndex
+    // })
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className='weui-cells weui-cells-form'>
     
-      <div>
-        <label>First Name</label>
-        <div>
-          <Field style={{width:'300px'}} className='sdfsd' name="firstName" component="input" type="text" placeholder="First Name"/>
-        </div>
-      </div>
+      
+      <Field name="firstName" component={renderField}  type="text"   label="First Name"/>
+     
       <div>
         <label>Last Name</label>
         <div>
@@ -70,7 +80,7 @@ let SimpleForm = (props) => {
 }
 
 SimpleForm = reduxForm({
-  form: 'simple'  // a unique identifier for this form
+  form: 'simple' // a unique identifier for this form
 })(SimpleForm);
- 
+
 export default SimpleForm
