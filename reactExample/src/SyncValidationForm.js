@@ -74,14 +74,17 @@ const renderField = ({
 	}
 	 
 	return (
-		<div className={cls}>
-		    <div className="weui-cell__hd"><label className='weui-label'>{label}</label></div>
-		    <div className="weui-cell__bd">
-		      <input {...input} className='weui-input' placeholder={label} type={type}/> 
-		    </div>
-		    {errorDom}
-		    {touched && ((error && <span>{error}</span>) || (warning && <span>{warning}</span>))}
-  		</div>
+		<div>
+			<div className={cls}>
+			    <div className="weui-cell__hd"><label className='weui-label'>{label}</label></div>
+			    <div className="weui-cell__bd">
+			      <input {...input} className='weui-input' placeholder={label} type={type}/> 
+			    </div>
+			    {errorDom}
+			   
+	  		</div>
+	  		 {touched && ((error && <div className={cls}>{error}</div>) || (warning && <div className={cls}>{warning}</div>))}
+  	    </div>
 	)
 }
 const renderLink = ({

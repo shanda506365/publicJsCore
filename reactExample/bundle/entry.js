@@ -71269,29 +71269,33 @@
 
 		return _react2.default.createElement(
 			'div',
-			{ className: cls },
+			null,
 			_react2.default.createElement(
 				'div',
-				{ className: 'weui-cell__hd' },
+				{ className: cls },
 				_react2.default.createElement(
-					'label',
-					{ className: 'weui-label' },
-					label
-				)
+					'div',
+					{ className: 'weui-cell__hd' },
+					_react2.default.createElement(
+						'label',
+						{ className: 'weui-label' },
+						label
+					)
+				),
+				_react2.default.createElement(
+					'div',
+					{ className: 'weui-cell__bd' },
+					_react2.default.createElement('input', _extends({}, input, { className: 'weui-input', placeholder: label, type: type }))
+				),
+				errorDom
 			),
-			_react2.default.createElement(
-				'div',
-				{ className: 'weui-cell__bd' },
-				_react2.default.createElement('input', _extends({}, input, { className: 'weui-input', placeholder: label, type: type }))
-			),
-			errorDom,
 			touched && (error && _react2.default.createElement(
-				'span',
-				null,
+				'div',
+				{ className: cls },
 				error
 			) || warning && _react2.default.createElement(
-				'span',
-				null,
+				'div',
+				{ className: cls },
 				warning
 			))
 		);
