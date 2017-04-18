@@ -153,8 +153,8 @@ const SyncValidationForm = (props) => {
 	          component={renderSelect} onTagSelect={onTagSelect} options={options} tagSels={initialValues.tagSels} 
 	            />
 	      <div>
-	        <button type="submit" disabled={submitting}>Submit</button>
-	        <button type="button" disabled={pristine || submitting} onClick={reset}>Clear Values</button>
+	        <button className='weui-btn weui-btn_primary' type="submit" disabled={submitting}>Submit</button>
+	        <button className={'weui-btn weui-btn_default' + (pristine || submitting?' weui-btn_disabled':'')} type="button" disabled={pristine || submitting} onClick={reset}>Clear Values</button>
 	      </div>
     	</form>
 	)

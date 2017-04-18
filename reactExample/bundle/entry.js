@@ -71376,12 +71376,12 @@
 				null,
 				_react2.default.createElement(
 					'button',
-					{ type: 'submit', disabled: submitting },
+					{ className: 'weui-btn weui-btn_primary', type: 'submit', disabled: submitting },
 					'Submit'
 				),
 				_react2.default.createElement(
 					'button',
-					{ type: 'button', disabled: pristine || submitting, onClick: reset },
+					{ className: 'weui-btn weui-btn_default' + (pristine || submitting ? ' weui-btn_disabled' : ''), type: 'button', disabled: pristine || submitting, onClick: reset },
 					'Clear Values'
 				)
 			)
