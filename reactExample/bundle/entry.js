@@ -83123,7 +83123,7 @@
 	      _react2.default.createElement(
 	        'div',
 	        null,
-	        _react2.default.createElement(_reduxForm.Field, { name: 'lastName', component: 'input', type: 'text', placeholder: 'Last Name' })
+	        _react2.default.createElement(_reduxForm.Field, { name: 'lastName', className: 'weui-input', component: 'input', type: 'text', placeholder: 'Last Name' })
 	      )
 	    ),
 	    _react2.default.createElement(

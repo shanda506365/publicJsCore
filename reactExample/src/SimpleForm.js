@@ -32,7 +32,7 @@ let SimpleForm = (props) => {
       <div>
         <label>Last Name</label>
         <div>
-          <Field name="lastName" component="input" type="text" placeholder="Last Name"/>
+          <Field name="lastName" className='weui-input' component="input" type="text" placeholder="Last Name"/>
         </div>
       </div>
       <div>
