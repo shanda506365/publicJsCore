@@ -56,7 +56,7 @@ class ReduxForm extends Component {
           onFormSubmit(null,values,'Rejected')
         }}   onTagSelect={onTagSelect} initialValues={SyncValidationFormData}/>
         <div>
-          <button type="button" onClick={() => onSimpleFormLoad(SimpleFormData)}>Load Account</button>
+          <button type="button" className='weui-btn weui-btn_default' onClick={() => onSimpleFormLoad(SimpleFormData)}>Load Account</button>
         </div>
         <SimpleForm onSubmit={values =>{
           onFormSubmit(null,values,'Rejected')

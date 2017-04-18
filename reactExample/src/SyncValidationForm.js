@@ -90,9 +90,10 @@ const renderField = ({
 const renderLink = ({
 		input,
 		text,
-		to
+		to,
+		className
 	}) => 
-	<Link {...input} to={to}>{text}</Link>
+	<Link {...input} to={to} className={className}>{text}</Link>
 
 
 const renderSelect = ({
@@ -145,16 +146,21 @@ const SyncValidationForm = (props) => {
 	      <Field name="username" type="text"  component={renderField} label="Username"/>
 	      <Field name="email" type="email" component={renderField} label="Email"/>
 	      <Field name="age" type="number" component={renderField} label="Age"/>
-	      <Field
+	      <Field className='weui-btn weui-btn_default'
 	          name="favoriteColor"
 	          component={renderLink} text='计数' to="/"/>
 	      <Field
 	          name="tagSels"
 	          component={renderSelect} onTagSelect={onTagSelect} options={options} tagSels={initialValues.tagSels} 
 	            />
-	      <div>
-	        <button className='weui-btn weui-btn_primary' type="submit" disabled={submitting}>Submit</button>
-	        <button className={'weui-btn weui-btn_default' + (pristine || submitting?' weui-btn_disabled':'')} type="button" disabled={pristine || submitting} onClick={reset}>Clear Values</button>
+	      <div className='weui-flex'>
+	      	<div className="weui-flex__item">
+	      		<button className='weui-btn weui-btn_primary' type="submit" disabled={submitting}>Submit</button>
+	      	</div>
+	        <div className="weui-flex__item">
+	        	<button className={'weui-btn weui-btn_default' + (pristine || submitting?' weui-btn_disabled':'')} type="button" disabled={pristine || submitting} onClick={reset}>Clear Values</button>
+	        </div>
+	        
 	      </div>
     	</form>
 	)

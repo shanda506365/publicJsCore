@@ -71158,7 +71158,7 @@
 	          null,
 	          _react2.default.createElement(
 	            'button',
-	            { type: 'button', onClick: function onClick() {
+	            { type: 'button', className: 'weui-btn weui-btn_default', onClick: function onClick() {
 	                return onSimpleFormLoad(SimpleFormData);
 	              } },
 	            'Load Account'
@@ -71303,10 +71303,11 @@
 	var renderLink = function renderLink(_ref2) {
 		var input = _ref2.input,
 		    text = _ref2.text,
-		    to = _ref2.to;
+		    to = _ref2.to,
+		    className = _ref2.className;
 		return _react2.default.createElement(
 			_reactRouter.Link,
-			_extends({}, input, { to: to }),
+			_extends({}, input, { to: to, className: className }),
 			text
 		);
 	};
@@ -71364,7 +71365,7 @@
 			_react2.default.createElement(_reduxForm.Field, { name: 'username', type: 'text', component: renderField, label: 'Username' }),
 			_react2.default.createElement(_reduxForm.Field, { name: 'email', type: 'email', component: renderField, label: 'Email' }),
 			_react2.default.createElement(_reduxForm.Field, { name: 'age', type: 'number', component: renderField, label: 'Age' }),
-			_react2.default.createElement(_reduxForm.Field, {
+			_react2.default.createElement(_reduxForm.Field, { className: 'weui-btn weui-btn_default',
 				name: 'favoriteColor',
 				component: renderLink, text: '\u8BA1\u6570', to: '/' }),
 			_react2.default.createElement(_reduxForm.Field, {
@@ -71373,16 +71374,24 @@
 			}),
 			_react2.default.createElement(
 				'div',
-				null,
+				{ className: 'weui-flex' },
 				_react2.default.createElement(
-					'button',
-					{ className: 'weui-btn weui-btn_primary', type: 'submit', disabled: submitting },
-					'Submit'
+					'div',
+					{ className: 'weui-flex__item' },
+					_react2.default.createElement(
+						'button',
+						{ className: 'weui-btn weui-btn_primary', type: 'submit', disabled: submitting },
+						'Submit'
+					)
 				),
 				_react2.default.createElement(
-					'button',
-					{ className: 'weui-btn weui-btn_default' + (pristine || submitting ? ' weui-btn_disabled' : ''), type: 'button', disabled: pristine || submitting, onClick: reset },
-					'Clear Values'
+					'div',
+					{ className: 'weui-flex__item' },
+					_react2.default.createElement(
+						'button',
+						{ className: 'weui-btn weui-btn_default' + (pristine || submitting ? ' weui-btn_disabled' : ''), type: 'button', disabled: pristine || submitting, onClick: reset },
+						'Clear Values'
+					)
 				)
 			)
 		);
