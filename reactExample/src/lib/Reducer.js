@@ -23,7 +23,11 @@
        sex: 'female',
        employed: true,
        favoriteColor: 'Blue',
-       bio: 'Born to write amazing Redux code.' 
+       bio: 'Born to write amazing Redux code.',
+       radio1:'1',
+       checkbox1:['1'],
+       roles:[],
+       radios2:''
      },
      SyncValidationFormData:{
         username:11,

@@ -39046,7 +39046,11 @@
 	    sex: 'female',
 	    employed: true,
 	    favoriteColor: 'Blue',
-	    bio: 'Born to write amazing Redux code.'
+	    bio: 'Born to write amazing Redux code.',
+	    radio1: '1',
+	    checkbox1: ['1'],
+	    roles: [],
+	    radios2: ''
 	  },
 	  SyncValidationFormData: {
 	    username: 11,
@@ -71191,9 +71195,11 @@
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
-	exports.renderField = undefined;
+	exports.RadioGroup = exports.CheckboxGroup = exports.renderField = undefined;
 
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 	var _react = __webpack_require__(2);
 
@@ -71216,6 +71222,14 @@
 	var _index2 = _interopRequireDefault(_index);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 	var validate = function validate(values) {
 		var errors = {};
@@ -71247,10 +71261,143 @@
 		return warnings;
 	};
 
+	var CheckboxGroup = function (_React$Component) {
+		_inherits(CheckboxGroup, _React$Component);
+
+		function CheckboxGroup() {
+			_classCallCheck(this, CheckboxGroup);
+
+			return _possibleConstructorReturn(this, (CheckboxGroup.__proto__ || Object.getPrototypeOf(CheckboxGroup)).apply(this, arguments));
+		}
+
+		_createClass(CheckboxGroup, [{
+			key: 'checkboxGroup',
+			value: function checkboxGroup() {
+				var _props = this.props,
+				    label = _props.label,
+				    required = _props.required,
+				    options = _props.options,
+				    input = _props.input,
+				    meta = _props.meta;
+
+				var arr = [];
+				for (var i = 0; i < options.length; i++) {
+					arr.push(_react2.default.createElement(
+						'div',
+						{ className: 'weui-cells weui-cells_checkbox', key: i },
+						_react2.default.createElement(
+							'label',
+							{ className: 'weui-cell weui-check__label' },
+							_react2.default.createElement(
+								'div',
+								{ className: 'weui-cell__hd' },
+								_react2.default.createElement('input', { type: 'checkbox', className: 'weui-check',
+									name: input.name + '[' + i + ']',
+									value: options[i].name,
+									checked: input.value.indexOf(options[i].name) !== -1,
+									onChange: function onChange(event) {
+										var newValue = [].concat(_toConsumableArray(input.value));
+										if (event.target.checked) {
+											newValue.push(options[i].name);
+										} else {
+											newValue.splice(newValue.indexOf(options[i].name), 1);
+										}
+
+										return input.onChange(newValue);
+									} }),
+								_react2.default.createElement('i', { className: 'weui-icon-checked' })
+							),
+							_react2.default.createElement(
+								'div',
+								{ className: 'weui-cell__bd' },
+								_react2.default.createElement(
+									'p',
+									null,
+									options[i].name
+								)
+							)
+						)
+					));
+				};
+				return arr;
+			}
+		}, {
+			key: 'render',
+			value: function render() {
+				return _react2.default.createElement(
+					'div',
+					{ className: 'weui-cells weui-cells_checkbox' },
+					this.checkboxGroup()
+				);
+			}
+		}]);
+
+		return CheckboxGroup;
+	}(_react2.default.Component);
+
+	var RadioGroup = function (_React$Component2) {
+		_inherits(RadioGroup, _React$Component2);
+
+		function RadioGroup() {
+			_classCallCheck(this, RadioGroup);
+
+			return _possibleConstructorReturn(this, (RadioGroup.__proto__ || Object.getPrototypeOf(RadioGroup)).apply(this, arguments));
+		}
+
+		_createClass(RadioGroup, [{
+			key: 'RadioGroup',
+			value: function RadioGroup() {
+				var _props2 = this.props,
+				    label = _props2.label,
+				    required = _props2.required,
+				    options = _props2.options,
+				    input = _props2.input,
+				    meta = _props2.meta;
+
+				var arr = [];
+				for (var i = 0; i < options.length; i++) {
+					arr.push(_react2.default.createElement(
+						'label',
+						{ className: 'weui-cell weui-check__label' },
+						_react2.default.createElement(
+							'div',
+							{ className: 'weui-cell__bd' },
+							_react2.default.createElement(
+								'p',
+								null,
+								options[i].name
+							)
+						),
+						_react2.default.createElement(
+							'div',
+							{ className: 'weui-cell__ft' },
+							_react2.default.createElement('input', { name: input.name, type: 'radio', className: 'weui-check',
+								value: options[i].name }),
+							_react2.default.createElement('span', { className: 'weui-icon-checked' })
+						)
+					));
+				};
+				return arr;
+			}
+		}, {
+			key: 'render',
+			value: function render() {
+				return _react2.default.createElement(
+					'div',
+					{ className: 'weui-cells weui-cells_radio' },
+					this.RadioGroup()
+				);
+			}
+		}]);
+
+		return RadioGroup;
+	}(_react2.default.Component);
+
 	var renderField = function renderField(_ref) {
 		var input = _ref.input,
 		    label = _ref.label,
 		    type = _ref.type,
+		    val = _ref.val,
 		    _ref$meta = _ref.meta,
 		    touched = _ref$meta.touched,
 		    error = _ref$meta.error,
@@ -71266,6 +71413,65 @@
 				_react2.default.createElement('i', { className: 'weui-icon-warn' })
 			));
 		}
+		if (type == 'checkbox') {
+			console.log('checkbox', input);
+			return _react2.default.createElement(
+				'div',
+				{ className: 'weui-cells weui-cells_checkbox' },
+				_react2.default.createElement(
+					'label',
+					{ className: 'weui-cell weui-check__label' },
+					_react2.default.createElement(
+						'div',
+						{ className: 'weui-cell__hd' },
+						_react2.default.createElement('input', { name: input.name, type: type, className: 'weui-check',
+							value: val, checked: input.value.indexOf(val) !== -1, onChange: function onChange(event) {
+								var newValue = [].concat(_toConsumableArray(input.value));
+								if (event.target.checked) {
+									newValue.push(val);
+								} else {
+									newValue.splice(newValue.indexOf(val), 1);
+								}
+
+								return input.onChange(newValue);
+							} }),
+						_react2.default.createElement('i', { className: 'weui-icon-checked' })
+					),
+					_react2.default.createElement(
+						'div',
+						{ className: 'weui-cell__bd' },
+						_react2.default.createElement(
+							'p',
+							null,
+							label
+						)
+					)
+				)
+			);
+		}
+
+		if (type == 'radio') {
+
+			return _react2.default.createElement(
+				'label',
+				{ className: 'weui-cell weui-check__label' },
+				_react2.default.createElement(
+					'div',
+					{ className: 'weui-cell__bd' },
+					_react2.default.createElement(
+						'p',
+						null,
+						label
+					)
+				),
+				_react2.default.createElement(
+					'div',
+					{ className: 'weui-cell__ft' },
+					_react2.default.createElement('input', _extends({}, input, { type: type, className: 'weui-check' })),
+					_react2.default.createElement('span', { className: 'weui-icon-checked' })
+				)
+			);
+		};
 
 		return _react2.default.createElement(
 			'div',
@@ -71398,6 +71604,8 @@
 	};
 
 	exports.renderField = renderField;
+	exports.CheckboxGroup = CheckboxGroup;
+	exports.RadioGroup = RadioGroup;
 	exports.default = (0, _reduxForm.reduxForm)({
 		form: 'syncValidation', // a unique identifier for this form
 		validate: validate, // <--- validation function given to redux-form
@@ -83108,9 +83316,24 @@
 	  // load({
 	  //   firstName:props.counterReducer.tabIndex
 	  // })
+	  var optionsList = [{ id: 1, name: 'Optoin1' }, { id: 2, name: 'Option 2' }];
 	  return _react2.default.createElement(
 	    'form',
 	    { onSubmit: handleSubmit, className: 'weui-cells weui-cells-form' },
+	    _react2.default.createElement(
+	      'div',
+	      { className: 'weui-cells weui-cells_checkbox' },
+	      _react2.default.createElement(_reduxForm.Field, { name: 'checkbox1', component: _SyncValidationForm.renderField, type: 'checkbox', label: 'item1', val: '1' }),
+	      _react2.default.createElement(_reduxForm.Field, { name: 'checkbox1', component: _SyncValidationForm.renderField, type: 'checkbox', label: 'item2', val: '2' })
+	    ),
+	    _react2.default.createElement(_reduxForm.Field, { name: 'roles', component: _SyncValidationForm.CheckboxGroup, options: optionsList }),
+	    _react2.default.createElement(
+	      'div',
+	      { className: 'weui-cells weui-cells_radio' },
+	      _react2.default.createElement(_reduxForm.Field, { name: 'radio1', component: _SyncValidationForm.renderField, type: 'radio', label: 'item1', value: '1' }),
+	      _react2.default.createElement(_reduxForm.Field, { name: 'radio1', component: _SyncValidationForm.renderField, type: 'radio', label: 'item2', value: '2' })
+	    ),
+	    _react2.default.createElement(_reduxForm.Field, { name: 'radios2', component: _SyncValidationForm.RadioGroup, options: optionsList }),
 	    _react2.default.createElement(_reduxForm.Field, { name: 'firstName', component: _SyncValidationForm.renderField, type: 'text', label: 'First Name' }),
 	    _react2.default.createElement(
 	      'div',
@@ -83209,7 +83432,7 @@
 	      _react2.default.createElement(
 	        'div',
 	        null,
-	        _react2.default.createElement(_reduxForm.Field, { name: 'employed', id: 'employed', component: 'input', type: 'checkbox' })
+	        _react2.default.createElement(_reduxForm.Field, { name: 'employed', component: 'input', type: 'checkbox' })
 	      )
 	    ),
 	    _react2.default.createElement(

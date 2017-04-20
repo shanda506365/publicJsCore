@@ -54,11 +54,84 @@ const warn = values => {
 	}
 	return warnings
 }
+class CheckboxGroup extends React.Component {
+ 
+    checkboxGroup() {
+        let {label, required, options, input, meta} = this.props;
+        let arr = [];
+        for (var i = 0; i < options.length; i++) {
+        		arr.push(<div className="weui-cells weui-cells_checkbox" key={i}>
+	                <label className="weui-cell weui-check__label">
+	                	<div className="weui-cell__hd">
+		                    <input type="checkbox" className="weui-check" 
+		                           name={`${input.name}[${i}]`}
+		                           value={options[i].name}
+		                           checked={input.value.indexOf(options[i].name) !== -1}
+		                           onChange={(event) => {
+		                               const newValue = [...input.value];
+		                               if (event.target.checked) {
+		                                   newValue.push(options[i].name);
+		                               } else {
+		                                   newValue.splice(newValue.indexOf(options[i].name), 1);
+		                               }
 
+		                               return input.onChange(newValue);
+		                           }}/>
+		                      <i className="weui-icon-checked"></i>
+		        		</div>
+	                    <div className="weui-cell__bd">
+				            <p>{options[i].name}</p>
+				        </div>
+	                </label>
+            	</div>)
+        	}; 
+        return arr
+        	
+    }
+
+    render() {
+        return (
+            <div className='weui-cells weui-cells_checkbox'>
+                {this.checkboxGroup()}
+            </div>
+        )
+    }
+}
+
+class RadioGroup extends React.Component {
+ 
+    RadioGroup() {
+        let {label, required, options, input, meta} = this.props;
+        let arr = [];
+        for (var i = 0; i < options.length; i++) {
+    		arr.push(<label className="weui-cell weui-check__label">
+		        <div className="weui-cell__bd">
+		            <p>{options[i].name}</p>
+		        </div>
+		        <div className="weui-cell__ft">
+		            <input name={input.name} type='radio' className="weui-check"
+		             value={options[i].name}/>
+		            <span className="weui-icon-checked"></span>
+		        </div>
+		    </label>)
+    	}; 
+        return arr
+        	
+    }
+
+    render() {
+        return (
+            <div className='weui-cells weui-cells_radio'>
+                {this.RadioGroup()}
+            </div>
+        )
+    }
+}
 const renderField = ({
 	input,
 	label,
-	type,
+	type, 
+	val, 
 	meta: {
 		touched,
 		error,
@@ -72,6 +145,45 @@ const renderField = ({
             <i className="weui-icon-warn"></i>
         </div>)
 	}
+	if(type=='checkbox')
+	{ 
+		console.log('checkbox',input)
+		return (<div className="weui-cells weui-cells_checkbox">
+		   <label className="weui-cell weui-check__label">
+		        <div className="weui-cell__hd">
+		            <input name={input.name} type={type} className="weui-check" 
+		             value={val} checked={input.value.indexOf(val) !== -1} onChange={(event) => {
+                               const newValue = [...input.value];
+                               if (event.target.checked) {
+                                   newValue.push(val);
+                               } else {
+                                   newValue.splice(newValue.indexOf(val), 1);
+                               }
+
+                               return input.onChange(newValue);
+                           }}/>
+		            <i className="weui-icon-checked"></i>
+		        </div>
+		        <div className="weui-cell__bd">
+		            <p>{label}</p>
+		        </div>
+		    </label>
+		</div>)
+	}
+
+	if (type=='radio') {  
+	 
+		return(<label className="weui-cell weui-check__label" >
+		        <div className="weui-cell__bd">
+		            <p>{label}</p>
+		        </div>
+		        <div className="weui-cell__ft">
+		            <input {...input} type={type} className="weui-check"/>
+		            <span className="weui-icon-checked"></span>
+		        </div>
+		    </label>
+		)
+	};
 	 
 	return (
 		<div>
@@ -166,7 +278,10 @@ const SyncValidationForm = (props) => {
 	)
 }
 
-export {renderField as renderField}
+export {renderField as renderField,
+	CheckboxGroup as CheckboxGroup,
+	RadioGroup
+}
 
 export default reduxForm({
 	form: 'syncValidation', // a unique identifier for this form
