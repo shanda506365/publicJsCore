@@ -10,23 +10,31 @@ Mock.mock(API.login, {
 	'suc|9-1': true,
 	'msg|1-10': '',
 	'code': '01',
-	'data|1-10':[{
-		'id|+1':1,
+	'data|1-10': [{
+		'id|+1': 1,
 		'name': '@name',
 		'age|1-100': 100,
 		'color': Mock.Random.color()
-	}] 
+	}]
 });
 var mData = Mock.mock({
 	'suc': true,
 	'msg|1-10': '',
 	'code': '01',
-	'data|1-10':[{
-		'id|+1':1,
+	'data|1-10': [{
+		'id|+1': 1,
 		'name': '@name',
 		'age|1-100': 100,
-		'color':'@color'
-	}] 
+		'color': '@color'
+	}]
+});
+const optionsData = Mock.mock({ 
+	'data|2-2': [{
+		'id|+1': 1,
+		'name': '@name',
+		'age|1-100': 100,
+		'color': '@color'
+	}]
 });
 
 // var template = {
@@ -52,4 +60,7 @@ var mData = Mock.mock({
 // 	}] 
 // }
 // console.log(Mock.valid(template, data))
-export {mData as mData}
+export {
+	mData as mData,
+	optionsData
+}

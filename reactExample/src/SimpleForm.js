@@ -12,6 +12,8 @@ import {
   RadioGroup
 } from './SyncValidationForm'
 
+import { optionsData} from './mockData/mockData'
+
 
 
 let SimpleForm = (props) => {
@@ -25,7 +27,7 @@ let SimpleForm = (props) => {
     // load({
     //   firstName:props.counterReducer.tabIndex
     // })
-   let optionsList = [{id: 1, name: 'Optoin1'},{id: 2, name: 'Option 2'}]
+ 
   return (
     <form onSubmit={handleSubmit} className='weui-cells weui-cells-form'>
       <div className="weui-cells weui-cells_checkbox">
@@ -33,12 +35,12 @@ let SimpleForm = (props) => {
         <Field name="checkbox1" component={renderField}  type="checkbox" label='item2' val='2'/>
       </div>
          
-      <Field name="roles" component={CheckboxGroup} options={optionsList} /> 
+      <Field name="roles" component={CheckboxGroup} options={optionsData.data} /> 
       <div className="weui-cells weui-cells_radio">
         <Field name="radio1" component={renderField}  type="radio" label='item1' value='1'/>
         <Field name="radio1" component={renderField}  type="radio" label='item2' value='2'/>
        </div>
-      <Field name="radios2" component={RadioGroup} options={optionsList} /> 
+      <Field name="radios2" component={RadioGroup} options={optionsData.data} /> 
       <Field name="firstName" component={renderField}  type="text"   label="First Name"/>
      
       <div>

@@ -55303,7 +55303,7 @@
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
-	exports.mData = undefined;
+	exports.optionsData = exports.mData = undefined;
 
 	var _mockjs = __webpack_require__(515);
 
@@ -55340,6 +55340,14 @@
 			'color': '@color'
 		}]
 	});
+	var optionsData = _mockjs2.default.mock({
+		'data|2-2': [{
+			'id|+1': 1,
+			'name': '@name',
+			'age|1-100': 100,
+			'color': '@color'
+		}]
+	});
 
 	// var template = {
 	// 	'suc': true,
@@ -55365,6 +55373,7 @@
 	// }
 	// console.log(Mock.valid(template, data))
 	exports.mData = mData;
+	exports.optionsData = optionsData;
 
 /***/ },
 /* 515 */
@@ -83304,6 +83313,8 @@
 
 	var _SyncValidationForm = __webpack_require__(533);
 
+	var _mockData = __webpack_require__(514);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var SimpleForm = function SimpleForm(props) {
@@ -83316,7 +83327,7 @@
 	  // load({
 	  //   firstName:props.counterReducer.tabIndex
 	  // })
-	  var optionsList = [{ id: 1, name: 'Optoin1' }, { id: 2, name: 'Option 2' }];
+
 	  return _react2.default.createElement(
 	    'form',
 	    { onSubmit: handleSubmit, className: 'weui-cells weui-cells-form' },
@@ -83326,14 +83337,14 @@
 	      _react2.default.createElement(_reduxForm.Field, { name: 'checkbox1', component: _SyncValidationForm.renderField, type: 'checkbox', label: 'item1', val: '1' }),
 	      _react2.default.createElement(_reduxForm.Field, { name: 'checkbox1', component: _SyncValidationForm.renderField, type: 'checkbox', label: 'item2', val: '2' })
 	    ),
-	    _react2.default.createElement(_reduxForm.Field, { name: 'roles', component: _SyncValidationForm.CheckboxGroup, options: optionsList }),
+	    _react2.default.createElement(_reduxForm.Field, { name: 'roles', component: _SyncValidationForm.CheckboxGroup, options: _mockData.optionsData.data }),
 	    _react2.default.createElement(
 	      'div',
 	      { className: 'weui-cells weui-cells_radio' },
 	      _react2.default.createElement(_reduxForm.Field, { name: 'radio1', component: _SyncValidationForm.renderField, type: 'radio', label: 'item1', value: '1' }),
 	      _react2.default.createElement(_reduxForm.Field, { name: 'radio1', component: _SyncValidationForm.renderField, type: 'radio', label: 'item2', value: '2' })
 	    ),
-	    _react2.default.createElement(_reduxForm.Field, { name: 'radios2', component: _SyncValidationForm.RadioGroup, options: optionsList }),
+	    _react2.default.createElement(_reduxForm.Field, { name: 'radios2', component: _SyncValidationForm.RadioGroup, options: _mockData.optionsData.data }),
 	    _react2.default.createElement(_reduxForm.Field, { name: 'firstName', component: _SyncValidationForm.renderField, type: 'text', label: 'First Name' }),
 	    _react2.default.createElement(
 	      'div',
