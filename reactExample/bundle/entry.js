@@ -71290,7 +71290,9 @@
 				    meta = _props.meta;
 
 				var arr = [];
-				for (var i = 0; i < options.length; i++) {
+
+				var _loop = function _loop() {
+					var index = i;
 					arr.push(_react2.default.createElement(
 						'div',
 						{ className: 'weui-cells weui-cells_checkbox', key: i },
@@ -71301,15 +71303,15 @@
 								'div',
 								{ className: 'weui-cell__hd' },
 								_react2.default.createElement('input', { type: 'checkbox', className: 'weui-check',
-									name: input.name + '[' + i + ']',
+									name: input.name,
 									value: options[i].name,
 									checked: input.value.indexOf(options[i].name) !== -1,
 									onChange: function onChange(event) {
 										var newValue = [].concat(_toConsumableArray(input.value));
 										if (event.target.checked) {
-											newValue.push(options[i].name);
+											newValue.push(options[index].name);
 										} else {
-											newValue.splice(newValue.indexOf(options[i].name), 1);
+											newValue.splice(newValue.indexOf(options[index].name), 1);
 										}
 
 										return input.onChange(newValue);
@@ -71327,6 +71329,10 @@
 							)
 						)
 					));
+				};
+
+				for (var i = 0; i < options.length; i++) {
+					_loop();
 				};
 				return arr;
 			}
@@ -71533,7 +71539,6 @@
 		    tagSels = _ref3.tagSels,
 		    onTagSelect = _ref3.onTagSelect;
 
-		console.log('renderSelect', options, tagSels, onTagSelect);
 		return _react2.default.createElement(
 			_index2.default,
 			{ value: tagSels, animation: null,
@@ -83311,7 +83316,17 @@
 
 	var _reduxForm = __webpack_require__(279);
 
-	var _SyncValidationForm = __webpack_require__(533);
+	var _renderField = __webpack_require__(694);
+
+	var _renderField2 = _interopRequireDefault(_renderField);
+
+	var _CheckboxGroup = __webpack_require__(695);
+
+	var _CheckboxGroup2 = _interopRequireDefault(_CheckboxGroup);
+
+	var _RadioGroup = __webpack_require__(696);
+
+	var _RadioGroup2 = _interopRequireDefault(_RadioGroup);
 
 	var _mockData = __webpack_require__(514);
 
@@ -83334,18 +83349,18 @@
 	    _react2.default.createElement(
 	      'div',
 	      { className: 'weui-cells weui-cells_checkbox' },
-	      _react2.default.createElement(_reduxForm.Field, { name: 'checkbox1', component: _SyncValidationForm.renderField, type: 'checkbox', label: 'item1', val: '1' }),
-	      _react2.default.createElement(_reduxForm.Field, { name: 'checkbox1', component: _SyncValidationForm.renderField, type: 'checkbox', label: 'item2', val: '2' })
+	      _react2.default.createElement(_reduxForm.Field, { name: 'checkbox1', component: _renderField2.default, type: 'checkbox', label: 'item1', val: '1' }),
+	      _react2.default.createElement(_reduxForm.Field, { name: 'checkbox1', component: _renderField2.default, type: 'checkbox', label: 'item2', val: '2' })
 	    ),
-	    _react2.default.createElement(_reduxForm.Field, { name: 'roles', component: _SyncValidationForm.CheckboxGroup, options: _mockData.optionsData.data }),
+	    _react2.default.createElement(_reduxForm.Field, { name: 'roles', component: _CheckboxGroup2.default, options: _mockData.optionsData.data }),
 	    _react2.default.createElement(
 	      'div',
 	      { className: 'weui-cells weui-cells_radio' },
-	      _react2.default.createElement(_reduxForm.Field, { name: 'radio1', component: _SyncValidationForm.renderField, type: 'radio', label: 'item1', value: '1' }),
-	      _react2.default.createElement(_reduxForm.Field, { name: 'radio1', component: _SyncValidationForm.renderField, type: 'radio', label: 'item2', value: '2' })
+	      _react2.default.createElement(_reduxForm.Field, { name: 'radio1', component: _renderField2.default, type: 'radio', label: 'item1', value: '1' }),
+	      _react2.default.createElement(_reduxForm.Field, { name: 'radio1', component: _renderField2.default, type: 'radio', label: 'item2', value: '2' })
 	    ),
-	    _react2.default.createElement(_reduxForm.Field, { name: 'radios2', component: _SyncValidationForm.RadioGroup, options: _mockData.optionsData.data }),
-	    _react2.default.createElement(_reduxForm.Field, { name: 'firstName', component: _SyncValidationForm.renderField, type: 'text', label: 'First Name' }),
+	    _react2.default.createElement(_reduxForm.Field, { name: 'radios2', component: _RadioGroup2.default, options: _mockData.optionsData.data }),
+	    _react2.default.createElement(_reduxForm.Field, { name: 'firstName', component: _renderField2.default, type: 'text', label: 'First Name' }),
 	    _react2.default.createElement(
 	      'div',
 	      null,
@@ -83482,6 +83497,346 @@
 	})(SimpleForm);
 
 	exports.default = SimpleForm;
+
+/***/ },
+/* 694 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactDom = __webpack_require__(31);
+
+	var _reactDom2 = _interopRequireDefault(_reactDom);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+	var renderField = function renderField(_ref) {
+		var input = _ref.input,
+		    label = _ref.label,
+		    type = _ref.type,
+		    val = _ref.val,
+		    _ref$meta = _ref.meta,
+		    touched = _ref$meta.touched,
+		    error = _ref$meta.error,
+		    warning = _ref$meta.warning;
+
+		var cls = 'weui-cell',
+		    errorDom = [];
+		if (touched && error) {
+			cls += ' weui-cell_warn';
+			errorDom.push(_react2.default.createElement(
+				'div',
+				{ className: 'weui-cell__ft' },
+				_react2.default.createElement('i', { className: 'weui-icon-warn' })
+			));
+		}
+		if (type == 'checkbox') {
+			console.log('checkbox', input);
+			return _react2.default.createElement(
+				'div',
+				{ className: 'weui-cells weui-cells_checkbox' },
+				_react2.default.createElement(
+					'label',
+					{ className: 'weui-cell weui-check__label' },
+					_react2.default.createElement(
+						'div',
+						{ className: 'weui-cell__hd' },
+						_react2.default.createElement('input', { name: input.name, type: type, className: 'weui-check',
+							value: val, checked: input.value.indexOf(val) !== -1, onChange: function onChange(event) {
+								var newValue = [].concat(_toConsumableArray(input.value));
+								if (event.target.checked) {
+									newValue.push(val);
+								} else {
+									newValue.splice(newValue.indexOf(val), 1);
+								}
+
+								return input.onChange(newValue);
+							} }),
+						_react2.default.createElement('i', { className: 'weui-icon-checked' })
+					),
+					_react2.default.createElement(
+						'div',
+						{ className: 'weui-cell__bd' },
+						_react2.default.createElement(
+							'p',
+							null,
+							label
+						)
+					)
+				)
+			);
+		}
+
+		if (type == 'radio') {
+
+			return _react2.default.createElement(
+				'label',
+				{ className: 'weui-cell weui-check__label' },
+				_react2.default.createElement(
+					'div',
+					{ className: 'weui-cell__bd' },
+					_react2.default.createElement(
+						'p',
+						null,
+						label
+					)
+				),
+				_react2.default.createElement(
+					'div',
+					{ className: 'weui-cell__ft' },
+					_react2.default.createElement('input', _extends({}, input, { type: type, className: 'weui-check' })),
+					_react2.default.createElement('span', { className: 'weui-icon-checked' })
+				)
+			);
+		};
+
+		return _react2.default.createElement(
+			'div',
+			null,
+			_react2.default.createElement(
+				'div',
+				{ className: cls },
+				_react2.default.createElement(
+					'div',
+					{ className: 'weui-cell__hd' },
+					_react2.default.createElement(
+						'label',
+						{ className: 'weui-label' },
+						label
+					)
+				),
+				_react2.default.createElement(
+					'div',
+					{ className: 'weui-cell__bd' },
+					_react2.default.createElement('input', _extends({}, input, { className: 'weui-input', placeholder: label, type: type }))
+				),
+				errorDom
+			),
+			touched && (error && _react2.default.createElement(
+				'div',
+				{ className: cls },
+				error
+			) || warning && _react2.default.createElement(
+				'div',
+				{ className: cls },
+				warning
+			))
+		);
+	};
+
+	exports.default = renderField;
+
+/***/ },
+/* 695 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+					value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactDom = __webpack_require__(31);
+
+	var _reactDom2 = _interopRequireDefault(_reactDom);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var CheckboxGroup = function (_Component) {
+					_inherits(CheckboxGroup, _Component);
+
+					function CheckboxGroup() {
+									_classCallCheck(this, CheckboxGroup);
+
+									return _possibleConstructorReturn(this, (CheckboxGroup.__proto__ || Object.getPrototypeOf(CheckboxGroup)).apply(this, arguments));
+					}
+
+					_createClass(CheckboxGroup, [{
+									key: 'checkboxGroup',
+									value: function checkboxGroup() {
+													var _props = this.props,
+													    label = _props.label,
+													    required = _props.required,
+													    options = _props.options,
+													    input = _props.input,
+													    meta = _props.meta;
+
+													var arr = [];
+
+													var _loop = function _loop() {
+																	var index = i;
+																	arr.push(_react2.default.createElement(
+																					'div',
+																					{ className: 'weui-cells weui-cells_checkbox', key: i },
+																					_react2.default.createElement(
+																									'label',
+																									{ className: 'weui-cell weui-check__label' },
+																									_react2.default.createElement(
+																													'div',
+																													{ className: 'weui-cell__hd' },
+																													_react2.default.createElement('input', { type: 'checkbox', className: 'weui-check',
+																																	name: input.name,
+																																	value: options[i].name,
+																																	checked: input.value.indexOf(options[i].name) !== -1,
+																																	onChange: function onChange(event) {
+																																					var newValue = [].concat(_toConsumableArray(input.value));
+																																					if (event.target.checked) {
+																																									newValue.push(options[index].name);
+																																					} else {
+																																									newValue.splice(newValue.indexOf(options[index].name), 1);
+																																					}
+
+																																					return input.onChange(newValue);
+																																	} }),
+																													_react2.default.createElement('i', { className: 'weui-icon-checked' })
+																									),
+																									_react2.default.createElement(
+																													'div',
+																													{ className: 'weui-cell__bd' },
+																													_react2.default.createElement(
+																																	'p',
+																																	null,
+																																	options[i].name
+																													)
+																									)
+																					)
+																	));
+													};
+
+													for (var i = 0; i < options.length; i++) {
+																	_loop();
+													};
+													return arr;
+									}
+					}, {
+									key: 'render',
+									value: function render() {
+													return _react2.default.createElement(
+																	'div',
+																	{ className: 'weui-cells weui-cells_checkbox' },
+																	this.checkboxGroup()
+													);
+									}
+					}]);
+
+					return CheckboxGroup;
+	}(_react.Component);
+
+	exports.default = CheckboxGroup;
+
+/***/ },
+/* 696 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactDom = __webpack_require__(31);
+
+	var _reactDom2 = _interopRequireDefault(_reactDom);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var RadioGroup = function (_Component) {
+	    _inherits(RadioGroup, _Component);
+
+	    function RadioGroup() {
+	        _classCallCheck(this, RadioGroup);
+
+	        return _possibleConstructorReturn(this, (RadioGroup.__proto__ || Object.getPrototypeOf(RadioGroup)).apply(this, arguments));
+	    }
+
+	    _createClass(RadioGroup, [{
+	        key: 'RadioGroup',
+	        value: function RadioGroup() {
+	            var _props = this.props,
+	                label = _props.label,
+	                required = _props.required,
+	                options = _props.options,
+	                input = _props.input,
+	                meta = _props.meta;
+
+	            var arr = [];
+	            for (var i = 0; i < options.length; i++) {
+	                arr.push(_react2.default.createElement(
+	                    'label',
+	                    { className: 'weui-cell weui-check__label' },
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'weui-cell__bd' },
+	                        _react2.default.createElement(
+	                            'p',
+	                            null,
+	                            options[i].name
+	                        )
+	                    ),
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'weui-cell__ft' },
+	                        _react2.default.createElement('input', { name: input.name, type: 'radio', className: 'weui-check',
+	                            value: options[i].name }),
+	                        _react2.default.createElement('span', { className: 'weui-icon-checked' })
+	                    )
+	                ));
+	            };
+	            return arr;
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            return _react2.default.createElement(
+	                'div',
+	                { className: 'weui-cells weui-cells_radio' },
+	                this.RadioGroup()
+	            );
+	        }
+	    }]);
+
+	    return RadioGroup;
+	}(_react.Component);
+
+	exports.default = RadioGroup;
 
 /***/ }
 /******/ ]);
