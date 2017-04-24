@@ -71224,11 +71224,9 @@
 
 	var _reduxForm = __webpack_require__(279);
 
-	__webpack_require__(534);
+	var _renderRcSelect = __webpack_require__(697);
 
-	var _index = __webpack_require__(536);
-
-	var _index2 = _interopRequireDefault(_index);
+	var _renderRcSelect2 = _interopRequireDefault(_renderRcSelect);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -71533,32 +71531,6 @@
 		);
 	};
 
-	var renderSelect = function renderSelect(_ref3) {
-		var input = _ref3.input,
-		    options = _ref3.options,
-		    tagSels = _ref3.tagSels,
-		    onTagSelect = _ref3.onTagSelect;
-
-		return _react2.default.createElement(
-			_index2.default,
-			{ value: tagSels, animation: null,
-				dropdownMenuStyle: { maxHeight: 120, overflow: 'auto' },
-				style: { width: '100%' },
-				multiple: true,
-				readOnly: true,
-				optionFilterProp: 'children',
-				optionLabelProp: 'title',
-				placeholder: '\u70B9\u51FB\u6B64\u5904\u6279\u91CF\u9009\u62E9\u5206\u7C7B\u8BBE\u7F6E\u5229\u6DA6',
-				notFoundContent: '\u6CA1\u6709\u8BE5\u5206\u7C7B\u6216\u8BE5\u5206\u7C7B\u4E0D\u652F\u6301\u8BBE\u7F6E\u5229\u6DA6',
-				onChange: function onChange(val) {
-					onTagSelect(null, val);
-				},
-				tokenSeparators: [' ', ',']
-			},
-			options
-		);
-	};
-
 	var SyncValidationForm = function SyncValidationForm(props) {
 		var handleSubmit = props.handleSubmit,
 		    pristine = props.pristine,
@@ -71569,12 +71541,12 @@
 
 		var options = [];
 		options.push(_react2.default.createElement(
-			_index.Option,
+			Option,
 			{ key: 1, title: 111111 },
 			'tesetest'
 		));
 		options.push(_react2.default.createElement(
-			_index.Option,
+			Option,
 			{ key: 2, title: 3333 },
 			'tesetes3333t'
 		));
@@ -71590,7 +71562,7 @@
 				component: renderLink, text: '\u8BA1\u6570', to: '/' }),
 			_react2.default.createElement(_reduxForm.Field, {
 				name: 'tagSels',
-				component: renderSelect, onTagSelect: onTagSelect, options: options, tagSels: initialValues.tagSels
+				component: _renderRcSelect2.default, onTagSelect: onTagSelect, options: options, tagSels: initialValues.tagSels
 			}),
 			_react2.default.createElement(
 				'div',
@@ -83837,6 +83809,60 @@
 	}(_react.Component);
 
 	exports.default = RadioGroup;
+
+/***/ },
+/* 697 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactDom = __webpack_require__(31);
+
+	var _reactDom2 = _interopRequireDefault(_reactDom);
+
+	__webpack_require__(534);
+
+	var _index = __webpack_require__(536);
+
+	var _index2 = _interopRequireDefault(_index);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var renderRcSelect = function renderRcSelect(_ref) {
+	    var input = _ref.input,
+	        options = _ref.options,
+	        tagSels = _ref.tagSels,
+	        onTagSelect = _ref.onTagSelect;
+
+	    return _react2.default.createElement(
+	        _index2.default,
+	        { value: tagSels, animation: null,
+	            dropdownMenuStyle: { maxHeight: 120, overflow: 'auto' },
+	            style: { width: '100%' },
+	            multiple: true,
+	            readOnly: true,
+	            optionFilterProp: 'children',
+	            optionLabelProp: 'title',
+	            placeholder: '\u70B9\u51FB\u6B64\u5904\u6279\u91CF\u9009\u62E9\u5206\u7C7B\u8BBE\u7F6E\u5229\u6DA6',
+	            notFoundContent: '\u6CA1\u6709\u8BE5\u5206\u7C7B\u6216\u8BE5\u5206\u7C7B\u4E0D\u652F\u6301\u8BBE\u7F6E\u5229\u6DA6',
+	            onChange: function onChange(val) {
+	                onTagSelect(null, val);
+	            },
+	            tokenSeparators: [' ', ',']
+	        },
+	        options
+	    );
+	};
+
+	exports.default = renderRcSelect;
 
 /***/ }
 /******/ ]);

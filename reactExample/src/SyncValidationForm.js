@@ -20,10 +20,9 @@ import {
 	reduxForm
 } from 'redux-form'
 
-import 'rc-select/assets/index.css';
-import Select, {
-    Option
-  } from 'rc-select/lib/index';
+ 
+
+import renderRcSelect from './webcomponent/renderRcSelect'
 
 const validate = values => {
 	const errors = {}
@@ -209,29 +208,7 @@ const renderLink = ({
 	<Link {...input} to={to} className={className}>{text}</Link>
 
 
-const renderSelect = ({
-		input,
-		options,
-		tagSels,
-		onTagSelect
-	})=> { 
-	return (<Select value={tagSels} animation={null} 
-            dropdownMenuStyle={{maxHeight:120,overflow: 'auto'}} 
-            style={{ width: '100%' }}
-            multiple={true} 
-            readOnly={true}
-            optionFilterProp="children"
-            optionLabelProp="title" 
-            placeholder="点击此处批量选择分类设置利润"
-            notFoundContent="没有该分类或该分类不支持设置利润"
-            onChange={(val)=>{ 
-                onTagSelect(null,val)
-            }}  
-            tokenSeparators={[' ', ',']} 
-          >
-            {options}
-          </Select>)
-}
+ 
 
 
 const SyncValidationForm = (props) => {
@@ -261,7 +238,7 @@ const SyncValidationForm = (props) => {
 	          component={renderLink} text='计数' to="/"/>
 	      <Field
 	          name="tagSels"
-	          component={renderSelect} onTagSelect={onTagSelect} options={options} tagSels={initialValues.tagSels} 
+	          component={renderRcSelect} onTagSelect={onTagSelect} options={options} tagSels={initialValues.tagSels} 
 	            />
 	      <div className='weui-flex'>
 	      	<div className="weui-flex__item">
