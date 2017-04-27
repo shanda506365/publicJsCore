@@ -39,11 +39,11 @@ class Test extends Component {
 	shouldComponentUpdate(nextProps, nextState) {
 		const thisProps = this.props || {},
 			thisState = this.state || {};
-		const map1 = fromJS(thisProps['counterReducer'].SyncValidationFormData)
-		const map2 = fromJS(nextProps['counterReducer'].SyncValidationFormData)
+		const map1 = fromJS(thisProps['counterReducer'].count)
+		const map2 = fromJS(nextProps['counterReducer'].count)
 
 		console.log('shouldComponentUpdate', map1, map2, is(map1, map2))
-		return true
+		return !is(map1, map2)
 	}
 	render() {
 		const {
@@ -55,28 +55,27 @@ class Test extends Component {
 				buttonText
 			}
 		} = this.props
-		console.log('Test', this.props)
+		console.log('Test==', this.props)
 		let liDom = []
 		console.log(mData)
 		$.each(mData.data, function(ix, item) {
-				liDom.push( < li className = 'children'
+				liDom.push( <li className = 'children'
 					onClick = {
 						(e) => {
 							console.log($(e.target).width())
 						}
 					} > {
 						item.name
-					} < /li>)
+					} </li>)
 				})
-			// for (let tt of mData.data) {
-
+			//for (let tt of mData.data) { 
 			// }; 
 			return (
 				<div><h4>TEST111 {count}  {title}</h4>
 			    <ul className='rongqi' onClick={()=>{$('.rongqi').scrollLeft($('.rongqi').scrollLeft()+50)}}>
 			    	   {liDom}
 			    </ul>
-		 
+		  <input type="text"/>
 			   
 				<div className="weui-flex">
 					<div className="weui-flex__item">

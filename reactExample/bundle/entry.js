@@ -70497,11 +70497,11 @@
 			value: function shouldComponentUpdate(nextProps, nextState) {
 				var thisProps = this.props || {},
 				    thisState = this.state || {};
-				var map1 = (0, _immutable.fromJS)(thisProps['counterReducer'].SyncValidationFormData);
-				var map2 = (0, _immutable.fromJS)(nextProps['counterReducer'].SyncValidationFormData);
+				var map1 = (0, _immutable.fromJS)(thisProps['counterReducer'].count);
+				var map2 = (0, _immutable.fromJS)(nextProps['counterReducer'].count);
 
 				console.log('shouldComponentUpdate', map1, map2, (0, _immutable.is)(map1, map2));
-				return true;
+				return !(0, _immutable.is)(map1, map2);
 			}
 		}, {
 			key: 'render',
@@ -70514,7 +70514,7 @@
 				    title = _props$counterReducer.title,
 				    buttonText = _props$counterReducer.buttonText;
 
-				console.log('Test', this.props);
+				console.log('Test==', this.props);
 				var liDom = [];
 				console.log(_mockData.mData);
 				$.each(_mockData.mData.data, function (ix, item) {
@@ -70529,8 +70529,7 @@
 						' '
 					));
 				});
-				// for (let tt of mData.data) {
-
+				//for (let tt of mData.data) { 
 				// }; 
 				return _react2.default.createElement(
 					'div',
@@ -70550,6 +70549,7 @@
 							} },
 						liDom
 					),
+					_react2.default.createElement('input', { type: 'text' }),
 					_react2.default.createElement(
 						'div',
 						{ className: 'weui-flex' },
@@ -70737,8 +70737,8 @@
 				var map1 = (0, _immutable.Map)(thisProps['counterReducer'].Quote);
 				var map2 = (0, _immutable.Map)(nextProps['counterReducer'].Quote);
 
-				//console.log('shouldComponentUpdate', is(map1, map2))
-				return true;
+				console.log('shouldComponentUpdate', (0, _immutable.is)(map1, map2));
+				return !(0, _immutable.is)(map1, map2);
 			}
 		}, {
 			key: 'componentDidMount',
