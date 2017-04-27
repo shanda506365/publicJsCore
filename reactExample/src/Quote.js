@@ -31,10 +31,21 @@ import common, {
 	Ajax,
 	API
 } from './lib/common'
-
+ import { 
+   Map, is
+ } from 'immutable'
 class Quote extends Component {
 	contextTypes: {
 		router: React.PropTypes.object
+	}
+	shouldComponentUpdate(nextProps, nextState) {
+		const thisProps = this.props || {},
+			thisState = this.state || {};
+		const map1 = Map(thisProps['counterReducer'].Quote)
+		const map2 = Map(nextProps['counterReducer'].Quote)
+	 
+		//console.log('shouldComponentUpdate', is(map1, map2))
+		return true
 	}
 	componentDidMount() {
 		const {
@@ -55,14 +66,14 @@ class Quote extends Component {
 			doneFun: function(msg) {
 				let data = JSON.parse(msg)
 				console.log('API.login', data)
-				if (data.suc) { 
+				if (data.suc) {
 					onTabbarClick(null, 2)
-				} else { 
-					setTimeout(function(){
+				} else {
+					setTimeout(function() {
 						onPro_stateChange('Rejected')
-					},1)
-					
-				} 
+					}, 1)
+
+				}
 			},
 			failFun: function(jqXHR, textStatus) {
 
@@ -137,10 +148,10 @@ class Quote extends Component {
 			{pullDiv}Page 4<Link className='weui-btn weui-btn_primary' to="/">消息计数{param.count}</Link></div>)
 	}
 	render() {
-		const { 
+		const {
 			onTabbarClick,
 			onPro_stateChange,
-			counterReducer:{
+			counterReducer: {
 				count
 			}
 		} = this.props, me = this;
@@ -155,7 +166,7 @@ class Quote extends Component {
 			onPro_stateChange
 		})
 
-		
+
 		return (
 			<div className='rc_quote weui-tab' onTouchMove={()=>{console.log('onTouchMove')}}> 
 				<div className="weui-tab__panel">

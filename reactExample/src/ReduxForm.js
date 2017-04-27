@@ -26,10 +26,23 @@ import {
 import SyncValidationForm from './SyncValidationForm';
 import SimpleForm from './SimpleForm';
 
+ import { 
+   fromJS,
+   Map, is
+ } from 'immutable'
+
 
 class ReduxForm extends Component {
   contextTypes: {
     router: React.PropTypes.object
+  }
+  shouldComponentUpdate(nextProps, nextState) {
+    const thisProps = this.props || {}, thisState = this.state || {}; 
+    const map1 = fromJS(thisProps['counterReducer'].SimpleFormData)
+    const map2 = fromJS(nextProps['counterReducer'].SimpleFormData)
+    console.log('shouldComponentUpdate',is(map1, map2))
+   
+    return !is(map1, map2)
   }
   render() {
     console.log('ReduxForm===', this.props)

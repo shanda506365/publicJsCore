@@ -3,9 +3,9 @@ import React, {
 	PropTypes
 } from 'react'
 import ReactDOM from 'react-dom'
-import { 
-  connect
-} from 'react-redux' 
+import {
+	connect
+} from 'react-redux'
 import {
 	Router,
 	Route,
@@ -15,40 +15,64 @@ import {
 	IndexLink
 } from 'react-router'
 
-import {mapStateToProps_Test} from './lib/MapStateToProps'
-import {mapDispatchToProps_Test} from './lib/MapDispatchToProps' 
+import {
+	mapStateToProps_Test
+} from './lib/MapStateToProps'
+import {
+	mapDispatchToProps_Test
+} from './lib/MapDispatchToProps'
 
 import '!style!css!less!../less/test.less'
 
-import {mData} from './mockData/mockData'
-
+import {
+	mData
+} from './mockData/mockData'
+import { 
+	Map,
+	is,
+	fromJS
+} from 'immutable'
 class Test extends Component {
 	contextTypes: {
 		router: React.PropTypes.object
-	} 
+	}
+	shouldComponentUpdate(nextProps, nextState) {
+		const thisProps = this.props || {},
+			thisState = this.state || {};
+		const map1 = fromJS(thisProps['counterReducer'].SyncValidationFormData)
+		const map2 = fromJS(nextProps['counterReducer'].SyncValidationFormData)
+
+		console.log('shouldComponentUpdate', map1, map2, is(map1, map2))
+		return true
+	}
 	render() {
-		 const { 
-		      onIncreaseTestClick,
-		      onPro_stateChange,
-		      counterReducer:{
-			      count,
-			      title, 
-			      buttonText 
-			    }
-		    } = this.props
-		console.log('Test',this.props)
-		let liDom=[] 
+		const {
+			onIncreaseTestClick,
+			onPro_stateChange,
+			counterReducer: {
+				count,
+				title,
+				buttonText
+			}
+		} = this.props
+		console.log('Test', this.props)
+		let liDom = []
 		console.log(mData)
-		$.each(mData.data,function(ix,item){
-			liDom.push(<li className='children' onClick={(e)=>{
-			    		console.log($(e.target).width())
-			    	}}>{item.name}</li>)
-		})
-		// for (let tt of mData.data) {
-		   
-		// }; 
-		return (
-			<div><h4>TEST111 {count}  {title}</h4>
+		$.each(mData.data, function(ix, item) {
+				liDom.push( < li className = 'children'
+					onClick = {
+						(e) => {
+							console.log($(e.target).width())
+						}
+					} > {
+						item.name
+					} < /li>)
+				})
+			// for (let tt of mData.data) {
+
+			// }; 
+			return (
+				<div><h4>TEST111 {count}  {title}</h4>
 			    <ul className='rongqi' onClick={()=>{$('.rongqi').scrollLeft($('.rongqi').scrollLeft()+50)}}>
 			    	   {liDom}
 			    </ul>
@@ -82,13 +106,15 @@ class Test extends Component {
 				</div>
 				
 			</div>
-		);
+			);
+		}
 	}
-}
-const con_Test = connect(
-  mapStateToProps_Test,
-  mapDispatchToProps_Test
-)(Test)
+	const con_Test = connect(
+		mapStateToProps_Test,
+		mapDispatchToProps_Test
+	)(Test)
 
-export {Test as Test,con_Test as con_Test}
-export default con_Test
+	export {
+		Test as Test, con_Test as con_Test
+	}
+	export default con_Test
