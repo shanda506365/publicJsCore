@@ -40,9 +40,11 @@ class ReduxForm extends Component {
     const thisProps = this.props || {}, thisState = this.state || {}; 
     const map1 = fromJS(thisProps['counterReducer'].SimpleFormData)
     const map2 = fromJS(nextProps['counterReducer'].SimpleFormData)
-    console.log('shouldComponentUpdate',is(map1, map2))
+    const map3 = fromJS(thisProps['counterReducer'].SyncValidationFormData)
+    const map4 = fromJS(nextProps['counterReducer'].SyncValidationFormData)
+    console.log('shouldComponentUpdate',is(map1, map2),!is(map3, map4))
 
-    return !is(map1, map2)
+    return !is(map1, map2)|| !is(map3, map4) 
   }
   render() {
     console.log('ReduxForm===', this.props)

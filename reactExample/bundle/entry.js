@@ -71174,9 +71174,11 @@
 	          thisState = this.state || {};
 	      var map1 = (0, _immutable.fromJS)(thisProps['counterReducer'].SimpleFormData);
 	      var map2 = (0, _immutable.fromJS)(nextProps['counterReducer'].SimpleFormData);
-	      console.log('shouldComponentUpdate', (0, _immutable.is)(map1, map2));
+	      var map3 = (0, _immutable.fromJS)(thisProps['counterReducer'].SyncValidationFormData);
+	      var map4 = (0, _immutable.fromJS)(nextProps['counterReducer'].SyncValidationFormData);
+	      console.log('shouldComponentUpdate', (0, _immutable.is)(map1, map2), !(0, _immutable.is)(map3, map4));
 
-	      return !(0, _immutable.is)(map1, map2);
+	      return !(0, _immutable.is)(map1, map2) || !(0, _immutable.is)(map3, map4);
 	    }
 	  }, {
 	    key: 'render',
