@@ -41,7 +41,7 @@ class ReduxForm extends Component {
     const map1 = fromJS(thisProps['counterReducer'].SimpleFormData)
     const map2 = fromJS(nextProps['counterReducer'].SimpleFormData)
     console.log('shouldComponentUpdate',is(map1, map2))
-   
+
     return !is(map1, map2)
   }
   render() {
@@ -66,13 +66,13 @@ class ReduxForm extends Component {
                             })}
         }>消息计数</button>
         <SyncValidationForm onSubmit={values =>{
-          onFormSubmit(null,values,'Rejected')
+          onFormSubmit(null,values,'Rejected','SyncValidationFormData')
         }}   onTagSelect={onTagSelect} initialValues={SyncValidationFormData}/>
         <div>
           <button type="button" className='weui-btn weui-btn_default' onClick={() => onSimpleFormLoad(SimpleFormData)}>Load Account</button>
         </div>
         <SimpleForm onSubmit={values =>{
-          onFormSubmit(null,values,'Rejected')
+          onFormSubmit(null,values,'Rejected','SimpleFormData')
         }} onSimpleFormLoad={onSimpleFormLoad} enableReinitialize={true} 
          initialValues={SimpleFormData}
         />

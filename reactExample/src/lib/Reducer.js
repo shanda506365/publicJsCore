@@ -70,7 +70,7 @@
        return rObj
      case 'formSubmit':
        console.log('formSubmit', action)
-       rObj = tstate.set('pro_state', action.state);
+       rObj = tstate.set('pro_state', action.state).mergeDeep({[action.formDataName]:action.values});
        return rObj
      case 'simpleFormLoad':
        console.log('simpleFormLoad', action)

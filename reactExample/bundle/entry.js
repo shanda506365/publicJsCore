@@ -39029,6 +39029,12 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+	//import merge from 'merge'
+	// import deepAssign from 'deep-assign'
+	// 
+
+
 	var GlobalState = (0, _immutable.fromJS)({
 	  count: 0,
 	  title: '消息',
@@ -39058,10 +39064,6 @@
 	  }
 	});
 	// Reducer
-
-	//import merge from 'merge'
-	// import deepAssign from 'deep-assign'
-	// 
 	function counterReducer() {
 	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : GlobalState;
 	  var action = arguments[1];
@@ -39099,7 +39101,7 @@
 	      return rObj;
 	    case 'formSubmit':
 	      console.log('formSubmit', action);
-	      rObj = tstate.set('pro_state', action.state);
+	      rObj = tstate.set('pro_state', action.state).mergeDeep(_defineProperty({}, action.formDataName, action.values));
 	      return rObj;
 	    case 'simpleFormLoad':
 	      console.log('simpleFormLoad', action);
@@ -54611,11 +54613,12 @@
 	  },
 	  mapDispatchToProps_ReduxForm: function mapDispatchToProps_ReduxForm(dispatch, ownProps) {
 	    return (0, _immutable.fromJS)({
-	      onFormSubmit: function onFormSubmit(e, values, state) {
+	      onFormSubmit: function onFormSubmit(e, values, state, formDataName) {
 	        return dispatch((0, _immutable.fromJS)(_Action2.default.formSubmitAction).mergeDeep({
 	          e: e,
 	          values: values,
-	          state: state
+	          state: state,
+	          formDataName: formDataName
 	        }).toJSON());
 	      },
 	      onSimpleFormLoad: function onSimpleFormLoad() {
@@ -71202,7 +71205,7 @@
 	          '\u6D88\u606F\u8BA1\u6570'
 	        ),
 	        _react2.default.createElement(_SyncValidationForm2.default, { onSubmit: function onSubmit(values) {
-	            onFormSubmit(null, values, 'Rejected');
+	            onFormSubmit(null, values, 'Rejected', 'SyncValidationFormData');
 	          }, onTagSelect: onTagSelect, initialValues: SyncValidationFormData }),
 	        _react2.default.createElement(
 	          'div',
@@ -71216,7 +71219,7 @@
 	          )
 	        ),
 	        _react2.default.createElement(_SimpleForm2.default, { onSubmit: function onSubmit(values) {
-	            onFormSubmit(null, values, 'Rejected');
+	            onFormSubmit(null, values, 'Rejected', 'SimpleFormData');
 	          }, onSimpleFormLoad: onSimpleFormLoad, enableReinitialize: true,
 	          initialValues: SimpleFormData
 	        })

@@ -44,10 +44,11 @@
  	},
  	mapDispatchToProps_ReduxForm: function(dispatch, ownProps) {
  		return fromJS({
- 			onFormSubmit: (e, values, state) => dispatch(fromJS(Action.formSubmitAction).mergeDeep({
+ 			onFormSubmit: (e, values, state,formDataName) => dispatch(fromJS(Action.formSubmitAction).mergeDeep({
  				e,
  				values,
- 				state
+ 				state,
+ 				formDataName
  			}).toJSON()),
  			onSimpleFormLoad: () => dispatch(Action.simpleFormLoadAction),
  			onTagSelect:(e,tagSels)=>dispatch(fromJS(Action.tagSelectAction).mergeDeep({
