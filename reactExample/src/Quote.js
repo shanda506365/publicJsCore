@@ -32,7 +32,7 @@ import common, {
 	API
 } from './lib/common'
  import { 
-   Map, is
+   fromJS, is
  } from 'immutable'
 class Quote extends Component {
 	contextTypes: {
@@ -41,8 +41,8 @@ class Quote extends Component {
 	shouldComponentUpdate(nextProps, nextState) {
 		const thisProps = this.props || {},
 			thisState = this.state || {};
-		const map1 = Map(thisProps['counterReducer'].Quote)
-		const map2 = Map(nextProps['counterReducer'].Quote)
+		const map1 = fromJS(thisProps['counterReducer'].Quote)
+		const map2 = fromJS(nextProps['counterReducer'].Quote)
 	 
 		console.log('shouldComponentUpdate', is(map1, map2))
 		return !is(map1, map2)

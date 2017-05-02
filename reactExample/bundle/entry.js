@@ -70734,8 +70734,8 @@
 			value: function shouldComponentUpdate(nextProps, nextState) {
 				var thisProps = this.props || {},
 				    thisState = this.state || {};
-				var map1 = (0, _immutable.Map)(thisProps['counterReducer'].Quote);
-				var map2 = (0, _immutable.Map)(nextProps['counterReducer'].Quote);
+				var map1 = (0, _immutable.fromJS)(thisProps['counterReducer'].Quote);
+				var map2 = (0, _immutable.fromJS)(nextProps['counterReducer'].Quote);
 
 				console.log('shouldComponentUpdate', (0, _immutable.is)(map1, map2));
 				return !(0, _immutable.is)(map1, map2);

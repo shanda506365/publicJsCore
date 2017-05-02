@@ -8,6 +8,7 @@
     "email": "6710582@qq.com"
   },
   "dependencies": {
+    "IndexDBHelper": "git+https://git@github.com/EnzoLynn/IndexDBHelper.git",
     "babel-core": "^6.17.0",
     "babel-loader": "^6.2.5",
     "babel-preset-es2015": "^6.16.0",
