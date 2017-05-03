@@ -78,7 +78,8 @@
        return rObj
      case 'tagSelect':
        console.log('tagSelect', action)
-       rObj= tstate.setIn(['SyncValidationFormData','tagSels'],action.tagSels)  
+       rObj= tstate.setIn(['SyncValidationFormData','tagSels'],action.tagSels) 
+       console.log('tagSelect', rObj.getIn(['SyncValidationFormData','tagSels']))
        return rObj
      default:
        console.log(state)

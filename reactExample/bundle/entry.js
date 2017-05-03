@@ -39110,6 +39110,7 @@
 	    case 'tagSelect':
 	      console.log('tagSelect', action);
 	      rObj = tstate.setIn(['SyncValidationFormData', 'tagSels'], action.tagSels);
+	      console.log('tagSelect', rObj.getIn(['SyncValidationFormData', 'tagSels']));
 	      return rObj;
 	    default:
 	      console.log(state);
@@ -71373,6 +71374,7 @@
 		    onTagSelect = props.onTagSelect,
 		    initialValues = props.initialValues;
 
+
 		var options = [];
 		options.push(_react2.default.createElement(
 			Option,
@@ -71396,8 +71398,17 @@
 				component: renderLink, text: '\u8BA1\u6570', to: '/' }),
 			_react2.default.createElement(_reduxForm.Field, {
 				name: 'tagSels',
-				component: _renderRcSelect2.default, onTagSelect: onTagSelect, options: options, tagSels: initialValues.tagSels
-			}),
+				component: _renderRcSelect2.default, onTagSelect: onTagSelect, options: options,
+				tagSels: initialValues.tagSels, animation: null,
+				dropdownMenuStyle: { maxHeight: 120, overflow: 'auto' },
+				style: { width: '100%' },
+				multiple: true,
+				readOnly: true,
+				optionFilterProp: 'children',
+				optionLabelProp: 'title',
+				placeholder: '\u70B9\u51FB\u6B64\u5904\u6279\u91CF\u9009\u62E9\u5206\u7C7B\u8BBE\u7F6E\u5229\u6DA6',
+				notFoundContent: '\u6CA1\u6709\u8BE5\u5206\u7C7B\u6216\u8BE5\u5206\u7C7B\u4E0D\u652F\u6301\u8BBE\u7F6E\u5229\u6DA6',
+				tokenSeparators: [' ', ','] }),
 			_react2.default.createElement(
 				'div',
 				{ className: 'weui-flex' },
@@ -71779,6 +71790,10 @@
 	    value: true
 	});
 
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
 	var _react = __webpack_require__(2);
 
 	var _react2 = _interopRequireDefault(_react);
@@ -71795,31 +71810,56 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var renderRcSelect = function renderRcSelect(_ref) {
-	    var input = _ref.input,
-	        options = _ref.options,
-	        tagSels = _ref.tagSels,
-	        onTagSelect = _ref.onTagSelect;
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-	    return _react2.default.createElement(
-	        _index2.default,
-	        { value: tagSels, animation: null,
-	            dropdownMenuStyle: { maxHeight: 120, overflow: 'auto' },
-	            style: { width: '100%' },
-	            multiple: true,
-	            readOnly: true,
-	            optionFilterProp: 'children',
-	            optionLabelProp: 'title',
-	            placeholder: '\u70B9\u51FB\u6B64\u5904\u6279\u91CF\u9009\u62E9\u5206\u7C7B\u8BBE\u7F6E\u5229\u6DA6',
-	            notFoundContent: '\u6CA1\u6709\u8BE5\u5206\u7C7B\u6216\u8BE5\u5206\u7C7B\u4E0D\u652F\u6301\u8BBE\u7F6E\u5229\u6DA6',
-	            onChange: function onChange(val) {
-	                onTagSelect(null, val);
-	            },
-	            tokenSeparators: [' ', ',']
-	        },
-	        options
-	    );
-	};
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var renderRcSelect = function (_Component) {
+	    _inherits(renderRcSelect, _Component);
+
+	    function renderRcSelect() {
+	        _classCallCheck(this, renderRcSelect);
+
+	        return _possibleConstructorReturn(this, (renderRcSelect.__proto__ || Object.getPrototypeOf(renderRcSelect)).apply(this, arguments));
+	    }
+
+	    _createClass(renderRcSelect, [{
+	        key: 'render',
+	        value: function render() {
+	            var _props = this.props,
+	                input = _props.input,
+	                options = _props.options,
+	                onTagSelect = _props.onTagSelect,
+	                tagSels = _props.tagSels;
+
+	            return _react2.default.createElement(
+	                _index2.default,
+	                _extends({}, this.props, { onChange: function onChange(val) {
+	                        onTagSelect(null, val);
+	                    },
+	                    value: tagSels
+	                }),
+	                options
+	            );
+	        }
+	    }]);
+
+	    return renderRcSelect;
+	}(_react.Component);
+	// const renderRcSelect = ({
+	//     input,
+	//     options,
+	//     tagSels,
+	//     onTagSelect
+	// }) => {
+
+	//     return (<Select {...input} 
+	//           >
+	//             {options}
+	//           </Select>)
+	// }
 
 	exports.default = renderRcSelect;
 
