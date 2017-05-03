@@ -42,7 +42,7 @@ class Test extends Component {
 		const map1 = fromJS(thisProps['counterReducer'].count)
 		const map2 = fromJS(nextProps['counterReducer'].count)
 
-		console.log('shouldComponentUpdate', map1, map2, is(map1, map2))
+		console.log('shouldComponentUpdate', map1, map2, !is(map1, map2))
 		return !is(map1, map2)
 	}
 	render() {

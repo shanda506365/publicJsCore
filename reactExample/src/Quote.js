@@ -44,7 +44,7 @@ class Quote extends Component {
 		const map1 = fromJS(thisProps['counterReducer'].Quote)
 		const map2 = fromJS(nextProps['counterReducer'].Quote)
 	 
-		console.log('shouldComponentUpdate', is(map1, map2))
+		console.log('shouldComponentUpdate', !is(map1, map2))
 		return !is(map1, map2)
 	}
 	componentDidMount() {

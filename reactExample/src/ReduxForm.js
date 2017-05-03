@@ -26,38 +26,80 @@ import {
 import SyncValidationForm from './SyncValidationForm';
 import SimpleForm from './SimpleForm';
 
- import { 
-   fromJS,
-   Map, is
- } from 'immutable'
+import {
+  fromJS,
+  Map,
+  is
+} from 'immutable'
 
+// import IndexDBHelper, {
+//   Message
+// } from 'IndexDBHelper'
 
 class ReduxForm extends Component {
   contextTypes: {
     router: React.PropTypes.object
   }
   shouldComponentUpdate(nextProps, nextState) {
-    const thisProps = this.props || {}, thisState = this.state || {}; 
+    const thisProps = this.props || {},
+      thisState = this.state || {};
     const map1 = fromJS(thisProps['counterReducer'].SimpleFormData)
     const map2 = fromJS(nextProps['counterReducer'].SimpleFormData)
     const map3 = fromJS(thisProps['counterReducer'].SyncValidationFormData)
     const map4 = fromJS(nextProps['counterReducer'].SyncValidationFormData)
-    console.log('shouldComponentUpdate',is(map1, map2),!is(map3, map4))
+    console.log('shouldComponentUpdate', !is(map1, map2), !is(map3, map4))
 
-    return !is(map1, map2)|| !is(map3, map4) 
+    return !is(map1, map2) || !is(map3, map4)
   }
   render() {
+    // var dbHelper = new IndexDBHelper()
+    // dbHelper.openDatabase('test', 'table1', false, function(omes) {
+    //   if (omes.success) {
+    //     dbHelper.find('table1', {
+    //       content: '1'
+    //     }, true, function(mes) {
+    //       if (mes.success) { 
+    //         dbHelper.add('table1', [{
+    //           content: '1222'
+    //         }], function(ames) {
+    //           console.log('DbHelper', ames)
+    //           if (ames.success) {
+    //             dbHelper.find('table1', false, false, function(mes) {
+    //               if (mes.success) {
+    //                 console.log('DbHelper', mes.result)
+    //               };
+    //             });
+    //           };
+    //         });
+    //       };
+    //     });
+    //   };
+    // });
+    // setTimeout(function() {
+    //   dbHelper.add('table1', [{
+    //     content: '1222'
+    //   }], function(ames) { 
+    //     if (ames.success) {
+    //       dbHelper.find('table1', false, false, function(mes) {
+    //         if (mes.success) {
+    //           console.log('DbHelper', mes.result)
+    //         };
+    //       });
+    //     };
+    //   });
+    // }, 2000)
+
     console.log('ReduxForm===', this.props)
     const {
       onFormSubmit,
       onSimpleFormLoad,
       onTagSelect,
-      counterReducer:{
+      counterReducer: {
         SimpleFormData,
         SyncValidationFormData
       }
     } = this.props,
-    me = this;
+      me = this;
 
 
     return (

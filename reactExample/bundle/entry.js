@@ -70500,7 +70500,7 @@
 				var map1 = (0, _immutable.fromJS)(thisProps['counterReducer'].count);
 				var map2 = (0, _immutable.fromJS)(nextProps['counterReducer'].count);
 
-				console.log('shouldComponentUpdate', map1, map2, (0, _immutable.is)(map1, map2));
+				console.log('shouldComponentUpdate', map1, map2, !(0, _immutable.is)(map1, map2));
 				return !(0, _immutable.is)(map1, map2);
 			}
 		}, {
@@ -70737,7 +70737,7 @@
 				var map1 = (0, _immutable.fromJS)(thisProps['counterReducer'].Quote);
 				var map2 = (0, _immutable.fromJS)(nextProps['counterReducer'].Quote);
 
-				console.log('shouldComponentUpdate', (0, _immutable.is)(map1, map2));
+				console.log('shouldComponentUpdate', !(0, _immutable.is)(map1, map2));
 				return !(0, _immutable.is)(map1, map2);
 			}
 		}, {
@@ -71158,6 +71158,10 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+	// import IndexDBHelper, {
+	//   Message
+	// } from 'IndexDBHelper'
+
 	var ReduxForm = function (_Component) {
 	  _inherits(ReduxForm, _Component);
 
@@ -71176,13 +71180,50 @@
 	      var map2 = (0, _immutable.fromJS)(nextProps['counterReducer'].SimpleFormData);
 	      var map3 = (0, _immutable.fromJS)(thisProps['counterReducer'].SyncValidationFormData);
 	      var map4 = (0, _immutable.fromJS)(nextProps['counterReducer'].SyncValidationFormData);
-	      console.log('shouldComponentUpdate', (0, _immutable.is)(map1, map2), !(0, _immutable.is)(map3, map4));
+	      console.log('shouldComponentUpdate', !(0, _immutable.is)(map1, map2), !(0, _immutable.is)(map3, map4));
 
 	      return !(0, _immutable.is)(map1, map2) || !(0, _immutable.is)(map3, map4);
 	    }
 	  }, {
 	    key: 'render',
 	    value: function render() {
+	      // var dbHelper = new IndexDBHelper()
+	      // dbHelper.openDatabase('test', 'table1', false, function(omes) {
+	      //   if (omes.success) {
+	      //     dbHelper.find('table1', {
+	      //       content: '1'
+	      //     }, true, function(mes) {
+	      //       if (mes.success) { 
+	      //         dbHelper.add('table1', [{
+	      //           content: '1222'
+	      //         }], function(ames) {
+	      //           console.log('DbHelper', ames)
+	      //           if (ames.success) {
+	      //             dbHelper.find('table1', false, false, function(mes) {
+	      //               if (mes.success) {
+	      //                 console.log('DbHelper', mes.result)
+	      //               };
+	      //             });
+	      //           };
+	      //         });
+	      //       };
+	      //     });
+	      //   };
+	      // });
+	      // setTimeout(function() {
+	      //   dbHelper.add('table1', [{
+	      //     content: '1222'
+	      //   }], function(ames) { 
+	      //     if (ames.success) {
+	      //       dbHelper.find('table1', false, false, function(mes) {
+	      //         if (mes.success) {
+	      //           console.log('DbHelper', mes.result)
+	      //         };
+	      //       });
+	      //     };
+	      //   });
+	      // }, 2000)
+
 	      console.log('ReduxForm===', this.props);
 	      var _props = this.props,
 	          onFormSubmit = _props.onFormSubmit,
