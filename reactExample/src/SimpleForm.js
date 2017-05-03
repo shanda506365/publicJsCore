@@ -31,13 +31,13 @@ let SimpleForm = (props) => {
   return (
     <form onSubmit={handleSubmit} className='weui-cells weui-cells-form'>
       <div className="weui-cells weui-cells_checkbox">
-        <Field name="checkbox1" component={renderField}  type="checkbox" label='item1' val='1'/>
-        <Field name="checkbox1" component={renderField}  type="checkbox" label='item2' val='2'/>
+        <Field name="checkbox1" component={renderField} value={null}  type="checkbox" label='item1' val='1'/>
+        <Field name="checkbox1" component={renderField} value={null}  type="checkbox" label='item2' val='2'/>
       </div>
          
       <Field name="roles" component={CheckboxGroup} options={optionsData.data} /> 
       <div className="weui-cells weui-cells_radio">
-        <Field name="radio1" component={renderField}  type="radio" label='item1' value='1'/>
+        <Field name="radio1" component={renderField}  type="radio" label='item1' value='3'/>
         <Field name="radio1" component={renderField}  type="radio" label='item2' value='2'/>
        </div>
       <Field name="radios2" component={RadioGroup} options={optionsData.data} /> 

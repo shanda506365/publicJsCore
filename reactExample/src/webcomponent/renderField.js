@@ -25,8 +25,7 @@ const renderField = ({
             <i className="weui-icon-warn"></i>
         </div>)
 	}
-	if (type == 'checkbox') {
-		console.log('checkbox', input)
+	if (type == 'checkbox') { 
 		return (<div className="weui-cells weui-cells_checkbox">
 		   <label className="weui-cell weui-check__label">
 		        <div className="weui-cell__hd">
@@ -61,8 +60,7 @@ const renderField = ({
 		            <span className="weui-icon-checked"></span>
 		        </div>
 		    </label>)
-	};
-
+	}; 
 	return (
 		<div>
 			<div className={cls}>

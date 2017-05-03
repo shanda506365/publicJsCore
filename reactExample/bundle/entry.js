@@ -71250,7 +71250,7 @@
 	        ),
 	        _react2.default.createElement(_SyncValidationForm2.default, { onSubmit: function onSubmit(values) {
 	            onFormSubmit(null, values, 'Rejected', 'SyncValidationFormData');
-	          }, onTagSelect: onTagSelect, enableReinitialize: true, initialValues: SyncValidationFormData }),
+	          }, onTagSelect: onTagSelect, enableReinitialize: false, initialValues: SyncValidationFormData }),
 	        _react2.default.createElement(
 	          'div',
 	          null,
@@ -71485,7 +71485,6 @@
 			));
 		}
 		if (type == 'checkbox') {
-			console.log('checkbox', input);
 			return _react2.default.createElement(
 				'div',
 				{ className: 'weui-cells weui-cells_checkbox' },
@@ -71543,7 +71542,6 @@
 				)
 			);
 		};
-
 		return _react2.default.createElement(
 			'div',
 			null,
@@ -83586,14 +83584,14 @@
 	    _react2.default.createElement(
 	      'div',
 	      { className: 'weui-cells weui-cells_checkbox' },
-	      _react2.default.createElement(_reduxForm.Field, { name: 'checkbox1', component: _renderField2.default, type: 'checkbox', label: 'item1', val: '1' }),
-	      _react2.default.createElement(_reduxForm.Field, { name: 'checkbox1', component: _renderField2.default, type: 'checkbox', label: 'item2', val: '2' })
+	      _react2.default.createElement(_reduxForm.Field, { name: 'checkbox1', component: _renderField2.default, value: null, type: 'checkbox', label: 'item1', val: '1' }),
+	      _react2.default.createElement(_reduxForm.Field, { name: 'checkbox1', component: _renderField2.default, value: null, type: 'checkbox', label: 'item2', val: '2' })
 	    ),
 	    _react2.default.createElement(_reduxForm.Field, { name: 'roles', component: _CheckboxGroup2.default, options: _mockData.optionsData.data }),
 	    _react2.default.createElement(
 	      'div',
 	      { className: 'weui-cells weui-cells_radio' },
-	      _react2.default.createElement(_reduxForm.Field, { name: 'radio1', component: _renderField2.default, type: 'radio', label: 'item1', value: '1' }),
+	      _react2.default.createElement(_reduxForm.Field, { name: 'radio1', component: _renderField2.default, type: 'radio', label: 'item1', value: '3' }),
 	      _react2.default.createElement(_reduxForm.Field, { name: 'radio1', component: _renderField2.default, type: 'radio', label: 'item2', value: '2' })
 	    ),
 	    _react2.default.createElement(_reduxForm.Field, { name: 'radios2', component: _RadioGroup2.default, options: _mockData.optionsData.data }),
