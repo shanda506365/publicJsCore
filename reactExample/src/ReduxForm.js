@@ -111,7 +111,7 @@ class ReduxForm extends Component {
         }>消息计数</button>
         <SyncValidationForm onSubmit={values =>{
           onFormSubmit(null,values,'Rejected','SyncValidationFormData')
-        }}   onTagSelect={onTagSelect} initialValues={SyncValidationFormData}/>
+        }}   onTagSelect={onTagSelect} enableReinitialize={true} initialValues={SyncValidationFormData}/>
         <div>
           <button type="button" className='weui-btn weui-btn_default' onClick={() => onSimpleFormLoad(SimpleFormData)}>Load Account</button>
         </div>

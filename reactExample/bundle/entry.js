@@ -71250,7 +71250,7 @@
 	        ),
 	        _react2.default.createElement(_SyncValidationForm2.default, { onSubmit: function onSubmit(values) {
 	            onFormSubmit(null, values, 'Rejected', 'SyncValidationFormData');
-	          }, onTagSelect: onTagSelect, initialValues: SyncValidationFormData }),
+	          }, onTagSelect: onTagSelect, enableReinitialize: true, initialValues: SyncValidationFormData }),
 	        _react2.default.createElement(
 	          'div',
 	          null,
