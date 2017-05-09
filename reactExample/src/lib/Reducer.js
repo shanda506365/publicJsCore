@@ -38,7 +38,7 @@
    // Reducer
  function counterReducer(state=GlobalState, action) { 
    const tstate =state; //JSON.parse(JSON.stringify(state));
-   console.log('statestate', state);
+   console.log('statestate', state.toJSON(),GlobalState.toJSON());
    let rObj;
    switch (action.type) {
      case 'increase':
@@ -89,5 +89,6 @@
 
 
  export {
-   counterReducer as counterReducer
+   counterReducer as counterReducer,
+   GlobalState 
  }
