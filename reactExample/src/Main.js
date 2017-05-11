@@ -36,7 +36,12 @@ import common, {
 
 import mockData from './mockData/mockData'
 
+import '!style!css!less!../node_modules/weui/src/style/weui.less'
+import "!style!css!less!../node_modules/jquery-weui/dist/css/jquery-weui.css"
 
+
+
+import Jweui from '../node_modules/jquery-weui/dist/js/jquery-weui'
 
 // React component
 class Main extends Component {

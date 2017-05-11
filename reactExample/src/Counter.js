@@ -22,12 +22,7 @@ import {
   mapDispatchToProps_Count
 } from './lib/MapDispatchToProps'
 
-import '!style!css!less!../node_modules/weui/src/style/weui.less'
-import "!style!css!less!../node_modules/jquery-weui/dist/css/jquery-weui.css"
 
-
-
-import Jweui from '../node_modules/jquery-weui/dist/js/jquery-weui'
 
 // import WeuiJs from 'weui.js'
 

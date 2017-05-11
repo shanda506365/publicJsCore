@@ -22,11 +22,9 @@ import {
 	mapDispatchToProps_Quote
 } from './lib/MapDispatchToProps'
 
-import 'weui'
+ 
 import '../css/iconfont.css'
-//import "!style!css!less!../node_modules/jquery-weui/dist/css/jquery-weui.css"
 
-//import Jweui from '../node_modules/jquery-weui/dist/js/jquery-weui'
 import common, {
 	Ajax,
 	API
