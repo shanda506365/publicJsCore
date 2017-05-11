@@ -9,7 +9,8 @@ module.exports = {
     },
     output: {
         path: __dirname + '/bundle',
-        filename: '[name].js'
+        publicPath:'/bundle/',
+        filename: '[name].js' 
     },
     module: {
         loaders: [{
@@ -40,29 +41,42 @@ module.exports = {
             }
         }),
         new CopyWebpackPlugin([
-          
+
             // // {output}/to/file.txt 
             // { from: 'from/file.txt', to: 'to/file.txt' },
-            
+
             // // {output}/to/directory/file.txt 
             // { from: 'from/file.txt', to: 'to/directory' },
- 
+
             // // Copy directory contents to {output}/ 
             // { from: 'from/directory' },
-            
+
             // // Copy directory contents to {output}/to/directory/ 
             // { from: 'from/directory', to: 'to/directory' },
-            
+
             // Copy glob results to /absolute/path/ 
-            { from: 'bundle/**/*', to: 'E:/publicJsCore/reactExample' },
-            { from: 'css/**/*', to: 'E:/publicJsCore/reactExample' },
-            { from: 'less/**/*', to: 'E:/publicJsCore/reactExample' },
-            { from: 'images/**/*', to: 'E:/publicJsCore/reactExample' },
-            { from: '*.*', to: 'E:/publicJsCore/reactExample' },
-            { from: 'src/**/*', to: 'E:/publicJsCore/reactExample' }
- 
-          
-           
+            {
+                from: 'bundle/**/*',
+                to: 'E:/publicJsCore/reactExample'
+            }, {
+                from: 'css/**/*',
+                to: 'E:/publicJsCore/reactExample'
+            }, {
+                from: 'less/**/*',
+                to: 'E:/publicJsCore/reactExample'
+            }, {
+                from: 'images/**/*',
+                to: 'E:/publicJsCore/reactExample'
+            }, {
+                from: '*.*',
+                to: 'E:/publicJsCore/reactExample'
+            }, {
+                from: 'src/**/*',
+                to: 'E:/publicJsCore/reactExample'
+            }
+
+
+
         ]),
         //  new uglifyJsPlugin({
         //      output: {

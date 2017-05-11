@@ -27,6 +27,8 @@ import {
 // import FastClick from '../node_modules/jquery-weui/dist/lib/fastclick'
 
 
+ 
+
 import common, {
   Ajax,
   API

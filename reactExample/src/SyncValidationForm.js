@@ -20,12 +20,13 @@ import {
 	reduxForm
 } from 'redux-form'
 
+import {
+	CheckboxGroup,
+	RadioGroup,
+	renderField
+} from 'RxFields' 
  
-import renderField from './webcomponent/renderField'
-import CheckboxGroup from './webcomponent/CheckboxGroup'
-import RadioGroup from './webcomponent/RadioGroup'
-import renderRcSelect from './webcomponent/renderRcSelect'
-
+import renderRcSelect from './webcomponent/renderRcSelect'  
 const validate = values => {
 	const errors = {}
 	if (!values.username) {
@@ -55,17 +56,15 @@ const warn = values => {
 	}
 	return warnings
 }
- 
+
 const renderLink = ({
 		input,
 		text,
 		to,
 		className
-	}) => 
+	}) =>
 	<Link {...input} to={to} className={className}>{text}</Link>
 
-
- 
 
 
 const SyncValidationForm = (props) => {
@@ -79,14 +78,22 @@ const SyncValidationForm = (props) => {
 	} = props
 
 
-	 let options = []
-	 options.push(<Option key={1}  title={111111}> 
-            {'tesetest'}
-          </Option>);
-	  options.push(<Option key={2}  title={3333}> 
-            {'tesetes3333t'}
-          </Option>);
-	console.log('SyncValidationForm',props)
+	var options = [{
+		key: 1,
+		title: 11111,
+		text: 'tesetest'
+	}, {
+		key: 2,
+		title: 3333,
+		text: 'tesetes3333t'
+	}]
+	// options.push(<Option key={1}  title={111111}> 
+ //            {'tesetest'}
+ //          </Option>);
+	// options.push(<Option key={2}  title={3333}> 
+ //            {'tesetes3333t'}
+ //          </Option>);
+	console.log('SyncValidationForm', props)
 	return (
 		<form onSubmit={handleSubmit} className='weui-cells weui-cells-form'>
 	      <Field name="username" type="text"  component={renderField} label="Username"/>
@@ -121,7 +128,7 @@ const SyncValidationForm = (props) => {
 	)
 }
 
- 
+
 export default reduxForm({
 	form: 'syncValidation', // a unique identifier for this form
 	validate, // <--- validation function given to redux-form

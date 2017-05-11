@@ -52,6 +52,7 @@ class ReduxForm extends Component {
     return !is(map1, map2) || !is(map3, map4)
   }
   render() {
+     
     // var dbHelper = new IndexDBHelper()
     // dbHelper.openDatabase('test', 'table1', false, function(omes) {
     //   if (omes.success) {
