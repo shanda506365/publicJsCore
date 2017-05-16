@@ -2,7 +2,7 @@
  //import merge from 'merge'
  // import deepAssign from 'deep-assign'
  // 
- import {  
+ import {
    fromJS,
    Map
  } from 'immutable'
@@ -25,24 +25,24 @@
        employed: true,
        favoriteColor: 'Blue',
        bio: 'Born to write amazing Redux code.',
-       radio1:'1',
-       checkbox1:['1'],
-       roles:[],
-       radios2:''
+       radio1: '1',
+       checkbox1: ['1'],
+       roles: [],
+       radios2: ''
      },
-     SyncValidationFormData:{
-        username:11,
-        tagSels:[]
+     SyncValidationFormData: {
+       username: 11,
+       tagSels: []
      }
    })
    // Reducer
- function counterReducer(state=GlobalState, action) { 
-   const tstate =state; //JSON.parse(JSON.stringify(state));
-   console.log('statestate', state.toJSON(),GlobalState.toJSON());
+ function counterReducer(state = GlobalState, action) {
+   const tstate = state; //JSON.parse(JSON.stringify(state));
+   console.log('statestate', state.toJSON(), GlobalState.toJSON());
    let rObj;
    switch (action.type) {
      case 'increase':
-       console.log('=====1111',tstate.get('Quote').get('tabIndex')) 
+       console.log('=====1111', tstate.get('Quote').get('tabIndex'))
        rObj = tstate.mergeDeep({
          count: tstate.get('count') + 1,
          title: '消息' + tstate.get('count')
@@ -53,33 +53,35 @@
        console.log('increaseTest', action.filter)
        rObj = tstate.mergeDeep({
          count: tstate.get('count') + 1,
-         title: '消息' + tstate.get('count') 
+         title: '消息' + tstate.get('count')
        });
        return rObj
      case 'navbarClick':
-       console.log('navbarClick',action)
-       rObj = tstate.set('tabIndex',action.index);
+       console.log('navbarClick', action)
+       rObj = tstate.set('tabIndex', action.index);
        return rObj
-     case 'quote_tabbarClick': 
-       rObj = tstate.setIn(['Quote','tabIndex'],action.index);
+     case 'quote_tabbarClick':
+       rObj = tstate.setIn(['Quote', 'tabIndex'], action.index);
        console.log('quote_tabbarClick', rObj)
        return rObj
      case 'pro_stateClick':
        console.log('pro_stateClick', action)
-       rObj = tstate.set('pro_state',action.state);
+       rObj = tstate.set('pro_state', action.state);
        return rObj
      case 'formSubmit':
        console.log('formSubmit', action)
-       rObj = tstate.set('pro_state', action.state).mergeDeep({[action.formDataName]:action.values});
+       rObj = tstate.set('pro_state', action.state).mergeDeep({
+         [action.formDataName]: action.values
+       });
        return rObj
      case 'simpleFormLoad':
        console.log('simpleFormLoad', action)
-       rObj= tstate.setIn(['SimpleFormData','lastName'],'count:' + tstate.get('count'))  
+       rObj = tstate.setIn(['SimpleFormData', 'lastName'], 'count:' + tstate.get('count'))
        return rObj
      case 'tagSelect':
        console.log('tagSelect', action)
-       rObj= tstate.setIn(['SyncValidationFormData','tagSels'],action.tagSels) 
-       console.log('tagSelect', rObj.getIn(['SyncValidationFormData','tagSels']))
+       rObj = tstate.setIn(['SyncValidationFormData', 'tagSels'], action.tagSels)
+       console.log('tagSelect', rObj.getIn(['SyncValidationFormData', 'tagSels']))
        return rObj
      default:
        console.log(state)
@@ -88,7 +90,8 @@
  }
 
 
+
  export {
-   counterReducer as counterReducer,
-   GlobalState 
+   counterReducer as counterReducer, 
+   GlobalState
  }

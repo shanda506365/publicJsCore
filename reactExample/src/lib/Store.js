@@ -6,7 +6,7 @@
  	reducer as reduxFormReducer
  } from 'redux-form';
  import {
- 	counterReducer
+ 	counterReducer 
  } from './Reducer'
 
  const reducer = combineReducers({
@@ -16,6 +16,8 @@
  // Store
  const store = createStore(reducer)
 
+ 
+
  export {
- 	store as GlobalStore
+ 	store as GlobalStore 
  }

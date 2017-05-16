@@ -111,7 +111,7 @@ class Counter extends Component {
     let navbarHeadDom = [],
       tabItemDom = [];
     me.domInit(navbarHeadDom, tabItemDom, tabIndex, count, onNavbarClick, onIncreaseClick, onTestValClick)
-
+ 
     return (
       <div className='h100' >  
         

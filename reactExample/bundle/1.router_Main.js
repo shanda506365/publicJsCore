@@ -1,4 +1,4 @@
-webpackJsonp([2],{
+webpackJsonp([1],{
 
 /***/ 533:
 /***/ (function(module, exports, __webpack_require__) {
@@ -38,11 +38,11 @@ webpackJsonp([2],{
 
 	var _mockData2 = _interopRequireDefault(_mockData);
 
-	__webpack_require__(562);
+	__webpack_require__(561);
 
-	__webpack_require__(564);
+	__webpack_require__(563);
 
-	var _jqueryWeui = __webpack_require__(566);
+	var _jqueryWeui = __webpack_require__(565);
 
 	var _jqueryWeui2 = _interopRequireDefault(_jqueryWeui);
 
@@ -513,13 +513,9 @@ webpackJsonp([2],{
 	});
 	exports.mapStateToProps_ReduxForm = exports.mapStateToProps_Quote = exports.mapStateToProps_Test = exports.mapStateToProps_Counter = exports.mapStateToProps_Main = undefined;
 
-	var _Action = __webpack_require__(539);
-
-	var _Action2 = _interopRequireDefault(_Action);
-
 	var _immutable = __webpack_require__(532);
 
-	var _mapStateToProps_Main = __webpack_require__(540);
+	var _mapStateToProps_Main = __webpack_require__(539);
 
 	var _mapStateToProps_Main2 = _interopRequireDefault(_mapStateToProps_Main);
 
@@ -559,6 +555,35 @@ webpackJsonp([2],{
 /***/ }),
 
 /***/ 539:
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _Action = __webpack_require__(540);
+
+	var _Action2 = _interopRequireDefault(_Action);
+
+	var _immutable = __webpack_require__(532);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var mapStateToProps_Main = function mapStateToProps_Main(state, ownProps) {
+	  console.log('mapStateToProps_Main', state, ownProps);
+	  var rObj = (0, _immutable.fromJS)(state).mergeDeep({
+	    stateFlag: 'mapStateToProps_Main'
+	  });
+	  return rObj.toJSON();
+	};
+
+	exports.default = mapStateToProps_Main;
+
+/***/ }),
+
+/***/ 540:
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -594,36 +619,8 @@ webpackJsonp([2],{
 		}
 	};
 
+	exports.Action = Action;
 	exports.default = Action;
-
-/***/ }),
-
-/***/ 540:
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _Action = __webpack_require__(539);
-
-	var _Action2 = _interopRequireDefault(_Action);
-
-	var _immutable = __webpack_require__(532);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var mapStateToProps_Main = function mapStateToProps_Main(state, ownProps) {
-	  console.log('mapStateToProps_Main', state, ownProps);
-	  var rObj = (0, _immutable.fromJS)(state).mergeDeep({
-	    stateFlag: 'mapStateToProps_Main'
-	  });
-	  return rObj.toJSON();
-	};
-
-	exports.default = mapStateToProps_Main;
 
 /***/ }),
 
@@ -636,7 +633,7 @@ webpackJsonp([2],{
 	  value: true
 	});
 
-	var _Action = __webpack_require__(539);
+	var _Action = __webpack_require__(540);
 
 	var _Action2 = _interopRequireDefault(_Action);
 
@@ -665,7 +662,7 @@ webpackJsonp([2],{
 	  value: true
 	});
 
-	var _Action = __webpack_require__(539);
+	var _Action = __webpack_require__(540);
 
 	var _Action2 = _interopRequireDefault(_Action);
 
@@ -694,7 +691,7 @@ webpackJsonp([2],{
 	  value: true
 	});
 
-	var _Action = __webpack_require__(539);
+	var _Action = __webpack_require__(540);
 
 	var _Action2 = _interopRequireDefault(_Action);
 
@@ -723,7 +720,7 @@ webpackJsonp([2],{
 	  value: true
 	});
 
-	var _Action = __webpack_require__(539);
+	var _Action = __webpack_require__(540);
 
 	var _Action2 = _interopRequireDefault(_Action);
 
@@ -752,10 +749,6 @@ webpackJsonp([2],{
 	  value: true
 	});
 	exports.mapDispatchToProps_ReduxForm = exports.mapDispatchToProps_Quote = exports.mapDispatchToProps_Test = exports.mapDispatchToProps_Count = exports.mapDispatchToProps_Main = exports.mapDispatchToProps_Common = undefined;
-
-	var _Action = __webpack_require__(539);
-
-	var _Action2 = _interopRequireDefault(_Action);
 
 	var _immutable = __webpack_require__(532);
 
@@ -812,25 +805,23 @@ webpackJsonp([2],{
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
+	exports.mapDispatchToProps_Common = undefined;
 
-	var _Action = __webpack_require__(539);
-
-	var _Action2 = _interopRequireDefault(_Action);
+	var _Action = __webpack_require__(540);
 
 	var _immutable = __webpack_require__(532);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var mapDispatchToProps_Common = function mapDispatchToProps_Common(dispatch, ownProps) {
 	  return {
 	    onPro_stateChange: function onPro_stateChange(state) {
-	      return dispatch((0, _immutable.fromJS)(_Action2.default.pro_stateClickAction).mergeDeep({
+	      return dispatch((0, _immutable.fromJS)(_Action.Action.pro_stateClickAction).mergeDeep({
 	        state: state
 	      }).toJSON());
 	    }
 	  };
 	};
 
+	exports.mapDispatchToProps_Common = mapDispatchToProps_Common;
 	exports.default = mapDispatchToProps_Common;
 
 /***/ }),
@@ -844,7 +835,7 @@ webpackJsonp([2],{
 	  value: true
 	});
 
-	var _Action = __webpack_require__(539);
+	var _Action = __webpack_require__(540);
 
 	var _Action2 = _interopRequireDefault(_Action);
 
@@ -873,7 +864,7 @@ webpackJsonp([2],{
 	  value: true
 	});
 
-	var _Action = __webpack_require__(539);
+	var _Action = __webpack_require__(540);
 
 	var _Action2 = _interopRequireDefault(_Action);
 
@@ -917,7 +908,7 @@ webpackJsonp([2],{
 	  value: true
 	});
 
-	var _Action = __webpack_require__(539);
+	var _Action = __webpack_require__(540);
 
 	var _Action2 = _interopRequireDefault(_Action);
 
@@ -953,7 +944,7 @@ webpackJsonp([2],{
 	  value: true
 	});
 
-	var _Action = __webpack_require__(539);
+	var _Action = __webpack_require__(540);
 
 	var _Action2 = _interopRequireDefault(_Action);
 
@@ -989,7 +980,7 @@ webpackJsonp([2],{
 	  value: true
 	});
 
-	var _Action = __webpack_require__(539);
+	var _Action = __webpack_require__(540);
 
 	var _Action2 = _interopRequireDefault(_Action);
 
@@ -10212,13 +10203,13 @@ webpackJsonp([2],{
 
 /***/ }),
 
-/***/ 562:
+/***/ 561:
 /***/ (function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(563);
+	var content = __webpack_require__(562);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(537)(content, {});
@@ -10239,7 +10230,7 @@ webpackJsonp([2],{
 
 /***/ }),
 
-/***/ 563:
+/***/ 562:
 /***/ (function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(536)();
@@ -10254,13 +10245,13 @@ webpackJsonp([2],{
 
 /***/ }),
 
-/***/ 564:
+/***/ 563:
 /***/ (function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(565);
+	var content = __webpack_require__(564);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(537)(content, {});
@@ -10281,7 +10272,7 @@ webpackJsonp([2],{
 
 /***/ }),
 
-/***/ 565:
+/***/ 564:
 /***/ (function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(536)();
@@ -10296,7 +10287,7 @@ webpackJsonp([2],{
 
 /***/ }),
 
-/***/ 566:
+/***/ 565:
 /***/ (function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/** 

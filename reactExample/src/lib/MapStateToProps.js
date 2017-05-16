@@ -1,4 +1,4 @@
- import Action from './Action'
+ 
 
  import {
  	fromJS
@@ -9,13 +9,15 @@
  import mapStateToProps_Test from './States/mapStateToProps_Test'
  import mapStateToProps_Quote from './States/mapStateToProps_Quote'
  import mapStateToProps_ReduxForm from './States/mapStateToProps_ReduxForm'
+
+ 
  
  const mapStateToProps = {
  	mapStateToProps_Main,
  	mapStateToProps_Counter,
  	mapStateToProps_Test,
  	mapStateToProps_Quote,
- 	mapStateToProps_ReduxForm
+ 	mapStateToProps_ReduxForm, 
  }
  
  export {
@@ -23,6 +25,6 @@
  	mapStateToProps_Counter,
  	mapStateToProps_Test,
  	mapStateToProps_Quote,
- 	mapStateToProps_ReduxForm
+ 	mapStateToProps_ReduxForm, 
  }
  export default mapStateToProps

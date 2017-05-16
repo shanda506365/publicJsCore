@@ -15,15 +15,19 @@ const Action = {
 	pro_stateClickAction: {
 		type: 'pro_stateClick'
 	},
-	formSubmitAction:{
-		type:'formSubmit'
+	formSubmitAction: {
+		type: 'formSubmit'
 	},
-	simpleFormLoadAction:{
-		type:'simpleFormLoad'
+	simpleFormLoadAction: {
+		type: 'simpleFormLoad'
 	},
-	tagSelectAction:{
-		type:'tagSelect'
+	tagSelectAction: {
+		type: 'tagSelect'
 	}
 }
 
+ 
+export{
+	Action 
+}
 export default Action

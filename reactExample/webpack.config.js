@@ -5,7 +5,7 @@ var CopyWebpackPlugin = require('copy-webpack-plugin');
 module.exports = {
     entry: {
         'entry': './src/index.js',
-        // 'test': './src/test.js'
+        'v3demo': './v3_src/V3Demo.js'
     },
     output: {
         path: __dirname + '/bundle',

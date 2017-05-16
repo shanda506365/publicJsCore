@@ -29,8 +29,7 @@ import {
 // import Counter from './Counter'
 // import Test from './Test'
 // import Quote from './Quote'
-// import ReduxForm from './ReduxForm'
- 
+// import ReduxForm from './ReduxForm' 
 
 ReactDOM.render(
   <Provider store={GlobalStore}>

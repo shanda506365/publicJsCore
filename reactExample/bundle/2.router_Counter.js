@@ -1,4 +1,4 @@
-webpackJsonp([3],{
+webpackJsonp([2],{
 
 /***/ 538:
 /***/ (function(module, exports, __webpack_require__) {
@@ -10,13 +10,9 @@ webpackJsonp([3],{
 	});
 	exports.mapStateToProps_ReduxForm = exports.mapStateToProps_Quote = exports.mapStateToProps_Test = exports.mapStateToProps_Counter = exports.mapStateToProps_Main = undefined;
 
-	var _Action = __webpack_require__(539);
-
-	var _Action2 = _interopRequireDefault(_Action);
-
 	var _immutable = __webpack_require__(532);
 
-	var _mapStateToProps_Main = __webpack_require__(540);
+	var _mapStateToProps_Main = __webpack_require__(539);
 
 	var _mapStateToProps_Main2 = _interopRequireDefault(_mapStateToProps_Main);
 
@@ -56,6 +52,35 @@ webpackJsonp([3],{
 /***/ }),
 
 /***/ 539:
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _Action = __webpack_require__(540);
+
+	var _Action2 = _interopRequireDefault(_Action);
+
+	var _immutable = __webpack_require__(532);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var mapStateToProps_Main = function mapStateToProps_Main(state, ownProps) {
+	  console.log('mapStateToProps_Main', state, ownProps);
+	  var rObj = (0, _immutable.fromJS)(state).mergeDeep({
+	    stateFlag: 'mapStateToProps_Main'
+	  });
+	  return rObj.toJSON();
+	};
+
+	exports.default = mapStateToProps_Main;
+
+/***/ }),
+
+/***/ 540:
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -91,36 +116,8 @@ webpackJsonp([3],{
 		}
 	};
 
+	exports.Action = Action;
 	exports.default = Action;
-
-/***/ }),
-
-/***/ 540:
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _Action = __webpack_require__(539);
-
-	var _Action2 = _interopRequireDefault(_Action);
-
-	var _immutable = __webpack_require__(532);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var mapStateToProps_Main = function mapStateToProps_Main(state, ownProps) {
-	  console.log('mapStateToProps_Main', state, ownProps);
-	  var rObj = (0, _immutable.fromJS)(state).mergeDeep({
-	    stateFlag: 'mapStateToProps_Main'
-	  });
-	  return rObj.toJSON();
-	};
-
-	exports.default = mapStateToProps_Main;
 
 /***/ }),
 
@@ -133,7 +130,7 @@ webpackJsonp([3],{
 	  value: true
 	});
 
-	var _Action = __webpack_require__(539);
+	var _Action = __webpack_require__(540);
 
 	var _Action2 = _interopRequireDefault(_Action);
 
@@ -162,7 +159,7 @@ webpackJsonp([3],{
 	  value: true
 	});
 
-	var _Action = __webpack_require__(539);
+	var _Action = __webpack_require__(540);
 
 	var _Action2 = _interopRequireDefault(_Action);
 
@@ -191,7 +188,7 @@ webpackJsonp([3],{
 	  value: true
 	});
 
-	var _Action = __webpack_require__(539);
+	var _Action = __webpack_require__(540);
 
 	var _Action2 = _interopRequireDefault(_Action);
 
@@ -220,7 +217,7 @@ webpackJsonp([3],{
 	  value: true
 	});
 
-	var _Action = __webpack_require__(539);
+	var _Action = __webpack_require__(540);
 
 	var _Action2 = _interopRequireDefault(_Action);
 
@@ -249,10 +246,6 @@ webpackJsonp([3],{
 	  value: true
 	});
 	exports.mapDispatchToProps_ReduxForm = exports.mapDispatchToProps_Quote = exports.mapDispatchToProps_Test = exports.mapDispatchToProps_Count = exports.mapDispatchToProps_Main = exports.mapDispatchToProps_Common = undefined;
-
-	var _Action = __webpack_require__(539);
-
-	var _Action2 = _interopRequireDefault(_Action);
 
 	var _immutable = __webpack_require__(532);
 
@@ -309,25 +302,23 @@ webpackJsonp([3],{
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
+	exports.mapDispatchToProps_Common = undefined;
 
-	var _Action = __webpack_require__(539);
-
-	var _Action2 = _interopRequireDefault(_Action);
+	var _Action = __webpack_require__(540);
 
 	var _immutable = __webpack_require__(532);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var mapDispatchToProps_Common = function mapDispatchToProps_Common(dispatch, ownProps) {
 	  return {
 	    onPro_stateChange: function onPro_stateChange(state) {
-	      return dispatch((0, _immutable.fromJS)(_Action2.default.pro_stateClickAction).mergeDeep({
+	      return dispatch((0, _immutable.fromJS)(_Action.Action.pro_stateClickAction).mergeDeep({
 	        state: state
 	      }).toJSON());
 	    }
 	  };
 	};
 
+	exports.mapDispatchToProps_Common = mapDispatchToProps_Common;
 	exports.default = mapDispatchToProps_Common;
 
 /***/ }),
@@ -341,7 +332,7 @@ webpackJsonp([3],{
 	  value: true
 	});
 
-	var _Action = __webpack_require__(539);
+	var _Action = __webpack_require__(540);
 
 	var _Action2 = _interopRequireDefault(_Action);
 
@@ -370,7 +361,7 @@ webpackJsonp([3],{
 	  value: true
 	});
 
-	var _Action = __webpack_require__(539);
+	var _Action = __webpack_require__(540);
 
 	var _Action2 = _interopRequireDefault(_Action);
 
@@ -414,7 +405,7 @@ webpackJsonp([3],{
 	  value: true
 	});
 
-	var _Action = __webpack_require__(539);
+	var _Action = __webpack_require__(540);
 
 	var _Action2 = _interopRequireDefault(_Action);
 
@@ -450,7 +441,7 @@ webpackJsonp([3],{
 	  value: true
 	});
 
-	var _Action = __webpack_require__(539);
+	var _Action = __webpack_require__(540);
 
 	var _Action2 = _interopRequireDefault(_Action);
 
@@ -486,7 +477,7 @@ webpackJsonp([3],{
 	  value: true
 	});
 
-	var _Action = __webpack_require__(539);
+	var _Action = __webpack_require__(540);
 
 	var _Action2 = _interopRequireDefault(_Action);
 
@@ -524,7 +515,7 @@ webpackJsonp([3],{
 
 /***/ }),
 
-/***/ 561:
+/***/ 566:
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';

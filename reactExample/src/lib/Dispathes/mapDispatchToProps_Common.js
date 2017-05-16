@@ -1,4 +1,4 @@
- import Action from '../Action'
+ import {Action,V3Action} from '../Action'
  import {
  	fromJS
  } from 'immutable'
@@ -11,4 +11,8 @@
  	}
  }
 
+ 
+ export {
+ 	mapDispatchToProps_Common 
+ }
  export default mapDispatchToProps_Common
