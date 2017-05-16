@@ -137,7 +137,7 @@
 	          });
 	        } },
 	      _react2.default.createElement(_reactRouter.IndexRoute, { getComponents: function getComponents(nextState, callback) {
-	          __webpack_require__.e/* nsure */(8/* empty */, function (require) {
+	          __webpack_require__.e/* nsure */(8, function (require) {
 	            callback(null, __webpack_require__(760).default);
 	          });
 	        }, onEnter: function onEnter(nextState, replace) {
@@ -148,7 +148,7 @@
 	        } }),
 	      _react2.default.createElement(_reactRouter.Route, { path: '/Quote', getComponents: function getComponents(nextState, callback) {
 	          __webpack_require__.e/* nsure */(9, function (require) {
-	            callback(null, __webpack_require__(761).default);
+	            callback(null, __webpack_require__(762).default);
 	          });
 	        } })
 	    )
@@ -54147,12 +54147,26 @@
 	  pro_state: 'Resolved',
 	  V3_Main: {
 	    tabIndex: 0,
-	    title: 'V3_Main'
+	    title: 'V3_Main',
+	    tabbar_bottom_items: [{
+	      label: '微信',
+	      iconCls: 'iconfont icon-fuzhi weui-tabbar__icon'
+	    }, {
+	      label: '通讯录',
+	      iconCls: 'iconfont icon-qiandai weui-tabbar__icon'
+	    }, {
+	      label: '发现',
+	      iconCls: 'iconfont icon-icon weui-tabbar__icon'
+	    }, {
+	      label: '我',
+	      iconCls: 'iconfont icon-15 weui-tabbar__icon'
+	    }]
 	  }
 	});
 	//import merge from 'merge'
 	// import deepAssign from 'deep-assign'
 	// 
+
 
 	function V3DemoReducer() {
 	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : V3GlobalState;

@@ -9465,7 +9465,7 @@ webpackJsonp([8],{
 
 	var _mockData2 = _interopRequireDefault(_mockData);
 
-	var _TabBar_Bottom = __webpack_require__(763);
+	var _TabBar_Bottom = __webpack_require__(761);
 
 	var _TabBar_Bottom2 = _interopRequireDefault(_TabBar_Bottom);
 
@@ -9702,7 +9702,9 @@ webpackJsonp([8],{
 				var _props2 = this.props,
 				    onMain_TabbarClick = _props2.onMain_TabbarClick,
 				    onPro_stateChange = _props2.onPro_stateChange,
-				    tabIndex = _props2.V3DemoReducer.V3_Main.tabIndex,
+				    _props2$V3DemoReducer = _props2.V3DemoReducer.V3_Main,
+				    tabIndex = _props2$V3DemoReducer.tabIndex,
+				    tabbar_bottom_items = _props2$V3DemoReducer.tabbar_bottom_items,
 				    me = this;
 
 				var barItemDom = [],
@@ -9714,19 +9716,6 @@ webpackJsonp([8],{
 					onPro_stateChange: onPro_stateChange
 				});
 
-				var itemsArr = [{
-					label: '微信',
-					iconCls: 'iconfont icon-fuzhi weui-tabbar__icon'
-				}, {
-					label: '通讯录',
-					iconCls: 'iconfont icon-qiandai weui-tabbar__icon'
-				}, {
-					label: '发现',
-					iconCls: 'iconfont icon-icon weui-tabbar__icon'
-				}, {
-					label: '我',
-					iconCls: 'iconfont icon-15 weui-tabbar__icon'
-				}];
 				return _react2.default.createElement(
 					'div',
 					{ className: 'v3_main weui-tab', onTouchMove: function onTouchMove() {
@@ -9737,7 +9726,7 @@ webpackJsonp([8],{
 						{ className: 'weui-tab__panel' },
 						barPanelDom
 					),
-					_react2.default.createElement(_TabBar_Bottom2.default, { items: itemsArr, onTabClick: function onTabClick(e) {
+					_react2.default.createElement(_TabBar_Bottom2.default, { items: tabbar_bottom_items, onTabClick: function onTabClick(e) {
 							onMain_TabbarClick(e, 0);
 						},
 						itemIndex: 0 })
@@ -9756,7 +9745,7 @@ webpackJsonp([8],{
 
 /***/ }),
 
-/***/ 763:
+/***/ 761:
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
