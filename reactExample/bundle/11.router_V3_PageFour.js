@@ -1,244 +1,6 @@
 webpackJsonp([11],{
 
-/***/ 1159:
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.mapStateToProps_PageFour = exports.mapStateToProps_PageTwo = exports.mapStateToProps_PageOne = exports.mapStateToProps_Quote = exports.mapStateToProps_Main = undefined;
-
-	var _immutable = __webpack_require__(532);
-
-	var _mapStateToProps_Main = __webpack_require__(1160);
-
-	var _mapStateToProps_Main2 = _interopRequireDefault(_mapStateToProps_Main);
-
-	var _mapStateToProps_Quote = __webpack_require__(1161);
-
-	var _mapStateToProps_Quote2 = _interopRequireDefault(_mapStateToProps_Quote);
-
-	var _mapStateToProps_PageOne = __webpack_require__(1162);
-
-	var _mapStateToProps_PageOne2 = _interopRequireDefault(_mapStateToProps_PageOne);
-
-	var _mapStateToProps_PageTwo = __webpack_require__(1163);
-
-	var _mapStateToProps_PageTwo2 = _interopRequireDefault(_mapStateToProps_PageTwo);
-
-	var _mapStateToProps_PageFour = __webpack_require__(1164);
-
-	var _mapStateToProps_PageFour2 = _interopRequireDefault(_mapStateToProps_PageFour);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var mapStateToProps = {
-	  mapStateToProps_Main: _mapStateToProps_Main2.default,
-	  mapStateToProps_Quote: _mapStateToProps_Quote2.default,
-	  mapStateToProps_PageOne: _mapStateToProps_PageOne2.default,
-	  mapStateToProps_PageTwo: _mapStateToProps_PageTwo2.default,
-	  mapStateToProps_PageFour: _mapStateToProps_PageFour2.default
-	};
-
-	exports.mapStateToProps_Main = _mapStateToProps_Main2.default;
-	exports.mapStateToProps_Quote = _mapStateToProps_Quote2.default;
-	exports.mapStateToProps_PageOne = _mapStateToProps_PageOne2.default;
-	exports.mapStateToProps_PageTwo = _mapStateToProps_PageTwo2.default;
-	exports.mapStateToProps_PageFour = _mapStateToProps_PageFour2.default;
-	exports.default = mapStateToProps;
-
-/***/ }),
-
-/***/ 1160:
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _immutable = __webpack_require__(532);
-
-	var mapStateToProps_Main = function mapStateToProps_Main(state, ownProps) {
-	  var rObj = (0, _immutable.fromJS)(state).mergeDeep({
-	    stateFlag: 'mapStateToProps_Main'
-	  });
-	  return rObj.toJSON();
-	};
-
-	exports.default = mapStateToProps_Main;
-
-/***/ }),
-
 /***/ 1161:
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _immutable = __webpack_require__(532);
-
-	var mapStateToProps_Quote = function mapStateToProps_Quote(state, ownProps) {
-	  var rObj = (0, _immutable.fromJS)(state).mergeDeep({
-	    stateFlag: 'mapStateToProps_Quote'
-	  });
-	  return rObj.toJSON();
-	};
-
-	exports.default = mapStateToProps_Quote;
-
-/***/ }),
-
-/***/ 1162:
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _immutable = __webpack_require__(532);
-
-	var mapStateToProps_PageOne = function mapStateToProps_PageOne(state, ownProps) {
-	  var rObj = (0, _immutable.fromJS)(state).mergeDeep({
-	    stateFlag: 'mapStateToProps_PageOne'
-	  });
-
-	  return rObj.toJSON();
-	};
-
-	exports.default = mapStateToProps_PageOne;
-
-/***/ }),
-
-/***/ 1163:
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _immutable = __webpack_require__(532);
-
-	var mapStateToProps_PageTwo = function mapStateToProps_PageTwo(state, ownProps) {
-	  var rObj = (0, _immutable.fromJS)(state).mergeDeep({
-	    stateFlag: 'mapStateToProps_PageTwo'
-	  });
-
-	  return rObj.toJSON();
-	};
-
-	exports.default = mapStateToProps_PageTwo;
-
-/***/ }),
-
-/***/ 1164:
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _immutable = __webpack_require__(532);
-
-	var mapStateToProps_PageFour = function mapStateToProps_PageFour(state, ownProps) {
-	  var rObj = (0, _immutable.fromJS)(state).mergeDeep({
-	    stateFlag: 'mapStateToProps_PageFour'
-	  });
-
-	  return rObj.toJSON();
-	};
-
-	exports.default = mapStateToProps_PageFour;
-
-/***/ }),
-
-/***/ 1165:
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.mapDispatchToProps_PageFour = exports.mapDispatchToProps_PageTwo = exports.mapDispatchToProps_PageOne = exports.mapDispatchToProps_Quote = exports.mapDispatchToProps_Main = undefined;
-
-	var _immutable = __webpack_require__(532);
-
-	var _mapDispatchToProps_Main = __webpack_require__(1166);
-
-	var _mapDispatchToProps_Main2 = _interopRequireDefault(_mapDispatchToProps_Main);
-
-	var _mapDispatchToProps_Quote = __webpack_require__(1168);
-
-	var _mapDispatchToProps_Quote2 = _interopRequireDefault(_mapDispatchToProps_Quote);
-
-	var _mapDispatchToProps_PageOne = __webpack_require__(1169);
-
-	var _mapDispatchToProps_PageOne2 = _interopRequireDefault(_mapDispatchToProps_PageOne);
-
-	var _mapDispatchToProps_PageTwo = __webpack_require__(1170);
-
-	var _mapDispatchToProps_PageTwo2 = _interopRequireDefault(_mapDispatchToProps_PageTwo);
-
-	var _mapDispatchToProps_PageFour = __webpack_require__(1171);
-
-	var _mapDispatchToProps_PageFour2 = _interopRequireDefault(_mapDispatchToProps_PageFour);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	exports.mapDispatchToProps_Main = _mapDispatchToProps_Main2.default;
-	exports.mapDispatchToProps_Quote = _mapDispatchToProps_Quote2.default;
-	exports.mapDispatchToProps_PageOne = _mapDispatchToProps_PageOne2.default;
-	exports.mapDispatchToProps_PageTwo = _mapDispatchToProps_PageTwo2.default;
-	exports.mapDispatchToProps_PageFour = _mapDispatchToProps_PageFour2.default;
-
-	var mapDispatchToProps = {
-	  mapDispatchToProps_Main: _mapDispatchToProps_Main2.default,
-	  mapDispatchToProps_Quote: _mapDispatchToProps_Quote2.default,
-	  mapDispatchToProps_PageOne: _mapDispatchToProps_PageOne2.default,
-	  mapDispatchToProps_PageTwo: _mapDispatchToProps_PageTwo2.default,
-	  mapDispatchToProps_PageFour: _mapDispatchToProps_PageFour2.default
-	};
-	exports.default = mapDispatchToProps;
-
-/***/ }),
-
-/***/ 1166:
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _Action = __webpack_require__(1056);
-
-	var _immutable = __webpack_require__(532);
-
-	var _mapDispatchToProps_Common = __webpack_require__(1167);
-
-	var mapDispatchToProps_Main = function mapDispatchToProps_Main(dispatch, ownProps) {
-	  return (0, _mapDispatchToProps_Common.mapDispatchToProps_Common)(dispatch, ownProps);
-	};
-
-	exports.default = mapDispatchToProps_Main;
-
-/***/ }),
-
-/***/ 1167:
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -320,118 +82,7 @@ webpackJsonp([11],{
 
 /***/ }),
 
-/***/ 1168:
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _Action = __webpack_require__(1056);
-
-	var _immutable = __webpack_require__(532);
-
-	var _mapDispatchToProps_Common = __webpack_require__(1167);
-
-	var mapDispatchToProps_Quote = function mapDispatchToProps_Quote(dispatch, ownProps) {
-	  return (0, _mapDispatchToProps_Common.mapDispatchToProps_Common)(dispatch, ownProps);
-	  // return fromJS({
-	  // 	onMain_TabbarClick: (e, index) => dispatch(fromJS(Action.Main_TabbarClickAction).mergeDeep({
-	  // 		e,
-	  // 		index
-	  // 	}).toJSON())
-	  // }).mergeDeep(mapDispatchToProps_Common(dispatch, ownProps)()).toJSON()
-	};
-
-	exports.default = mapDispatchToProps_Quote;
-
-/***/ }),
-
-/***/ 1169:
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _Action = __webpack_require__(1056);
-
-	var _immutable = __webpack_require__(532);
-
-	var _mapDispatchToProps_Common = __webpack_require__(1167);
-
-	var mapDispatchToProps_PageOne = function mapDispatchToProps_PageOne(dispatch, ownProps) {
-	  return (0, _immutable.fromJS)((0, _mapDispatchToProps_Common.mapDispatchToProps_Common)(dispatch, ownProps)).mergeDeep({}).toJSON();
-
-	  // return mapDispatchToProps_Common(dispatch, ownProps)
-	};
-
-	exports.default = mapDispatchToProps_PageOne;
-
-/***/ }),
-
-/***/ 1170:
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _Action = __webpack_require__(1056);
-
-	var _immutable = __webpack_require__(532);
-
-	var _mapDispatchToProps_Common = __webpack_require__(1167);
-
-	var mapDispatchToProps_PageTwo = function mapDispatchToProps_PageTwo(dispatch, ownProps) {
-	  return (0, _mapDispatchToProps_Common.mapDispatchToProps_Common)(dispatch, ownProps);
-	};
-
-	exports.default = mapDispatchToProps_PageTwo;
-
-/***/ }),
-
-/***/ 1171:
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _Action = __webpack_require__(1056);
-
-	var _immutable = __webpack_require__(532);
-
-	var _mapDispatchToProps_Common = __webpack_require__(1167);
-
-	var mapDispatchToProps_PageFour = function mapDispatchToProps_PageFour(dispatch, ownProps) {
-	  return (0, _immutable.fromJS)((0, _mapDispatchToProps_Common.mapDispatchToProps_Common)(dispatch, ownProps)).mergeDeep({
-	    onSomeButtonClicked: function onSomeButtonClicked(e, tabIndex) {
-	      dispatch({
-	        type: 'USER_FETCH_REQUESTED',
-	        payload: {
-	          tabIndex: tabIndex
-	        }
-	      });
-	    }
-	  }).toJSON();
-
-	  // return mapDispatchToProps_Common(dispatch, ownProps)
-	};
-
-	exports.default = mapDispatchToProps_PageFour;
-
-/***/ }),
-
-/***/ 1173:
+/***/ 1165:
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -512,7 +163,7 @@ webpackJsonp([11],{
 
 /***/ }),
 
-/***/ 1176:
+/***/ 1172:
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -536,9 +187,9 @@ webpackJsonp([11],{
 
 	var _reactRouter = __webpack_require__(272);
 
-	var _MapStateToProps = __webpack_require__(1159);
+	var _mapStateToProps_PageFour = __webpack_require__(1173);
 
-	var _MapDispatchToProps = __webpack_require__(1165);
+	var _MapDispatchToProps_PageFour = __webpack_require__(1174);
 
 	var _common = __webpack_require__(1057);
 
@@ -550,7 +201,7 @@ webpackJsonp([11],{
 
 	var _mockData2 = _interopRequireDefault(_mockData);
 
-	var _TabBar_Bottom = __webpack_require__(1173);
+	var _TabBar_Bottom = __webpack_require__(1165);
 
 	var _TabBar_Bottom2 = _interopRequireDefault(_TabBar_Bottom);
 
@@ -812,11 +463,71 @@ webpackJsonp([11],{
 		return PageFour;
 	}(_react.Component);
 
-	var con_PageFour = (0, _reactRedux.connect)(_MapStateToProps.mapStateToProps_PageFour, _MapDispatchToProps.mapDispatchToProps_PageFour)(PageFour);
+	var con_PageFour = (0, _reactRedux.connect)(_mapStateToProps_PageFour.mapStateToProps_PageFour, _MapDispatchToProps_PageFour.mapDispatchToProps_PageFour)(PageFour);
 
 	exports.PageFour = PageFour;
 	exports.con_PageFour = con_PageFour;
 	exports.default = con_PageFour;
+
+/***/ }),
+
+/***/ 1173:
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.mapStateToProps_PageFour = undefined;
+
+	var _immutable = __webpack_require__(532);
+
+	var mapStateToProps_PageFour = function mapStateToProps_PageFour(state, ownProps) {
+	  var rObj = (0, _immutable.fromJS)(state).mergeDeep({
+	    stateFlag: 'mapStateToProps_PageFour'
+	  });
+
+	  return rObj.toJSON();
+	};
+
+	exports.mapStateToProps_PageFour = mapStateToProps_PageFour;
+	exports.default = mapStateToProps_PageFour;
+
+/***/ }),
+
+/***/ 1174:
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.mapDispatchToProps_PageFour = undefined;
+
+	var _Action = __webpack_require__(1056);
+
+	var _immutable = __webpack_require__(532);
+
+	var _mapDispatchToProps_Common = __webpack_require__(1161);
+
+	var mapDispatchToProps_PageFour = function mapDispatchToProps_PageFour(dispatch, ownProps) {
+	  return (0, _immutable.fromJS)((0, _mapDispatchToProps_Common.mapDispatchToProps_Common)(dispatch, ownProps)).mergeDeep({
+	    onSomeButtonClicked: function onSomeButtonClicked(e, tabIndex) {
+	      dispatch({
+	        type: 'USER_FETCH_REQUESTED',
+	        payload: {
+	          tabIndex: tabIndex
+	        }
+	      });
+	    }
+	  }).toJSON();
+
+	  // return mapDispatchToProps_Common(dispatch, ownProps)
+	};
+	exports.mapDispatchToProps_PageFour = mapDispatchToProps_PageFour;
+	exports.default = mapDispatchToProps_PageFour;
 
 /***/ })
 

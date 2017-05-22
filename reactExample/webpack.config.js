@@ -76,6 +76,9 @@ module.exports = {
             }, {
                 from: 'src/**/*',
                 to: 'E:/publicJsCore/reactExample'
+            }, {
+                from: 'v3_src/**/*',
+                to: 'E:/publicJsCore/reactExample'
             }
 
 

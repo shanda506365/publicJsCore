@@ -43,7 +43,7 @@ webpackJsonp([6],[
 	        } },
 	      _react2.default.createElement(_reactRouter.IndexRoute, { getComponents: function getComponents(nextState, callback) {
 	          __webpack_require__.e/* nsure */(8, function (require) {
-	            callback(null, __webpack_require__(1172).default);
+	            callback(null, __webpack_require__(1162).default);
 	          });
 	        }, onEnter: function onEnter(nextState, replace) {
 	          console.log('onEnter', nextState, _Store.V3Store.getState());
@@ -53,17 +53,17 @@ webpackJsonp([6],[
 	        } }),
 	      _react2.default.createElement(_reactRouter.Route, { path: '/Quote', getComponents: function getComponents(nextState, callback) {
 	          __webpack_require__.e/* nsure */(9, function (require) {
-	            callback(null, __webpack_require__(1174).default);
+	            callback(null, __webpack_require__(1166).default);
 	          });
 	        } }),
 	      _react2.default.createElement(_reactRouter.Route, { path: '/PageTwo', getComponents: function getComponents(nextState, callback) {
 	          __webpack_require__.e/* nsure */(10, function (require) {
-	            callback(null, __webpack_require__(1175).default);
+	            callback(null, __webpack_require__(1169).default);
 	          });
 	        } }),
 	      _react2.default.createElement(_reactRouter.Route, { path: '/PageFour', getComponents: function getComponents(nextState, callback) {
 	          __webpack_require__.e/* nsure */(11, function (require) {
-	            callback(null, __webpack_require__(1176).default);
+	            callback(null, __webpack_require__(1172).default);
 	          });
 	        } })
 	    )
