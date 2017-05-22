@@ -21268,7 +21268,9 @@ webpackJsonp([6],[
 	            }).then(function (response) {
 	              return response.json();
 	            }).then(function (json) {
-	              console.log(json);return json;
+	              console.log(json);return json.data.map(function (item) {
+	                return item;
+	              });
 	            });
 	          }, action.payload.tabIndex);
 
