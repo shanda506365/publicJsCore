@@ -32,6 +32,9 @@ module.exports = {
         }, {
             test: /\.(eot|woff|woff2|ttf|svg|png|jpg|gif)$/,
             loader: 'url-loader?limit=300000&name=[name]-[hash].[ext]'
+        }, {
+            test: /\.json$/,
+            loader: 'json-loader'
         }]
     },
     plugins: [
@@ -86,19 +89,19 @@ module.exports = {
         //         warnings: false
         //     }
         // }),
-        // new CommonsChunkPlugin(({
-        //     name: "common.js",
-        //     // (the commons chunk name)
+        new CommonsChunkPlugin(({
+            name: "common.js",
+            // (the commons chunk name)
 
-        //     filename: "./js/common.js",
-        //     // (the filename of the commons chunk)
+            filename: "./common.js",
+            // (the filename of the commons chunk)
 
-        //     // minChunks: 3,
-        //     // (Modules must be shared between 3 entries)
+            // minChunks: 3,
+            // (Modules must be shared between 3 entries)
 
-        //     // chunks: ["pageA", "pageB"],
-        //     // (Only use these entries)
-        // }))
+            // chunks: ["pageA", "pageB"],
+            // (Only use these entries)
+        }))
 
     ]
 

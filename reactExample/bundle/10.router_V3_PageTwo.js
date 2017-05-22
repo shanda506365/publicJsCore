@@ -1,4 +1,4 @@
-webpackJsonp([8],{
+webpackJsonp([10],{
 
 /***/ 1159:
 /***/ (function(module, exports, __webpack_require__) {
@@ -431,7 +431,88 @@ webpackJsonp([8],{
 
 /***/ }),
 
-/***/ 1172:
+/***/ 1173:
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(64);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactDom = __webpack_require__(94);
+
+	var _reactDom2 = _interopRequireDefault(_reactDom);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var TabBar_Bottom = function (_Component) {
+	  _inherits(TabBar_Bottom, _Component);
+
+	  function TabBar_Bottom() {
+	    _classCallCheck(this, TabBar_Bottom);
+
+	    return _possibleConstructorReturn(this, (TabBar_Bottom.__proto__ || Object.getPrototypeOf(TabBar_Bottom)).apply(this, arguments));
+	  }
+
+	  _createClass(TabBar_Bottom, [{
+	    key: 'choseBarItemCls',
+	    value: function choseBarItemCls(flag) {
+	      return "weui-tabbar__item " + (flag ? 'weui-bar__item_on' : '');
+	    }
+	  }, {
+	    key: 'TabBar',
+	    value: function TabBar() {
+	      var me = this,
+	          arry = me.props.items || [];
+	      var itemIndex = me.props.itemIndex || 0;
+	      return arry.map(function (item, index, all) {
+	        return _react2.default.createElement(
+	          'a',
+	          { href: 'javascript:;', className: me.choseBarItemCls(index == itemIndex),
+	            onClick: function onClick(e) {
+	              return me.props.onTabClick(e, index);
+	            } },
+	          _react2.default.createElement('span', { className: item.iconCls }),
+	          _react2.default.createElement(
+	            'p',
+	            { className: 'weui-tabbar__label' },
+	            item.label
+	          )
+	        );
+	      });
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'weui-tabbar' },
+	        this.TabBar()
+	      );
+	    }
+	  }]);
+
+	  return TabBar_Bottom;
+	}(_react.Component);
+
+	exports.default = TabBar_Bottom;
+
+/***/ }),
+
+/***/ 1175:
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -439,7 +520,7 @@ webpackJsonp([8],{
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
-	exports.con_PageOne = exports.PageOne = undefined;
+	exports.con_PageTwo = exports.PageTwo = undefined;
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -481,16 +562,16 @@ webpackJsonp([8],{
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var PageOne = function (_Component) {
-		_inherits(PageOne, _Component);
+	var PageTwo = function (_Component) {
+		_inherits(PageTwo, _Component);
 
-		function PageOne() {
-			_classCallCheck(this, PageOne);
+		function PageTwo() {
+			_classCallCheck(this, PageTwo);
 
-			return _possibleConstructorReturn(this, (PageOne.__proto__ || Object.getPrototypeOf(PageOne)).apply(this, arguments));
+			return _possibleConstructorReturn(this, (PageTwo.__proto__ || Object.getPrototypeOf(PageTwo)).apply(this, arguments));
 		}
 
-		_createClass(PageOne, [{
+		_createClass(PageTwo, [{
 			key: 'componentDidMount',
 
 			// shouldComponentUpdate(nextProps, nextState) {
@@ -607,7 +688,7 @@ webpackJsonp([8],{
 							)
 						)
 					),
-					'Page 1',
+					'Page 2',
 					_react2.default.createElement(
 						'p',
 						null,
@@ -642,66 +723,6 @@ webpackJsonp([8],{
 						'p',
 						null,
 						' 234234213412341234'
-					),
-					_react2.default.createElement(
-						'div',
-						{ className: 'weui-grids' },
-						_react2.default.createElement(
-							'a',
-							{ href: 'javascript:;', className: 'weui-grid' },
-							_react2.default.createElement(
-								'div',
-								{ className: 'weui-grid__icon' },
-								_react2.default.createElement('span', { className: 'iconfont icon-fuzhi weui-tabbar__icon' })
-							),
-							_react2.default.createElement(
-								'p',
-								{ className: 'weui-grid__label' },
-								'Button'
-							)
-						),
-						_react2.default.createElement(
-							'a',
-							{ href: 'javascript:;', className: 'weui-grid' },
-							_react2.default.createElement(
-								'div',
-								{ className: 'weui-grid__icon' },
-								_react2.default.createElement('img', { src: './images/icon_nav_cell.png', alt: '' })
-							),
-							_react2.default.createElement(
-								'p',
-								{ className: 'weui-grid__label' },
-								'Cell'
-							)
-						),
-						_react2.default.createElement(
-							'a',
-							{ href: 'javascript:;', className: 'weui-grid' },
-							_react2.default.createElement(
-								'div',
-								{ className: 'weui-grid__icon' },
-								_react2.default.createElement('img', { src: './images/icon_nav_cell.png', alt: '' })
-							),
-							_react2.default.createElement(
-								'p',
-								{ className: 'weui-grid__label' },
-								'Cell'
-							)
-						),
-						_react2.default.createElement(
-							'a',
-							{ href: 'javascript:;', className: 'weui-grid' },
-							_react2.default.createElement(
-								'div',
-								{ className: 'weui-grid__icon' },
-								_react2.default.createElement('img', { src: './images/icon_nav_cell.png', alt: '' })
-							),
-							_react2.default.createElement(
-								'p',
-								{ className: 'weui-grid__label' },
-								'Cell'
-							)
-						)
 					)
 				));
 			}
@@ -712,7 +733,8 @@ webpackJsonp([8],{
 				// 	hashHistory.push({
 				// 		pathname:'/Quote'
 				// 	})
-				// },2000) 
+				// },2000)
+
 				var _props2 = this.props,
 				    onMain_TabbarClick = _props2.onMain_TabbarClick,
 				    onPro_stateChange = _props2.onPro_stateChange,
@@ -730,109 +752,26 @@ webpackJsonp([8],{
 
 				return _react2.default.createElement(
 					'div',
-					{ className: 'v3_main weui-tab', onTouchMove: function onTouchMove() {
-							console.log('onTouchMove');
-						} },
+					{ className: 'v3_main weui-tab' },
 					_react2.default.createElement(
 						'div',
 						{ className: 'weui-tab__panel' },
 						barPanelDom
 					),
 					_react2.default.createElement(_TabBar_Bottom2.default, { items: tabbar_bottom_items, onTabClick: onMain_TabbarClick,
-						itemIndex: 0 })
+						itemIndex: 1 })
 				);
 			}
 		}]);
 
-		return PageOne;
+		return PageTwo;
 	}(_react.Component);
 
-	var con_PageOne = (0, _reactRedux.connect)(_MapStateToProps.mapStateToProps_PageOne, _MapDispatchToProps.mapDispatchToProps_PageOne)(PageOne);
+	var con_PageTwo = (0, _reactRedux.connect)(_MapStateToProps.mapStateToProps_PageTwo, _MapDispatchToProps.mapDispatchToProps_PageTwo)(PageTwo);
 
-	exports.PageOne = PageOne;
-	exports.con_PageOne = con_PageOne;
-	exports.default = con_PageOne;
-
-/***/ }),
-
-/***/ 1173:
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(64);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _reactDom = __webpack_require__(94);
-
-	var _reactDom2 = _interopRequireDefault(_reactDom);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var TabBar_Bottom = function (_Component) {
-	  _inherits(TabBar_Bottom, _Component);
-
-	  function TabBar_Bottom() {
-	    _classCallCheck(this, TabBar_Bottom);
-
-	    return _possibleConstructorReturn(this, (TabBar_Bottom.__proto__ || Object.getPrototypeOf(TabBar_Bottom)).apply(this, arguments));
-	  }
-
-	  _createClass(TabBar_Bottom, [{
-	    key: 'choseBarItemCls',
-	    value: function choseBarItemCls(flag) {
-	      return "weui-tabbar__item " + (flag ? 'weui-bar__item_on' : '');
-	    }
-	  }, {
-	    key: 'TabBar',
-	    value: function TabBar() {
-	      var me = this,
-	          arry = me.props.items || [];
-	      var itemIndex = me.props.itemIndex || 0;
-	      return arry.map(function (item, index, all) {
-	        return _react2.default.createElement(
-	          'a',
-	          { href: 'javascript:;', className: me.choseBarItemCls(index == itemIndex),
-	            onClick: function onClick(e) {
-	              return me.props.onTabClick(e, index);
-	            } },
-	          _react2.default.createElement('span', { className: item.iconCls }),
-	          _react2.default.createElement(
-	            'p',
-	            { className: 'weui-tabbar__label' },
-	            item.label
-	          )
-	        );
-	      });
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      return _react2.default.createElement(
-	        'div',
-	        { className: 'weui-tabbar' },
-	        this.TabBar()
-	      );
-	    }
-	  }]);
-
-	  return TabBar_Bottom;
-	}(_react.Component);
-
-	exports.default = TabBar_Bottom;
+	exports.PageTwo = PageTwo;
+	exports.con_PageTwo = con_PageTwo;
+	exports.default = con_PageTwo;
 
 /***/ })
 
