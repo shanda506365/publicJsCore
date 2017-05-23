@@ -40,9 +40,10 @@
      case 'pro_stateClick':
        rObj = state.set('pro_state', action.state);
        return rObj
-     case 'USER_FETCH_REQUESTED':
-       rObj = state;
-       return rObj
+     // case 'USER_FETCH_REQUESTED':
+     // alert(11)
+     //   rObj = state;
+     //   return rObj
      default:
        return state;
    }

@@ -9873,9 +9873,10 @@ webpackJsonp([6],[
 	    case 'pro_stateClick':
 	      rObj = state.set('pro_state', action.state);
 	      return rObj;
-	    case 'USER_FETCH_REQUESTED':
-	      rObj = state;
-	      return rObj;
+	    // case 'USER_FETCH_REQUESTED':
+	    // alert(11)
+	    //   rObj = state;
+	    //   return rObj
 	    default:
 	      return state;
 	  }
@@ -21245,9 +21246,7 @@ webpackJsonp([6],[
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var _marked = [fetchUser, mySaga, root].map(regeneratorRuntime.mark);
-	// worker Saga: will be fired on USER_FETCH_REQUESTED actions
-
+	var _marked = [fetchUser, mySaga, fetchTabData, onMain_TabbarClick, root].map(regeneratorRuntime.mark);
 
 	function fetchUser(action) {
 	  var user;
@@ -21268,7 +21267,8 @@ webpackJsonp([6],[
 	            }).then(function (response) {
 	              return response.json();
 	            }).then(function (json) {
-	              console.log(json);return json.data.map(function (item) {
+	              console.log(json);
+	              return json.data.map(function (item) {
 	                return item;
 	              });
 	            });
@@ -21322,6 +21322,112 @@ webpackJsonp([6],[
 	  }, _marked[1], this);
 	}
 
+	function fetchTabData(action) {
+	  var data, ownProps;
+	  return regeneratorRuntime.wrap(function fetchTabData$(_context3) {
+	    while (1) {
+	      switch (_context3.prev = _context3.next) {
+	        case 0:
+	          console.log(action);
+	          _context3.prev = 1;
+	          _context3.next = 4;
+	          return (0, _effects.call)(function () {
+	            console.log(arguments);
+	            return fetch(_common.API.login, {
+	              method: 'POST'
+	            }).then(function (response) {
+	              return response.json();
+	            });
+	          }, action);
+
+	        case 4:
+	          data = _context3.sent;
+	          ownProps = action.ownProps;
+
+	          if (!data.suc) {
+	            _context3.next = 22;
+	            break;
+	          }
+
+	          _context3.t0 = action.index;
+	          _context3.next = _context3.t0 === 0 ? 10 : _context3.t0 === 1 ? 12 : _context3.t0 === 2 ? 14 : _context3.t0 === 3 ? 16 : 18;
+	          break;
+
+	        case 10:
+	          ownProps.router.push({
+	            pathname: '/'
+	          });
+	          return _context3.abrupt('return');
+
+	        case 12:
+	          ownProps.router.push({
+	            pathname: '/PageTwo'
+	          });
+	          return _context3.abrupt('return');
+
+	        case 14:
+	          ownProps.router.push({
+	            pathname: '/Quote'
+	          });
+	          return _context3.abrupt('return');
+
+	        case 16:
+	          ownProps.router.push({
+	            pathname: '/PageFour'
+	          });
+	          return _context3.abrupt('return');
+
+	        case 18:
+	          ownProps.router.push({
+	            pathname: '/'
+	          });
+	          return _context3.abrupt('return');
+
+	        case 20:
+	          _context3.next = 24;
+	          break;
+
+	        case 22:
+	          _context3.next = 24;
+	          return (0, _effects.put)(_Action.Action.pro_stateClickAction('Resolved'));
+
+	        case 24:
+	          _context3.next = 30;
+	          break;
+
+	        case 26:
+	          _context3.prev = 26;
+	          _context3.t1 = _context3['catch'](1);
+	          _context3.next = 30;
+	          return (0, _effects.put)({
+	            type: "USER_FETCH_FAILED",
+	            message: _context3.t1.message
+	          });
+
+	        case 30:
+	        case 'end':
+	          return _context3.stop();
+	      }
+	    }
+	  }, _marked[2], this, [[1, 26]]);
+	}
+
+	function onMain_TabbarClick() {
+	  return regeneratorRuntime.wrap(function onMain_TabbarClick$(_context4) {
+	    while (1) {
+	      switch (_context4.prev = _context4.next) {
+	        case 0:
+	          _context4.next = 2;
+	          return (0, _effects.takeEvery)("onMain_TabbarClick_saga", fetchTabData);
+
+	        case 2:
+	        case 'end':
+	          return _context4.stop();
+	      }
+	    }
+	  }, _marked[3], this);
+	}
+
 	/*
 	  Alternatively you may use takeLatest.
 
@@ -21333,19 +21439,23 @@ webpackJsonp([6],[
 	//   yield takeLatest("USER_FETCH_REQUESTED", fetchUser);
 	// }
 	function root() {
-	  return regeneratorRuntime.wrap(function root$(_context3) {
+	  return regeneratorRuntime.wrap(function root$(_context5) {
 	    while (1) {
-	      switch (_context3.prev = _context3.next) {
+	      switch (_context5.prev = _context5.next) {
 	        case 0:
-	          _context3.next = 2;
+	          _context5.next = 2;
 	          return (0, _effects.fork)(mySaga);
 
 	        case 2:
+	          _context5.next = 4;
+	          return (0, _effects.fork)(onMain_TabbarClick);
+
+	        case 4:
 	        case 'end':
-	          return _context3.stop();
+	          return _context5.stop();
 	      }
 	    }
-	  }, _marked[2], this);
+	  }, _marked[4], this);
 	}
 	//export default mySaga;
 
@@ -22289,6 +22399,7 @@ webpackJsonp([6],[
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	_fetchMock2.default.mock(_common.API.login, _mockData.mData);
+	_fetchMock2.default.mock(_common.API.announcement, _mockData.mData);
 
 	exports.default = _fetchMock2.default;
 

@@ -5,6 +5,6 @@ import {mData} from './mockData'
   API
  } from '../lib/common'
 fetchMock.mock(API.login, mData);
-
+fetchMock.mock(API.announcement, mData);
 
 export default fetchMock

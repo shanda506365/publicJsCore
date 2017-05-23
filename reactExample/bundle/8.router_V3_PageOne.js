@@ -23,6 +23,14 @@ webpackJsonp([8],{
 	var mapDispatchToProps_Common = function mapDispatchToProps_Common(dispatch, ownProps) {
 	  return {
 	    onMain_TabbarClick: function onMain_TabbarClick(e, index) {
+	      dispatch({
+	        type: 'onMain_TabbarClick_saga',
+	        e: e,
+	        index: index,
+	        ownProps: ownProps
+	      });
+	    },
+	    onMain_TabbarClickOld: function onMain_TabbarClickOld(e, index) {
 	      dispatch(_Action.Action.Main_TabbarClickAction(e, index));
 	      (0, _common.Ajax)({
 	        url: _common.API.login,

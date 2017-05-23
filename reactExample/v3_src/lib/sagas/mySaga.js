@@ -3,35 +3,43 @@ import {
   put,
   fork,
   takeEvery,
-  takeLatest
+  takeLatest,
+  select
 } from 'redux-saga/effects'
- 
- import {
+
+import {
   Action
- } from '../Action'
- import common, {
+} from '../Action'
+import common, {
   Ajax,
   API
- } from '../common'
-// worker Saga: will be fired on USER_FETCH_REQUESTED actions
+} from '../common'
+
 import 'isomorphic-fetch'
 import '../../mockData/fetchMock'
+
 function* fetchUser(action) {
-   console.log(action)
+  console.log(action)
   try {
-    const user = yield call(function(){
-            return  fetch(API.login,{
-              method:'POST',
-              // headers: {
-              //   'Content-Type': 'application/json'
-              // },
-              body: JSON.stringify(action)
-            })
-            .then(response => response.json())
-            .then(json => {console.log(json);return json.data.map((item)=>{return item})} )
+    const user = yield call(function() {
+      return fetch(API.login, {
+          method: 'POST',
+          // headers: {
+          //   'Content-Type': 'application/json'
+          // },
+          body: JSON.stringify(action)
+        })
+        .then(response => response.json())
+        .then(json => {
+          console.log(json);
+          return json.data.map((item) => {
+            return item
+          })
+        })
     }, action.payload.tabIndex);
     console.log(user)
-    yield put(Action.pro_stateClickAction('Rejected',user));
+    yield put(Action.pro_stateClickAction('Rejected', user));
+    //yield select(state=>console.log(state.V3DemoReducer.toJSON()));
   } catch (e) {
     yield put({
       type: "USER_FETCH_FAILED",
@@ -40,12 +48,77 @@ function* fetchUser(action) {
   }
 }
 
+
 /*
   Starts fetchUser on each dispatched `USER_FETCH_REQUESTED` action.
   Allows concurrent fetches of user.
 */
 function* mySaga() {
   yield takeEvery("USER_FETCH_REQUESTED", fetchUser);
+}
+
+function* fetchTabData(action) {
+  console.log(action)
+  try {
+    const data = yield call(function() {
+      console.log(arguments)
+      return fetch(API.login, {
+          method: 'POST',
+          // headers: {
+          //   'Content-Type': 'application/json'
+          // },
+          //body: action.index
+        })
+        .then(response => {return response.json()}) 
+    }, action);
+
+    let ownProps = action.ownProps 
+    if (data.suc) {
+
+      switch (action.index) {
+        case 0:
+          ownProps.router.push({
+            pathname: '/'
+          })
+          return
+        case 1:
+          ownProps.router.push({
+            pathname: '/PageTwo'
+          })
+          return
+        case 2:
+          ownProps.router.push({
+            pathname: '/Quote'
+          })
+          return
+        case 3:
+          ownProps.router.push({
+            pathname: '/PageFour'
+          })
+          return
+        default:
+          ownProps.router.push({
+            pathname: '/'
+          })
+          return
+
+      }
+
+
+    } else {
+      yield put(Action.pro_stateClickAction('Resolved'));
+    }
+
+  } catch (e) {
+    yield put({
+      type: "USER_FETCH_FAILED",
+      message: e.message
+    });
+  }
+}
+
+function* onMain_TabbarClick() {
+  yield takeEvery("onMain_TabbarClick_saga", fetchTabData);
 }
 
 /*
@@ -59,8 +132,9 @@ function* mySaga() {
 //   yield takeLatest("USER_FETCH_REQUESTED", fetchUser);
 // }
 export default function* root() {
-  yield fork(mySaga)
-  // yield fork(nextRedditChange)
-  // yield fork(invalidateReddit)
-}
-//export default mySaga;
+    yield fork(mySaga)
+    yield fork(onMain_TabbarClick)
+      // yield fork(nextRedditChange)
+      // yield fork(invalidateReddit)
+  }
+  //export default mySaga;

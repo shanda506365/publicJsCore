@@ -12,13 +12,21 @@
  const mapDispatchToProps_Common = function(dispatch, ownProps) {
  	return {
  		onMain_TabbarClick: (e, index) => {
- 			dispatch(Action.Main_TabbarClickAction(e,index))
+ 			dispatch({
+ 				type: 'onMain_TabbarClick_saga', 
+ 				e,
+ 				index,
+ 				ownProps 
+ 			})
+ 		},
+ 		onMain_TabbarClickOld: (e, index) => {
+ 			dispatch(Action.Main_TabbarClickAction(e, index))
  			Ajax({
  				url: API.login,
  				doneFun: function(msg) {
- 					let data = JSON.parse(msg) 
+ 					let data = JSON.parse(msg)
  					if (data.suc) {
- 						dispatch(Action.Main_TabbarClickAction(e,index))
+ 						dispatch(Action.Main_TabbarClickAction(e, index))
 
  						switch (index) {
  							case 0:
@@ -66,7 +74,7 @@
 
  		},
  		onPro_stateChange: (state) => dispatch(Action.pro_stateClickAction(state)),
- 		dispatch 
+ 		dispatch
  	}
 
  }
