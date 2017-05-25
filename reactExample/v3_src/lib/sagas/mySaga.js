@@ -4,9 +4,16 @@ import {
   fork,
   takeEvery,
   takeLatest,
-  select
+  select,
+  take,
+  task,
+  cancel,
+  cancelled,
+  all 
 } from 'redux-saga/effects'
-
+import {
+  delay
+} from 'redux-saga'
 import {
   Action
 } from '../Action'
@@ -18,10 +25,13 @@ import common, {
 import 'isomorphic-fetch'
 import '../../mockData/fetchMock'
 
-function* fetchUser(action) {
+export function* fetchUser(action) {
   console.log(action)
   try {
+    yield put(Action.pro_stateClickAction('Pending'));
+   yield delay(3000)
     const user = yield call(function() {
+
       return fetch(API.login, {
           method: 'POST',
           // headers: {
@@ -29,7 +39,12 @@ function* fetchUser(action) {
           // },
           body: JSON.stringify(action)
         })
-        .then(response => response.json())
+        .then(response => { 
+          if (response.status >= 400) {
+            throw new Error("Bad response from server");
+          }
+          return response.json()
+        })
         .then(json => {
           console.log(json);
           return json.data.map((item) => {
@@ -37,7 +52,7 @@ function* fetchUser(action) {
           })
         })
     }, action.payload.tabIndex);
-    console.log(user)
+    console.log(user) 
     yield put(Action.pro_stateClickAction('Rejected', user));
     //yield select(state=>console.log(state.V3DemoReducer.toJSON()));
   } catch (e) {
@@ -45,6 +60,8 @@ function* fetchUser(action) {
       type: "USER_FETCH_FAILED",
       message: e.message
     });
+  }finally {
+    yield put(Action.pro_stateClickAction('Rejected'));
   }
 }
 
@@ -59,8 +76,9 @@ function* mySaga() {
 
 function* fetchTabData(action) {
   console.log(action)
+
   try {
-    const data = yield call(function() {
+    const [data, data1] = yield all([call(function() {
       console.log(arguments)
       return fetch(API.login, {
           method: 'POST',
@@ -69,10 +87,24 @@ function* fetchTabData(action) {
           // },
           //body: action.index
         })
-        .then(response => {return response.json()}) 
-    }, action);
-
-    let ownProps = action.ownProps 
+        .then(response => {
+          return response.json()
+        })
+    }, action), call(function() {
+      console.log(arguments)
+      return fetch(API.announcement, {
+          method: 'POST',
+          // headers: {
+          //   'Content-Type': 'application/json'
+          // },
+          //body: action.index
+        })
+        .then(response => {
+          return response.json()
+        })
+    }, action)]);
+    console.log('data1', data, data1)
+    let ownProps = action.ownProps
     if (data.suc) {
 
       switch (action.index) {
@@ -119,21 +151,89 @@ function* fetchTabData(action) {
 
 function* onMain_TabbarClick() {
   yield takeEvery("onMain_TabbarClick_saga", fetchTabData);
+
 }
 
-/*
-  Alternatively you may use takeLatest.
+function* authorize(user, password) {
+  try {
+    const token = yield call(function() {
+      return fetch(API.login, {
+          method: 'POST',
+          // headers: {
+          //   'Content-Type': 'application/json'
+          // },
+          //body: action.index
+        })
+        .then(response => {
+          return response.json()
+        })
+    }, user, password)
+    yield put({
+      type: 'LOGIN_SUCCESS',
+      token
+    })
+    console.log('tokentoken', token)
+      //yield call(Api.storeItem, token)
 
-  Does not allow concurrent fetches of user. If "USER_FETCH_REQUESTED" gets
-  dispatched while a fetch is already pending, that pending fetch is cancelled
-  and only the latest one will be run.
-*/
-// function* mySaga() {
-//   yield takeLatest("USER_FETCH_REQUESTED", fetchUser);
-// }
+  } catch (error) {
+    yield put({
+      type: 'LOGIN_ERROR',
+      error
+    })
+  } finally {
+    if (yield cancelled()) {
+      // ... put special cancellation handling code here
+    }
+  }
+}
+
+function* testTake() {
+    try {
+      while (true) {
+        yield take('onMain_TabbarClick_saga')
+        console.log('tagke')
+        const token = yield fork(authorize, 'ddd', 'ddd')
+
+        console.log('takelogout', token, token.result())
+        const action = yield take(['LOGOUT', 'LOGIN_ERROR', 'LOGIN_SUCCESS'])
+
+        if (action.type === 'LOGIN_ERROR') {
+          console.log('takelogout', token, token.result())
+          yield cancel(token)
+        }
+        if (action.type === 'LOGIN_SUCCESS') {
+          console.log('3333', token, token.result())
+          yield cancel(token)
+          console.log('3333', token, token.result())
+        }
+
+        //yield call(Api.clearItem, 'token')
+        yield put({
+          type: "1111"
+        });
+      }
+    } catch (e) {
+      yield put({
+        type: "222",
+        message: e.message
+      });
+    }
+
+  }
+  /*
+    Alternatively you may use takeLatest.
+
+    Does not allow concurrent fetches of user. If "USER_FETCH_REQUESTED" gets
+    dispatched while a fetch is already pending, that pending fetch is cancelled
+    and only the latest one will be run.
+  */
+  // function* mySaga() {
+  //   yield takeLatest("USER_FETCH_REQUESTED", fetchUser);
+  // }
 export default function* root() {
     yield fork(mySaga)
     yield fork(onMain_TabbarClick)
+    yield fork(testTake)
       // yield fork(nextRedditChange)
       // yield fork(invalidateReddit)
   }

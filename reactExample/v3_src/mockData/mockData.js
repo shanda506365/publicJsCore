@@ -4,7 +4,7 @@ import common, {
 	API
 } from './../lib/common'
 Mock.setup({
-	//timeout: '1000-4000'
+	// timeout: '1000-4000'
 })
 Mock.mock(API.login, {
 	'suc|9-1': true,
@@ -17,7 +17,7 @@ Mock.mock(API.login, {
 		'color': Mock.Random.color()
 	}]
 });
-var mData = Mock.mock({
+const mData = Mock.mock({
 	'suc': true,
 	'msg|1-10': '',
 	'code': '01',

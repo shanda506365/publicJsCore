@@ -413,6 +413,7 @@ webpackJsonp([11],{
 		}, {
 			key: 'render',
 			value: function render() {
+				//  
 				// setTimeout(function() {
 				// 	hashHistory.push({
 				// 		pathname:'/Quote'
@@ -431,9 +432,7 @@ webpackJsonp([11],{
 				// }
 
 				// var nums = numbers();
-				// console.log(nums.next(0)); 
-				// console.log(nums.next(4)); 
-				// console.log(nums.next(0));  
+				// console.log(nums.next(nums.next(nums.next().value).value).value);  
 				var _props2 = this.props,
 				    onMain_TabbarClick = _props2.onMain_TabbarClick,
 				    onPro_stateChange = _props2.onPro_stateChange,

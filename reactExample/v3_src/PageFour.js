@@ -149,6 +149,7 @@ class PageFour extends Component {
 
 	}
 	render() {
+		//  
 		// setTimeout(function() {
 		// 	hashHistory.push({
 		// 		pathname:'/Quote'
@@ -167,9 +168,7 @@ class PageFour extends Component {
 // }
 
 // var nums = numbers();
-// console.log(nums.next(0)); 
-// console.log(nums.next(4)); 
-// console.log(nums.next(0));  
+// console.log(nums.next(nums.next(nums.next().value).value).value);  
 		const {
 			onMain_TabbarClick,
 			onPro_stateChange,

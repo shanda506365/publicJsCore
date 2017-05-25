@@ -1,3 +1,4 @@
+ 
 var webpack = require('webpack');
 var uglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
 var CommonsChunkPlugin = require("webpack/lib/optimize/CommonsChunkPlugin");
@@ -5,8 +6,10 @@ var CopyWebpackPlugin = require('copy-webpack-plugin');
 module.exports = {
     entry: {
         'entry': './src/index.js',
-        'v3demo': './v3_src/V3Demo.js'
+        'v3demo': './v3_src/V3Demo.js',
+        // 'test':'./v3_src/test/test.js'
     },
+    target: 'web',
     output: {
         path: __dirname + '/bundle',
         publicPath:'/bundle/',

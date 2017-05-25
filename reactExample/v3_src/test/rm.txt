@@ -1,0 +1,3 @@
+babel test --out-dir test/es2015
+
+test/es2015/ node test
