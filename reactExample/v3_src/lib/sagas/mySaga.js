@@ -9,7 +9,7 @@ import {
   task,
   cancel,
   cancelled,
-  all 
+  all
 } from 'redux-saga/effects'
 import {
   delay
@@ -17,10 +17,9 @@ import {
 import {
   Action
 } from '../Action'
-import common, {
-  Ajax,
+import  { 
   API
-} from '../common'
+} from '../API'
 
 import 'isomorphic-fetch'
 import '../../mockData/fetchMock'
@@ -29,7 +28,7 @@ export function* fetchUser(action) {
   console.log(action)
   try {
     yield put(Action.pro_stateClickAction('Pending'));
-   yield delay(3000)
+    yield delay(3000)
     const user = yield call(function() {
 
       return fetch(API.login, {
@@ -39,7 +38,7 @@ export function* fetchUser(action) {
           // },
           body: JSON.stringify(action)
         })
-        .then(response => { 
+        .then(response => {
           if (response.status >= 400) {
             throw new Error("Bad response from server");
           }
@@ -52,7 +51,7 @@ export function* fetchUser(action) {
           })
         })
     }, action.payload.tabIndex);
-    console.log(user) 
+    console.log(user)
     yield put(Action.pro_stateClickAction('Rejected', user));
     //yield select(state=>console.log(state.V3DemoReducer.toJSON()));
   } catch (e) {
@@ -60,7 +59,7 @@ export function* fetchUser(action) {
       type: "USER_FETCH_FAILED",
       message: e.message
     });
-  }finally {
+  } finally {
     yield put(Action.pro_stateClickAction('Rejected'));
   }
 }

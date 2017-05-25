@@ -19,7 +19,7 @@ import {
   changeUI,
   changeColorSaga
 } from './tt.js'
- 
+import {fetchUser} from './lib/sagas/mySaga'
 
 import test from 'tape'
 console.log(put({ type: 'MY_CRAZY_ACTION' }));

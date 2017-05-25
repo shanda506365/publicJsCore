@@ -6,6 +6,8 @@ var _effects = require('redux-saga/effects');
 
 var _tt = require('./tt.js');
 
+var _mySaga = require('./lib/sagas/mySaga');
+
 var _tape = require('tape');
 
 var _tape2 = _interopRequireDefault(_tape);
