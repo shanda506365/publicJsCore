@@ -13,12 +13,19 @@ import {
   all 
 } from 'redux-saga/effects'
 import {
+  delay
+} from 'redux-saga'
+import {
   CHOOSE_COLOR,
   CHANGE_UI,
   chooseColor,
   changeUI,
   changeColorSaga
 } from './tt.js'
+
+import {
+  Action
+} from './lib/Action'
 import {fetchUser} from './lib/sagas/mySaga'
 
 import test from 'tape'
@@ -48,6 +55,31 @@ test('change color saga', assert => {
     true,
     'it should be done'
   );
+
+  assert.end();
+});
+
+
+test('fetchUser saga', assert => {
+  const gen = fetchUser();
+
+  assert.deepEqual( 
+    gen.next().value,
+    put(Action.pro_stateClickAction('Pending')),
+    'put action pro_stateClickAction'
+  );
+ 
+  assert.deepEqual(
+    gen.next().value,
+    call(delay,3000),
+    'delay 3000'
+  );
+
+  // assert.deepEqual(
+  //   gen.next().done,
+  //   true,
+  //   'it should be done'
+  // );
 
   assert.end();
 });

@@ -4,7 +4,11 @@ require('babel-polyfill');
 
 var _effects = require('redux-saga/effects');
 
+var _reduxSaga = require('redux-saga');
+
 var _tt = require('./tt.js');
+
+var _Action = require('./lib/Action');
 
 var _mySaga = require('./lib/sagas/mySaga');
 
@@ -25,6 +29,22 @@ console.log((0, _effects.put)({ type: 'MY_CRAZY_ACTION' }));
   assert.deepEqual(gen.next((0, _tt.chooseColor)(color)).value, (0, _effects.put)((0, _tt.changeUI)(color)), 'it should dispatch an action to change the ui');
 
   assert.deepEqual(gen.next().done, true, 'it should be done');
+
+  assert.end();
+});
+
+(0, _tape2.default)('fetchUser saga', function (assert) {
+  var gen = (0, _mySaga.fetchUser)();
+
+  assert.deepEqual(gen.next().value, (0, _effects.put)(_Action.Action.pro_stateClickAction('Pending')), 'put action pro_stateClickAction');
+
+  assert.deepEqual(gen.next().value, (0, _effects.call)(_reduxSaga.delay, 3000), 'delay 3000');
+
+  // assert.deepEqual(
+  //   gen.next().done,
+  //   true,
+  //   'it should be done'
+  // );
 
   assert.end();
 });

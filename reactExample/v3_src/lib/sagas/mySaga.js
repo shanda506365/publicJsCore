@@ -28,7 +28,7 @@ export function* fetchUser(action) {
   console.log(action)
   try {
     yield put(Action.pro_stateClickAction('Pending'));
-    yield delay(3000)
+    yield call(delay,3000)
     const user = yield call(function() {
 
       return fetch(API.login, {

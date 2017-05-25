@@ -36,7 +36,7 @@ function fetchUser(action) {
 
         case 4:
           _context.next = 6;
-          return (0, _reduxSaga.delay)(3000);
+          return (0, _effects.call)(_reduxSaga.delay, 3000);
 
         case 6:
           _context.next = 8;
