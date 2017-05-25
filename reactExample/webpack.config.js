@@ -85,6 +85,9 @@ module.exports = {
             }, {
                 from: 'test/**/*',
                 to: 'E:/publicJsCore/reactExample'
+            }, {
+                from: 'testEs/**/*',
+                to: 'E:/publicJsCore/reactExample'
             }
 
 
