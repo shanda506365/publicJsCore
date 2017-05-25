@@ -2,9 +2,9 @@ import Mock from 'mockjs'
 import  { 
 	API
 } from './../lib/API'
-Mock.setup({
-	// timeout: '1000-4000'
-})
+// Mock.setup({
+// 	// timeout: '1000-4000'
+// })
 Mock.mock(API.login, {
 	'suc|9-1': true,
 	'msg|1-10': '',

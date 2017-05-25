@@ -18,7 +18,9 @@ var _tape2 = _interopRequireDefault(_tape);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-console.log((0, _effects.put)({ type: 'MY_CRAZY_ACTION' }));
+console.log((0, _effects.put)({
+  type: 'MY_CRAZY_ACTION'
+}));
 
 (0, _tape2.default)('change color saga', function (assert) {
   var gen = (0, _tt.changeColorSaga)();
@@ -34,17 +36,18 @@ console.log((0, _effects.put)({ type: 'MY_CRAZY_ACTION' }));
 });
 
 (0, _tape2.default)('fetchUser saga', function (assert) {
-  var gen = (0, _mySaga.fetchUser)();
+  var action = { payload: { tabIndex: 1 } };
+  var gen = (0, _mySaga.fetchUser)(action);
 
   assert.deepEqual(gen.next().value, (0, _effects.put)(_Action.Action.pro_stateClickAction('Pending')), 'put action pro_stateClickAction');
 
   assert.deepEqual(gen.next().value, (0, _effects.call)(_reduxSaga.delay, 3000), 'delay 3000');
+  gen.next();
+  assert.skip('call login');
 
-  // assert.deepEqual(
-  //   gen.next().done,
-  //   true,
-  //   'it should be done'
-  // );
+  assert.deepEqual(gen.next().value, (0, _effects.put)(_Action.Action.pro_stateClickAction('Rejected')), 'put action pro_stateClickAction');
+  assert.deepEqual(gen.next().value, (0, _effects.put)(_Action.Action.pro_stateClickAction('Rejected')), 'put action pro_stateClickAction');
+  assert.deepEqual(gen.next().done, true, 'it should be done');
 
   assert.end();
 });

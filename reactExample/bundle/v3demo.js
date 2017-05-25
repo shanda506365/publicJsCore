@@ -50520,9 +50520,9 @@ webpackJsonp([6],[
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	_mockjs2.default.setup({
-		// timeout: '1000-4000'
-	});
+	// Mock.setup({
+	// 	// timeout: '1000-4000'
+	// })
 	_mockjs2.default.mock(_API.API.login, {
 		'suc|9-1': true,
 		'msg|1-10': '',

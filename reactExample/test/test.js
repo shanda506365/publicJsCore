@@ -10,7 +10,7 @@ import {
   task,
   cancel,
   cancelled,
-  all 
+  all
 } from 'redux-saga/effects'
 import {
   delay
@@ -22,16 +22,19 @@ import {
   changeUI,
   changeColorSaga
 } from './tt.js'
-
+ 
 import {
   Action
 } from './lib/Action'
-import {fetchUser} from './lib/sagas/mySaga'
+import {
+  fetchUser
+} from './lib/sagas/mySaga'
 
 import test from 'tape'
-console.log(put({ type: 'MY_CRAZY_ACTION' }));
+console.log(put({
+  type: 'MY_CRAZY_ACTION'
+}));
 
- 
 
 
 test('change color saga', assert => {
@@ -59,27 +62,42 @@ test('change color saga', assert => {
   assert.end();
 });
 
-
+ 
 test('fetchUser saga', assert => {
-  const gen = fetchUser();
+  const action = {payload:{tabIndex:1}}
+  const gen = fetchUser(action);
 
-  assert.deepEqual( 
+  assert.deepEqual(
     gen.next().value,
     put(Action.pro_stateClickAction('Pending')),
     'put action pro_stateClickAction'
   );
- 
+
   assert.deepEqual(
     gen.next().value,
-    call(delay,3000),
+    call(delay, 3000),
     'delay 3000'
   );
+  gen.next()
+  assert.skip( 
+    'call login'
+  );
 
-  // assert.deepEqual(
-  //   gen.next().done,
-  //   true,
-  //   'it should be done'
-  // );
+  assert.deepEqual(
+    gen.next().value,
+    put(Action.pro_stateClickAction('Rejected')),
+    'put action pro_stateClickAction'
+  );
+  assert.deepEqual(
+    gen.next().value,
+    put(Action.pro_stateClickAction('Rejected')),
+    'put action pro_stateClickAction'
+  );
+  assert.deepEqual(
+    gen.next().done,
+    true,
+    'it should be done'
+  );
 
   assert.end();
 });

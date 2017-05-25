@@ -64,7 +64,7 @@ function fetchUser(action) {
         case 8:
           user = _context.sent;
 
-          console.log(user);
+         // console.log(user);
           _context.next = 12;
           return (0, _effects.put)(_Action.Action.pro_stateClickAction('Rejected', user));
 
