@@ -12,6 +12,9 @@
  //v3
  const V3GlobalState = fromJS({
    pro_state: 'Resolved',
+   PageFour: {
+     value: ''
+   },
    V3_Main: {
      tabIndex: 0,
      title: 'V3_Main',
@@ -40,10 +43,13 @@
      case 'pro_stateClick':
        rObj = state.set('pro_state', action.state);
        return rObj
-     // case 'USER_FETCH_REQUESTED':
-     // alert(11)
-     //   rObj = state;
-     //   return rObj
+         // case 'USER_FETCH_REQUESTED':
+         // alert(11)
+         //   rObj = state;
+         //   return rObj
+     case 'onInputChange': 
+       rObj = state.setIn(['PageFour','value'],action.payload.e.target.value);
+       return rObj
      default:
        return state;
    }

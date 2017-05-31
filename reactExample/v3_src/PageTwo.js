@@ -22,7 +22,7 @@ import {
 	mapDispatchToProps_PageTwo
 } from './lib/Dispathes/mapDispatchToProps_PageTwo'
 
- 
+
 
 import common, {
 	Ajax,
@@ -34,10 +34,45 @@ import {
 } from 'immutable'
 
 
-import mockData from './mockData/mockData'
-import TabBar_Bottom from './components/TabBar_Bottom'
- 
 
+import TabBar_Bottom from './components/TabBar_Bottom'
+
+import {tableData} from './mockData/mockData'
+
+import {
+	Table,
+	Icon
+} from 'antd'
+
+const columns = [{
+	title: 'Name',
+	dataIndex: 'name',
+	key: 'name',
+	render: text => <a href="#">{text}</a>,
+}, {
+	title: 'Age',
+	dataIndex: 'age',
+	key: 'age',
+}, {
+	title: 'Address',
+	dataIndex: 'address',
+	key: 'address',
+}, {
+	title: 'Action',
+	key: 'action',
+	render: (text, record) => (
+		<span>
+      <a href="#">Action 一 {record.name}</a>
+      <span className="ant-divider" />
+      <a href="#">Delete</a>
+      <span className="ant-divider" />
+      <a href="#" className="ant-dropdown-link">
+        More actions <Icon type="down" />
+      </a>
+    </span>
+	),
+}];
+ 
 class PageTwo extends Component {
 	// shouldComponentUpdate(nextProps, nextState) {
 	// 	const thisProps = this.props || {},
@@ -61,7 +96,7 @@ class PageTwo extends Component {
 			}, 2000)
 		})
 		$('.weui-tab__panel').css('height', document.body.clientHeight - 50);
-		 
+
 		// Ajax({
 		// 	url: API.login,
 		// 	doneFun: function(msg) {
@@ -93,17 +128,18 @@ class PageTwo extends Component {
 		} = this.props, me = this;
 		return "weui-tabbar__item " + (tabIndex == index ? 'weui-bar__item_on' : '')
 	}
-	choseBarPanelCls(index) { 
+	choseBarPanelCls(index) {
 		return 0 == index ? 'barpanel weui-pull-to-refresh' : 'barpanel hide weui-pull-to-refresh'
 	}
 	domInit(param) {
-		const me = this,{
-			props: {
-				router
-			}
-		} = this;
+		const me = this,
+			{
+				props: {
+					router
+				}
+			} = this;
 
-	 
+
 
 		const pullDiv = [<div className="weui-pull-to-refresh__layer">
                     <div className='weui-pull-to-refresh__arrow'></div>
@@ -124,6 +160,7 @@ class PageTwo extends Component {
 						Pending</button>
 					</div>
 					</div>
+			<Table columns={columns} dataSource={tableData.data} />
 			Page 2<p> <Link className='weui-btn weui-btn_default' to="/Quote">tttt</Link>afasdfsadfasdfasdf</p>
                     <br/><br/><br/><br/>2<br/><br/><br/>2<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
                     <p> 234234213412341234</p></div>)
@@ -135,7 +172,7 @@ class PageTwo extends Component {
 		// 		pathname:'/Quote'
 		// 	})
 		// },2000)
- 
+
 		const {
 			onMain_TabbarClick,
 			onPro_stateChange,
@@ -146,14 +183,14 @@ class PageTwo extends Component {
 				}
 			}
 		} = this.props, me = this;
-		let  barPanelDom = []
+		let barPanelDom = []
 		me.domInit({
-			onMain_TabbarClick, 
+			onMain_TabbarClick,
 			barPanelDom,
 			onPro_stateChange
 		})
 
-		 
+
 		return (
 			<div className='v3_main weui-tab' > 
 				<div className="weui-tab__panel">

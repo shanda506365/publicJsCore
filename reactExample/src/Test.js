@@ -22,7 +22,7 @@ import MapDispatchToProps,{
 	mapDispatchToProps_Test 
 } from './lib/MapDispatchToProps'
 
-import '!style!css!less!../less/test.less'
+import '../less/test.less'
 
 import {
 	mData

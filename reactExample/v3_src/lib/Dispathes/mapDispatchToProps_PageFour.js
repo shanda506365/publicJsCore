@@ -19,6 +19,9 @@
  					tabIndex
  				}
  			})
+ 		},
+ 		onInputChange:(payload)=>{  
+ 			dispatch(Action.onInputChange(payload))
  		}
  	}).toJSON()
 

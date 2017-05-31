@@ -1,7 +1,8 @@
-  const apiPreFix = '/' // 
+  // const apiPreFix = '/' // 
+  const apiPreFix = 'http://wechat.aibaojia.net/'
   const API = {
         login: apiPreFix + "quote/init",
-        announcement: apiPreFix + 'announcement/getLatest',
+        announcement: apiPreFix + 'clientUser/index',
         getBarcode: apiPreFix + "common/login/getQRcodePng",
         logout: apiPreFix + "common/logout",
         productIndex: apiPreFix + 'product/index',

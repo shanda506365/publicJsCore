@@ -335,8 +335,8 @@
          })
       }
    }
-   // const apiPreFix = 'http://192.168.91.102/' //'/'// 
-      const apiPreFix = '/' // 
+   const apiPreFix = 'http://192.168.91.33/' //'/'// 
+      // const apiPreFix = '/' // 
    const iAPI = {
       login: apiPreFix + "quote/init",
       announcement: apiPreFix + 'announcement/getLatest',

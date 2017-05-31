@@ -10,6 +10,7 @@
   "dependencies": {
     "IndexDBHelper": "git+https://git@github.com/EnzoLynn/IndexDBHelper.git",
     "RxFields": "git+https://git@github.com/EnzoLynn/RxFields.git",
+    "antd": "^2.10.2",
     "babel-core": "^6.17.0",
     "babel-loader": "^6.2.5",
     "babel-polyfill": "^6.23.0",
@@ -38,6 +39,7 @@
     "mockjs": "^1.0.0",
     "node-sass": "^3.10.1",
     "rc-select": "^6.8.2",
+    "rc-util": "^4.0.4",
     "react": "^15.5.3",
     "react-dom": "^15.3.2",
     "react-dragula": "^1.1.17",
@@ -54,7 +56,8 @@
     "style-loader": "^0.13.1",
     "tape": "^4.6.3",
     "url-loader": "^0.5.7",
-    "webpack": "^1.13.2",
+    "webpack": "^2.6.1",
+    "webpack-dev-server": "^2.4.5",
     "weui": "^1.1.1",
     "weui.js": "^1.1.1",
     "x-editable": "^1.5.1"
@@ -68,5 +71,9 @@
     "less": "^2.7.1",
     "less-loader": "^2.2.3",
     "url-loader": "^0.5.7"
+  },
+  "scripts": {
+    "dev": "webpack-dev-server --content-base ./ --inline --hot",
+    "build": "webpack --progress --colors --watch"
   }
 }

@@ -34,9 +34,14 @@ import {
 } from 'immutable'
 
 
-import mockData from './mockData/mockData'
-import TabBar_Bottom from './components/TabBar_Bottom'
  
+import TabBar_Bottom from './components/TabBar_Bottom'
+
+import {
+  DatePicker,
+  message,
+  Button 
+} from 'antd'
 
 class PageOne extends Component {
 	// shouldComponentUpdate(nextProps, nextState) {
@@ -123,8 +128,18 @@ class PageOne extends Component {
 						<button className='weui-btn weui-btn_primary' onClick={()=>param.onPro_stateChange('Pending')}>
 						Pending</button>
 					</div>
-					</div>
-			Page 1<p> <Link className='weui-btn weui-btn_default' to="/Quote">tttt</Link>afasdfsadfasdfasdf</p>
+			 </div>
+		  <div style={{ width: 400, margin: '10px auto' }}>
+            <DatePicker onChange={(value) => {
+              message.info('您选择的日期是: ' + date.toString()); 
+            }} />
+          <div style={{ marginTop: 20 }}>当前日期：</div>
+          <Button type="primary">Primary</Button>
+    <Button>Default</Button>
+    <Button type="dashed">Dashed</Button>
+    <Button type="danger">Danger</Button>
+       </div>
+			Page 1  one 1<p> <Link className='weui-btn weui-btn_default' to="/Quote">tttt</Link>afasdfsadfasdfasdf</p>
                     <br/><br/><br/><br/>2<br/><br/><br/>2<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
                     <p> 234234213412341234</p>
 					<div className="weui-grids">

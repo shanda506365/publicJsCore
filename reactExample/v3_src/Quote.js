@@ -82,7 +82,7 @@ class Quote extends Component {
             Pending</button>
           </div>
           </div>
-      Page 3<p>  {JSON.stringify(this.props)}
+      Page 3<p> 
                 <Link className='weui-btn weui-btn_default' to="/">tttt</Link>afasdfsadfasdfasdf</p>
                     <br/><br/><br/><br/>2<br/><br/><br/>2<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
                     <p> 234234213412341234</p></div>)

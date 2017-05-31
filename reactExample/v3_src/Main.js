@@ -15,7 +15,7 @@ import {
   IndexLink
 } from 'react-router'
 
-import "!style!css!less!../less/index.less"
+import "../less/index.less"
 
 import {
   mapStateToProps_Main
@@ -36,12 +36,16 @@ import common, {
 
 import mockData from './mockData/mockData'
 
-import '!style!css!less!../node_modules/weui/src/style/weui.less'
-import "!style!css!less!../node_modules/jquery-weui/dist/css/jquery-weui.css"
+import '../node_modules/weui/src/style/weui.less'
+import "../node_modules/jquery-weui/dist/css/jquery-weui.css"
 
 
 
 import Jweui from '../node_modules/jquery-weui/dist/js/jquery-weui'
+ 
+
+import "antd/dist/antd.less" 
+
 
 // React component
 class Main extends Component {

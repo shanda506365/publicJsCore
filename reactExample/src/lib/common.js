@@ -1,6 +1,6 @@
    import $ from './jquery-vendor.js'
    import cookie from 'js-cookie'
-   import "!style!css!less!../../less/loadmask.less"
+   import "../../less/loadmask.less"
    import '../LoadMask'
    var common = {
       getNagavVersion: function() {

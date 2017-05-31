@@ -17,7 +17,7 @@ import {
 import {
   Action
 } from '../Action'
-import  { 
+import {
   API
 } from '../API'
 
@@ -28,7 +28,7 @@ export function* fetchUser(action) {
   console.log(action)
   try {
     yield put(Action.pro_stateClickAction('Pending'));
-    yield call(delay,3000)
+    yield call(delay, 3000)
     const user = yield call(function() {
 
       return fetch(API.login, {
@@ -104,8 +104,7 @@ function* fetchTabData(action) {
     }, action)]);
     console.log('data1', data, data1)
     let ownProps = action.ownProps
-    if (data.suc) {
-
+    if (data.suc) { 
       switch (action.index) {
         case 0:
           ownProps.router.push({
@@ -229,10 +228,36 @@ function* testTake() {
   // function* mySaga() {
   //   yield takeLatest("USER_FETCH_REQUESTED", fetchUser);
   // }
+  // 
+function* myInputChange(action) {
+  try {
+    console.log('action',action)
+    if (!/\D/.test(action.payload.e.target.value)) {
+      yield put(Action.onInputChange(action.payload));
+    }else{
+       yield put({
+        type: "input faile",
+        message: action.payload.e.target.value
+      });
+    }
+    
+  } catch (e) {
+    yield put({
+      type: "USER_FETCH_FAILED",
+      message: e.message
+    });
+  }
+
+}
+
+function* myInputChangeSaga() {
+  yield takeEvery("myInputChange", myInputChange);
+}
 export default function* root() {
     yield fork(mySaga)
     yield fork(onMain_TabbarClick)
     yield fork(testTake)
+    yield fork(myInputChangeSaga)
       // yield fork(nextRedditChange)
       // yield fork(invalidateReddit)
   }

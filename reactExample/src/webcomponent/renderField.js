@@ -3,8 +3,10 @@ import React, {
 	PropTypes
 } from 'react'
 import ReactDOM from 'react-dom'
- 
- 
+import {
+	Input
+} from 'antd'
+
 
 const renderField = ({
 	input,
@@ -25,7 +27,7 @@ const renderField = ({
             <i className="weui-icon-warn"></i>
         </div>)
 	}
-	if (type == 'checkbox') { 
+	if (type == 'checkbox') {
 		return (<div className="weui-cells weui-cells_checkbox">
 		   <label className="weui-cell weui-check__label">
 		        <div className="weui-cell__hd">
@@ -60,7 +62,10 @@ const renderField = ({
 		            <span className="weui-icon-checked"></span>
 		        </div>
 		    </label>)
-	}; 
+	};
+	if (type == 'text') {
+		return (<Input {...input} placeholder={label} type={type}/>)
+	};
 	return (
 		<div>
 			<div className={cls}>

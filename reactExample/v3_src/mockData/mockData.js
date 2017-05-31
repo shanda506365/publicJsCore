@@ -35,6 +35,15 @@ const optionsData = Mock.mock({
 		'color': '@color'
 	}]
 });
+
+const tableData = Mock.mock({ 
+	'data|11-23': [{
+		'key|+1': 1,
+		'name': '@name',
+		'age|1-100': 100,
+		'address': '@color'
+	}]
+});
 var Random = Mock.Random
 Random.extend({
     constellation: function(date) {
@@ -75,5 +84,6 @@ Random.constellation()
 // console.log(Mock.valid(template, data))
 export {
 	mData as mData,
-	optionsData
+	optionsData,
+	tableData
 }

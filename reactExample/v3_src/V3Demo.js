@@ -37,12 +37,12 @@ ReactDOM.render(
       <Route path="/" getComponents={(nextState,callback)=>{
                                     require.ensure([],(require)=>{
                                         callback(null,require("./Main").default)
-                                    },"router_V3_Main")
+                                    },"router-V3-Main")
                                 }}  > 
         <IndexRoute  getComponents={(nextState,callback)=>{
                                     require.ensure([],(require)=>{
                                         callback(null,require("./PageOne").default)
-                                    },"router_V3_PageOne")
+                                    },"router-V3-PageOne")
                                 }}  onEnter={function(nextState, replace){
               console.log('onEnter',nextState,V3Store.getState())
         }} 
@@ -52,17 +52,17 @@ ReactDOM.render(
         <Route path='/Quote' getComponents={(nextState,callback)=>{
                                     require.ensure([],(require)=>{
                                         callback(null,require("./Quote").default)
-                                    },"router_V3_Quote")
+                                    },"router-V3-Quote")
                                 }} />
          <Route path='/PageTwo' getComponents={(nextState,callback)=>{
                                     require.ensure([],(require)=>{
                                         callback(null,require("./PageTwo").default)
-                                    },"router_V3_PageTwo")
+                                    },"router-V3-PageTwo")
                                 }} />
         <Route path='/PageFour' getComponents={(nextState,callback)=>{
                                     require.ensure([],(require)=>{
                                         callback(null,require("./PageFour").default)
-                                    },"router_V3_PageFour")
+                                    },"router-V3-PageFour")
                                 }} />
       </Route> 
     </Router> 

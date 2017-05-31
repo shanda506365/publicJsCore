@@ -6,15 +6,17 @@ import {
   Field,
   reduxForm
 } from 'redux-form'
- 
-import {CheckboxGroup,
-  RadioGroup,
-  renderField } from 'RxFields'
-// import renderField from './webcomponent/renderField'
-// import CheckboxGroup from './webcomponent/CheckboxGroup'
-// import RadioGroup from './webcomponent/RadioGroup'
 
-import { optionsData} from './mockData/mockData'
+// import {CheckboxGroup,
+//   RadioGroup,
+//   renderField } from 'RxFields'
+import renderField from './webcomponent/renderField'
+import CheckboxGroup from './webcomponent/CheckboxGroup'
+import RadioGroup from './webcomponent/RadioGroup'
+
+import {
+  optionsData
+} from './mockData/mockData'
 
 
 
@@ -32,6 +34,8 @@ let SimpleForm = (props) => {
  
   return (
     <form onSubmit={handleSubmit} className='weui-cells weui-cells-form'>
+     
+      <Field name="ddddd" component={renderField}  type="text"   label="ddddd"/>
       <div className="weui-cells weui-cells_checkbox">
         <Field name="checkbox1" component={renderField} value={null}  type="checkbox" label='item1' val='1'/>
         <Field name="checkbox1" component={renderField} value={null}  type="checkbox" label='item2' val='2'/>

@@ -18,6 +18,12 @@
  		return {
  			type: 'onSomeButtonClicked'
  		}
+ 	},
+ 	onInputChange:function(payload){
+ 		return {
+ 			type:'onInputChange',
+ 			payload
+ 		}
  	}
  }
 

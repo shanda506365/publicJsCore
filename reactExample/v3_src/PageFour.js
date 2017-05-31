@@ -94,34 +94,38 @@ class PageFour extends Component {
 		return "weui-tabbar__item " + (tabIndex == index ? 'weui-bar__item_on' : '')
 	}
 	choseBarPanelCls(index) {
-		return 0 == index ? 'barpanel weui-pull-to-refresh' : 'barpanel hide weui-pull-to-refresh'
-	}
-	// onSomeButtonClicked() {
-	// 	const {
-	// 		V3DemoReducer: {
-	// 			V3_Main: {
-	// 				tabIndex 
-	// 			}
-	// 		},
-	// 		dispatch
-	// 	} = this.props
-	// 	dispatch({
-	// 		type: 'USER_FETCH_REQUESTED',
-	// 		payload: {
-	// 			tabIndex
-	// 		}
-	// 	})
-	// }
+			return 0 == index ? 'barpanel weui-pull-to-refresh' : 'barpanel hide weui-pull-to-refresh'
+		}
+		// onSomeButtonClicked() {
+		// 	const {
+		// 		V3DemoReducer: {
+		// 			V3_Main: {
+		// 				tabIndex 
+		// 			}
+		// 		},
+		// 		dispatch
+		// 	} = this.props
+		// 	dispatch({
+		// 		type: 'USER_FETCH_REQUESTED',
+		// 		payload: {
+		// 			tabIndex
+		// 		}
+		// 	})
+		// }
 	domInit(param) {
+		console.log('ddd',this.props)
 		const me = this,
 			{
 				props: {
-					router
-				}
+					router,
+					V3DemoReducer:{
+						PageFour
+					},
+					dispatch
+				},
+				
 			} = this;
-
-
-
+ 
 		const pullDiv = [<div className="weui-pull-to-refresh__layer">
                     <div className='weui-pull-to-refresh__arrow'></div>
                     <div className='weui-pull-to-refresh__preloader'></div>
@@ -133,6 +137,39 @@ class PageFour extends Component {
 			{pullDiv}
 			<div className="weui-flex">
 			<div className="weui-flex__item">
+			 <input type="text" value={PageFour.value} onChange={(e)=>{
+			 	dispatch({
+			 		type:'myInputChange',
+			 		payload:{e}
+			 	})
+			 }}
+
+			 // {(e)=>{
+				//  	if (!/\D/.test(e.target.value)){
+
+				//  	}else{
+
+				//  	}
+			 // 		console.log('change',e.target.value)
+			 // 	}
+			 // } 
+			 //onKeyDown={(e)=>{
+			 
+			 	 //e.preventDefault()
+			//  	  var keynum;
+			// 	    var keychar;
+   // console.log(e.keyCode,e.which)
+			// 	    keynum = window.event ? e.keyCode : e.which;
+			// 	     if (e.which == 68) {e.preventDefault()};
+			// 	    keychar = String.fromCharCode(keynum); 
+			//  	 return false
+			// }} onKeyUp={(e)=>{
+// if (e.which == 68) {e.preventDefault()};
+// 			 	 console.log(e.keyCode,e.which)
+
+			 	//return false
+			 //  
+			  style={{"ime-mode":"disabled"}}/>
 				<button className='weui-btn weui-btn_primary' onClick={(e)=>param.onSomeButtonClicked(e,param.tabIndex)}>
 						onSomeButtonClicked</button>
 						<button className='weui-btn weui-btn_primary' onClick={()=>param.onPro_stateChange('Rejected')}>
@@ -155,20 +192,20 @@ class PageFour extends Component {
 		// 		pathname:'/Quote'
 		// 	})
 		// },2000)
-// function* numbers() {
-//     console.log('function start.');
+		// function* numbers() {
+		//     console.log('function start.');
 
-//     var v1 = yield 0;
-//     console.log('v1 = ' + v1);
+		//     var v1 = yield 0;
+		//     console.log('v1 = ' + v1);
 
-//     var v2 = yield 1;
-//     console.log('v2 = ' + v2);
+		//     var v2 = yield 1;
+		//     console.log('v2 = ' + v2);
 
-//     return 5;
-// }
+		//     return 5;
+		// }
 
-// var nums = numbers();
-// console.log(nums.next(nums.next(nums.next().value).value).value);  
+		// var nums = numbers();
+		// console.log(nums.next(nums.next(nums.next().value).value).value);  
 		const {
 			onMain_TabbarClick,
 			onPro_stateChange,

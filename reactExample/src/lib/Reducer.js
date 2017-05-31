@@ -17,6 +17,7 @@
        tabIndex: 0,
        title: 'Quote'
      },
+    
      SimpleFormData: {
        firstName: 'Jane',
        lastName: 'Doe',
