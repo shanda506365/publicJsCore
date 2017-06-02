@@ -19,7 +19,7 @@ var _reactRedux = require('react-redux');
 
 var _reactRouter = require('react-router');
 
-require('!style!css!less!../less/index.less');
+require('../less/index.less');
 
 var _mapStateToProps_Main = require('./lib/States/mapStateToProps_Main');
 
@@ -35,13 +35,15 @@ var _mockData = require('./mockData/mockData');
 
 var _mockData2 = _interopRequireDefault(_mockData);
 
-require('!style!css!less!../node_modules/weui/src/style/weui.less');
+require('../node_modules/weui/src/style/weui.less');
 
-require('!style!css!less!../node_modules/jquery-weui/dist/css/jquery-weui.css');
+require('../node_modules/jquery-weui/dist/css/jquery-weui.css');
 
 var _jqueryWeui = require('../node_modules/jquery-weui/dist/js/jquery-weui');
 
 var _jqueryWeui2 = _interopRequireDefault(_jqueryWeui);
+
+require('antd/dist/antd.less');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 

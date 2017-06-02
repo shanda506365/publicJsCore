@@ -19,9 +19,9 @@ var _API = require('../API');
 
 require('isomorphic-fetch');
 
-var _marked = [fetchUser, mySaga, fetchTabData, onMain_TabbarClick, authorize, testTake, root].map(regeneratorRuntime.mark);
+require('../../mockData/fetchMock');
 
-// import '../../mockData/fetchMock'
+var _marked = [fetchUser, mySaga, fetchTabData, onMain_TabbarClick, authorize, testTake, myInputChange, myInputChangeSaga, root].map(regeneratorRuntime.mark);
 
 function fetchUser(action) {
   var user;
@@ -64,7 +64,7 @@ function fetchUser(action) {
         case 8:
           user = _context.sent;
 
-         // console.log(user);
+          console.log(user);
           _context.next = 12;
           return (0, _effects.put)(_Action.Action.pro_stateClickAction('Rejected', user));
 
@@ -393,27 +393,96 @@ function testTake() {
 // function* mySaga() {
 //   yield takeLatest("USER_FETCH_REQUESTED", fetchUser);
 // }
-function root() {
-  return regeneratorRuntime.wrap(function root$(_context7) {
+// 
+function myInputChange(action) {
+  return regeneratorRuntime.wrap(function myInputChange$(_context7) {
     while (1) {
       switch (_context7.prev = _context7.next) {
         case 0:
-          _context7.next = 2;
-          return (0, _effects.fork)(mySaga);
+          _context7.prev = 0;
 
-        case 2:
-          _context7.next = 4;
-          return (0, _effects.fork)(onMain_TabbarClick);
+          console.log('action', action);
 
-        case 4:
-          _context7.next = 6;
-          return (0, _effects.fork)(testTake);
+          if (/\D/.test(action.payload.e.target.value)) {
+            _context7.next = 7;
+            break;
+          }
 
-        case 6:
+          _context7.next = 5;
+          return (0, _effects.put)(_Action.Action.onInputChange(action.payload));
+
+        case 5:
+          _context7.next = 9;
+          break;
+
+        case 7:
+          _context7.next = 9;
+          return (0, _effects.put)({
+            type: "input faile",
+            message: action.payload.e.target.value
+          });
+
+        case 9:
+          _context7.next = 15;
+          break;
+
+        case 11:
+          _context7.prev = 11;
+          _context7.t0 = _context7['catch'](0);
+          _context7.next = 15;
+          return (0, _effects.put)({
+            type: "USER_FETCH_FAILED",
+            message: _context7.t0.message
+          });
+
+        case 15:
         case 'end':
           return _context7.stop();
       }
     }
-  }, _marked[6], this);
+  }, _marked[6], this, [[0, 11]]);
+}
+
+function myInputChangeSaga() {
+  return regeneratorRuntime.wrap(function myInputChangeSaga$(_context8) {
+    while (1) {
+      switch (_context8.prev = _context8.next) {
+        case 0:
+          _context8.next = 2;
+          return (0, _effects.takeEvery)("myInputChange", myInputChange);
+
+        case 2:
+        case 'end':
+          return _context8.stop();
+      }
+    }
+  }, _marked[7], this);
+}
+function root() {
+  return regeneratorRuntime.wrap(function root$(_context9) {
+    while (1) {
+      switch (_context9.prev = _context9.next) {
+        case 0:
+          _context9.next = 2;
+          return (0, _effects.fork)(mySaga);
+
+        case 2:
+          _context9.next = 4;
+          return (0, _effects.fork)(onMain_TabbarClick);
+
+        case 4:
+          _context9.next = 6;
+          return (0, _effects.fork)(testTake);
+
+        case 6:
+          _context9.next = 8;
+          return (0, _effects.fork)(myInputChangeSaga);
+
+        case 8:
+        case 'end':
+          return _context9.stop();
+      }
+    }
+  }, _marked[8], this);
 }
 //export default mySaga;

@@ -173,6 +173,7 @@ var GlobalState = (0, _immutable.fromJS)({
     radios2: ''
   },
   SyncValidationFormData: {
+    date: new Date(),
     username: 11,
     tagSels: []
   }

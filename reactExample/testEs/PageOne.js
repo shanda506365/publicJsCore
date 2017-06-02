@@ -29,13 +29,11 @@ var _common2 = _interopRequireDefault(_common);
 
 var _immutable = require('immutable');
 
-var _mockData = require('./mockData/mockData');
-
-var _mockData2 = _interopRequireDefault(_mockData);
-
 var _TabBar_Bottom = require('./components/TabBar_Bottom');
 
 var _TabBar_Bottom2 = _interopRequireDefault(_TabBar_Bottom);
+
+var _antd = require('antd');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -171,7 +169,39 @@ var PageOne = function (_Component) {
 						)
 					)
 				),
-				'Page 1',
+				_react2.default.createElement(
+					'div',
+					{ style: { width: 400, margin: '10px auto' } },
+					_react2.default.createElement(_antd.DatePicker, { onChange: function onChange(value) {
+							_antd.message.info('您选择的日期是: ' + value.toString());
+						} }),
+					_react2.default.createElement(
+						'div',
+						{ style: { marginTop: 20 } },
+						'\u5F53\u524D\u65E5\u671F\uFF1A'
+					),
+					_react2.default.createElement(
+						_antd.Button,
+						{ type: 'primary' },
+						'Primary'
+					),
+					_react2.default.createElement(
+						_antd.Button,
+						null,
+						'Default'
+					),
+					_react2.default.createElement(
+						_antd.Button,
+						{ type: 'dashed' },
+						'Dashed'
+					),
+					_react2.default.createElement(
+						_antd.Button,
+						{ type: 'danger' },
+						'Danger'
+					)
+				),
+				'Page 1  one 1',
 				_react2.default.createElement(
 					'p',
 					null,

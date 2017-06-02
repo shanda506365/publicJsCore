@@ -17,3 +17,24 @@
 												});
 												me.showAlert();}}
 										/> 
+
+<H5FIleUpload  className="form-control"  data-inputText='上传商品文件'
+                     data-size='200000000'  data-acceptFileTypes='csv'
+                     data-count='1' data-files={this.state.dataFiles}
+                      data-formData={{productId:111}}
+                    data-url='../upload/server/php/'
+                     data-sucFun={function(files){   
+                          
+                     }}
+                     
+                     data-errorFun={function(msg){ 
+                         me.context.router.push({ 
+                             pathname: `/Prompt`, 
+                              state:{ 
+                                modal: true, 
+                                returnTo: me.props.location.pathname,
+                                content:msg.msg
+                              }
+                          })
+                       }}
+                    />   

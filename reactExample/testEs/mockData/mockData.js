@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
-exports.optionsData = exports.mData = undefined;
+exports.tableData = exports.optionsData = exports.mData = undefined;
 
 var _mockjs = require('mockjs');
 
@@ -13,9 +13,9 @@ var _API = require('./../lib/API');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-_mockjs2.default.setup({
-	// timeout: '1000-4000'
-});
+// Mock.setup({
+// 	// timeout: '1000-4000'
+// })
 _mockjs2.default.mock(_API.API.login, {
 	'suc|9-1': true,
 	'msg|1-10': '',
@@ -44,6 +44,15 @@ var optionsData = _mockjs2.default.mock({
 		'name': '@name',
 		'age|1-100': 100,
 		'color': '@color'
+	}]
+});
+
+var tableData = _mockjs2.default.mock({
+	'data|11-23': [{
+		'key|+1': 1,
+		'name': '@name',
+		'age|1-100': 100,
+		'address': '@color'
 	}]
 });
 var Random = _mockjs2.default.Random;
@@ -86,3 +95,4 @@ Random.constellation();
 // console.log(Mock.valid(template, data))
 exports.mData = mData;
 exports.optionsData = optionsData;
+exports.tableData = tableData;

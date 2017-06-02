@@ -334,8 +334,8 @@ function CheckLogin(nextState, replace) {
       });
    }
 }
-// const apiPreFix = 'http://192.168.91.102/' //'/'// 
-var apiPreFix = '/'; // 
+var apiPreFix = 'http://192.168.91.33/'; //'/'// 
+// const apiPreFix = '/' // 
 var iAPI = {
    login: apiPreFix + "quote/init",
    announcement: apiPreFix + 'announcement/getLatest',

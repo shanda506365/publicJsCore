@@ -31,11 +31,7 @@ import {
   Map,
   is
 } from 'immutable'
-import "antd/dist/antd.less" 
-import {
-  DatePicker,
-  message
-} from 'antd';
+
 // import IndexDBHelper, {
 //   Message
 // } from 'IndexDBHelper'
@@ -114,15 +110,11 @@ class ReduxForm extends Component {
                               pathname: '/Test' 
                             })}
         }>消息计数</button>
-         <div style={{ width: 400, margin: '100px auto' }}>
-            <DatePicker onChange={(value) => {
-              message.info('您选择的日期是: ' + date.toString()); 
-            }} />
-          <div style={{ marginTop: 20 }}>当前日期：</div>
-       </div>
+        
         <SyncValidationForm onSubmit={values =>{
           onFormSubmit(null,values,'Rejected','SyncValidationFormData')
-        }}   onTagSelect={onTagSelect} enableReinitialize={false} initialValues={SyncValidationFormData}/>
+        }}   onTagSelect={onTagSelect} enableReinitialize={false} 
+         initialValues={SyncValidationFormData}/>
         <div>
           <button type="button" className='weui-btn weui-btn_default' onClick={() => onSimpleFormLoad(SimpleFormData)}>Load Account</button>
         </div>

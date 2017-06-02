@@ -35,12 +35,12 @@ _reactDom2.default.render(_react2.default.createElement(
       { path: '/', getComponents: function getComponents(nextState, callback) {
           require.ensure([], function (require) {
             callback(null, require("./Main").default);
-          }, "router_V3_Main");
+          }, "router-V3-Main");
         } },
       _react2.default.createElement(_reactRouter.IndexRoute, { getComponents: function getComponents(nextState, callback) {
           require.ensure([], function (require) {
             callback(null, require("./PageOne").default);
-          }, "router_V3_PageOne");
+          }, "router-V3-PageOne");
         }, onEnter: function onEnter(nextState, replace) {
           console.log('onEnter', nextState, _Store.V3Store.getState());
         },
@@ -50,17 +50,17 @@ _reactDom2.default.render(_react2.default.createElement(
       _react2.default.createElement(_reactRouter.Route, { path: '/Quote', getComponents: function getComponents(nextState, callback) {
           require.ensure([], function (require) {
             callback(null, require("./Quote").default);
-          }, "router_V3_Quote");
+          }, "router-V3-Quote");
         } }),
       _react2.default.createElement(_reactRouter.Route, { path: '/PageTwo', getComponents: function getComponents(nextState, callback) {
           require.ensure([], function (require) {
             callback(null, require("./PageTwo").default);
-          }, "router_V3_PageTwo");
+          }, "router-V3-PageTwo");
         } }),
       _react2.default.createElement(_reactRouter.Route, { path: '/PageFour', getComponents: function getComponents(nextState, callback) {
           require.ensure([], function (require) {
             callback(null, require("./PageFour").default);
-          }, "router_V3_PageFour");
+          }, "router-V3-PageFour");
         } })
     )
   )

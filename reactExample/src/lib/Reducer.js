@@ -6,7 +6,7 @@
    fromJS,
    Map
  } from 'immutable'
-
+ 
  const GlobalState = fromJS({
      count: 0,
      title: '消息',
@@ -32,6 +32,7 @@
        radios2: ''
      },
      SyncValidationFormData: {
+       date:new Date(),
        username: 11,
        tagSels: []
      }

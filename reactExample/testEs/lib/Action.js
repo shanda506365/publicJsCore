@@ -23,6 +23,12 @@ var Action = {
     return {
       type: 'onSomeButtonClicked'
     };
+  },
+  onInputChange: function onInputChange(payload) {
+    return {
+      type: 'onInputChange',
+      payload: payload
+    };
   }
 };
 

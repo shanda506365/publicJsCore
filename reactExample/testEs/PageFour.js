@@ -134,8 +134,12 @@ var PageFour = function (_Component) {
 	}, {
 		key: 'domInit',
 		value: function domInit(param) {
+			console.log('ddd', this.props);
 			var me = this,
-			    router = this.props.router;
+			    _props2 = this.props,
+			    router = _props2.router,
+			    PageFour = _props2.V3DemoReducer.PageFour,
+			    dispatch = _props2.dispatch;
 
 
 			var pullDiv = [_react2.default.createElement(
@@ -169,6 +173,39 @@ var PageFour = function (_Component) {
 					_react2.default.createElement(
 						'div',
 						{ className: 'weui-flex__item' },
+						_react2.default.createElement('input', { type: 'text', value: PageFour.value, onChange: function onChange(e) {
+								dispatch({
+									type: 'myInputChange',
+									payload: { e: e }
+								});
+							}
+
+							// {(e)=>{
+							//  	if (!/\D/.test(e.target.value)){
+
+							//  	}else{
+
+							//  	}
+							// 		console.log('change',e.target.value)
+							// 	}
+							// } 
+							//onKeyDown={(e)=>{
+
+							//e.preventDefault()
+							//  	  var keynum;
+							// 	    var keychar;
+							// console.log(e.keyCode,e.which)
+							// 	    keynum = window.event ? e.keyCode : e.which;
+							// 	     if (e.which == 68) {e.preventDefault()};
+							// 	    keychar = String.fromCharCode(keynum); 
+							//  	 return false
+							// }} onKeyUp={(e)=>{
+							// if (e.which == 68) {e.preventDefault()};
+							// 			 	 console.log(e.keyCode,e.which)
+
+							//return false
+							//  
+							, style: { "ime-mode": "disabled" } }),
 						_react2.default.createElement(
 							'button',
 							{ className: 'weui-btn weui-btn_primary', onClick: function onClick(e) {
@@ -257,13 +294,13 @@ var PageFour = function (_Component) {
 
 			// var nums = numbers();
 			// console.log(nums.next(nums.next(nums.next().value).value).value);  
-			var _props2 = this.props,
-			    onMain_TabbarClick = _props2.onMain_TabbarClick,
-			    onPro_stateChange = _props2.onPro_stateChange,
-			    onSomeButtonClicked = _props2.onSomeButtonClicked,
-			    _props2$V3DemoReducer = _props2.V3DemoReducer.V3_Main,
-			    tabIndex = _props2$V3DemoReducer.tabIndex,
-			    tabbar_bottom_items = _props2$V3DemoReducer.tabbar_bottom_items,
+			var _props3 = this.props,
+			    onMain_TabbarClick = _props3.onMain_TabbarClick,
+			    onPro_stateChange = _props3.onPro_stateChange,
+			    onSomeButtonClicked = _props3.onSomeButtonClicked,
+			    _props3$V3DemoReducer = _props3.V3DemoReducer.V3_Main,
+			    tabIndex = _props3$V3DemoReducer.tabIndex,
+			    tabbar_bottom_items = _props3$V3DemoReducer.tabbar_bottom_items,
 			    me = this;
 
 			var barPanelDom = [];

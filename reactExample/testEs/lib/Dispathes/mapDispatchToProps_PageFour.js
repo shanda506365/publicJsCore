@@ -20,6 +20,9 @@ var mapDispatchToProps_PageFour = function mapDispatchToProps_PageFour(dispatch,
           tabIndex: tabIndex
         }
       });
+    },
+    onInputChange: function onInputChange(payload) {
+      dispatch(_Action.Action.onInputChange(payload));
     }
   }).toJSON();
 

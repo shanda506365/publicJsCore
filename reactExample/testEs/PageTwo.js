@@ -29,13 +29,13 @@ var _common2 = _interopRequireDefault(_common);
 
 var _immutable = require('immutable');
 
-var _mockData = require('./mockData/mockData');
-
-var _mockData2 = _interopRequireDefault(_mockData);
-
 var _TabBar_Bottom = require('./components/TabBar_Bottom');
 
 var _TabBar_Bottom2 = _interopRequireDefault(_TabBar_Bottom);
+
+var _mockData = require('./mockData/mockData');
+
+var _antd = require('antd');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -44,6 +44,55 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var columns = [{
+	title: 'Name',
+	dataIndex: 'name',
+	key: 'name',
+	render: function render(text) {
+		return _react2.default.createElement(
+			'a',
+			{ href: '#' },
+			text
+		);
+	}
+}, {
+	title: 'Age',
+	dataIndex: 'age',
+	key: 'age'
+}, {
+	title: 'Address',
+	dataIndex: 'address',
+	key: 'address'
+}, {
+	title: 'Action',
+	key: 'action',
+	render: function render(text, record) {
+		return _react2.default.createElement(
+			'span',
+			null,
+			_react2.default.createElement(
+				'a',
+				{ href: '#' },
+				'Action \u4E00 ',
+				record.name
+			),
+			_react2.default.createElement('span', { className: 'ant-divider' }),
+			_react2.default.createElement(
+				'a',
+				{ href: '#' },
+				'Delete'
+			),
+			_react2.default.createElement('span', { className: 'ant-divider' }),
+			_react2.default.createElement(
+				'a',
+				{ href: '#', className: 'ant-dropdown-link' },
+				'More actions ',
+				_react2.default.createElement(_antd.Icon, { type: 'down' })
+			)
+		);
+	}
+}];
 
 var PageTwo = function (_Component) {
 	_inherits(PageTwo, _Component);
@@ -120,6 +169,7 @@ var PageTwo = function (_Component) {
 			var me = this,
 			    router = this.props.router;
 
+
 			var pullDiv = [_react2.default.createElement(
 				'div',
 				{ className: 'weui-pull-to-refresh__layer' },
@@ -171,6 +221,7 @@ var PageTwo = function (_Component) {
 						)
 					)
 				),
+				_react2.default.createElement(_antd.Table, { columns: columns, dataSource: _mockData.tableData.data }),
 				'Page 2',
 				_react2.default.createElement(
 					'p',

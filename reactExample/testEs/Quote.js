@@ -135,8 +135,6 @@ var Quote = function (_Component) {
         _react2.default.createElement(
           'p',
           null,
-          '  ',
-          JSON.stringify(this.props),
           _react2.default.createElement(
             _reactRouter.Link,
             { className: 'weui-btn weui-btn_default', to: '/' },

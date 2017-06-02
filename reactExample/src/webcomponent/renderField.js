@@ -3,11 +3,16 @@ import React, {
 	PropTypes
 } from 'react'
 import ReactDOM from 'react-dom'
+
+import "antd/dist/antd.less"
+import moment from 'moment' 
 import {
-	Input
+	Input,
+	DatePicker,
+	message
 } from 'antd'
 
-
+moment.locale('zh-cn');
 const renderField = ({
 	input,
 	label,
@@ -65,6 +70,17 @@ const renderField = ({
 	};
 	if (type == 'text') {
 		return (<Input {...input} placeholder={label} type={type}/>)
+	};
+	if (type == 'datepicker') {
+
+		return (<div style={{ width: 400, margin: '100px auto' }}>
+            <DatePicker name={input.name} value={moment(input.value)}  onChange={(value,dateString) => {
+             
+              message.info('您选择的日期是: ' + value.toString()+'##'+dateString); 
+              return input.onChange(value);
+            }} />
+          <div style={{ marginTop: 20 }}>当前日期：</div>
+       </div>)
 	};
 	return (
 		<div>

@@ -16,6 +16,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //v3
 var V3GlobalState = (0, _immutable.fromJS)({
   pro_state: 'Resolved',
+  PageFour: {
+    value: ''
+  },
   V3_Main: {
     tabIndex: 0,
     title: 'V3_Main',
@@ -55,6 +58,9 @@ function V3DemoReducer() {
     // alert(11)
     //   rObj = state;
     //   return rObj
+    case 'onInputChange':
+      rObj = state.setIn(['PageFour', 'value'], action.payload.e.target.value);
+      return rObj;
     default:
       return state;
   }

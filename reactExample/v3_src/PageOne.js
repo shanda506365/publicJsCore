@@ -131,7 +131,7 @@ class PageOne extends Component {
 			 </div>
 		  <div style={{ width: 400, margin: '10px auto' }}>
             <DatePicker onChange={(value) => {
-              message.info('您选择的日期是: ' + date.toString()); 
+              message.info('您选择的日期是: ' + value.toString()); 
             }} />
           <div style={{ marginTop: 20 }}>当前日期：</div>
           <Button type="primary">Primary</Button>

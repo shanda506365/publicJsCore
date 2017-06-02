@@ -6613,7 +6613,7 @@ module.exports = "data:application/font-woff;base64,d09GRgABAAAAABiIABAAAAAAKHAA
 
 /***/ }),
 
-/***/ 1781:
+/***/ 1779:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6638,7 +6638,7 @@ exports.default = mapDispatchToProps_Main;
 
 /***/ }),
 
-/***/ 1785:
+/***/ 1783:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6689,9 +6689,9 @@ var _reactRouter = __webpack_require__(103);
 
 __webpack_require__(1765);
 
-var _mapStateToProps_Main = __webpack_require__(1785);
+var _mapStateToProps_Main = __webpack_require__(1783);
 
-var _mapDispatchToProps_Main = __webpack_require__(1781);
+var _mapDispatchToProps_Main = __webpack_require__(1779);
 
 __webpack_require__(1768);
 

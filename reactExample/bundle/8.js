@@ -173,7 +173,7 @@ exports.default = TabBar_Bottom;
 
 /***/ }),
 
-/***/ 1784:
+/***/ 1782:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -204,7 +204,7 @@ exports.default = mapDispatchToProps_Quote;
 
 /***/ }),
 
-/***/ 1789:
+/***/ 1787:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -254,9 +254,9 @@ var _reactRedux = __webpack_require__(43);
 
 var _reactRouter = __webpack_require__(103);
 
-var _mapStateToProps_Quote = __webpack_require__(1789);
+var _mapStateToProps_Quote = __webpack_require__(1787);
 
-var _mapDispatchToProps_Quote = __webpack_require__(1784);
+var _mapDispatchToProps_Quote = __webpack_require__(1782);
 
 var _immutable = __webpack_require__(223);
 

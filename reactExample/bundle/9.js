@@ -173,7 +173,7 @@ exports.default = TabBar_Bottom;
 
 /***/ }),
 
-/***/ 1780:
+/***/ 1778:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -212,7 +212,7 @@ exports.default = mapDispatchToProps_PageFour;
 
 /***/ }),
 
-/***/ 1786:
+/***/ 1784:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -263,9 +263,9 @@ var _reactRedux = __webpack_require__(43);
 
 var _reactRouter = __webpack_require__(103);
 
-var _mapStateToProps_PageFour = __webpack_require__(1786);
+var _mapStateToProps_PageFour = __webpack_require__(1784);
 
-var _MapDispatchToProps_PageFour = __webpack_require__(1780);
+var _MapDispatchToProps_PageFour = __webpack_require__(1778);
 
 var _common = __webpack_require__(994);
 

@@ -3,10 +3,11 @@
 Object.defineProperty(exports, "__esModule", {
       value: true
 });
-var apiPreFix = 'http://wechat.aibaojia.net/'; // 
+// const apiPreFix = '/' // 
+var apiPreFix = 'http://wechat.aibaojia.net/';
 var API = {
       login: apiPreFix + "quote/init",
-      announcement: apiPreFix + 'announcement/getLatest',
+      announcement: apiPreFix + 'clientUser/index',
       getBarcode: apiPreFix + "common/login/getQRcodePng",
       logout: apiPreFix + "common/logout",
       productIndex: apiPreFix + 'product/index',

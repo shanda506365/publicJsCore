@@ -23,10 +23,14 @@ import {
 import {
 	CheckboxGroup,
 	RadioGroup,
-	renderField
+	//renderField
 } from 'RxFields' 
+ import renderField from './webcomponent/renderField'
  
 import renderRcSelect from './webcomponent/renderRcSelect'  
+
+
+
 const validate = values => {
 	const errors = {}
 	if (!values.username) {
@@ -96,6 +100,9 @@ const SyncValidationForm = (props) => {
 	console.log('SyncValidationForm', props)
 	return (
 		<form onSubmit={handleSubmit} className='weui-cells weui-cells-form'>
+
+		  <Field name="date" type="datepicker"  component={renderField} label="datepicker"/>
+		   
 	      <Field name="username" type="text"  component={renderField} label="Username"/>
 	      <Field name="email" type="email" component={renderField} label="Email"/>
 	      <Field name="age" type="number" component={renderField} label="Age"/>

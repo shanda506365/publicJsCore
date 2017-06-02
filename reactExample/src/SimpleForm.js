@@ -7,12 +7,12 @@ import {
   reduxForm
 } from 'redux-form'
 
-// import {CheckboxGroup,
-//   RadioGroup,
-//   renderField } from 'RxFields'
-import renderField from './webcomponent/renderField'
-import CheckboxGroup from './webcomponent/CheckboxGroup'
-import RadioGroup from './webcomponent/RadioGroup'
+import {CheckboxGroup,
+  RadioGroup,
+  renderField } from 'RxFields'
+// import renderField from './webcomponent/renderField'
+// import CheckboxGroup from './webcomponent/CheckboxGroup'
+// import RadioGroup from './webcomponent/RadioGroup'
 
 import {
   optionsData
